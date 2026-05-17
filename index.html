@@ -226,6 +226,1592 @@
         </div>
     </section>
 
+    <!-- SECTION PRICING CARDS (Đã loại bỏ overflow-hidden gắt và thêm pt-6 cho phép hào quang hiển thị hoàn hảo) -->
+    <section id="pricing" class="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10">
+        
+        <!-- Container trượt ngang trên mobile (Sửa lỗi: Loại bỏ overflow-hidden, thêm pt-8 cho hào quang đỉnh nở tự nhiên) -->
+        <div class="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch relative -mx-6 px-6 lg:mx-0 lg:px-0 snap-x snap-mandatory scroll-smooth pt-8 pb-6 lg:pb-0 no-scrollbar">
+            
+            <!-- Plan 1: Starter (Viền Teal mờ phát sáng nhẹ, thanh lịch) -->
+            <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border border-teal-500/20 rounded-3xl p-8 bg-slate-950/40 hover:border-teal-400/40 hover:shadow-[0_0_30px_-5px_rgba(20,184,166,0.15)] transition-all duration-300 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-widest font-bold text-cyan-400">Gói Cơ Bản</span>
+                        <span class="bg-slate-900 text-slate-400 text-[10px] px-2.5 py-1 rounded-md font-bold uppercase border border-white/5">Starter</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Starter Pack</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed font-medium">Cung cấp các công cụ cốt lõi để theo dõi xu hướng, hỗ trợ đắc lực cho những người mới gia nhập thị trường.</p>
+                    
+                    <div class="py-4 border-t border-b border-white/5 space-y-1">
+                        <div class="text-slate-650 line-through text-xs" id="starter-strike">$39.99</div>
+                        <div class="flex items-baseline">
+                            <span class="text-xl font-bold text-slate-400">$</span>
+                            <span class="text-5xl font-extrabold tracking-tight text-white" id="starter-price">29.99</span>
+                            <span class="text-slate-400 ml-1.5 text-xs" id="starter-period">/tháng</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 pt-2">
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                            Bộ chỉ báo Xu hướng cơ bản
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                            Tín hiệu Buy/Sell độ trễ thấp
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                            Cảnh báo qua Telegram/Discord cơ bản
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-500 line-through">
+                            <i class="fa-solid fa-circle-xmark text-slate-700 text-sm"></i>
+                            1,000 AI Credits hỗ trợ phân tích
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pt-8">
+                    <button onclick="openPaymentModal('Starter', '29.99', 'tháng')" class="w-full bg-slate-900 hover:bg-slate-800 border border-white/5 hover:border-cyan-500/30 text-white text-center py-4 rounded-xl font-bold transition duration-200 cursor-pointer">
+                        Thuê Gói Starter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Plan 2: Premium (Sửa lỗi: Viền Cyan rực rỡ và Hào quang tỏa rộng tuyệt đẹp, không bao giờ bị khuất) -->
+            <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border-2 border-cyan-500/50 rounded-3xl p-8 bg-slate-950/80 flex flex-col justify-between relative shadow-[0_0_40px_-8px_rgba(6,182,212,0.3)] hover:shadow-[0_0_45px_-5px_rgba(6,182,212,0.45)] hover:border-cyan-400 transition-all duration-300 transform lg:-translate-y-3">
+                <div class="absolute -top-4.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 px-5 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-cyan-500/20 tracking-wider">PHỔ BIẾN NHẤT</div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-widest font-bold text-cyan-400">Gói Chuyên Nghiệp</span>
+                        <span class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[10px] px-2.5 py-1 rounded-md font-bold uppercase">PREMIUM</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Premium Suite</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed font-medium">Bộ chỉ báo nâng cao hoàn chỉnh kèm trợ lý AI hỗ trợ đa dạng mọi loại tài sản giao dịch, tối ưu hóa điểm vào/ra lệnh.</p>
+                    
+                    <div class="py-4 border-t border-b border-white/5 space-y-1">
+                        <div class="text-slate-500 line-through text-xs" id="premium-strike">$67.99</div>
+                        <div class="flex items-baseline">
+                            <span class="text-xl font-bold text-cyan-400">$</span>
+                            <span class="text-5xl font-extrabold tracking-tight text-white" id="premium-price">57.79</span>
+                            <span class="text-slate-300 ml-1.5 text-xs" id="premium-period">/tháng</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 pt-2">
+                        <li class="flex items-center gap-3 text-xs text-slate-200 font-semibold">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            Đầy đủ chỉ báo nâng cao TienCK
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            Cơ chế lọc nhiễu sóng Sideway vượt trội
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            Tích hợp vùng Cung & Cầu cứng OrderBlock
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            5,000 AI Credits mỗi tháng trợ lực
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            Quyền truy cập phòng tín hiệu VIP Discord
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pt-8">
+                    <button onclick="openPaymentModal('Premium', '57.79', 'tháng')" class="w-full bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 text-center py-4 rounded-xl font-bold shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
+                        Thuê Gói Premium ngay
+                    </button>
+                </div>
+            </div>
+
+            <!-- Plan 3: Ultimate (Thêm viền Tím Neon sang trọng và hào quang tối thượng) -->
+            <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border border-purple-500/40 rounded-3xl p-8 bg-slate-950/40 hover:border-purple-400 hover:shadow-[0_0_40px_-8px_rgba(168,85,247,0.25)] transition-all duration-300 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-widest font-bold text-indigo-400">Gói Tối Thượng</span>
+                        <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-[10px] px-2.5 py-1 rounded-md font-bold uppercase">ULTIMATE</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Ultimate Auto-Trade</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed font-medium">Kết nối Webhook trực tiếp tới bot giao dịch, nhân bản chiến lược AI tự động toàn diện không cần can thiệp thủ công.</p>
+                    
+                    <div class="py-4 border-t border-b border-white/5 space-y-1">
+                        <div class="text-slate-650 line-through text-xs" id="ultimate-strike">$119.99</div>
+                        <div class="flex items-baseline">
+                            <span class="text-xl font-bold text-cyan-400">$</span>
+                            <span class="text-5xl font-extrabold tracking-tight text-white" id="ultimate-price">83.99</span>
+                            <span class="text-slate-300 ml-1.5 text-xs" id="ultimate-period">/tháng</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 pt-2">
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-indigo-400 text-sm"></i>
+                            Đầy đủ quyền lợi của gói Premium
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-indigo-400 text-sm"></i>
+                            25,000 AI Credits mỗi tháng cực khủng
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-indigo-400 text-sm"></i>
+                            Xuất tín hiệu Webhook để auto-trade tự động
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-indigo-400 text-sm"></i>
+                            Chiến lược backtest AI định kỳ hàng tuần
+                        </li>
+                        <li class="flex items-center gap-3 text-xs text-slate-300">
+                            <i class="fa-solid fa-circle-check text-indigo-400 text-sm"></i>
+                            Hỗ trợ cấu hình Bot VIP 1-1 trực tiếp
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pt-8">
+                    <button onclick="openPaymentModal('Ultimate', '83.99', 'tháng')" class="w-full bg-slate-900 hover:bg-slate-800 border border-white/5 hover:border-indigo-500/30 text-white text-center py-4 rounded-xl font-bold transition duration-200 cursor-pointer">
+                        Thuê Gói Ultimate
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chỉ bảo kéo ngang trực quan cho mobile -->
+        <div class="flex lg:hidden justify-center items-center gap-1.5 mt-2 text-slate-550 text-xs">
+            <i class="fa-solid fa-angles-left animate-pulse"></i>
+            <span>Vuốt ngang để xem các gói</span>
+            <i class="fa-solid fa-angles-right animate-pulse"></i>
+        </div>
+
+        <!-- Money Back guarantee -->
+        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 bg-slate-950/40 border border-white/5 rounded-2xl p-6 max-w-4xl mx-auto relative z-10">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="text-center sm:text-left">
+                <h4 class="font-bold text-white text-sm">Chính sách bảo hành hoàn tiền 100% trong 30 ngày</h4>
+                <p class="text-xs text-slate-400 mt-1">Chúng tôi cam kết chất lượng của các bộ chỉ báo. Nếu bạn không hài lòng vì bất cứ lý do nào trong 30 ngày đầu, chúng tôi sẽ hoàn trả 100% chi phí thuê gói mà không yêu cầu thêm điều kiện nào.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FEATURE COMPARISON MATRIX -->
+    <section id="compare" class="max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+            <h2 class="text-3xl font-extrabold text-white">Bảng So Sánh Tính Năng Chi Tiết</h2>
+            <p class="text-slate-400 text-sm">Lựa chọn giải pháp phù hợp nhất cho mục tiêu tài chính của bạn.</p>
+        </div>
+
+        <div class="glass-panel rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[650px]">
+                    <thead>
+                        <tr class="bg-slate-900/60 border-b border-white/5">
+                            <th class="p-5 text-sm font-bold text-slate-300">Tính năng cung cấp</th>
+                            <th class="p-5 text-sm font-bold text-slate-400 text-center">Starter</th>
+                            <th class="p-5 text-sm font-bold text-cyan-400 text-center bg-cyan-500/5">Premium</th>
+                            <th class="p-5 text-sm font-bold text-indigo-400 text-center">Ultimate</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-sm">
+                        <!-- Row 1 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Trọn bộ chỉ báo kỹ thuật cơ bản</td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Bộ lọc nhiễu sóng cao cấp (Sideway-Filter)</td>
+                            <td class="p-5 text-center text-slate-650"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Tự động vẽ vùng cung cầu cứng (OrderBlock)</td>
+                            <td class="p-5 text-center text-slate-650"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Trợ Lý AI Phân Tích Kỹ Thuật (Credits)</td>
+                            <td class="p-5 text-center text-slate-400">Không có</td>
+                            <td class="p-5 text-center text-cyan-400 font-bold bg-cyan-500/5">5,000 / tháng</td>
+                            <td class="p-5 text-center text-indigo-400 font-bold">25,000 / tháng</td>
+                        </tr>
+                        <!-- Row 5 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Hỗ trợ cảnh báo thời gian thực qua Webhook</td>
+                            <td class="p-5 text-center text-slate-650"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-slate-650 bg-cyan-500/5"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <!-- Row 6 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Giao dịch tự động (Auto-replicate AI bot)</td>
+                            <td class="p-5 text-center text-slate-650"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-slate-650 bg-cyan-500/5"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
+                        </tr>
+                        <!-- Row 7 -->
+                        <tr>
+                            <td class="p-5 font-medium text-slate-200">Kênh hỗ trợ VIP 1-1 riêng tư</td>
+                            <td class="p-5 text-center text-slate-650"><i class="fa-solid fa-circle-minus"></i></td>
+                            <td class="p-5 text-center text-slate-400 bg-cyan-500/5">Cơ bản</td>
+                            <td class="p-5 text-center text-indigo-400 font-bold">Đặc quyền VIP 24/7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION LIVE DEMO -->
+    <section id="live-demo" class="max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl relative glow-cyan">
+            <div class="absolute -left-12 -bottom-12 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Điều khiển Demo -->
+                <div class="lg:col-span-4 space-y-6">
+                    <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight text-white">Mô Phỏng Trực Quan</h2>
+                    <p class="text-slate-400 text-sm">
+                        Khám phá sức mạnh trực quan của chỉ báo TienCK bằng cách kích hoạt/tắt các lớp tính năng ngay trên bản đồ thị nến mô phỏng BTC/USDT.
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <!-- Switch 1 -->
+                        <button id="toggle-signals" class="w-full flex items-center justify-between p-4 bg-slate-900/40 hover:bg-slate-900 border border-white/5 rounded-2xl transition-all duration-200 text-left cursor-pointer">
+                            <span class="flex items-center gap-3 text-sm font-semibold text-slate-300">
+                                <i class="fa-solid fa-circle-exclamation text-cyan-400"></i>
+                                Tín hiệu Mua / Bán (Buy/Sell)
+                            </span>
+                            <div class="w-10 h-6 bg-cyan-500 rounded-full p-1 transition-all duration-200 flex items-center justify-end" id="switch-signals-bg">
+                                <div class="w-4 h-4 bg-white rounded-full transition-all"></div>
+                            </div>
+                        </button>
+
+                        <!-- Switch 2 -->
+                        <button id="toggle-ema" class="w-full flex items-center justify-between p-4 bg-slate-900/40 hover:bg-slate-900 border border-white/5 rounded-2xl transition-all duration-200 text-left cursor-pointer">
+                            <span class="flex items-center gap-3 text-sm font-semibold text-slate-300">
+                                <i class="fa-solid fa-wave-square text-indigo-400"></i>
+                                Đường xu hướng thông minh (EMA)
+                            </span>
+                            <div class="w-10 h-6 bg-indigo-500 rounded-full p-1 transition-all duration-200 flex items-center justify-end" id="switch-ema-bg">
+                                <div class="w-4 h-4 bg-white rounded-full transition-all"></div>
+                            </div>
+                        </button>
+
+                        <!-- Switch 3 -->
+                        <button id="toggle-zones" class="w-full flex items-center justify-between p-4 bg-slate-900/40 hover:bg-slate-900 border border-white/5 rounded-2xl transition-all duration-200 text-left cursor-pointer">
+                            <span class="flex items-center gap-3 text-sm font-semibold text-slate-300">
+                                <i class="fa-solid fa-layer-group text-emerald-400"></i>
+                                Vùng Cung & Cầu (Cản Cứng)
+                            </span>
+                            <div class="w-10 h-6 bg-emerald-500 rounded-full p-1 transition-all duration-200 flex items-center justify-end" id="switch-zones-bg">
+                                <div class="w-4 h-4 bg-white rounded-full transition-all"></div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Market Status -->
+                    <div class="bg-slate-950 border border-white/5 p-4 rounded-xl flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-medium">Khung thời gian mô phỏng:</span>
+                        <span class="text-cyan-400 font-bold font-mono">1H (Khuyên Dùng)</span>
+                    </div>
+
+                    <!-- Nút Kích hoạt AI phân tích Biểu đồ trực quan -->
+                    <button id="btn-analyze-chart" class="w-full py-4 bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-cyan-500/20 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 text-sm cursor-pointer">
+                        <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                        <span>AI Phân Tích Kỹ Thuật Biểu Đồ Này</span>
+                    </button>
+                </div>
+
+                <!-- Canvas Biểu đồ mô phỏng -->
+                <div class="lg:col-span-8 bg-slate-950 border border-white/5 rounded-2xl p-4 relative">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 px-2.5 py-1 rounded text-xs font-bold">BTC / USDT</span>
+                            <span class="text-xs text-slate-500">Live Simulation</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span class="text-xs text-emerald-400 font-semibold">Thuật toán đang chạy</span>
+                        </div>
+                    </div>
+                    <div class="relative w-full aspect-[16/10] min-h-[300px]">
+                        <canvas id="chartCanvas" class="w-full h-full block rounded-xl bg-slate-950"></canvas>
+                    </div>
+                    <div class="mt-2 text-[10px] text-slate-600 text-center">
+                        *Biểu đồ động được vẽ bằng thuật toán mô phỏng chuyển động ngẫu nhiên hình học (Geometric Brownian Motion).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TIENCK AI COPILOT -->
+    <section id="ai-assistant" class="max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="absolute inset-0 bg-gradient-cyber-top opacity-30 pointer-events-none"></div>
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+                Trợ Lý Giao Dịch <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 font-bold">TienCK AI Copilot</span>
+            </h2>
+            <p class="text-slate-400 text-lg">
+                Sử dụng mô hình AI tiên tiến Google Gemini để phân tích kỹ thuật tức thì, giải đáp mọi thắc mắc trading và kiểm tra tin tức thị trường thực tế.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-10">
+            <!-- Left: AI Configuration -->
+            <div class="lg:col-span-4 flex flex-col justify-between space-y-6 bg-slate-950/40 border border-white/5 rounded-3xl p-6 sm:p-8">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20">
+                            <i class="fa-solid fa-sliders text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-200">Cấu hình AI Trợ Lý</h3>
+                            <p class="text-xs text-slate-500">Tối ưu hóa khả năng phản hồi</p>
+                        </div>
+                    </div>
+
+                    <!-- Google Search Grounding Toggle -->
+                    <div class="p-4 bg-slate-900/30 rounded-2xl border border-white/5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-globe text-cyan-400 text-sm"></i>
+                                <span class="text-sm font-semibold text-slate-300">Tìm kiếm Google Thực Tế</span>
+                            </div>
+                            <!-- Switch Search Grounding -->
+                            <button id="toggle-search-grounding" class="w-10 h-6 bg-slate-800 rounded-full p-1 flex items-center transition-all duration-300 cursor-pointer">
+                                <div class="w-4 h-4 bg-white rounded-full transition-transform duration-300" id="search-toggle-circle"></div>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Bật tính năng này để AI tìm kiếm và cung cấp giá thực tế, sự kiện kinh tế hoặc tin tức Crypto mới nhất trực tiếp trên internet năm 2026.
+                        </p>
+                    </div>
+
+                    <!-- Custom API Key Manager (REQUIRED FOR GITHUB) -->
+                    <div class="p-4 bg-slate-900/40 rounded-2xl border-2 border-dashed border-cyan-500/30">
+                        <div class="flex items-center justify-between text-xs font-bold text-cyan-400 mb-2">
+                            <span>🔑 API Key để kết nối Gemini</span>
+                            <a href="https://aistudio.google.com/" target="_blank" class="text-indigo-400 hover:text-indigo-300 underline flex items-center gap-0.5 font-bold">
+                                Lấy Key free <i class="fa-solid fa-up-right-from-square text-[9px]"></i>
+                            </a>
+                        </div>
+                        <div class="space-y-2">
+                            <input type="password" id="custom-api-key" placeholder="Dán Gemini API Key (Không bắt buộc)..." class="w-full px-3 py-2.5 bg-slate-950 border border-white/10 hover:border-cyan-500/50 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50 transition-colors">
+                            <p class="text-[9px] text-slate-500 leading-normal">
+                                *Nếu không nhập Key, bạn vẫn có thể trò chuyện với **Chế độ Ngoại tuyến thông minh** tích hợp sẵn bên dưới!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Suggestion Chips / Quick Actions -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Hỏi nhanh AI về:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="usePromptTemplate('Giải thích cách sử dụng Chỉ báo EMA thông minh của TienCK?')" class="px-3 py-1.5 bg-slate-900/80 hover:bg-slate-800 border border-white/5 rounded-xl text-xs text-slate-300 transition duration-200 text-left cursor-pointer">
+                                📈 Chỉ báo EMA thông minh
+                            </button>
+                            <button onclick="usePromptTemplate('Lập kế hoạch quản lý vốn tỷ lệ R:R 1:2 cho tài khoản $1,000')" class="px-3 py-1.5 bg-slate-900/80 hover:bg-slate-800 border border-white/5 rounded-xl text-xs text-slate-300 transition duration-200 text-left cursor-pointer">
+                                💼 Quản lý vốn $1,000
+                            </button>
+                            <button onclick="usePromptTemplate('Giá Bitcoin hiện tại là bao nhiêu? Cho biết xu hướng tuần này.')" class="px-3 py-1.5 bg-slate-900/80 hover:bg-slate-800 border border-white/5 rounded-xl text-xs text-slate-300 transition duration-200 text-left cursor-pointer">
+                                🌎 Giá Bitcoin hôm nay
+                            </button>
+                            <button onclick="usePromptTemplate('Làm sao để lọc các tín hiệu giả (nhiễu) khi giao dịch breakout?')" class="px-3 py-1.5 bg-slate-900/80 hover:bg-slate-800 border border-white/5 rounded-xl text-xs text-slate-300 transition duration-200 text-left cursor-pointer">
+                                🛡️ Lọc tín hiệu giả
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-white/5">
+                    <div class="flex items-center gap-3 text-xs text-slate-500">
+                        <i class="fa-solid fa-shield-halved text-emerald-500"></i>
+                        <span>Thông tin mã hóa đầu cuối, an toàn dữ liệu 100%.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Interactive Chat Terminal -->
+            <div class="lg:col-span-8 flex flex-col bg-slate-950 border border-white/5 rounded-3xl overflow-hidden shadow-2xl min-h-[500px] h-[600px]">
+                <!-- Chat Header -->
+                <div class="px-6 py-4 bg-slate-900/40 border-b border-white/5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-slate-950"></span>
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 to-indigo-500 flex items-center justify-center text-slate-950 font-bold">
+                                <i class="fa-solid fa-robot text-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-100 flex items-center gap-1.5 text-sm sm:text-base">
+                                TienCK AI Copilot
+                                <span class="text-[9px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded-full font-bold">V1.5 BETA</span>
+                            </h4>
+                            <p class="text-[10px] sm:text-xs text-slate-500 font-mono" id="engine-model-label">Trạng thái: Sẵn sàng (Ngoại tuyến / Trực tuyến)</p>
+                        </div>
+                    </div>
+                    <button onclick="clearChatHistory()" class="text-xs text-slate-500 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span class="hidden sm:inline">Xóa hội thoại</span>
+                    </button>
+                </div>
+
+                <!-- Chat Body / Messages display -->
+                <div id="ai-chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Default Initial AI Message -->
+                    <div class="flex gap-3 items-start max-w-2xl">
+                        <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 flex-shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-slate-900/40 border border-white/5 p-4 rounded-2xl rounded-tl-none">
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Xin chào! Tôi là <strong class="text-white">TienCK AI Copilot</strong>. Tôi có thể hỗ trợ phân tích đồ thị, chiến lược giao dịch và tâm lý đầu tư 24/7.
+                            </p>
+                            
+                            <!-- Hướng dẫn thân thiện -->
+                            <div class="mt-4 p-3 bg-cyan-500/10 border border-cyan-500/25 rounded-xl text-xs space-y-2">
+                                <p class="text-cyan-300 font-semibold"><i class="fa-solid fa-bolt"></i> Hoạt động ngay không cần thiết lập:</p>
+                                <ul class="list-disc list-inside text-slate-400 space-y-1">
+                                    <li>Nhập câu hỏi xuống dưới và gửi, hệ thống sẽ trả lời **ngay lập tức** ở chế độ offline.</li>
+                                    <li>Nếu bạn muốn dùng kết nối AI Gemini trực tuyến và Google Search: dán Key vào ô cấu hình ở bảng bên trái.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grounding Citations Overlay -->
+                <div id="sources-container" class="hidden px-6 py-2 bg-slate-900/60 border-t border-white/5 flex items-center gap-2 flex-wrap">
+                    <span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-link text-cyan-400"></i> Nguồn Grounding:
+                    </span>
+                    <div id="sources-list" class="flex flex-wrap gap-1.5"></div>
+                </div>
+
+                <!-- Chat input -->
+                <div class="p-4 bg-slate-900/20 border-t border-white/5">
+                    <form id="ai-chat-form" class="flex items-center gap-2">
+                        <input type="text" id="ai-chat-input" placeholder="Hỏi bất cứ điều gì về trading..." required class="flex-1 px-4 py-3 bg-slate-900/80 border border-white/5 hover:border-white/10 focus:border-cyan-500/50 rounded-xl text-sm text-slate-100 focus:outline-none placeholder-slate-600 transition-all duration-200">
+                        <button type="submit" class="bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 p-3.5 rounded-xl shadow-lg hover:shadow-cyan-500/15 active:scale-95 transition-all flex items-center justify-center font-bold cursor-pointer">
+                            <i class="fa-solid fa-paper-plane text-base"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FEATURES DETAILED EXPLANATION -->
+    <section id="features" class="max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="absolute inset-0 bg-gradient-cyber-bottom opacity-50 pointer-events-none"></div>
+        <div class="text-center max-w-3xl mx-auto space-y-4 relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Tại Sao Nên Chọn <span class="text-cyan-400">TienCK</span>?</h2>
+            <p class="text-slate-400 text-lg">Môi trường phân tích giao dịch tự động hóa cao nhất, giảm thiểu tối đa yếu tố nhiễu của thị trường.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 relative z-10">
+            <!-- Feature 1 -->
+            <div class="glass-panel rounded-3xl p-8 hover:border-cyan-500/30 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Tín Hiệu Giao Dịch Sắc Nét</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Bộ chỉ báo phát sinh tín hiệu Buy/Sell tức thời ngay trên đồ thị nến. Các thuật toán thế hệ mới lọc sạch nhiễu trong giai đoạn Sideway.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="glass-panel rounded-3xl p-8 hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Xác Định Cung Cầu Tự Động</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Vẽ vùng Hỗ trợ (Demand) & Kháng cự (Supply) chính xác dựa trên cấu trúc khối lệnh (Order Block) giúp quản lý dừng lỗ tối ưu.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="glass-panel rounded-3xl p-8 hover:border-purple-500/30 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Cảnh Báo Chớp Nhoáng</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Được thiết kế để không bỏ lỡ bất kỳ cơ hội nào nhờ liên kết cảnh báo tốc độ cao qua kênh Telegram và Discord cá nhân.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TESTIMONIALS -->
+    <section class="max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+            <h2 class="text-3xl font-extrabold text-white">Chia Sẻ Từ Các Nhà Giao Dịch</h2>
+            <p class="text-slate-400 text-sm">Xem cảm nhận từ cộng đồng của chúng tôi sau khi tích hợp TienCK vào chiến thuật trade.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="glass-panel rounded-2xl p-6 space-y-4">
+                <div class="flex items-center gap-1.5 text-amber-400 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"Bộ lọc nhiễu sideway của TienCK thực sự cứu tôi khỏi rất nhiều lệnh thua lỗ vô nghĩa. Các vùng OrderBlock vẽ tự động chuẩn xác không thua kém gì các trader kinh nghiệm vẽ tay."</p>
+                <div class="border-t border-white/5 pt-4 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-cyan-400">HA</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-white">Hoàng Anh</h4>
+                        <p class="text-[10px] text-slate-500">Crypto Scalper</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="glass-panel rounded-2xl p-6 space-y-4">
+                <div class="flex items-center gap-1.5 text-amber-400 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"Gói Ultimate Auto-trade kết hợp Webhook chạy bot đỉnh chóp! Tín hiệu bắn thẳng sang sàn không bị trễ nải một giây nào. Đây là giải pháp tiết kiệm thời gian tuyệt nhất."</p>
+                <div class="border-t border-white/5 pt-4 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-indigo-400">MT</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-white">Minh Tuấn</h4>
+                        <p class="text-[10px] text-slate-500">Forex Trader</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="glass-panel rounded-2xl p-6 space-y-4">
+                <div class="flex items-center gap-1.5 text-amber-400 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"AI Copilot của TienCK thật kỳ diệu. Mỗi tối khi phân tích biểu đồ tôi chỉ cần bấm phân tích tự động, AI đưa ra các mức cản và điểm dừng lỗ (SL) cực kỳ sát sao."</p>
+                <div class="border-t border-white/5 pt-4 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-purple-400">KT</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-white">Khánh Trình</h4>
+                        <p class="text-[10px] text-slate-500">Chứng Khoán Phái Sinh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (ACCORDION) -->
+    <section id="faq" class="max-w-4xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
+        <div class="text-center space-y-4 mb-12">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Các câu hỏi thường gặp</h2>
+            <p class="text-slate-400 text-sm">Mọi thông tin bạn cần nắm rõ trước khi tham gia cộng đồng TienCK.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Accordion item 1 -->
+            <div class="border border-white/5 rounded-2xl bg-slate-900/10 overflow-hidden">
+                <button class="faq-toggle w-full flex items-center justify-between p-5 text-left font-bold text-slate-200 hover:text-white transition-colors duration-200 cursor-pointer">
+                    <span>Tôi có cần kiến thức phân tích kỹ thuật chuyên sâu để dùng không?</span>
+                    <i class="fa-solid fa-plus text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden p-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-white/5">
+                    Không hề. Hệ thống chỉ báo được thiết kế trực quan hóa mức tối đa. Với tín hiệu Buy/Sell vẽ trực tiếp và vùng kháng cự, bạn chỉ cần bám theo kế hoạch quản lý vốn để tối ưu lợi nhuận.
+                </div>
+            </div>
+
+            <!-- Accordion item 2 -->
+            <div class="border border-white/5 rounded-2xl bg-slate-900/10 overflow-hidden">
+                <button class="faq-toggle w-full flex items-center justify-between p-5 text-left font-bold text-slate-200 hover:text-white transition-colors duration-200 cursor-pointer">
+                    <span>Chỉ báo này có thể cài đặt trên sàn giao dịch nào?</span>
+                    <i class="fa-solid fa-plus text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden p-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-white/5">
+                    Bộ chỉ báo hoạt động mượt mà trên TradingView, do đó nó hỗ thể cài đặt để trade Crypto, Chứng khoán Việt Nam, Forex, Vàng (XAUUSD)...
+                </div>
+            </div>
+
+            <!-- Accordion item 3 -->
+            <div class="border border-white/5 rounded-2xl bg-slate-900/10 overflow-hidden">
+                <button class="faq-toggle w-full flex items-center justify-between p-5 text-left font-bold text-slate-200 hover:text-white transition-colors duration-200 cursor-pointer">
+                    <span>Chỉ báo của TienCK có bị vẽ lại nến (Repaint) không?</span>
+                    <i class="fa-solid fa-plus text-slate-500 transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content hidden p-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-white/5">
+                    Không. Chúng tôi đảm bảo 100% các tín hiệu giao dịch đều cố định ngay khi đóng cây nến hiện thời. Không có hiện tượng Repaint (tín hiệu biến mất sau khi xuất hiện).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-12 px-6 lg:px-8 max-w-7xl mx-auto text-center text-slate-500 text-sm space-y-4 relative z-10">
+        <div class="flex items-center justify-center gap-2">
+            <span class="font-display font-bold text-white text-lg tracking-wider">TienCK</span>
+            <span class="text-[9px] text-cyan-400 font-mono tracking-widest uppercase">Indicators</span>
+        </div>
+        <p>© 2026 TienCK. Bảo lưu mọi quyền lợi. Đầu tư tài chính tiềm ẩn nhiều rủi ro, hãy giao dịch có trách nhiệm.</p>
+        <div class="flex justify-center gap-6 text-xs font-semibold">
+            <a href="#" class="hover:text-slate-300 transition">Điều khoản sử dụng</a>
+            <a href="#" class="hover:text-slate-300 transition">Chính sách bảo mật</a>
+            <a href="#" class="hover:text-slate-300 transition">Liên hệ Hỗ trợ</a>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU MODAL -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-slate-950 p-6 flex flex-col justify-between transition-all duration-300">
+        <div class="space-y-8">
+            <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                <span class="font-display font-bold text-xl tracking-wider text-white">TienCK</span>
+                <button id="close-btn" class="p-2 border border-white/5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-5 text-lg font-semibold text-slate-300">
+                <a href="#pricing" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">Bảng giá</a>
+                <a href="#compare" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">So sánh tính năng</a>
+                <a href="#features" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">Tính năng chỉ báo</a>
+                <a href="#live-demo" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">Mô phỏng động</a>
+                <a href="#ai-assistant" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">Trợ Lý AI</a>
+                <a href="#faq" class="hover:text-cyan-400 transition" onclick="toggleMobileMenu()">Hỏi đáp</a>
+            </div>
+        </div>
+        <div class="pb-12 space-y-4">
+            <a href="#pricing" onclick="toggleMobileMenu()" class="block w-full py-4 text-center bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/10">Thuê Ngay</a>
+            <p class="text-[10px] text-center text-slate-650">Premium Indicators Ecosystem</p>
+        </div>
+    </div>
+
+    <!-- MOCKUP PAYMENT/REGISTRATION MODAL -->
+    <div id="payment-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 nav-blur transition-all duration-300">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative space-y-6 shadow-2xl">
+            <button onclick="closePaymentModal()" class="absolute right-4 top-4 text-slate-400 hover:text-white p-2 cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 text-xl mb-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">Thanh toán & Nhận chỉ báo</h3>
+                <p class="text-sm text-slate-400">Bạn đã chọn thuê gói <span id="modal-plan-name" class="text-cyan-400 font-bold">Premium</span></p>
+            </div>
+
+            <!-- Fake QR code / Payment Info -->
+            <div class="bg-slate-950 p-4 rounded-2xl border border-white/5 text-center space-y-4">
+                <div class="mx-auto w-36 h-36 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5">
+                    <img id="qr-image" src="https://placehold.co/150x150/040815/06b6d4?text=QR+PAYMENT" alt="QR Thanh toán" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div class="space-y-1">
+                    <p class="text-xs text-slate-500">Số tiền thanh toán:</p>
+                    <p class="text-2xl font-extrabold text-cyan-400" id="modal-plan-price">$57.79 <span class="text-xs text-slate-500 font-normal">/tháng</span></p>
+                </div>
+                <div class="text-left space-y-1.5 text-xs text-slate-300 border-t border-white/5 pt-3">
+                    <p>🏦 <strong>Ngân hàng:</strong> Techcombank</p>
+                    <p>💳 <strong>Số tài khoản:</strong> 19028384819002</p>
+                    <p>👤 <strong>Chủ tài khoản:</strong> NGUYEN VAN TIEN</p>
+                    <p>✏️ <strong>Nội dung CK:</strong> <span class="font-mono text-amber-400 font-bold uppercase" id="modal-order-id">TIENCK_PREM_XYS</span></p>
+                </div>
+            </div>
+
+            <div class="text-xs text-center text-slate-500">
+                *Quyền lợi tài khoản TradingView sẽ tự động kích hoạt trong vòng 5-10 phút sau khi hệ thống ghi nhận giao dịch.
+            </div>
+
+            <button onclick="closePaymentModal()" class="w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-xl font-bold transition cursor-pointer">
+                Tôi Đã Chuyển Khoản
+            </button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Sửa lỗi: Hợp nhất menu di động
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+        menuBtn.onclick = toggleMobileMenu;
+        closeBtn.onclick = toggleMobileMenu;
+
+        // ĐẾM NGƯỢC KHUYẾN MÃI
+        const targetDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000 + 5 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // LOGIC PRICING TOGGLE
+        let isYearly = false;
+        const billingToggle = document.getElementById('billing-toggle');
+        const toggleCircle = document.getElementById('toggle-circle');
+        const labelMonthly = document.getElementById('label-monthly');
+        const labelYearly = document.getElementById('label-yearly');
+
+        const starterPrice = document.getElementById('starter-price');
+        const starterStrike = document.getElementById('starter-strike');
+        const starterPeriod = document.getElementById('starter-period');
+
+        const premiumPrice = document.getElementById('premium-price');
+        const premiumStrike = document.getElementById('premium-strike');
+        const premiumPeriod = document.getElementById('premium-period');
+
+        const ultimatePrice = document.getElementById('ultimate-price');
+        const ultimateStrike = document.getElementById('ultimate-strike');
+        const ultimatePeriod = document.getElementById('ultimate-period');
+
+        billingToggle.addEventListener('click', () => {
+            isYearly = !isYearly;
+            if (isYearly) {
+                toggleCircle.style.transform = 'translateX(28px)';
+                billingToggle.classList.replace('bg-cyan-500', 'bg-indigo-600');
+                labelYearly.classList.add('text-cyan-400');
+                labelMonthly.classList.remove('text-slate-300');
+                labelMonthly.classList.add('text-slate-500');
+
+                starterPrice.textContent = "19.99";
+                starterStrike.textContent = "$29.99";
+                starterPeriod.textContent = "/tháng (đóng năm)";
+
+                premiumPrice.textContent = "39.99";
+                premiumStrike.textContent = "$57.79";
+                premiumPeriod.textContent = "/tháng (đóng năm)";
+
+                ultimatePrice.textContent = "59.99";
+                ultimateStrike.textContent = "$83.99";
+                ultimatePeriod.textContent = "/tháng (đóng năm)";
+            } else {
+                toggleCircle.style.transform = 'translateX(0px)';
+                billingToggle.classList.replace('bg-indigo-600', 'bg-cyan-500');
+                labelMonthly.classList.add('text-slate-300');
+                labelYearly.classList.remove('text-cyan-400');
+                labelYearly.classList.add('text-slate-500');
+
+                starterPrice.textContent = "29.99";
+                starterStrike.textContent = "$39.99";
+                starterPeriod.textContent = "/tháng";
+
+                premiumPrice.textContent = "57.79";
+                premiumStrike.textContent = "$67.99";
+                premiumPeriod.textContent = "/tháng";
+
+                ultimatePrice.textContent = "83.99";
+                ultimateStrike.textContent = "$119.99";
+                ultimatePeriod.textContent = "/tháng";
+            }
+        });
+
+        // ACCORDION FAQ LOGIC
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                content.classList.toggle('hidden');
+                if (content.classList.contains('hidden')) {
+                    icon.className = 'fa-solid fa-plus text-slate-500 transition-transform';
+                } else {
+                    icon.className = 'fa-solid fa-minus text-cyan-400 transition-transform rotate-180';
+                }
+            });
+        });
+
+        // PAYMENT MODAL POPUP
+        const paymentModal = document.getElementById('payment-modal');
+        const modalPlanName = document.getElementById('modal-plan-name');
+        const modalPlanPrice = document.getElementById('modal-plan-price');
+        const modalOrderId = document.getElementById('modal-order-id');
+
+        function openPaymentModal(plan, price, period) {
+            modalPlanName.textContent = plan;
+            let finalPrice = price;
+            if (isYearly) {
+                if (plan === 'Starter') finalPrice = '19.99';
+                else if (plan === 'Premium') finalPrice = '39.99';
+                else if (plan === 'Ultimate') finalPrice = '59.99';
+            }
+            modalPlanPrice.innerHTML = `${finalPrice} USD <span class="text-xs text-slate-500 font-normal">/${isYearly ? 'tháng (trả hàng năm)' : 'tháng'}</span>`;
+            const randomCode = Math.random().toString(36).substring(2, 7).toUpperCase();
+            modalOrderId.textContent = `TIENCK_${plan.toUpperCase()}_${randomCode}`;
+            paymentModal.classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            paymentModal.classList.add('hidden');
+        }
+
+        // CANVAS SIMULATION CHART WIDGET
+        const canvas = document.getElementById('chartCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let showSignals = true;
+        let showEma = true;
+        let showZones = true;
+
+        const candles = [];
+        const totalCandles = 25;
+        let seedPrice = 64500;
+
+        for (let i = 0; i < totalCandles; i++) {
+            const angle = (i / totalCandles) * Math.PI * 2.5;
+            const trend = Math.sin(angle) * 800 + (i * 120);
+            const randomVolatility = (Math.sin(i * 1.5) * 200) + (Math.cos(i * 3) * 150);
+            const close = seedPrice + trend + randomVolatility;
+            const open = i === 0 ? seedPrice - 100 : candles[i - 1].close;
+            const high = Math.max(open, close) + (Math.abs(Math.sin(i)) * 180 + 50);
+            const low = Math.min(open, close) - (Math.abs(Math.cos(i)) * 180 + 50);
+            candles.push({ open, close, high, low });
+        }
+
+        function resizeCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            drawChart();
+        }
+
+        function drawChart() {
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            ctx.clearRect(0, 0, width, height);
+
+            const paddingLeft = 40;
+            const paddingRight = 60;
+            const paddingTop = 40;
+            const paddingBottom = 40;
+
+            const chartWidth = width - paddingLeft - paddingRight;
+            const chartHeight = height - paddingTop - paddingBottom;
+
+            let minVal = Infinity;
+            let maxVal = -Infinity;
+            candles.forEach(c => {
+                if (c.low < minVal) minVal = c.low;
+                if (c.high > maxVal) maxVal = c.high;
+            });
+
+            minVal -= 200;
+            maxVal += 200;
+
+            const getX = (index) => paddingLeft + (index / (totalCandles - 1)) * chartWidth;
+            const getY = (val) => paddingTop + chartHeight - ((val - minVal) / (maxVal - minVal)) * chartHeight;
+
+            // Grid Lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+            ctx.lineWidth = 1;
+            for (let i = 1; i < 5; i++) {
+                const y = paddingTop + (chartHeight / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(paddingLeft, y);
+                ctx.lineTo(width - paddingRight, y);
+                ctx.stroke();
+            }
+
+            // Supply & Demand Zones
+            if (showZones) {
+                ctx.fillStyle = 'rgba(239, 68, 68, 0.05)';
+                ctx.fillRect(paddingLeft, paddingTop, chartWidth, chartHeight * 0.18);
+                ctx.strokeStyle = 'rgba(239, 68, 68, 0.15)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(paddingLeft, paddingTop + chartHeight * 0.18);
+                ctx.lineTo(width - paddingRight, paddingTop + chartHeight * 0.18);
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(34, 197, 94, 0.05)';
+                ctx.fillRect(paddingLeft, paddingTop + chartHeight * 0.78, chartWidth, chartHeight * 0.22);
+                ctx.strokeStyle = 'rgba(34, 197, 94, 0.15)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(paddingLeft, paddingTop + chartHeight * 0.78);
+                ctx.lineTo(width - paddingRight, paddingTop + chartHeight * 0.78);
+                ctx.stroke();
+            }
+
+            // Candlesticks
+            const candleWidth = (chartWidth / totalCandles) * 0.6;
+            candles.forEach((c, index) => {
+                const x = getX(index);
+                const yOpen = getY(c.open);
+                const yClose = getY(c.close);
+                const yHigh = getY(c.high);
+                const yLow = getY(c.low);
+                
+                const isGreen = c.close >= c.open;
+                ctx.strokeStyle = isGreen ? '#10b981' : '#f43f5e';
+                ctx.fillStyle = isGreen ? '#10b981' : '#f43f5e';
+                ctx.lineWidth = 1.5;
+
+                ctx.beginPath();
+                ctx.moveTo(x, yHigh);
+                ctx.lineTo(x, yLow);
+                ctx.stroke();
+
+                const rectX = x - candleWidth / 2;
+                const rectY = Math.min(yOpen, yClose);
+                const rectHeight = Math.max(Math.abs(yOpen - yClose), 2);
+                ctx.fillRect(rectX, rectY, candleWidth, rectHeight);
+            });
+
+            // EMA Trend Line
+            if (showEma) {
+                ctx.beginPath();
+                candles.forEach((c, index) => {
+                    const emaVal = c.close * 0.998 + (index * 8); 
+                    const x = getX(index);
+                    const y = getY(emaVal);
+                    if (index === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.strokeStyle = '#6366f1';
+                ctx.lineWidth = 3;
+                ctx.shadowColor = '#6366f1';
+                ctx.shadowBlur = 10;
+                ctx.stroke();
+                ctx.shadowBlur = 0; 
+            }
+
+            // Signals Buy/Sell
+            if (showSignals) {
+                const buyIndices = [4, 17];
+                buyIndices.forEach(idx => {
+                    const c = candles[idx];
+                    const x = getX(idx);
+                    const y = getY(c.low) + 18;
+
+                    ctx.fillStyle = '#10b981';
+                    ctx.beginPath();
+                    ctx.moveTo(x, y - 6);
+                    ctx.lineTo(x - 8, y + 4);
+                    ctx.lineTo(x + 8, y + 4);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.font = 'bold 9px sans-serif';
+                    ctx.fillStyle = '#10b981';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('BUY', x, y + 15);
+                });
+
+                const sellIndices = [10, 21];
+                sellIndices.forEach(idx => {
+                    const c = candles[idx];
+                    const x = getX(idx);
+                    const y = getY(c.high) - 18;
+
+                    ctx.fillStyle = '#f43f5e';
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + 6);
+                    ctx.lineTo(x - 8, y - 4);
+                    ctx.lineTo(x + 8, y - 4);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.font = 'bold 9px sans-serif';
+                    ctx.fillStyle = '#f43f5e';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('SELL', x, y - 10);
+                });
+            }
+        }
+
+        // SWITCHES CONTROLS
+        const btnSignals = document.getElementById('toggle-signals');
+        const bgSignals = document.getElementById('switch-signals-bg');
+        const btnEma = document.getElementById('toggle-ema');
+        const bgEma = document.getElementById('switch-ema-bg');
+        const btnZones = document.getElementById('toggle-zones');
+        const bgZones = document.getElementById('switch-zones-bg');
+
+        function updateSwitchUI(element, state) {
+            const indicatorCircle = element.querySelector('div');
+            if (state) {
+                element.className = element.className.replace('bg-slate-850', 'bg-cyan-950/20').replace('bg-slate-800', 'bg-cyan-950/20').replace('border-slate-700', 'border-cyan-500/20');
+                indicatorCircle.style.transform = 'translateX(0px)';
+            } else {
+                element.className = element.className.replace('bg-cyan-950/20', 'bg-slate-800').replace('border-cyan-500/20', 'border-slate-700');
+                indicatorCircle.style.transform = 'translateX(-16px)';
+            }
+        }
+
+        btnSignals.addEventListener('click', () => {
+            showSignals = !showSignals;
+            updateSwitchUI(bgSignals, showSignals);
+            drawChart();
+        });
+
+        btnEma.addEventListener('click', () => {
+            showEma = !showEma;
+            updateSwitchUI(bgEma, showEma);
+            drawChart();
+        });
+
+        btnZones.addEventListener('click', () => {
+            showZones = !showZones;
+            updateSwitchUI(bgZones, showZones);
+            drawChart();
+        });
+
+        // ==========================================
+        //  GEMINI API & AI COPILOT LOGIC (OFFLINE + ONLINE MODE)
+        // ==========================================
+        
+        let searchGroundingEnabled = false;
+        const toggleSearchGroundingBtn = document.getElementById('toggle-search-grounding');
+        const searchToggleCircle = document.getElementById('search-toggle-circle');
+        const apiKeyInput = document.getElementById('custom-api-key');
+
+        if (localStorage.getItem('tienck_gemini_key')) {
+            apiKeyInput.value = localStorage.getItem('tienck_gemini_key');
+        }
+
+        apiKeyInput.addEventListener('input', () => {
+            localStorage.setItem('tienck_gemini_key', apiKeyInput.value.trim());
+        });
+
+        toggleSearchGroundingBtn.addEventListener('click', () => {
+            searchGroundingEnabled = !searchGroundingEnabled;
+            if (searchGroundingEnabled) {
+                searchToggleCircle.style.transform = 'translateX(16px)';
+                toggleSearchGroundingBtn.classList.replace('bg-slate-800', 'bg-cyan-500');
+            } else {
+                searchToggleCircle.style.transform = 'translateX(0px)';
+                toggleSearchGroundingBtn.classList.replace('bg-cyan-500', 'bg-slate-800');
+            }
+        });
+
+        function parseMarkdown(text) {
+            let html = text;
+            html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-950/80 text-emerald-400 p-3 rounded-lg text-xs font-mono my-2 overflow-x-auto border border-white/5">$1</pre>');
+            html = html.replace(/`([^`]+)`/g, '<code class="bg-slate-950 px-1.5 py-0.5 rounded text-cyan-400 font-mono text-xs border border-white/5">$1</code>');
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-white">$1</strong>');
+            html = html.replace(/^### (.*$)/gim, '<h5 class="text-sm font-bold text-cyan-400 mt-3 mb-1">$1</h5>');
+            html = html.replace(/^## (.*$)/gim, '<h4 class="text-base font-bold text-cyan-300 mt-4 mb-2">$1</h4>');
+            html = html.replace(/^# (.*$)/gim, '<h3 class="text-lg font-bold text-white mt-5 mb-3">$1</h3>');
+            html = html.replace(/^\s*-\s+(.*$)/gim, '<li class="list-disc list-inside text-slate-300 ml-2 mt-1">$1</li>');
+            html = html.replace(/^\s*\*\s+(.*$)/gim, '<li class="list-disc list-inside text-slate-300 ml-2 mt-1">$1</li>');
+            html = html.replace(/\n/g, '<br>');
+            return html;
+        }
+
+        // MOCKUP OFFLINE INTELLIGENT BOT (Bảo vệ trải nghiệm người dùng khi chưa dán API Key)
+        function getLocalBotResponse(query) {
+            const q = query.toLowerCase();
+            
+            if (q.includes("ema") || q.includes("trung bình")) {
+                return `### 📈 Giải thích về Chỉ báo EMA của TienCK:
+
+Chỉ báo **EMA (Exponential Moving Average)** thông minh trên hệ thống TienCK là một bộ lọc xu hướng tự động:
+- **Nguyên lý:** Khác với đường SMA truyền thống, EMA đặt trọng số lớn hơn vào các biến động giá gần nhất. Điều này giúp phát hiện xu hướng xoay chiều cực nhanh mà không bị trễ nến.
+- **Ứng dụng thực tế:** 1. **Xác định xu hướng:** Khi nến nằm trên đường EMA màu xanh tím, xu hướng hiện tại là **TĂNG**. Ngược lại, khi nến dưới EMA, xu hướng là **GIẢM**.
+  2. **Giao điểm vàng:** Sự giao cắt giữa giá và EMA là điểm kích hoạt của các tín hiệu \`BUY\` hoặc \`SELL\` chất lượng cao.
+
+*Mẹo: Kết hợp EMA với các vùng kháng cự/hỗ trợ để đạt tỷ lệ thắng tốt nhất!*`;
+            }
+            
+            if (q.includes("quản lý vốn") || q.includes("r:r") || q.includes("rr") || q.includes("quản lý rủi ro")) {
+                return `### 💼 Kế hoạch Quản lý vốn chuyên nghiệp (Tài khoản $1,000):
+
+Trong giao dịch, bảo vệ vốn luôn là ưu tiên số một. Dưới đây là quy tắc chuẩn từ các quỹ đầu tư:
+1. **Quy tắc 1-2%:** Tuyệt đối không bao giờ mạo hiểm quá 1% đến 2% tài khoản cho mỗi lệnh (với tài khoản $1,000, mức thua lỗ tối đa cho 1 lệnh là **$10 - $20**).
+2. **Tỷ lệ R:R tối thiểu 1:2:** - Điểm cắt lỗ (Stop Loss - SL): 10 giá (Ví dụ: Chịu lỗ $10)
+   - Điểm chốt lời (Take Profit - TP): tối thiểu 20 giá (Ví dụ: Thu lời $20)
+3. **Cách tính khối lượng lệnh (Size):**
+   \`Size = Số tiền chịu rủi ro tối đa ($10) / Khoảng cách từ điểm vào lệnh đến SL\`
+
+*Ứng dụng hệ thống chỉ báo TienCK giúp bạn xác định cực kỳ chuẩn xác điểm đặt SL ngay dưới các vùng cản cứng để tối ưu hóa tỷ lệ R:R này.*`;
+            }
+
+            if (q.includes("lọc nhiễu") || q.includes("breakout") || q.includes("tín hiệu giả")) {
+                return `### 🛡️ Cách lọc tín hiệu giả (Nhiễu sóng Sideway):
+
+Thị trường đi ngang (Sideway) là tác nhân lớn nhất làm hao hụt tài khoản. TienCK Indicators giải quyết vấn đề này qua:
+1. **Lọc nhiễu thông minh:** Tín hiệu \`BUY\` hoặc \`SELL\` chỉ hợp lệ khi giá đóng cửa nằm hoàn toàn ngoài dải biên độ tích lũy trung bình.
+2. **Xác nhận khối lượng (Volume):** Một đợt phá vỡ (Breakout) đáng tin cậy bắt buộc phải đi kèm thanh khoản lớn. Nếu giá phá cản nhưng volume thấp, 80% đó là đợt tăng/giảm giả (Fakeout).
+3. **Bộ lọc dải động:** Khi biên độ dải hẹp lại, chỉ báo sẽ tự động thắt chặt điều kiện phát tín hiệu để tránh quét 2 đầu.`;
+            }
+
+            if (q.includes("btc") || q.includes("bitcoin") || q.includes("giá")) {
+                return `### 🌎 Phân tích Xu hướng Bitcoin (Chế độ Ngoại tuyến):
+
+Hiện tại, ở chế độ ngoại tuyến, tôi không thể truy cập dữ liệu thời gian thực của sàn Binance để báo giá chính xác từng giây.
+- **Tuy nhiên:** Biểu đồ mô phỏng **BTC/USDT** bên trên của hệ thống đang cho thấy giá dao động tích lũy cực kỳ sát với diễn biến thực tế của thị trường.
+- **Cách xem:** Bạn hãy bật các công tắc **EMA** và **Vùng Cung & Cầu** trên đồ thị mô phỏng để nhận định chính xác xu hướng ngắn hạn của BTC.
+
+*💡 Để cập nhật giá trực tiếp hôm nay năm 2026, hãy dán API Key của bạn vào mục cấu hình bên trái và bật công tắc "Tìm kiếm Google Thực Tế" nhé!*`;
+            }
+
+            // Trả lời mặc định chung cực hay
+            return `### 🤖 Phản hồi từ TienCK AI Assistant (Offline Mode):
+
+Tôi đã nhận được câu hỏi: *"I${query.substring(1)}"* của bạn.
+Vì chưa phát hiện **Gemini API Key** được dán vào bảng cấu hình, tôi đang trả lời bạn ở **Chế độ Ngoại tuyến**:
+
+- **Về chỉ báo TienCK:** Hệ thống tích hợp các thuật toán lọc nhiễu đỉnh cao, tự động phát hiện vùng tích lũy dòng tiền (Smart Money) và vẽ vùng cung cầu tự động.
+- **Để kích hoạt Trợ lý AI Trực tuyến 2026:**
+  1. Nhấp vào liên kết [Google AI Studio](https://aistudio.google.com/) để tạo một API Key miễn phí chỉ trong 30 giây.
+  2. Dán Key vào ô **"🔑 API Key để kết nối Gemini"** ở bảng điều khiển bên trái.
+  3. Bật công tắc **"Tìm kiếm Google Thực Tế"** để tôi cập nhật tin tức và giá Bitcoin thực tế ngay hôm nay!`;
+        }
+
+        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (response.status === 429 && retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return await fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                return response;
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return await fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+        async function askGemini(promptText, useSearch = false) {
+            const apiKey = apiKeyInput.value.trim();
+            
+            // Nếu không có API Key, chạy cơ chế phản hồi ngoại tuyến ngay lập tức
+            if (!apiKey) {
+                return { isOffline: true, text: getLocalBotResponse(promptText) };
+            }
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+            const systemPrompt = "Bạn là trợ lý ảo phân tích tài chính cao cấp TienCK AI Copilot. Hãy đưa ra phân tích chuyên sâu về thị trường tài chính, phân tích kỹ thuật và chiến lược sử dụng chỉ báo giao dịch. Trả lời bằng Tiếng Việt một cách chuyên nghiệp, súc tích và mạch lạc. Sử dụng định dạng markdown đẹp mắt.";
+            
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            if (useSearch) {
+                payload.tools = [{ "google_search": {} }];
+            }
+
+            const response = await fetchWithBackoff(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                let errorMsg = errorData?.error?.message || `HTTP ${response.status}`;
+                if (response.status === 400 && errorMsg.includes("API key")) {
+                    errorMsg = "API Key của bạn không hợp lệ hoặc đã bị vô hiệu hóa. Vui lòng kiểm tra và nhập lại khóa chính xác từ Google AI Studio.";
+                }
+                throw new Error(errorMsg);
+            }
+
+            return await response.json();
+        }
+
+        const aiChatMessages = document.getElementById('ai-chat-messages');
+        const aiChatForm = document.getElementById('ai-chat-form');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const sourcesContainer = document.getElementById('sources-container');
+        const sourcesList = document.getElementById('sources-list');
+
+        function appendMessage(sender, htmlContent, isMarkdown = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex gap-3 items-start max-w-3xl ${sender === 'user' ? 'justify-end ml-auto' : 'mr-auto'}`;
+            
+            const iconHTML = sender === 'user' 
+                ? `<div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center flex-shrink-0 border border-cyan-500/20"><i class="fa-solid fa-user-tie"></i></div>`
+                : `<div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-indigo-500 text-slate-950 flex items-center justify-center flex-shrink-0 font-bold shadow"><i class="fa-solid fa-robot"></i></div>`;
+            
+            const bubbleBg = sender === 'user' 
+                ? 'bg-cyan-500/10 border border-cyan-500/20 rounded-tr-none bg-cyan-950/20' 
+                : 'bg-slate-900 border border-white/5 rounded-tl-none';
+
+            const formattedText = isMarkdown ? parseMarkdown(htmlContent) : htmlContent;
+
+            wrapper.innerHTML = `
+                ${sender === 'user' ? '' : iconHTML}
+                <div class="${bubbleBg} p-4 rounded-2xl">
+                    <div class="text-sm leading-relaxed text-slate-200">${formattedText}</div>
+                </div>
+                ${sender === 'user' ? iconHTML : ''}
+            `;
+            
+            aiChatMessages.appendChild(wrapper);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function appendLoadingIndicator() {
+            const loadingWrapper = document.createElement('div');
+            loadingWrapper.id = 'ai-loading-bubble';
+            loadingWrapper.className = 'flex gap-3 items-start mr-auto max-w-2xl';
+            
+            loadingWrapper.innerHTML = `
+                <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 flex-shrink-0">
+                    <i class="fa-solid fa-spinner animate-spin text-cyan-400"></i>
+                </div>
+                <div class="bg-slate-900/60 border border-white/5 p-4 rounded-2xl rounded-tl-none flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style="animation-delay: 0.1s"></span>
+                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-bounce" style="animation-delay: 0.2s"></span>
+                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-bounce" style="animation-delay: 0.3s"></span>
+                    <span class="text-xs text-slate-500 ml-1 font-medium">Copilot đang phân tích...</span>
+                </div>
+            `;
+            aiChatMessages.appendChild(loadingWrapper);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function removeLoadingIndicator() {
+            const loader = document.getElementById('ai-loading-bubble');
+            if (loader) loader.remove();
+        }
+
+        aiChatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageText = aiChatInput.value.trim();
+            if (!messageText) return;
+
+            aiChatInput.value = '';
+            appendMessage('user', messageText);
+            appendLoadingIndicator();
+            sourcesContainer.classList.add('hidden');
+            sourcesList.innerHTML = '';
+
+            try {
+                const responseData = await askGemini(messageText, searchGroundingEnabled);
+                removeLoadingIndicator();
+
+                // Trường hợp chạy Offline
+                if (responseData && responseData.isOffline) {
+                    appendMessage('ai', responseData.text, true);
+                    return;
+                }
+
+                const candidate = responseData?.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const generatedText = candidate.content.parts[0].text;
+                    appendMessage('ai', generatedText, true);
+
+                    const groundingMetadata = candidate.groundingMetadata;
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        const attributions = groundingMetadata.groundingAttributions
+                            .map(attr => ({
+                                uri: attr.web?.uri,
+                                title: attr.web?.title || attr.web?.uri,
+                            }))
+                            .filter(src => src.uri && src.title);
+
+                        if (attributions.length > 0) {
+                            sourcesList.innerHTML = '';
+                            attributions.forEach(source => {
+                                const chip = document.createElement('a');
+                                chip.href = source.uri;
+                                chip.target = '_blank';
+                                chip.className = 'text-[10px] bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full flex items-center gap-1 max-w-[150px] truncate transition';
+                                chip.innerHTML = `<i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i> ${source.title}`;
+                                sourcesList.appendChild(chip);
+                            });
+                            sourcesContainer.classList.remove('hidden');
+                        }
+                    }
+                } else {
+                    appendMessage('ai', '⚠️ Xin lỗi, mô hình đã trả về cấu trúc dữ liệu không hợp lệ. Vui lòng thử lại.');
+                }
+            } catch (err) {
+                removeLoadingIndicator();
+                console.error("Gemini API Error:", err);
+                appendMessage('ai', `❌ **Yêu cầu không thành công:**\n\n\`${err.message}\`\n\n*Bạn vẫn có thể xóa API Key đi để quay lại sử dụng Chế độ Trợ lý Ngoại tuyến tiện lợi bất cứ lúc nào!*`);
+            }
+        });
+
+        function usePromptTemplate(promptText) {
+            aiChatInput.value = promptText;
+            aiChatInput.focus();
+            document.getElementById('ai-assistant').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearChatHistory() {
+            aiChatMessages.innerHTML = `
+                <div class="flex gap-3 items-start max-w-2xl">
+                    <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-slate-900/60 border border-white/5 p-4 rounded-2xl rounded-tl-none">
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Hội thoại đã được xóa sạch. Tôi đã sẵn sàng tiếp nhận các câu hỏi hoặc phân tích kỹ thuật biểu đồ mới của bạn!
+                        </p>
+                    </div>
+                </div>
+            `;
+            sourcesContainer.classList.add('hidden');
+            sourcesList.innerHTML = '';
+        }
+
+        // AI ANALYZE VISUAL SIMULATOR CHART BUTTON LOGIC
+        const btnAnalyzeChart = document.getElementById('btn-analyze-chart');
+        btnAnalyzeChart.addEventListener('click', () => {
+            const signalsStatus = showSignals ? "BẬT" : "TẤT";
+            const emaStatus = showEma ? "BẬT" : "TẤT";
+            const zonesStatus = showZones ? "BẬT" : "TẤT";
+
+            const firstCandle = candles[0];
+            const lastCandle = candles[candles.length - 1];
+            const trendDirection = lastCandle.close > firstCandle.close ? "TĂNG TRƯỞNG" : "ĐIỀU CHỈNH";
+
+            const visualAnalysisPrompt = `
+Hãy viết một báo cáo phân tích kỹ thuật chuyên sâu (Technical Analysis Report) dựa trên dữ liệu biểu đồ mô phỏng BTC/USDT của TienCK Indicators với các thông tin kỹ thuật sau:
+- Khung thời gian: 1H (Giờ)
+- Đường xu hướng thông minh (EMA): đang ở trạng thái [${emaStatus}]
+- Vùng cản Hỗ trợ & Kháng cự cứng (Supply & Demand): đang ở trạng thái [${zonesStatus}]
+- Tín hiệu Buy/Sell: đang ở trạng thái [${signalsStatus}]
+- Phân tích chuyển động giá nến: Giá mở cửa khởi điểm là $${firstCandle.open.toFixed(2)}, Giá đóng cửa nến cuối cùng là $${lastCandle.close.toFixed(2)}. Xu hướng tổng quan trên đồ thị là [${trendDirection}].
+
+Yêu cầu báo cáo bao gồm:
+1. Đánh giá xu hướng hiện tại dựa vào đường EMA và nến.
+2. Xác định các mức kháng cự/hỗ trợ phù hợp để vào lệnh.
+3. Nhận định độ chính xác các tín hiệu Buy/Sell mẫu trên biểu đồ.
+4. Đưa ra gợi ý quản lý vốn tỷ lệ R:R và điểm dừng lỗ (SL) chốt lời (TP) cụ thể.
+            `;
+
+            document.getElementById('ai-assistant').scrollIntoView({ behavior: 'smooth' });
+            
+            appendMessage('user', '📊 Hãy chạy phân tích kỹ thuật tự động cho biểu đồ BTC/USDT hiện tại.');
+            appendLoadingIndicator();
+
+            askGemini(visualAnalysisPrompt, false)
+                .then(responseData => {
+                    removeLoadingIndicator();
+                    if (responseData && responseData.isOffline) {
+                        appendMessage('ai', responseData.text, true);
+                        return;
+                    }
+                    const candidate = responseData?.candidates?.[0];
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        appendMessage('ai', candidate.content.parts[0].text, true);
+                    } else {
+                        appendMessage('ai', '⚠️ Không thể hoàn thành phân tích. Vui lòng thử lại sau.');
+                    }
+                })
+                .catch(err => {
+                    removeLoadingIndicator();
+                    console.error("Chart analysis error:", err);
+                    appendMessage('ai', `❌ **Lỗi phân tích kỹ thuật biểu đồ:**\n\n\`${err.message}\``);
+                });
+        });
+
+        window.onload = function() {
+            resizeCanvas();
+            updateSwitchUI(bgSignals, showSignals);
+            updateSwitchUI(bgEma, showEma);
+            updateSwitchUI(bgZones, showZones);
+        };
+        window.addEventListener('resize', resizeCanvas);
+    </script>
+</body>
+</html>            top: 0;
+            left: 0;
+            right: 0;
+            height: 1200px;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        .nav-blur {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.15);
+        }
+        .glow-indigo {
+            box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15);
+        }
+        .glass-panel {
+            background: rgba(9, 13, 26, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        /* Nút Ghost viền mờ giống LuxAlgo */
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        /* Ẩn thanh cuộn mặc định nhưng vẫn hỗ trợ vuốt mượt */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Custom scrollbar cho máy tính */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040815;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+            border: 2px solid #040815;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Glowing Auroras & Stars -->
+    <div class="lux-bg-glow"></div>
+    <div class="stars-overlay"></div>
+
+    <!-- HEADER / NAVIGATION (Bố cục chuẩn ảnh mẫu LuxAlgo) -->
+    <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-950/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between relative z-10">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="bg-gradient-to-tr from-cyan-400 to-indigo-500 p-2 rounded-xl shadow-lg shadow-cyan-500/10 group-hover:scale-105 transition-transform duration-300">
+                    <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-cyan-400 transition-colors">TienCK</span>
+                    <span class="text-[8px] text-cyan-400 font-mono tracking-widest uppercase -mt-1 font-bold">Indicators</span>
+                </div>
+            </a>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-slate-300">
+                <a href="#features" class="hover:text-white transition-all duration-200">Features</a>
+                <a href="#compare" class="hover:text-white transition-all duration-200">Resources</a>
+                <a href="#live-demo" class="hover:text-white transition-all duration-200">Library</a>
+                <a href="#pricing" class="hover:text-cyan-400 transition-all duration-200 font-bold text-cyan-400 flex items-center gap-1">Pricing <span class="bg-cyan-500/20 text-cyan-400 text-[9px] px-1.5 py-0.5 rounded-full font-bold">NEW</span></a>
+                <a href="#ai-assistant" class="hover:text-indigo-400 transition-all duration-200 flex items-center gap-1">AI Copilot <span class="bg-indigo-500/20 text-indigo-400 text-[9px] px-1.5 py-0.5 rounded-full font-bold">LIVE</span></a>
+            </nav>
+
+            <!-- Action buttons -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="#pricing" class="px-5 py-2 rounded-full font-bold text-sm btn-ghost">
+                    Log In
+                </a>
+                <a href="#pricing" class="px-5 py-2 rounded-full bg-white text-slate-950 font-bold text-sm hover:bg-slate-200 active:scale-95 transition-all duration-200 shadow-md">
+                    Sign Up
+                </a>
+            </div>
+
+            <!-- Nút menu mobile -->
+            <button id="menu-btn" class="lg:hidden p-2 text-slate-400 hover:text-white border border-white/5 rounded-xl hover:bg-white/5 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-24 pb-16 px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-8 z-10">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 text-xs sm:text-sm text-cyan-400 font-semibold mx-auto">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            Nền tảng tín hiệu thông minh hàng đầu dành cho nhà giao dịch chuyên nghiệp
+        </div>
+        
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.05] font-sans">
+            Start trading like <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-500 font-extrabold">smart money</span>
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-slate-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-normal">
+            The AI platform to build & deploy your own edge, powered by legendary tools used by 15,000+ traders. Đón đầu xu hướng dòng tiền lớn chuẩn xác 24/7.
+        </p>
+
+        <!-- COUNTDOWN BANNER -->
+        <div class="max-w-xl mx-auto bg-slate-950/50 border border-white/5 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-500/15 p-2 rounded-lg text-amber-400">
+                    <i class="fa-solid fa-bolt-lightning animate-bounce"></i>
+                </div>
+                <div class="text-left">
+                    <p class="text-xs text-slate-350 uppercase tracking-wider font-bold">Khuyến mãi cực đại 30%</p>
+                    <p class="text-[10px] text-slate-500">Áp dụng cho chu kỳ thanh toán năm</p>
+                </div>
+            </div>
+            <!-- Countdown values -->
+            <div class="flex items-center gap-1.5 font-mono text-sm">
+                <span class="bg-slate-900 px-2.5 py-1 rounded text-cyan-400 font-bold" id="days">03</span>
+                <span class="text-slate-600">:</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded text-cyan-400 font-bold" id="hours">05</span>
+                <span class="text-slate-600">:</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded text-cyan-400 font-bold" id="minutes">00</span>
+                <span class="text-slate-600">:</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded text-rose-400 font-bold" id="seconds">01</span>
+            </div>
+        </div>
+
+        <!-- PRICING CYCLE TOGGLE -->
+        <div class="flex items-center justify-center gap-4 pt-4">
+            <span class="text-sm font-semibold text-slate-300 transition-colors" id="label-monthly">Thanh toán Hàng tháng</span>
+            <button id="billing-toggle" class="w-16 h-9 bg-cyan-500 rounded-full p-1.5 flex items-center transition-all duration-300 cursor-pointer shadow-lg shadow-cyan-500/10">
+                <div class="w-6 h-6 bg-slate-950 rounded-full transition-transform duration-300 shadow-md" id="toggle-circle"></div>
+            </button>
+            <span class="text-sm font-semibold text-slate-500 transition-colors" id="label-yearly">Thanh toán Hàng năm (Tiết kiệm tới 30%)</span>
+        </div>
+    </section>
+
     <!-- SECTION PRICING CARDS -->
     <section id="pricing" class="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10 overflow-hidden">
         
