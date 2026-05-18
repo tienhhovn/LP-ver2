@@ -24,7 +24,7 @@
                             600: '#0891b2',
                             900: '#164e63',
                         },
-                        luxDark: '#040815', /* Sát với màu tối thượng của LuxAlgo */
+                        luxDark: '#040815', /* Màu xanh đen sâu thẳm tối thượng của LuxAlgo */
                         luxCard: '#090d1a'   /* Màu nền card mờ sang trọng */
                     },
                     fontFamily: {
@@ -37,36 +37,40 @@
     </script>
     <style>
         body {
-            background-color: #040815;
+            background-color: #030611; /* Đưa nền về tối sâu hơn để dải sáng rực rỡ nhất */
             color: #f1f5f9;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* 🌌 HIỆU ỨNG KHÓI BẮC CỰC QUANG DẢI ĐỨNG ĐỘNG (REALISTIC AURORA CURTAINS) */
+        /* =========================================================================
+           🌌 HIỆU ỨNG KHÓI BẮC CỰC QUANG DẢI ĐỨNG ĐỘNG (REALISTIC AURORA CURTAINS)
+           Sử dụng bộ lọc SVG Turbulence để bẻ dải sáng thẳng thành vân khói bập bùng
+           ========================================================================= */
         .aurora-container {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 900px;
+            height: 980px;
             overflow: hidden;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.65;
-            /* Tạo vết cắt mờ chuyển dần từ trời đêm xuống khoảng tối */
-            mask-image: linear-gradient(to bottom, black 25%, rgba(0,0,0,0.8) 55%, transparent 95%);
-            -webkit-mask-image: linear-gradient(to bottom, black 25%, rgba(0,0,0,0.8) 55%, transparent 95%);
+            opacity: 0.72;
+            /* Tạo vết mờ chuyển tiếp mịn màng xuống khoảng tối phía dưới */
+            mask-image: linear-gradient(to bottom, black 25%, rgba(0,0,0,0.85) 55%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, black 25%, rgba(0,0,0,0.85) 55%, transparent 95%);
+            filter: url(#aurora-turbulent-filter) blur(20px);
+            -webkit-filter: url(#aurora-turbulent-filter) blur(20px);
         }
 
-        /* Tạo các dải lụa ánh sáng uốn lượn bập bùng */
+        /* Các dải lụa ánh sáng uốn lượn bập bùng */
         .aurora-curtain {
             position: absolute;
             top: -25%;
-            width: 35vw;
+            width: 38vw;
             height: 140%;
-            filter: blur(65px);
             transform-origin: top center;
             mix-blend-mode: screen;
         }
@@ -76,105 +80,189 @@
             left: 5%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(6, 182, 212, 0.22) 35%, 
-                rgba(13, 148, 136, 0.3) 55%, 
-                rgba(6, 182, 212, 0.2) 75%, 
+                rgba(6, 182, 212, 0.4) 30%, 
+                rgba(20, 184, 166, 0.45) 50%, 
+                rgba(6, 182, 212, 0.3) 70%, 
                 transparent 100%);
-            animation: wave-movement-1 24s infinite ease-in-out alternate;
+            animation: wave-movement-1 20s infinite ease-in-out alternate;
         }
 
         /* Dải khói 2: Xanh Indigo sâu bập bùng lệch pha */
         .curtain-2 {
-            left: 30%;
+            left: 28%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(99, 102, 241, 0.24) 25%, 
-                rgba(49, 46, 129, 0.35) 50%, 
-                rgba(99, 102, 241, 0.2) 75%, 
+                rgba(99, 102, 241, 0.4) 25%, 
+                rgba(59, 130, 246, 0.35) 50%, 
+                rgba(99, 102, 241, 0.25) 75%, 
                 transparent 100%);
-            animation: wave-movement-2 30s infinite ease-in-out alternate;
-            animation-delay: -4s;
+            animation: wave-movement-2 26s infinite ease-in-out alternate;
+            animation-delay: -3s;
         }
 
-        /* Dải khói 3: Pha trộn Teal và Tím Neon */
+        /* Dải khói 3: Pha trộn Teal sáng và Tím Neon nổi bật */
         .curtain-3 {
-            left: 55%;
+            left: 52%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(13, 148, 136, 0.2) 20%, 
-                rgba(6, 182, 212, 0.25) 50%, 
-                rgba(168, 85, 247, 0.18) 80%, 
+                rgba(20, 184, 166, 0.3) 20%, 
+                rgba(6, 182, 212, 0.45) 45%, 
+                rgba(168, 85, 247, 0.35) 75%, 
                 transparent 100%);
-            animation: wave-movement-3 27s infinite ease-in-out alternate;
-            animation-delay: -8s;
+            animation: wave-movement-3 22s infinite ease-in-out alternate;
+            animation-delay: -6s;
         }
 
-        /* Dải khói 4: Tím sẫm phía góc phải */
+        /* Dải khói 4: Tím rực rỡ phía góc phải */
         .curtain-4 {
-            right: -5%;
+            right: -8%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(168, 85, 247, 0.2) 30%, 
-                rgba(99, 102, 241, 0.15) 60%, 
+                rgba(168, 85, 247, 0.35) 30%, 
+                rgba(99, 102, 241, 0.3) 60%, 
                 transparent 100%);
-            animation: wave-movement-4 34s infinite ease-in-out alternate;
-            animation-delay: -12s;
+            animation: wave-movement-4 28s infinite ease-in-out alternate;
+            animation-delay: -9s;
         }
 
-        /* SỰ KIỆN WAVE CHUYỂN ĐỘNG CO GIÃN NGHIÊNG GÓC TỰ NHIÊN NHƯ LÀN KHÓI */
+        /* Chuyển động lướt sóng tự nhiên như khói */
         @keyframes wave-movement-1 {
-            0% { transform: skewX(-12deg) scaleX(1) translateY(0); opacity: 0.7; }
-            50% { transform: skewX(-4deg) scaleX(1.15) translateY(-25px); opacity: 0.95; }
-            100% { transform: skewX(-20deg) scaleX(0.9) translateY(15px); opacity: 0.6; }
+            0% { transform: skewX(-15deg) scaleX(0.95) translateY(0); opacity: 0.65; }
+            50% { transform: skewX(-6deg) scaleX(1.25) translateY(-30px); opacity: 1; }
+            100% { transform: skewX(-25deg) scaleX(0.85) translateY(20px); opacity: 0.55; }
         }
         @keyframes wave-movement-2 {
-            0% { transform: skewX(8deg) scaleX(0.85) translateY(-15px); opacity: 0.6; }
-            50% { transform: skewX(18deg) scaleX(1.1) translateY(20px); opacity: 0.9; }
-            100% { transform: skewX(3deg) scaleX(0.95) translateY(-10px); opacity: 0.7; }
+            0% { transform: skewX(10deg) scaleX(0.8) translateY(-20px); opacity: 0.6; }
+            50% { transform: skewX(22deg) scaleX(1.2) translateY(25px); opacity: 0.95; }
+            100% { transform: skewX(4deg) scaleX(0.9) translateY(-10px); opacity: 0.7; }
         }
         @keyframes wave-movement-3 {
-            0% { transform: skewX(-6deg) scaleX(1.1) translateY(10px); opacity: 0.8; }
-            50% { transform: skewX(-16deg) scaleX(0.85) translateY(-20px); opacity: 0.6; }
-            100% { transform: skewX(-2deg) scaleX(1.05) translateY(10px); opacity: 0.9; }
+            0% { transform: skewX(-8deg) scaleX(1.2) translateY(15px); opacity: 0.85; }
+            50% { transform: skewX(-20deg) scaleX(0.8) translateY(-25px); opacity: 0.55; }
+            100% { transform: skewX(-4deg) scaleX(1.1) translateY(15px); opacity: 1; }
         }
         @keyframes wave-movement-4 {
-            0% { transform: skewX(14deg) scaleX(0.9) translateY(-20px); opacity: 0.5; }
-            50% { transform: skewX(1deg) scaleX(1.15) translateY(10px); opacity: 0.85; }
-            100% { transform: skewX(10deg) scaleX(0.8) translateY(-15px); opacity: 0.6; }
+            0% { transform: skewX(16deg) scaleX(0.85) translateY(-25px); opacity: 0.5; }
+            50% { transform: skewX(2deg) scaleX(1.3) translateY(15px); opacity: 0.95; }
+            100% { transform: skewX(12deg) scaleX(0.75) translateY(-20px); opacity: 0.6; }
         }
 
-        /* 🌌 XÓA BỎ LỖI LẶP LẠI Ô VUÔNG - THAY THẾ BẰNG BẦU TRỜI SAO TỰ NHIÊN */
+        /* =========================================================================
+           ☁️ HIỆU ỨNG VÂN MỜ TRẮNG BẠC VŨ TRỤ (COSMIC WHITE NEBULA WISPS)
+           Sử dụng map lọc nhiễu của SVG để tạo ra các vệt mây tơ khói rõ nét
+           ========================================================================= */
+        .nebula-wisps {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1000px;
+            pointer-events: none;
+            z-index: 1; /* Nằm trên lớp aurora nền, dưới các ngôi sao và chữ */
+            opacity: 0.95;
+            filter: url(#nebula-turbulent-filter) blur(10px);
+            -webkit-filter: url(#nebula-turbulent-filter) blur(10px);
+            mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
+        }
+
+        /* Các vệt khói dải ngân hà bồng bềnh cực rõ nét */
+        .wisp {
+            position: absolute;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.25) 0%, 
+                rgba(240, 246, 255, 0.15) 20%, 
+                rgba(186, 230, 253, 0.05) 45%, 
+                rgba(255, 255, 255, 0.01) 70%, 
+                transparent 100%);
+            mix-blend-mode: screen;
+        }
+
+        .wisp-1 {
+            top: 5%;
+            left: -15%;
+            width: 130%;
+            height: 250px;
+            transform: rotate(-15deg) scaleY(0.7);
+            animation: wisp-drift-1 28s infinite alternate ease-in-out;
+        }
+
+        .wisp-2 {
+            top: 22%;
+            right: -15%;
+            width: 120%;
+            height: 210px;
+            transform: rotate(10deg) scaleY(0.6);
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                rgba(224, 242, 254, 0.1) 25%, 
+                rgba(255, 255, 255, 0.01) 60%, 
+                transparent 100%);
+            animation: wisp-drift-2 35s infinite alternate ease-in-out;
+        }
+
+        .wisp-3 {
+            top: 45%;
+            left: -8%;
+            width: 110%;
+            height: 280px;
+            transform: rotate(-8deg) scaleY(0.65);
+            animation: wisp-drift-1 25s infinite alternate ease-in-out;
+            animation-delay: -5s;
+        }
+
+        @keyframes wisp-drift-1 {
+            0% { transform: rotate(-15deg) scaleY(0.6) translateY(0) translateX(0); opacity: 0.75; }
+            50% { transform: rotate(-10deg) scaleY(0.85) translateY(-15px) translateX(20px); opacity: 1; }
+            100% { transform: rotate(-18deg) scaleY(0.5) translateY(10px) translateX(-20px); opacity: 0.6; }
+        }
+        @keyframes wisp-drift-2 {
+            0% { transform: rotate(10deg) scaleY(0.55) translateY(0) translateX(0); opacity: 0.7; }
+            50% { transform: rotate(13deg) scaleY(0.75) translateY(20px) translateX(-15px); opacity: 0.95; }
+            100% { transform: rotate(7deg) scaleY(0.45) translateY(-10px) translateX(15px); opacity: 0.6; }
+        }
+
+        /* =========================================================================
+           ✨ BẦU TRỜI SAO TINH TÚ NGẪU NHIÊN CÓ ĐỘ SÁNG LẤP LÁNH (TWINKLING STARFIELD)
+           Triệt tiêu hoàn toàn hiệu ứng lưới ô vuông nhân tạo
+           ========================================================================= */
         .stars-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 1200px;
-            /* Phối trộn nhiều tầng hạt sáng có kích thước lệch nhau không đồng bộ */
             background-image: 
-                radial-gradient(1.5px 1.5px at 15px 45px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 85px 115px, rgba(255, 255, 255, 0.2), rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 155px 235px, rgba(255, 255, 255, 0.25), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 245px 375px, rgba(255, 255, 255, 0.15), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 325px 495px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 455px 635px, rgba(255, 255, 255, 0.25), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 585px 785px, rgba(255, 255, 255, 0.2), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 715px 925px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0));
+                radial-gradient(1.5px 1.5px at 30px 65px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 120px 175px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 210px 295px, rgba(255, 255, 255, 0.5), rgba(0,0,0,0)),
+                radial-gradient(1.2px 1.2px at 345px 425px, rgba(255, 255, 255, 0.35), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 485px 565px, rgba(255, 255, 255, 0.4), rgba(0,0,0,0)),
+                radial-gradient(2.2px 2.2px at 625px 715px, rgba(255, 255, 255, 0.55), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 785px 895px, rgba(255, 255, 255, 0.25), rgba(0,0,0,0)),
+                radial-gradient(1.8px 1.8px at 915px 1045px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0));
             pointer-events: none;
-            z-index: 1;
-            opacity: 0.9;
+            z-index: 2; /* Nằm trên lớp aurora và vân khói trắng */
+            opacity: 0.85;
+            animation: star-twinkle 6s infinite alternate ease-in-out;
         }
 
-        /* Chiều sâu gradient làm dịu dần không gian */
+        @keyframes star-twinkle {
+            0% { opacity: 0.65; }
+            50% { opacity: 0.95; }
+            100% { opacity: 0.75; }
+        }
+
+        /* Chiều sâu chuyển màu nền nhạt dần */
         .deep-space-fade {
             position: absolute;
-            top: 850px;
+            bottom: 0;
             left: 0;
             right: 0;
             height: 450px;
-            background: linear-gradient(to bottom, transparent, #040815 100%);
+            background: linear-gradient(to bottom, transparent, #030611 100%);
             pointer-events: none;
-            z-index: 2;
+            z-index: 3;
         }
 
         .nav-blur {
@@ -193,7 +281,7 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
         }
-        /* Nút Ghost viền mờ giống LuxAlgo */
+        /* Nút Ghost mờ LuxAlgo */
         .btn-ghost {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -204,7 +292,7 @@
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
         }
-        /* Ẩn thanh cuộn mặc định nhưng vẫn hỗ trợ vuốt mượt */
+        /* Ẩn thanh cuộn mặc định */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -231,13 +319,31 @@
 </head>
 <body class="antialiased">
 
-    <!-- 🌌 Dynamic Aurora Curtains & Starfield Effects (Đã sửa đổi hoàn chỉnh) -->
+    <!-- 🌌 BỘ LỌC ĐỘNG SVG ĐỂ XÉ NHỎ VÀ TẠO VÂN KHÓI SẮC NÉT -->
+    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+        <filter id="aurora-turbulent-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.006 0.015" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="nebula-turbulent-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.018" numOctaves="4" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="90" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
+    <!-- 🌌 Dynamic Aurora Curtains & Nebula Wisps & Starfield Effects -->
     <div class="aurora-container">
         <div class="aurora-curtain curtain-1"></div>
         <div class="aurora-curtain curtain-2"></div>
         <div class="aurora-curtain curtain-3"></div>
         <div class="aurora-curtain curtain-4"></div>
         <div class="deep-space-fade"></div>
+    </div>
+    <!-- Lớp vệt vân mờ trắng dynamic bồng bềnh dải ngân hà -->
+    <div class="nebula-wisps">
+        <div class="wisp wisp-1"></div>
+        <div class="wisp wisp-2"></div>
+        <div class="wisp wisp-3"></div>
     </div>
     <div class="stars-overlay"></div>
 
@@ -298,7 +404,7 @@
         <!-- Main Title -->
         <h1 class="text-4xl sm:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.05] font-sans">
             Start trading like <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-500 font-extrabold">smart money</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-500 font-extrabold animate-pulse">smart money</span>
         </h1>
         
         <!-- Subtitle -->
@@ -329,11 +435,11 @@
             </div>
         </div>
 
-        <!-- PRICING CYCLE TOGGLE (Nâng cấp thành giao diện Segmented Control & Promo Badge gọn gàng như ảnh mẫu) -->
+        <!-- PRICING CYCLE TOGGLE (Segmented Control & Promo Badge gọn gàng như ảnh mẫu) -->
         <div class="flex flex-col items-center justify-center gap-y-4 pt-4 px-4 max-w-md mx-auto relative z-20">
             <!-- Promo Banner Badge -->
             <div class="px-5 py-2 border border-white/10 bg-slate-950/40 rounded-xl text-slate-200 text-xs sm:text-sm font-semibold tracking-wide shadow-md">
-                Pay yearly, get up to an <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 font-extrabold animate-pulse">extra 45% off!</span>
+                Pay yearly, get up to an <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-450 to-teal-400 font-extrabold animate-pulse">extra 45% off!</span>
             </div>
             
             <!-- Segmented Switcher -->
@@ -459,7 +565,7 @@
                         <span class="text-xs uppercase tracking-widest font-bold text-indigo-400">Gói Tối Thượng</span>
                         <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-[10px] px-2.5 py-1 rounded-md font-bold uppercase">ULTIMATE</span>
                     </div>
-                    h3 class="text-2xl font-bold text-white">Ultimate Auto-Trade</h3>
+                    <h3 class="text-2xl font-bold text-white">Ultimate Auto-Trade</h3>
                     <p class="text-xs text-slate-400 leading-relaxed font-medium">Kết nối Webhook trực tiếp tới bot giao dịch, nhân bản chiến lược AI tự động toàn diện không cần can thiệp thủ công.</p>
                     
                     <div class="py-4 border-t border-b border-white/5 space-y-1">
@@ -854,7 +960,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-white">Tín Hiệu Giao Dịch Sắc Nét</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Bộ chỉ báo phát sinh tín hiệu Buy/Sell tức thời ngay trên đồ thị nến. Các thuật toán thế hệ mới lọc sạch nhiễu trong giai đoạn Sideway.</p>
+                <p class="text-slate-400 text-sm leading-relaxed font-medium">Bộ chỉ báo phát sinh tín hiệu Buy/Sell tức thời ngay trên đồ thị nến. Các thuật toán thế hệ mới lọc sạch nhiễu trong giai đoạn Sideway.</p>
             </div>
 
             <!-- Feature 2 -->
@@ -863,7 +969,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-white">Xác Định Cung Cầu Tự Động</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Vẽ vùng Hỗ trợ (Demand) & Kháng cự (Supply) chính xác dựa trên cấu trúc khối lệnh (Order Block) giúp quản lý dừng lỗ tối ưu.</p>
+                <p class="text-slate-400 text-sm leading-relaxed font-medium">Vẽ vùng Hỗ trợ (Demand) & Kháng cự (Supply) chính xác dựa trên cấu trúc khối lệnh (Order Block) giúp quản lý dừng lỗ tối ưu.</p>
             </div>
 
             <!-- Feature 3 -->
@@ -872,7 +978,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-white">Cảnh Báo Chớp Nhoáng</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Được thiết kế để không bỏ lỡ bất kỳ cơ hội nào nhờ liên kết cảnh báo tốc độ cao qua kênh Telegram và Discord cá nhân.</p>
+                <p class="text-slate-400 text-sm leading-relaxed font-medium">Được thiết kế để không bỏ lỡ bất kỳ cơ hội nào nhờ liên kết cảnh báo tốc độ cao qua kênh Telegram và Discord cá nhân.</p>
             </div>
         </div>
     </section>
@@ -890,7 +996,7 @@
                 <div class="flex items-center gap-1.5 text-amber-400 text-sm">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
-                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"Bộ lọc nhiễu sideway của TienCK thực sự cứu tôi khỏi rất nhiều lệnh thua lỗ vô nghĩa. Các vùng OrderBlock vẽ tự động chuẩn xác không thua kém gì các trader kinh nghiệm vẽ tay."</p>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed font-medium">"Bộ lọc nhiễu sideway của TienCK thực sự cứu tôi khỏi rất nhiều lệnh thua lỗ vô nghĩa. Các vùng OrderBlock vẽ tự động chuẩn xác không thua kém gì các trader kinh nghiệm vẽ tay."</p>
                 <div class="border-t border-white/5 pt-4 flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-cyan-400">HA</div>
                     <div>
@@ -905,7 +1011,7 @@
                 <div class="flex items-center gap-1.5 text-amber-400 text-sm">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
-                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"Gói Ultimate Auto-trade kết hợp Webhook chạy bot đỉnh chóp! Tín hiệu bắn thẳng sang sàn không bị trễ nải một giây nào. Đây là giải pháp tiết kiệm thời gian tuyệt nhất."</p>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed font-medium">"Gói Ultimate Auto-trade kết hợp Webhook chạy bot đỉnh chóp! Tín hiệu bắn thẳng sang sàn không bị trễ nải một giây nào. Đây là giải pháp tiết kiệm thời gian tuyệt nhất."</p>
                 <div class="border-t border-white/5 pt-4 flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-indigo-400">MT</div>
                     <div>
@@ -920,7 +1026,7 @@
                 <div class="flex items-center gap-1.5 text-amber-400 text-sm">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
-                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed">"AI Copilot của TienCK thật kỳ diệu. Mỗi tối khi phân tích biểu đồ tôi chỉ cần bấm phân tích tự động, AI đưa ra các mức cản và điểm dừng lỗ (SL) cực kỳ sát sao."</p>
+                <p class="text-slate-350 text-xs sm:text-sm leading-relaxed font-medium">"AI Copilot của TienCK thật kỳ diệu. Mỗi tối khi phân tích biểu đồ tôi chỉ cần bấm phân tích tự động, AI đưa ra các mức cản và điểm dừng lỗ (SL) cực kỳ sát sao."</p>
                 <div class="border-t border-white/5 pt-4 flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-purple-400">KT</div>
                     <div>
@@ -1045,7 +1151,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center text-slate-550">
+            <div class="text-xs text-center text-slate-555">
                 *Quyền lợi tài khoản TradingView sẽ tự động kích hoạt trong vòng 5-10 phút sau khi hệ thống ghi nhận giao dịch.
             </div>
 
@@ -1097,7 +1203,7 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // LOGIC PRICING TOGGLE (Hỗ trợ Segmented Switcher dạng viên thuốc giống hệt ảnh mẫu)
+        // LOGIC PRICING TOGGLE (Segmented Switcher dạng viên thuốc y hệt ảnh mẫu)
         let isYearly = false;
         const toggleMonthly = document.getElementById('toggle-monthly');
         const toggleYearly = document.getElementById('toggle-yearly');
@@ -1735,6 +1841,23 @@ Yêu cầu báo cáo bao gồm:
                     appendMessage('ai', `❌ **Lỗi phân tích kỹ thuật biểu đồ:**\n\n\`${err.message}\``);
                 });
         });
+
+        function clearChatHistory() {
+            aiChatMessages.innerHTML = `
+                <div class="flex gap-3 items-start max-w-2xl">
+                    <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-slate-900/60 border border-white/5 p-4 rounded-2xl rounded-tl-none">
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Hội thoại đã được xóa sạch. Tôi đã sẵn sàng tiếp nhận các câu hỏi hoặc phân tích kỹ thuật biểu đồ mới của bạn!
+                        </p>
+                    </div>
+                </div>
+            `;
+            sourcesContainer.classList.add('hidden');
+            sourcesList.innerHTML = '';
+        }
 
         window.onload = function() {
             resizeCanvas();
