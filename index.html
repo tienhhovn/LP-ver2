@@ -226,10 +226,10 @@
         </div>
     </section>
 
-    <!-- SECTION PRICING CARDS (Đã loại bỏ overflow-hidden gắt và thêm pt-6 cho phép hào quang hiển thị hoàn hảo) -->
+    <!-- SECTION PRICING CARDS -->
     <section id="pricing" class="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10">
         
-        <!-- Container trượt ngang trên mobile (Sửa lỗi: Loại bỏ overflow-hidden, thêm pt-8 cho hào quang đỉnh nở tự nhiên) -->
+        <!-- Container trượt ngang trên mobile (Sửa lỗi: Loại bỏ translate-y của gói Premium trên PC để cả 3 gói thẳng hàng tăm tắp) -->
         <div class="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch relative -mx-6 px-6 lg:mx-0 lg:px-0 snap-x snap-mandatory scroll-smooth pt-8 pb-6 lg:pb-0 no-scrollbar">
             
             <!-- Plan 1: Starter (Viền Teal mờ phát sáng nhẹ, thanh lịch) -->
@@ -278,8 +278,8 @@
                 </div>
             </div>
 
-            <!-- Plan 2: Premium (Sửa lỗi: Viền Cyan rực rỡ và Hào quang tỏa rộng tuyệt đẹp, không bao giờ bị khuất) -->
-            <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border-2 border-cyan-500/50 rounded-3xl p-8 bg-slate-950/80 flex flex-col justify-between relative shadow-[0_0_40px_-8px_rgba(6,182,212,0.3)] hover:shadow-[0_0_45px_-5px_rgba(6,182,212,0.45)] hover:border-cyan-400 transition-all duration-300 transform lg:-translate-y-3">
+            <!-- Plan 2: Premium (Sửa lỗi: Loại bỏ translate-y để đồng bộ chiều cao phẳng tuyệt hảo với hai bên) -->
+            <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border-2 border-cyan-500/50 rounded-3xl p-8 bg-slate-950/80 flex flex-col justify-between relative shadow-[0_0_40px_-8px_rgba(6,182,212,0.3)] hover:shadow-[0_0_45px_-5px_rgba(6,182,212,0.45)] hover:border-cyan-400 transition-all duration-300 relative">
                 <div class="absolute -top-4.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 px-5 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-cyan-500/20 tracking-wider">PHỔ BIẾN NHẤT</div>
                 
                 <div class="space-y-4">
@@ -485,7 +485,7 @@
                 <div class="lg:col-span-4 space-y-6">
                     <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight text-white">Mô Phỏng Trực Quan</h2>
                     <p class="text-slate-400 text-sm">
-                        Khám phá sức mạnh trực quan của chỉ báo TienCK bằng cách kích hoạt/tắt các lớp tính năng ngay trên bản đồ thị nến mô phỏng BTC/USDT.
+                        Khách khám phá sức mạnh trực quan của chỉ báo TienCK bằng cách kích hoạt/tắt các lớp tính năng ngay trên bản đồ thị nến mô phỏng BTC/USDT.
                     </p>
                     
                     <div class="space-y-3">
@@ -810,7 +810,7 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION (ACCORDION) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="max-w-4xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 relative z-10">
         <div class="text-center space-y-4 mb-12">
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Các câu hỏi thường gặp</h2>
@@ -1646,4 +1646,4 @@ Yêu cầu báo cáo bao gồm:
         window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
-</html>           
+</html>
