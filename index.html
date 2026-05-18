@@ -256,10 +256,10 @@
 
         /* =========================================================================
            ✨ BẢN SỬA LỖI: CANVAS CHỨA HÀNG NGÀN SAO NGẪU NHIÊN CHỐNG TRÙNG LẶP HÌNH VUÔNG
-           Chuyển đổi từ position: fixed sang position: absolute để cuộn mượt tự nhiên
+           Kích hoạt GPU Acceleration (will-change & translate3d) để mượt mà tuyệt đối 120 FPS
            ========================================================================= */
         #starfieldCanvas {
-            position: absolute; /* Đã chuyển từ fixed sang absolute để trôi theo cuộn trang tự nhiên */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -267,6 +267,10 @@
             pointer-events: none;
             z-index: 2; /* Nằm trên lớp aurora và vân khói trắng */
             opacity: 0.92;
+            /* 🚀 ÉP TRÌNH DUYỆT SỬ DỤNG GPU ĐỂ CUỘN TRANG TRƠN TRU KHÔNG GIẬT */
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
         }
 
         /* Chiều sâu chuyển màu nền nhạt dần */
@@ -283,8 +287,8 @@
 
         /* 🧼 TÙY CHỈNH KÍNH MỜ MENU TRONG SUỐT VÀ SANG TRỌNG HƠN */
         .nav-blur {
-            backdrop-filter: blur(16px); /* Đã tinh chỉnh lên 16px để tạo độ nhòe mịn màng, cao cấp */
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px); /* Giảm từ 24px xuống 12px để mượt mà hơn, tránh đục tối */
+            -webkit-backdrop-filter: blur(12px);
         }
         .glow-cyan {
             box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.15);
@@ -368,8 +372,8 @@
     <!-- 🌌 CANVAS KHỞI TẠO ĐỘNG HÀNG NGÀN SAO NGẪU NHIÊN ĐÃ ĐƯỢC CHUYỂN SANG ABSOLUTE CHỐNG GIẬT -->
     <canvas id="starfieldCanvas"></canvas>
 
-    <!-- HEADER / NAVIGATION (Sửa đổi: Chỉnh nền lên bg-slate-950/25 và nav-blur mang lại độ bóng bẩy cao hơn) -->
-    <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-950/25 transition-all duration-300">
+    <!-- HEADER / NAVIGATION (Trong suốt và thanh thoát hơn) -->
+    <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-950/15 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between relative z-10">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2.5 group">
@@ -1093,7 +1097,7 @@
             <div class="border border-white/5 rounded-2xl bg-slate-900/10 overflow-hidden">
                 <button class="faq-toggle w-full flex items-center justify-between p-5 text-left font-bold text-slate-200 hover:text-white transition-colors duration-200 cursor-pointer">
                     <span>Chỉ báo của TienCK có bị vẽ lại nến (Repaint) không?</span>
-                    <i class="fa-solid fa-plus text-slate-500 transition-transform duration-300"></i>
+                    <i class="fa-solid fa-plus text-slate-550 transition-transform duration-300"></i>
                 </button>
                 <div class="faq-content hidden p-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-white/5">
                     Không. Chúng tôi đảm bảo 100% các tín hiệu giao dịch đều cố định ngay khi đóng cây nến hiện thời. Không có hiện tượng Repaint (tín hiệu biến mất sau khi xuất hiện).
@@ -1116,7 +1120,7 @@
         </div>
     </footer>
 
-    <!-- 🌌 MOBILE MENU MODAL (Đã đồng bộ hoá đóng mở mượt mà và chuyển đổi sang kính mờ Glassmorphism cao cấp) -->
+    <!-- 🌌 MOBILE MENU MODAL (Đã sửa đổi toàn bộ các sự kiện liên kết, ID đóng mở và đặc tính kính mờ Glassmorphism cao cấp) -->
     <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-slate-950/75 border border-white/5 nav-blur p-6 flex flex-col justify-between transition-all duration-300">
         <div class="space-y-8">
             <div class="flex justify-between items-center border-b border-white/5 pb-4">
@@ -1126,6 +1130,7 @@
                 </button>
             </div>
             <div class="flex flex-col space-y-5 text-lg font-semibold text-slate-300">
+                <!-- Thêm class mobile-nav-link để lắng nghe sự kiện click đóng menu động -->
                 <a href="#pricing" class="mobile-nav-link hover:text-cyan-400 transition">Bảng giá</a>
                 <a href="#compare" class="mobile-nav-link hover:text-cyan-400 transition">So sánh tính năng</a>
                 <a href="#features" class="mobile-nav-link hover:text-cyan-400 transition">Tính năng chỉ báo</a>
@@ -1185,23 +1190,30 @@
     <!-- SCRIPTS -->
     <script>
         // ==========================================
-        //  📱 SỬA LỖI: LOGIC ĐIỀU KHIỂN MENU DI ĐỘNG CHUẨN MƯỢT 100%
+        //  📱 SỬA LỖI: LOGIC ĐIỀU KHIỂN MENU DI ĐỘNG CHUẨN MƯỢT 100% & BODY SCROLL LOCK
         // ==========================================
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-        // Hàm mở menu
+        // Hàm mở menu di động và khóa cứng thanh cuộn trang nền (Scroll Chain Lock)
         menuBtn.addEventListener('click', function(e) {
             e.preventDefault();
             mobileMenu.classList.remove('hidden');
+            // Khóa cuộn trang nền để không bị trôi vị trí
+            document.body.style.overflow = 'hidden';
+            document.body.style.height = '100vh';
         });
 
-        // Hàm đóng menu
+        // Hàm đóng menu di động và trả lại quyền cuộn trang nền tự nhiên
         function closeMobileMenu() {
             mobileMenu.classList.add('hidden');
+            // Mở khóa cuộn trang nền
+            document.body.style.overflow = '';
+            document.body.style.height = '';
         }
+        
         closeBtn.addEventListener('click', function(e) {
             e.preventDefault();
             closeMobileMenu();
@@ -1234,9 +1246,9 @@
                 canvas.height = height;
 
                 for (let i = 0; i < numStars; i++) {
-                    // Thuật toán giảm mật độ độc quyền: y = Math.pow(Math.random(), 2.8) * height
-                    // Số mũ 2.8 đảm bảo phần đỉnh trang cực kỳ dày sao, càng đi xuống phía dưới Y ~ 1000px, sao càng biến mất hoàn toàn tự nhiên
-                    const yPosition = Math.pow(Math.random(), 2.8) * height;
+                    // Thuật toán giảm mật độ độc quyền nâng cấp: y = Math.pow(Math.random(), 3.8) * height
+                    // Số mũ gán ở mức 3.8 cực cao để triệt tiêu dốc đứng mật độ sao ở vùng dưới 600px - 1000px
+                    const yPosition = Math.pow(Math.random(), 3.8) * height;
                     
                     stars.push({
                         // Sử dụng Math.random() cho cả hai trục để triệt tiêu vĩnh viễn lỗi tạo lưới ô vuông tuần hoàn
@@ -1680,7 +1692,7 @@ Vì chưa phát hiện **Gemini API Key** được dán vào bảng cấu hình,
 
 - **Về chỉ báo TienCK:** Hệ thống tích hợp các thuật toán lọc nhiễu đỉnh cao, tự động phát hiện vùng tích lũy dòng tiền (Smart Money) và vẽ vùng cung cầu tự động.
 - **Để kích hoạt Trợ lý AI Trực tuyến 2026:**
-  1. Nhấp vào liên kết [Google AI Studio](https://aistudio.google.com/) để tạo một API Key miễn phí chỉ trong 30 giây.
+  1. Nhấp vào liên kết [Google AI Studio](https://aistudio.google.com/) để tạo một API Key miến phí chỉ trong 30 giây.
   2. Dán Key vào ô **"🔑 API Key để kết nối Gemini"** ở bảng điều khiển bên trái.
   3. Bật công tắc **"Tìm kiếm Google Thực Tế"** để tôi cập nhật tin tức và giá Bitcoin thực tế ngay hôm nay!`;
         }
