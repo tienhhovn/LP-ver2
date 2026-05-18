@@ -148,7 +148,7 @@
         }
 
         /* =========================================================================
-           ☁️ PHƯƠNG ÁN MỚI: XOÁY KHÓI TINH VÂN TỎA TÂM (CENTRAL GLOW & RADIAL NEBULA)
+           ☁️ XOÁY KHÓI TINH VÂN TỎA TÂM (CENTRAL GLOW & RADIAL NEBULA)
            Tạo các dải khói uốn cong hướng tâm bao bọc, loại bỏ khói chéo nhân tạo
            ========================================================================= */
         .nebula-wisps {
@@ -255,57 +255,17 @@
         }
 
         /* =========================================================================
-           ✨ BẦU TRỜI SAO TINH TÚ NGẪU NHIÊN CÓ ĐỘ SÁNG LẤP LÁNH (TWINKLING STARFIELD)
-           Cải tiến: Tăng mật độ sao gấp 3 lần, tạo chiều sâu dải ngân hà tự nhiên
+           ✨ BẢN SỬA LỖI: CANVAS CHỨA HÀNG NGÀN SAO NGẪU NHIÊN CHỐNG TRÙNG LẶP HÌNH VUÔNG
            ========================================================================= */
-        .stars-overlay {
+        #starfieldCanvas {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             height: 1200px;
-            /* Phối trộn ngẫu nhiên tọa độ các chấm tròn phát sáng lệch pha để triệt tiêu hiệu ứng lưới ô vuông */
-            background-image: 
-                /* Lớp sao 1: Sao nhỏ lấp lánh (mật độ dày) */
-                radial-gradient(1px 1px at 25px 40px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 75px 120px, rgba(255, 255, 255, 0.35), rgba(0,0,0,0)),
-                radial-gradient(1.2px 1.2px at 145px 210px, rgba(255, 255, 255, 0.5), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 225px 315px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 310px 410px, rgba(255, 255, 255, 0.4), rgba(0,0,0,0)),
-                radial-gradient(1.2px 1.2px at 420px 530px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 520px 650px, rgba(255, 255, 255, 0.35), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 640px 780px, rgba(255, 255, 255, 0.4), rgba(0,0,0,0)),
-                radial-gradient(1.2px 1.2px at 730px 910px, rgba(255, 255, 255, 0.5), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 850px 1020px, rgba(255, 255, 255, 0.3), rgba(0,0,0,0)),
-
-                /* Lớp sao 2: Sao trung bình (mật độ vừa) */
-                radial-gradient(1.8px 1.8px at 50px 90px, rgba(255, 255, 255, 0.5), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 180px 240px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 290px 150px, rgba(255, 255, 255, 0.55), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 390px 330px, rgba(255, 255, 255, 0.35), rgba(0,0,0,0)),
-                radial-gradient(1.8px 1.8px at 490px 480px, rgba(255, 255, 255, 0.5), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 610px 590px, rgba(255, 255, 255, 0.45), rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 750px 720px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 890px 840px, rgba(255, 255, 255, 0.4), rgba(0,0,0,0)),
-
-                /* Lớp sao 3: Các cụm tinh cầu phát sáng rực rỡ điểm nhấn */
-                radial-gradient(2.5px 2.5px at 95px 180px, rgba(255, 255, 255, 0.65), rgba(0,0,0,0)),
-                radial-gradient(3px 3px at 320px 280px, rgba(255, 255, 255, 0.7), rgba(0,0,0,0)),
-                radial-gradient(2.2px 2.2px at 550px 120px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
-                radial-gradient(2.8px 2.8px at 710px 450px, rgba(255, 255, 255, 0.65), rgba(0,0,0,0)),
-                radial-gradient(2.5px 2.5px at 840px 290px, rgba(255, 255, 255, 0.58), rgba(0,0,0,0));
-
-            background-size: 320px 320px, 450px 450px, 600px 600px; /* Các kích thước lưới lệch pha để tạo sự hỗn loạn tự nhiên */
             pointer-events: none;
             z-index: 2; /* Nằm trên lớp aurora và vân khói trắng */
-            opacity: 0.9;
-            animation: star-twinkle 8s infinite alternate ease-in-out;
-        }
-
-        @keyframes star-twinkle {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
+            opacity: 0.92;
         }
 
         /* Chiều sâu chuyển màu nền nhạt dần */
@@ -402,7 +362,9 @@
         <div class="wisp wisp-2"></div>
         <div class="wisp wisp-3"></div>
     </div>
-    <div class="stars-overlay"></div>
+    
+    <!-- 🌌 CANVAS KHỞI TẠO ĐỘNG HÀNG NGÀN SAO NGẪU NHIÊN TUYỆT ĐỐI -->
+    <canvas id="starfieldCanvas"></canvas>
 
     <!-- HEADER / NAVIGATION (Sửa lỗi: Đưa độ trong suốt của nền về bg-slate-950/15 mỏng nhẹ hơn) -->
     <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-950/15 transition-all duration-300">
@@ -951,7 +913,7 @@
                             <p class="text-[10px] sm:text-xs text-slate-500 font-mono" id="engine-model-label">Trạng thái: Sẵn sàng (Ngoại tuyến / Trực tuyến)</p>
                         </div>
                     </div>
-                    <button onclick="clearChatHistory()" class="text-xs text-slate-550 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer">
+                    <button onclick="clearChatHistory()" class="text-xs text-slate-555 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                         <span class="hidden sm:inline">Xóa hội thoại</span>
                     </button>
@@ -1032,7 +994,7 @@
             <!-- Feature 3 -->
             <div class="glass-panel rounded-3xl p-8 hover:border-purple-500/30 hover:-translate-y-1 transition-all duration-300 group">
                 <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67(6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-white">Cảnh Báo Chớp Nhoáng</h3>
                 <p class="text-slate-400 text-sm leading-relaxed font-medium">Được thiết kế để không bỏ lỡ bất kỳ cơ hội nào nhờ liên kết cảnh báo tốc độ cao qua kênh Telegram và Discord cá nhân.</p>
@@ -1220,51 +1182,81 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Sửa lỗi: Hợp nhất menu di động
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // ==========================================
+        //  🌌 LỚP CANVAS ĐIỀU KHIỂN HÀNG NGÀN SAO NGẪU NHIÊN CHỐNG LẶP HÌNH VUÔNG
+        // ==========================================
+        (function() {
+            const canvas = document.getElementById('starfieldCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let stars = [];
+            // ĐỘ DÀY ĐẶC GẤP 10 LẦN: Khởi tạo 1200 ngôi sao ngẫu nhiên trên toàn bầu trời
+            const numStars = 1200; 
+            
+            function initStars() {
+                stars = [];
+                const width = window.innerWidth;
+                const height = 1200; // Chiều cao giới hạn bao phủ vùng trời sao
+                
+                canvas.width = width;
+                canvas.height = height;
 
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
-        }
-        menuBtn.onclick = toggleMobileMenu;
-        closeBtn.onclick = toggleMobileMenu;
-
-        // ĐẾM NGƯỢC KHUYẾN MÃI
-        const targetDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000 + 5 * 60 * 60 * 1000);
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-                return;
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        // Sử dụng Math.random() để tạo vị trí ngẫu nhiên tuyệt đối, triệt tiêu lưới hình vuông
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        // Phối hợp nhiều kích cỡ sao ngẫu nhiên từ 0.5px đến 2.5px
+                        size: Math.random() < 0.7 ? Math.random() * 0.8 + 0.4 : Math.random() * 1.5 + 1.0,
+                        // Độ sáng ngẫu nhiên
+                        opacity: Math.random() * 0.7 + 0.2,
+                        // Tốc độ nhấp nháy ngẫu nhiên lệch pha
+                        twinkleSpeed: Math.random() * 0.03 + 0.005,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < numStars; i++) {
+                    const star = stars[i];
+                    
+                    // Cập nhật chu kỳ nhấp nháy lệch pha động cho từng ngôi sao riêng biệt
+                    star.phase += star.twinkleSpeed;
+                    const currentOpacity = star.opacity * (0.6 + 0.4 * Math.sin(star.phase));
+                    
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
+                    
+                    // Thêm quầng hào quang phát sáng nhẹ cho các sao kích cỡ lớn
+                    if (star.size > 1.8) {
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+                    } else {
+                        ctx.shadowBlur = 0;
+                    }
+                    
+                    ctx.fill();
+                }
+                
+                requestAnimationFrame(drawStars);
+            }
 
-            document.getElementById("days").textContent = days.toString().padStart(2, '0');
-            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+            // Theo dõi kích thước màn hình để tự động căn chỉnh lại sao ngẫu nhiên
+            window.addEventListener('resize', function() {
+                initStars();
+            });
 
-        // LOGIC PRICING TOGGLE (Hỗ trợ Segmented Switcher dạng viên thuốc y hệt ảnh mẫu)
-        let isYearly = false;
-        const toggleMonthly = document.getElementById('toggle-monthly');
-        const toggleYearly = document.getElementById('toggle-yearly');
+            initStars();
+            drawStars();
+        })();
 
+        // ==========================================
+        //  ĐIỀU KHIỂN LAYOUT GIAO DIỆN CHÍNH
+        // ==========================================
         const starterPrice = document.getElementById('starter-price');
         const starterStrike = document.getElementById('starter-strike');
         const starterPeriod = document.getElementById('starter-period');
@@ -1277,14 +1269,17 @@
         const ultimateStrike = document.getElementById('ultimate-strike');
         const ultimatePeriod = document.getElementById('ultimate-period');
 
+        // LOGIC PRICING TOGGLE (Segmented Switcher dạng viên thuốc y hệt ảnh mẫu)
+        let isYearly = false;
+        const toggleMonthly = document.getElementById('toggle-monthly');
+        const toggleYearly = document.getElementById('toggle-yearly');
+
         function setBillingCycle(toYearly) {
             isYearly = toYearly;
             if (isYearly) {
-                // UI Switcher update
                 toggleYearly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-white bg-white/10 border border-white/10 shadow-md";
                 toggleMonthly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-slate-400 hover:text-white border border-transparent";
 
-                // Update prices to Yearly discounted rates (~45% off)
                 starterPrice.textContent = "16.49";
                 starterStrike.textContent = "$29.99";
                 starterPeriod.textContent = "/tháng (đóng năm)";
@@ -1297,11 +1292,9 @@
                 ultimateStrike.textContent = "$83.99";
                 ultimatePeriod.textContent = "/tháng (đóng năm)";
             } else {
-                // UI Switcher update
                 toggleMonthly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-white bg-white/10 border border-white/10 shadow-md";
                 toggleYearly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-slate-400 hover:text-white border border-transparent";
 
-                // Update prices to default Monthly rates
                 starterPrice.textContent = "29.99";
                 starterStrike.textContent = "$39.99";
                 starterPeriod.textContent = "/tháng";
@@ -1575,30 +1568,7 @@
         // ==========================================
         //  GEMINI API & AI COPILOT LOGIC (OFFLINE + ONLINE MODE)
         // ==========================================
-        
-        let searchGroundingEnabled = false;
-        const toggleSearchGroundingBtn = document.getElementById('toggle-search-grounding');
-        const searchToggleCircle = document.getElementById('search-toggle-circle');
         const apiKeyInput = document.getElementById('custom-api-key');
-
-        if (localStorage.getItem('tienck_gemini_key')) {
-            apiKeyInput.value = localStorage.getItem('tienck_gemini_key');
-        }
-
-        apiKeyInput.addEventListener('input', () => {
-            localStorage.setItem('tienck_gemini_key', apiKeyInput.value.trim());
-        });
-
-        toggleSearchGroundingBtn.addEventListener('click', () => {
-            searchGroundingEnabled = !searchGroundingEnabled;
-            if (searchGroundingEnabled) {
-                searchToggleCircle.style.transform = 'translateX(16px)';
-                toggleSearchGroundingBtn.classList.replace('bg-slate-800', 'bg-cyan-500');
-            } else {
-                searchToggleCircle.style.transform = 'translateX(0px)';
-                toggleSearchGroundingBtn.classList.replace('bg-cyan-500', 'bg-slate-800');
-            }
-        });
 
         function parseMarkdown(text) {
             let html = text;
