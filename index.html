@@ -216,20 +216,29 @@
             </div>
         </div>
 
-        <!-- PRICING CYCLE TOGGLE -->
-        <div class="flex items-center justify-center gap-4 pt-4">
-            <span class="text-sm font-semibold text-slate-300 transition-colors" id="label-monthly">Thanh toán Hàng tháng</span>
-            <button id="billing-toggle" class="w-16 h-9 bg-cyan-500 rounded-full p-1.5 flex items-center transition-all duration-300 cursor-pointer shadow-lg shadow-cyan-500/10">
-                <div class="w-6 h-6 bg-slate-950 rounded-full transition-transform duration-300 shadow-md" id="toggle-circle"></div>
-            </button>
-            <span class="text-sm font-semibold text-slate-500 transition-colors" id="label-yearly">Thanh toán Hàng năm (Tiết kiệm tới 30%)</span>
+        <!-- PRICING CYCLE TOGGLE (Nâng cấp thành giao diện Segmented Control & Promo Badge gọn gàng như ảnh mẫu) -->
+        <div class="flex flex-col items-center justify-center gap-y-4 pt-4 px-4 max-w-md mx-auto">
+            <!-- Promo Banner Badge -->
+            <div class="px-5 py-2 border border-white/10 bg-slate-950/40 rounded-xl text-slate-200 text-xs sm:text-sm font-semibold tracking-wide shadow-md">
+                Pay yearly, get up to an <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-450 to-teal-400 font-extrabold animate-pulse">extra 45% off!</span>
+            </div>
+            
+            <!-- Segmented Switcher -->
+            <div class="inline-flex p-1 bg-slate-950/80 border border-white/10 rounded-full w-full max-w-[280px]">
+                <button id="toggle-monthly" class="flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-white bg-white/10 border border-white/10 shadow-md">
+                    Monthly
+                </button>
+                <button id="toggle-yearly" class="flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-slate-400 hover:text-white border border-transparent">
+                    Yearly
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- SECTION PRICING CARDS -->
     <section id="pricing" class="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10">
         
-        <!-- Container trượt ngang trên mobile (Sửa lỗi: Loại bỏ translate-y của gói Premium trên PC để cả 3 gói thẳng hàng tăm tắp) -->
+        <!-- Container trượt ngang trên mobile -->
         <div class="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch relative -mx-6 px-6 lg:mx-0 lg:px-0 snap-x snap-mandatory scroll-smooth pt-8 pb-6 lg:pb-0 no-scrollbar">
             
             <!-- Plan 1: Starter (Viền Teal mờ phát sáng nhẹ, thanh lịch) -->
@@ -278,7 +287,7 @@
                 </div>
             </div>
 
-            <!-- Plan 2: Premium (Sửa lỗi: Loại bỏ translate-y để đồng bộ chiều cao phẳng tuyệt hảo với hai bên) -->
+            <!-- Plan 2: Premium (Viền Cyan rực rỡ và Hào quang tỏa rộng tuyệt đẹp, đồng bộ chiều cao phẳng tuyệt hảo với hai bên) -->
             <div class="pricing-card flex-shrink-0 w-[85vw] sm:w-[360px] lg:w-auto snap-center border-2 border-cyan-500/50 rounded-3xl p-8 bg-slate-950/80 flex flex-col justify-between relative shadow-[0_0_40px_-8px_rgba(6,182,212,0.3)] hover:shadow-[0_0_45px_-5px_rgba(6,182,212,0.45)] hover:border-cyan-400 transition-all duration-300 relative">
                 <div class="absolute -top-4.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 px-5 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-cyan-500/20 tracking-wider">PHỔ BIẾN NHẤT</div>
                 
@@ -923,7 +932,7 @@
                 </div>
             </div>
 
-            <div class="text-xs text-center text-slate-500">
+            <div class="text-xs text-center text-slate-550">
                 *Quyền lợi tài khoản TradingView sẽ tự động kích hoạt trong vòng 5-10 phút sau khi hệ thống ghi nhận giao dịch.
             </div>
 
@@ -975,12 +984,10 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // LOGIC PRICING TOGGLE
+        // LOGIC PRICING TOGGLE (Hỗ trợ Segmented Switcher dạng viên thuốc giống hệt ảnh mẫu)
         let isYearly = false;
-        const billingToggle = document.getElementById('billing-toggle');
-        const toggleCircle = document.getElementById('toggle-circle');
-        const labelMonthly = document.getElementById('label-monthly');
-        const labelYearly = document.getElementById('label-yearly');
+        const toggleMonthly = document.getElementById('toggle-monthly');
+        const toggleYearly = document.getElementById('toggle-yearly');
 
         const starterPrice = document.getElementById('starter-price');
         const starterStrike = document.getElementById('starter-strike');
@@ -994,33 +1001,31 @@
         const ultimateStrike = document.getElementById('ultimate-strike');
         const ultimatePeriod = document.getElementById('ultimate-period');
 
-        billingToggle.addEventListener('click', () => {
-            isYearly = !isYearly;
+        function setBillingCycle(toYearly) {
+            isYearly = toYearly;
             if (isYearly) {
-                toggleCircle.style.transform = 'translateX(28px)';
-                billingToggle.classList.replace('bg-cyan-500', 'bg-indigo-600');
-                labelYearly.classList.add('text-cyan-400');
-                labelMonthly.classList.remove('text-slate-300');
-                labelMonthly.classList.add('text-slate-500');
+                // UI Switcher update
+                toggleYearly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-white bg-white/10 border border-white/10 shadow-md";
+                toggleMonthly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-slate-400 hover:text-white border border-transparent";
 
-                starterPrice.textContent = "19.99";
+                // Update prices to Yearly discounted rates (~45% off)
+                starterPrice.textContent = "16.49";
                 starterStrike.textContent = "$29.99";
                 starterPeriod.textContent = "/tháng (đóng năm)";
 
-                premiumPrice.textContent = "39.99";
+                premiumPrice.textContent = "31.79";
                 premiumStrike.textContent = "$57.79";
                 premiumPeriod.textContent = "/tháng (đóng năm)";
 
-                ultimatePrice.textContent = "59.99";
+                ultimatePrice.textContent = "45.99";
                 ultimateStrike.textContent = "$83.99";
                 ultimatePeriod.textContent = "/tháng (đóng năm)";
             } else {
-                toggleCircle.style.transform = 'translateX(0px)';
-                billingToggle.classList.replace('bg-indigo-600', 'bg-cyan-500');
-                labelMonthly.classList.add('text-slate-300');
-                labelYearly.classList.remove('text-cyan-400');
-                labelYearly.classList.add('text-slate-500');
+                // UI Switcher update
+                toggleMonthly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-white bg-white/10 border border-white/10 shadow-md";
+                toggleYearly.className = "flex-1 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer text-slate-400 hover:text-white border border-transparent";
 
+                // Update prices to default Monthly rates
                 starterPrice.textContent = "29.99";
                 starterStrike.textContent = "$39.99";
                 starterPeriod.textContent = "/tháng";
@@ -1033,7 +1038,10 @@
                 ultimateStrike.textContent = "$119.99";
                 ultimatePeriod.textContent = "/tháng";
             }
-        });
+        }
+
+        toggleMonthly.addEventListener('click', () => setBillingCycle(false));
+        toggleYearly.addEventListener('click', () => setBillingCycle(true));
 
         // ACCORDION FAQ LOGIC
         const faqToggles = document.querySelectorAll('.faq-toggle');
@@ -1060,9 +1068,9 @@
             modalPlanName.textContent = plan;
             let finalPrice = price;
             if (isYearly) {
-                if (plan === 'Starter') finalPrice = '19.99';
-                else if (plan === 'Premium') finalPrice = '39.99';
-                else if (plan === 'Ultimate') finalPrice = '59.99';
+                if (plan === 'Starter') finalPrice = '16.49';
+                else if (plan === 'Premium') finalPrice = '31.79';
+                else if (plan === 'Ultimate') finalPrice = '45.99';
             }
             modalPlanPrice.innerHTML = `${finalPrice} USD <span class="text-xs text-slate-500 font-normal">/${isYearly ? 'tháng (trả hàng năm)' : 'tháng'}</span>`;
             const randomCode = Math.random().toString(36).substring(2, 7).toUpperCase();
@@ -1453,6 +1461,7 @@ Vì chưa phát hiện **Gemini API Key** được dán vào bảng cấu hình,
         const sourcesContainer = document.getElementById('sources-container');
         const sourcesList = document.getElementById('sources-list');
 
+        // Hàm vẽ bóng hội thoại
         function appendMessage(sender, htmlContent, isMarkdown = false) {
             const wrapper = document.createElement('div');
             wrapper.className = `flex gap-3 items-start max-w-3xl ${sender === 'user' ? 'justify-end ml-auto' : 'mr-auto'}`;
@@ -1561,29 +1570,6 @@ Vì chưa phát hiện **Gemini API Key** được dán vào bảng cấu hình,
                 appendMessage('ai', `❌ **Yêu cầu không thành công:**\n\n\`${err.message}\`\n\n*Bạn vẫn có thể xóa API Key đi để quay lại sử dụng Chế độ Trợ lý Ngoại tuyến tiện lợi bất cứ lúc nào!*`);
             }
         });
-
-        function usePromptTemplate(promptText) {
-            aiChatInput.value = promptText;
-            aiChatInput.focus();
-            document.getElementById('ai-assistant').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function clearChatHistory() {
-            aiChatMessages.innerHTML = `
-                <div class="flex gap-3 items-start max-w-2xl">
-                    <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 flex-shrink-0">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <div class="bg-slate-900/60 border border-white/5 p-4 rounded-2xl rounded-tl-none">
-                        <p class="text-sm text-slate-300 leading-relaxed">
-                            Hội thoại đã được xóa sạch. Tôi đã sẵn sàng tiếp nhận các câu hỏi hoặc phân tích kỹ thuật biểu đồ mới của bạn!
-                        </p>
-                    </div>
-                </div>
-            `;
-            sourcesContainer.classList.add('hidden');
-            sourcesList.innerHTML = '';
-        }
 
         // AI ANALYZE VISUAL SIMULATOR CHART BUTTON LOGIC
         const btnAnalyzeChart = document.getElementById('btn-analyze-chart');
