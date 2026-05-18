@@ -24,7 +24,7 @@
                             600: '#0891b2',
                             900: '#164e63',
                         },
-                        luxDark: '#040815', /* Màu xanh đen sâu thẳm tối thượng của LuxAlgo */
+                        luxDark: '#040815', /* Sát với màu tối thượng của LuxAlgo */
                         luxCard: '#090d1a'   /* Màu nền card mờ sang trọng */
                     },
                     fontFamily: {
@@ -148,8 +148,8 @@
         }
 
         /* =========================================================================
-           ☁️ HIỆU ỨNG VÂN MỜ TRẮNG BẠC VŨ TRỤ (COSMIC WHITE NEBULA WISPS)
-           Sử dụng map lọc nhiễu của SVG để tạo ra các vệt mây tơ khói rõ nét
+           ☁️ PHƯƠNG ÁN MỚI: XOÁY KHÓI TINH VÂN TỎA TÂM (CENTRAL GLOW & RADIAL NEBULA)
+           Tạo các dải khói uốn cong hướng tâm bao bọc, loại bỏ khói chéo nhân tạo
            ========================================================================= */
         .nebula-wisps {
             position: absolute;
@@ -158,73 +158,104 @@
             right: 0;
             height: 1000px;
             pointer-events: none;
-            z-index: 1; /* Nằm trên lớp aurora nền, dưới các ngôi sao và chữ */
+            z-index: 1; 
             opacity: 0.95;
-            filter: url(#nebula-turbulent-filter) blur(10px);
-            -webkit-filter: url(#nebula-turbulent-filter) blur(10px);
-            mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
+            filter: url(#nebula-turbulent-filter) blur(12px);
+            -webkit-filter: url(#nebula-turbulent-filter) blur(12px);
+            mask-image: linear-gradient(to bottom, black 35%, rgba(0,0,0,0.7) 65%, transparent 95%);
             -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
         }
 
-        /* Các vệt khói dải ngân hà bồng bềnh cực rõ nét */
+        /* Lõi phát quang trắng ngọc trung tâm (Phía sau Hero Title để tạo điểm nhấn nổi bật) */
+        .central-bloom-glow {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -10%) scale(1);
+            width: 70vw;
+            height: 420px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.12) 0%, 
+                rgba(6, 182, 212, 0.05) 30%, 
+                rgba(99, 102, 241, 0.02) 60%, 
+                transparent 85%);
+            filter: blur(40px);
+            mix-blend-mode: screen;
+            z-index: 1;
+            pointer-events: none;
+            animation: core-pulse 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes core-pulse {
+            0% { transform: translate(-50%, -10%) scale(0.95); opacity: 0.8; }
+            100% { transform: translate(-50%, -10%) scale(1.05); opacity: 1; }
+        }
+
+        /* Vân mây khói trắng bạc bo tròn hướng tâm */
         .wisp {
             position: absolute;
-            background: radial-gradient(ellipse at center, 
-                rgba(255, 255, 255, 0.25) 0%, 
-                rgba(240, 246, 255, 0.15) 20%, 
-                rgba(186, 230, 253, 0.05) 45%, 
-                rgba(255, 255, 255, 0.01) 70%, 
-                transparent 100%);
             mix-blend-mode: screen;
         }
 
+        /* Vệt mây khói trắng ngọc trai vòng cung phía trên tiêu đề */
         .wisp-1 {
-            top: 5%;
-            left: -15%;
-            width: 130%;
-            height: 250px;
-            transform: rotate(-15deg) scaleY(0.7);
-            animation: wisp-drift-1 28s infinite alternate ease-in-out;
-        }
-
-        .wisp-2 {
-            top: 22%;
-            right: -15%;
-            width: 120%;
-            height: 210px;
-            transform: rotate(10deg) scaleY(0.6);
+            top: -5%;
+            left: 10%;
+            width: 80%;
+            height: 380px;
             background: radial-gradient(ellipse at center, 
-                rgba(255, 255, 255, 0.2) 0%, 
-                rgba(224, 242, 254, 0.1) 25%, 
-                rgba(255, 255, 255, 0.01) 60%, 
-                transparent 100%);
-            animation: wisp-drift-2 35s infinite alternate ease-in-out;
+                rgba(255, 255, 255, 0.18) 0%, 
+                rgba(240, 246, 255, 0.08) 25%, 
+                rgba(6, 182, 212, 0.02) 50%, 
+                transparent 75%);
+            transform: rotate(-3deg) scaleY(0.5);
+            animation: wisp-vortex-left 32s infinite alternate ease-in-out;
         }
 
+        /* Vệt mây khói ôm vòng cung phía dưới tiêu đề nâng đỡ chữ */
+        .wisp-2 {
+            top: 28%;
+            left: 15%;
+            width: 70%;
+            height: 340px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.16) 0%, 
+                rgba(224, 242, 254, 0.07) 30%, 
+                rgba(99, 102, 241, 0.02) 55%, 
+                transparent 75%);
+            transform: rotate(4deg) scaleY(0.45);
+            animation: wisp-vortex-right 38s infinite alternate ease-in-out;
+        }
+
+        /* Vân mây trắng bạc mềm lơ lửng bọc ngoài cùng */
         .wisp-3 {
-            top: 45%;
-            left: -8%;
-            width: 110%;
-            height: 280px;
-            transform: rotate(-8deg) scaleY(0.65);
-            animation: wisp-drift-1 25s infinite alternate ease-in-out;
-            animation-delay: -5s;
+            top: 10%;
+            left: 5%;
+            width: 90%;
+            height: 480px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.03) 40%, 
+                transparent 80%);
+            transform: rotate(-1deg) scaleY(0.6);
+            animation: wisp-vortex-left 45s infinite alternate ease-in-out;
+            animation-delay: -6s;
         }
 
-        @keyframes wisp-drift-1 {
-            0% { transform: rotate(-15deg) scaleY(0.6) translateY(0) translateX(0); opacity: 0.75; }
-            50% { transform: rotate(-10deg) scaleY(0.85) translateY(-15px) translateX(20px); opacity: 1; }
-            100% { transform: rotate(-18deg) scaleY(0.5) translateY(10px) translateX(-20px); opacity: 0.6; }
+        /* CHUYỂN ĐỘNG XOÁY NHẸ CÁC DẢI VÂN KHÓI HƯỚNG TÂM */
+        @keyframes wisp-vortex-left {
+            0% { transform: rotate(-5deg) scaleY(0.5) scaleX(0.95); opacity: 0.7; }
+            50% { transform: rotate(-1deg) scaleY(0.58) scaleX(1.05); opacity: 1; }
+            100% { transform: rotate(-8deg) scaleY(0.45) scaleX(0.9); opacity: 0.6; }
         }
-        @keyframes wisp-drift-2 {
-            0% { transform: rotate(10deg) scaleY(0.55) translateY(0) translateX(0); opacity: 0.7; }
-            50% { transform: rotate(13deg) scaleY(0.75) translateY(20px) translateX(-15px); opacity: 0.95; }
-            100% { transform: rotate(7deg) scaleY(0.45) translateY(-10px) translateX(15px); opacity: 0.6; }
+        @keyframes wisp-vortex-right {
+            0% { transform: rotate(1deg) scaleY(0.4) scaleX(0.9); opacity: 0.65; }
+            50% { transform: rotate(6deg) scaleY(0.52) scaleX(1.05); opacity: 0.95; }
+            100% { transform: rotate(3deg) scaleY(0.38) scaleX(0.95); opacity: 0.6; }
         }
 
         /* =========================================================================
            ✨ BẦU TRỜI SAO TINH TÚ NGẪU NHIÊN CÓ ĐỘ SÁNG LẤP LÁNH (TWINKLING STARFIELD)
-           Triệt tiêu hoàn toàn hiệu ứng lưới ô vuông nhân tạo
            ========================================================================= */
         .stars-overlay {
             position: absolute;
@@ -265,9 +296,10 @@
             z-index: 3;
         }
 
+        /* 🧼 TÙY CHỈNH KÍNH MỜ MENU TRONG SUỐT VÀ SANG TRỌNG HƠN */
         .nav-blur {
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(12px); /* Giảm từ 24px xuống 12px để mượt mà hơn, tránh đục tối */
+            -webkit-backdrop-filter: blur(12px);
         }
         .glow-cyan {
             box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.15);
@@ -339,16 +371,17 @@
         <div class="aurora-curtain curtain-4"></div>
         <div class="deep-space-fade"></div>
     </div>
-    <!-- Lớp vệt vân mờ trắng dynamic bồng bềnh dải ngân hà -->
+    <!-- Lớp vệt vân mờ trắng dynamic bồng bềnh hướng tâm vòng cung -->
     <div class="nebula-wisps">
+        <div class="central-bloom-glow"></div> <!-- Lõi sáng trung tâm phía sau chữ -->
         <div class="wisp wisp-1"></div>
         <div class="wisp wisp-2"></div>
         <div class="wisp wisp-3"></div>
     </div>
     <div class="stars-overlay"></div>
 
-    <!-- HEADER / NAVIGATION (Bố cục chuẩn ảnh mẫu LuxAlgo) -->
-    <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-800/35 transition-all duration-300">
+    <!-- HEADER / NAVIGATION (Sửa lỗi: Đưa độ trong suốt của nền về bg-slate-950/15 mỏng nhẹ hơn) -->
+    <header class="sticky top-0 z-40 w-full border-b border-white/5 nav-blur bg-slate-950/15 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between relative z-10">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2.5 group">
@@ -401,7 +434,7 @@
             Nền tảng tín hiệu thông minh hàng đầu dành cho nhà giao dịch chuyên nghiệp
         </div>
         
-        <!-- Main Title (Đã loại bỏ class nhấp nháy animate-pulse khỏi cụm từ smart money) -->
+        <!-- Main Title -->
         <h1 class="text-4xl sm:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.05] font-sans">
             Start trading like <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-500 font-extrabold">smart money</span>
@@ -894,7 +927,7 @@
                             <p class="text-[10px] sm:text-xs text-slate-500 font-mono" id="engine-model-label">Trạng thái: Sẵn sàng (Ngoại tuyến / Trực tuyến)</p>
                         </div>
                     </div>
-                    <button onclick="clearChatHistory()" class="text-xs text-slate-500 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer">
+                    <button onclick="clearChatHistory()" class="text-xs text-slate-550 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                         <span class="hidden sm:inline">Xóa hội thoại</span>
                     </button>
@@ -1016,7 +1049,7 @@
                     <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs text-indigo-400">MT</div>
                     <div>
                         <h4 class="font-bold text-xs text-white">Minh Tuấn</h4>
-                        <p class="text-[10px] text-slate-500">Forex Trader</p>
+                        <p class="text-[10px] text-slate-500">Crypto Swinger</p>
                     </div>
                 </div>
             </div>
@@ -1802,19 +1835,19 @@ Vì chưa phát hiện **Gemini API Key** được dán vào bảng cấu hình,
             const trendDirection = lastCandle.close > firstCandle.close ? "TĂNG TRƯỞNG" : "ĐIỀU CHỈNH";
 
             const visualAnalysisPrompt = `
-Hãy viết một báo cáo phân tích kỹ thuật chuyên sâu (Technical Analysis Report) dựa trên dữ liệu biểu đồ mô phỏng BTC/USDT của TienCK Indicators với các thông tin kỹ thuật sau:
-- Khung thời gian: 1H (Giờ)
-- Đường xu hướng thông minh (EMA): đang ở trạng thái [${emaStatus}]
-- Vùng cản Hỗ trợ & Kháng cự cứng (Supply & Demand): đang ở trạng thái [${zonesStatus}]
-- Tín hiệu Buy/Sell: đang ở trạng thái [${signalsStatus}]
-- Phân tích chuyển động giá nến: Giá mở cửa khởi điểm là $${firstCandle.open.toFixed(2)}, Giá đóng cửa nến cuối cùng là $${lastCandle.close.toFixed(2)}. Xu hướng tổng quan trên đồ thị là [${trendDirection}].
+    Hãy viết một báo cáo phân tích kỹ thuật chuyên sâu (Technical Analysis Report) dựa trên dữ liệu biểu đồ mô phỏng BTC/USDT của TienCK Indicators với các thông tin kỹ thuật sau:
+    - Khung thời gian: 1H (Giờ)
+    - Đường xu hướng thông minh (EMA): đang ở trạng thái [${emaStatus}]
+    - Vùng cản Hỗ trợ & Kháng cự cứng (Supply & Demand): đang ở trạng thái [${zonesStatus}]
+    - Tín hiệu Buy/Sell: đang ở trạng thái [${signalsStatus}]
+    - Phân tích chuyển động giá nến: Giá mở cửa khởi điểm là $${firstCandle.open.toFixed(2)}, Giá đóng cửa nến cuối cùng là $${lastCandle.close.toFixed(2)}. Xu hướng tổng quan trên đồ thị là [${trendDirection}].
 
-Yêu cầu báo cáo bao gồm:
-1. Đánh giá xu hướng hiện tại dựa vào đường EMA và nến.
-2. Xác định các mức kháng cự/hỗ trợ phù hợp để vào lệnh.
-3. Nhận định độ chính xác các tín hiệu Buy/Sell mẫu trên biểu đồ.
-4. Đưa ra gợi ý quản lý vốn tỷ lệ R:R và điểm dừng lỗ (SL) chốt lời (TP) cụ thể.
-            `;
+    Yêu cầu báo cáo bao gồm:
+    1. Đánh giá xu hướng hiện tại dựa vào đường EMA và nến.
+    2. Xác định các mức kháng cự/hỗ trợ phù hợp để vào lệnh.
+    3. Nhận định độ chính xác các tín hiệu Buy/Sell mẫu trên biểu đồ.
+    4. Đưa ra gợi ý quản lý vốn tỷ lệ R:R và điểm dừng lỗ (SL) chốt lời (TP) cụ thể.
+                `;
 
             document.getElementById('ai-assistant').scrollIntoView({ behavior: 'smooth' });
             
