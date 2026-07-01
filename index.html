@@ -755,29 +755,6 @@
     animation-play-state: paused;
 }
 
-/* CSS cho phần biên mờ mượt mà của danh sách ảnh */
-        @media (min-width: 768px) {
-            .fade-mask {
-                mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 97%, transparent 100%);
-                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 3%, black 97%, transparent 100%);
-            }
-        }
-        @media (max-width: 767px) {
-            .fade-mask {
-                mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
-            }
-        }
-        
-        /* Ẩn thanh cuộn mặc định */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
 /* Khi Hover vào thẻ Cha (.rotating-border-wrapper) 
    -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) */
 .rotating-border-wrapper:hover .hover-blink-svg {
@@ -792,12 +769,6 @@
         opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
         filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
     }
-}
-
-.slider-item svg {
-    width: 100%;
-    height: 100%;
-    display: block; /* Loại bỏ khoảng trắng thừa dưới chân SVG */
 }
 
     </style>
@@ -992,7 +963,89 @@
         <p class="text-[#f0fdff] text-xl sm:text-2xl opacity-80">Song hành cùng WynAlgo, bạn đã nắm trong tay chiếc chìa khóa.</p>
     </div>
     
-    
+    <div class="border border-white/10 rounded-2xl bg-[#02092080] relative overflow-hidden w-full p-8 md:p-10">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            
+            <div class="w-full md:w-1/2 order-2 md:order-1">
+                <div class="carousel-window">
+                    <div class="carousel-track">
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="55" fill="#10b981" font-size="14" font-weight="bold">TÍN HIỆU MUA ▲+</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+                                <text x="60" y="55" fill="#06b6d4" font-size="14" font-weight="bold">VÙNG GAP</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="45" y="55" fill="#f59e0b" font-size="14" font-weight="bold">PHÂN KỲ ĐỈNH/ĐÁY</text>
+                            </svg>
+                        </div>
+
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="55" fill="#10b981" font-size="14" font-weight="bold">TÍN HIỆU MUA ▲+</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+                                <text x="60" y="55" fill="#06b6d4" font-size="14" font-weight="bold">VÙNG GAP</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="45" y="55" fill="#f59e0b" font-size="14" font-weight="bold">PHÂN KỲ ĐỈNH/ĐÁY</text>
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 order-1 md:order-2 space-y-6">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white bg-clip-text inline-block pb-2"> Chỉ báo BigMoney</h2>
+                <p class="text-slate-300 text-lg leading-relaxed text-pretty">
+                    Nhận diện hành vi dòng tiền thông minh theo từng giai đoạn của con sóng. Tích hợp tín hiệu dòng tiền, hỗ trợ kháng cự, phân kỳ và nhiều chức năng phân tích kỹ thuật khác trong cùng một hệ thống trực quan. Loại bỏ hiệu quả các tín hiệu nhiễu trên thị trường. 
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fa-solid fa-check text-emerald-400"></i>
+                        <span>Nhãn ▲/▲+ khi gom, ▼/▼+ khi xả.</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fa-solid fa-check text-emerald-400"></i>
+                        <span>Tìm GAP & vùng S/R cứng tự động.</span>
+                    </div>
+                </div>
+                <a href="https://vn.tradingview.com/script/lTeNB8SC-WynAlgo-BigMoney/" target="_blank" rel="noopener" 
+                           class="w-fit flex flex-col items-center justify-center gap-0.5 py-3 px-6 rounded-full bg-cyan-500/10 hover:bg-[#f0fdff] text-[#f0fdff] hover:text-slate-950/80 border border-[#f0fdff] hover:border-cyan-500/10 transition-all duration-300 font-bold text-sm text-center">
+                            <div class="flex items-center gap-2">
+                                <svg width="20" height="20" viewBox="0 0 47 47" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="matrix(1,0,0,1,-5.5,-5.5)">
+                <g transform="matrix(1,0,0,1,-2.5,-1.5)">
+                    <path d="M46,27L46,15.06C46,13.453 45.362,11.912 44.225,10.775C43.088,9.638 41.547,9 39.94,9C33.297,9 22.702,9 16.06,9C14.453,9 12.911,9.638 11.775,10.775C10.638,11.911 10,13.453 10,15.06C10,21.914 10,33.012 10,39.888C10,43.263 12.736,46 16.112,46C20.986,46 27,46 27,46"/>
+                    <path d="M44,33L44,52"/>
+                    <path d="M34,42.5L53,42.5"/>
+                    <path d="M18,32C18.018,31.968 25,25 25,25L32,32L39,25"/>
+                </g>
+            </g>
+        </svg>
+                                <span>Sử dụng trên biểu đồ</span>
+                            </div>                            <!--span class="font-normal text-xs text-emerald-400/70">(Chuyển hướng đến TradingView®)</span-->
+                        </a>
+            </div>
+            
+        </div>
+    </div>
 </section>
    
    <!-- chỉ báo 2 -->
@@ -1011,47 +1064,85 @@
     <div class="border border-white/10 rounded-2xl bg-[#02092080] relative overflow-hidden w-full p-8 md:p-10">
         <div class="flex flex-col md:flex-row items-center gap-12">
             
-          <!-- Layout grid chia cột bên trong khung section -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            <!-- CỘT CHỮ: Hiện tại chiếm 5/12 cột trên màn hình lớn để nhường không gian cho ảnh -->
-            <div class="md:col-span-5 order-1 md:order-2 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold uppercase tracking-wider">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Thiết kế sáng tạo
-                </div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                    Khám Phá Nghệ Thuật Chuyển Động Số
-                </h1>
-                <p class="text-base text-slate-300 leading-relaxed">
-                    Trang web này trình diễn sự kết hợp hoàn hảo giữa thiết kế thích ứng (Responsive) và tương tác vật lý trực quan. Các hình ảnh được hiển thị sống động với hiệu ứng chuyển động vô tận, cho phép bạn tương tác trực tiếp bằng mọi thao tác kéo, thả hoặc vuốt chạm nhẹ nhàng trên cả thiết bị di động và máy tính để bàn.
-                </p>
-                
+            <div class="w-full md:w-1/2 order-2 md:order-1">
+                <div class="carousel-window">
+                    <div class="carousel-track">
+                        
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="55" fill="#10b981" font-size="14" font-weight="bold">TÍN HIỆU MUA ▲+</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+                                <text x="60" y="55" fill="#06b6d4" font-size="14" font-weight="bold">VÙNG GAP</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="45" y="55" fill="#f59e0b" font-size="14" font-weight="bold">PHÂN KỲ ĐỈNH/ĐÁY</text>
+                            </svg>
+                        </div>
 
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <button class="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-medium rounded-xl transition duration-300 shadow-lg shadow-teal-500/20 active:scale-95 flex items-center gap-2">
-                        Tìm hiểu thêm <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                                <text x="50" y="55" fill="#10b981" font-size="14" font-weight="bold">TÍN HIỆU MUA ▲+</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+                                <text x="60" y="55" fill="#06b6d4" font-size="14" font-weight="bold">VÙNG GAP</text>
+                            </svg>
+                        </div>
+                        <div class="indicator-card">
+                            <svg viewBox="0 0 200 100" class="w-full h-auto">
+                                <rect x="0" y="0" width="200" height="100" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="45" y="55" fill="#f59e0b" font-size="14" font-weight="bold">PHÂN KỲ ĐỈNH/ĐÁY</text>
+                            </svg>
+                        </div>
 
-            <!-- CỘT HÌNH ẢNH: Đã được tăng lên thành 7/12 cột để hiển thị hình ảnh to và rõ nét hơn -->
-            <div class="md:col-span-7 order-2 md:order-1 flex justify-center items-center w-full">
-                <!-- Wrapper chứa hiệu ứng biên mờ (fade-mask) - Đã tăng chiều cao lên md:h-[550px] -->
-                <div class="fade-mask relative w-full h-[320px] md:h-[650px] overflow-hidden bg-slate-950/40 rounded-3xl border border-slate-800 p-2 md:p-4 shadow-2xl">
-                    
-                    <!-- Container chính chứa các ảnh liên tục -->
-                    <div id="slider-container" class="no-scrollbar flex md:flex-col gap-4 md:gap-6 h-full w-full overflow-hidden cursor-grab active:cursor-grabbing select-none relative">
-                        <!-- Nội dung ảnh sẽ được sinh bằng JavaScript để tối ưu hóa hiệu ứng cuộn liên tục (seamless loop) -->
                     </div>
-                    
-                    <!-- Icon chỉ dẫn trạng thái tương tác -->
-
                 </div>
             </div>
 
-        </div>  
-
-            
+            <div class="w-full md:w-1/2 order-1 md:order-2 space-y-6">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white bg-clip-text inline-block pb-2"> Chỉ báo BigTrade</h2>
+                <p class="text-slate-300 text-lg leading-relaxed text-pretty">
+                    <strong>Vị thế vàng & MTF:</strong> Điểm vào lệnh chuẩn xác không vẽ lại nến (No-repaint). Tích hợp sẵn bảng quản lý danh mục đa khung thời gian để theo dõi mượt mà.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fa-solid fa-check text-emerald-400"></i>
+                        <span>Cung cấp SL & TP: Đưa ra mức dừng lỗ, chốt lời tự động.</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fa-solid fa-check text-emerald-400"></i>
+                        <span>Quản lý 6 mã cùng lúc: Bảng điều khiển MTF sắc sảo.</span>
+                    </div>
+                </div>
+                <a href="https://vn.tradingview.com/script/lqlCTPHZ-WynAlgo-BigTrade/" target="_blank" rel="noopener" 
+                           class="w-fit flex flex-col items-center justify-center gap-0.5 py-3 px-6 rounded-full bg-cyan-500/10 hover:bg-[#f0fdff] text-[#f0fdff] hover:text-slate-950/80 border border-[#f0fdff] hover:border-cyan-500/10 transition-all duration-300 font-bold text-sm text-center">
+                            <div class="flex items-center gap-2">
+                                <svg width="20" height="20" viewBox="0 0 47 47" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="matrix(1,0,0,1,-5.5,-5.5)">
+                <g transform="matrix(1,0,0,1,-2.5,-1.5)">
+                    <path d="M46,27L46,15.06C46,13.453 45.362,11.912 44.225,10.775C43.088,9.638 41.547,9 39.94,9C33.297,9 22.702,9 16.06,9C14.453,9 12.911,9.638 11.775,10.775C10.638,11.911 10,13.453 10,15.06C10,21.914 10,33.012 10,39.888C10,43.263 12.736,46 16.112,46C20.986,46 27,46 27,46"/>
+                    <path d="M44,33L44,52"/>
+                    <path d="M34,42.5L53,42.5"/>
+                    <path d="M18,32C18.018,31.968 25,25 25,25L32,32L39,25"/>
+                </g>
+            </g>
+        </svg>
+                                <span>Sử dụng trên biểu đồ</span>
+                            </div>
+                            <!--span class="font-normal text-xs text-[#436fff]">(Chuyển hướng đến TradingView®)</span-->
+                        </a>
+                </div>
             
         </div>
     </div>
@@ -1157,61 +1248,7 @@
             
         </div>
     </div>
-</section> 
-
-<!-- 
-      ========================================================================
-      KHUNG SECTION CHÍNH (BẠN CÓ THỂ ĐIỀU CHỈNH KÍCH THƯỚC VÀ ĐỘ MỜ NỀN TẠI ĐÂY)
-      ========================================================================
-      - 'max-w-5xl': Chiều rộng tối đa của khung (Có thể đổi thành max-w-4xl, max-w-6xl, max-w-7xl...)
-      - 'bg-slate-900/60': Màu nền tối với độ mờ 60% (Có thể chỉnh thành /40, /50, /80...)
-      - 'backdrop-blur-md': Hiệu ứng làm mờ kính phía sau nền (Có thể chỉnh thành blur-sm, blur-lg, blur-xl...)
-      - 'p-6 md:p-12': Khoảng đệm khoảng cách lề trong của khung
-      - 'rounded-3xl': Bo tròn góc khung cực kỳ hiện đại
-      - 'border-slate-800/80': Đường viền mỏng tinh tế xung quanh khung
-    -->
-    <section class="w-full max-w-7xl mx-auto bg-slate-900/60 backdrop-blur-md border border-slate-800/80 rounded-2xl px-6 lg:px-8 py-12 p-8 md:p-10 shadow-2xl transition-all duration-300">
-        
-        <!-- Layout grid chia cột bên trong khung section -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            <!-- CỘT CHỮ: Hiện tại chiếm 5/12 cột trên màn hình lớn để nhường không gian cho ảnh -->
-            <div class="md:col-span-5 order-1 md:order-2 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold uppercase tracking-wider">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Thiết kế sáng tạo
-                </div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                    Khám Phá Nghệ Thuật Chuyển Động Số
-                </h1>
-                <p class="text-base text-slate-300 leading-relaxed">
-                    Trang web này trình diễn sự kết hợp hoàn hảo giữa thiết kế thích ứng (Responsive) và tương tác vật lý trực quan. Các hình ảnh được hiển thị sống động với hiệu ứng chuyển động vô tận, cho phép bạn tương tác trực tiếp bằng mọi thao tác kéo, thả hoặc vuốt chạm nhẹ nhàng trên cả thiết bị di động và máy tính để bàn.
-                </p>
-                
-
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <button class="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-medium rounded-xl transition duration-300 shadow-lg shadow-teal-500/20 active:scale-95 flex items-center gap-2">
-                        Tìm hiểu thêm <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- CỘT HÌNH ẢNH: Đã được tăng lên thành 7/12 cột để hiển thị hình ảnh to và rõ nét hơn -->
-            <div class="md:col-span-7 order-2 md:order-1 flex justify-center items-center w-full">
-                <!-- Wrapper chứa hiệu ứng biên mờ (fade-mask) - Đã tăng chiều cao lên md:h-[550px] -->
-                <div class="fade-mask relative w-full h-[320px] md:h-[650px] overflow-hidden bg-slate-950/40 rounded-3xl border border-slate-800 p-2 md:p-4 shadow-2xl">
-                    
-                    <!-- Container chính chứa các ảnh liên tục -->
-                    <div id="slider-container" class="no-scrollbar flex md:flex-col gap-4 md:gap-6 h-full w-full overflow-hidden cursor-grab active:cursor-grabbing select-none relative">
-                        <!-- Nội dung ảnh sẽ được sinh bằng JavaScript để tối ưu hóa hiệu ứng cuộn liên tục (seamless loop) -->
-                    </div>
-                    
-                    <!-- Icon chỉ dẫn trạng thái tương tác -->
-
-                </div>
-            </div>
-
-        </div>
-    </section>
+</section>  
 
         <!-- SECTION PRICING CARDS -->
         <section id="pricing" class="relative max-w-7xl mx-auto px-6 lg:px-8 py-12 z-10 overflow-hiden">
@@ -2101,353 +2138,8 @@
     }, { passive: true });
 });
 
+    /* touch trial button */
  
-// Script xử lý Logic Cuộn Liên Tục & Kéo Thả (Drag/Swipe)/
-
-        // Khởi tạo Lucide icons
-        lucide.createIcons();
-
-        // Định nghĩa 3 mã nguồn SVG hoàn toàn độc lập và thiết kế cực kỳ hiện đại
-        const originalImages = [
-            {
-                // SVG 1: Tông màu Teal/Emerald trừu tượng với các đường lưới chuyển động tinh xảo
-                svg: `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#0f172a" />
-                            <stop offset="100%" stop-color="#1e293b" />
-                        </linearGradient>
-                        <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#22d3ee" />
-                            <stop offset="100%" stop-color="#0d9488" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="600" height="400" fill="url(#grad1)" />
-                    <!-- Lưới nền -->
-                    <path d="M0 50 H600 M0 100 H600 M0 150 H600 M0 200 H600 M0 250 H600 M0 300 H600 M0 350 H600" stroke="#334155" stroke-width="0.5" opacity="0.3"/>
-                    <path d="M100 0 V400 M200 0 V400 M300 0 V400 M400 0 V400 M500 0 V400" stroke="#334155" stroke-width="0.5" opacity="0.3"/>
-                    <!-- Các hình tròn phát sáng -->
-                    <circle cx="300" cy="200" r="110" fill="none" stroke="url(#neonCyan)" stroke-width="3" opacity="0.8" />
-                    <circle cx="300" cy="200" r="80" fill="none" stroke="url(#neonCyan)" stroke-width="1" stroke-dasharray="8 4" opacity="0.6" />
-                    <circle cx="300" cy="200" r="50" fill="url(#neonCyan)" opacity="0.15" />
-                    <!-- Sóng động -->
-                    <path d="M 50 200 C 150 100, 200 300, 300 200 S 450 100, 550 200" fill="none" stroke="#22d3ee" stroke-width="4" stroke-linecap="round" />
-                    <path d="M 50 220 C 150 120, 200 320, 300 220 S 450 120, 550 220" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" opacity="0.5" />
-                    <circle cx="300" cy="200" r="12" fill="#34d399" />
-                </svg>`,
-                alt: "Nghệ thuật số trừu tượng tông xanh lục"
-            },
-            {
-                // SVG 2: Tông màu Tím/Hồng Neon - Khối cầu pha lê không gian đa chiều
-                svg: `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#0f172a" />
-                            <stop offset="100%" stop-color="#1e1b4b" />
-                        </linearGradient>
-                        <linearGradient id="neonMagenta" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#f472b6" />
-                            <stop offset="100%" stop-color="#a855f7" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="600" height="400" fill="url(#grad2)" />
-                    <!-- Vòng tròn tỏa sáng hướng tâm -->
-                    <circle cx="300" cy="200" r="130" fill="none" stroke="#3b0764" stroke-width="1" opacity="0.5"/>
-                    <circle cx="300" cy="200" r="100" fill="none" stroke="#4a044e" stroke-width="1" opacity="0.5"/>
-                    <!-- Khối lục giác neon -->
-                    <g transform="translate(300, 200)">
-                        <polygon points="0,-100 86,-50 86,50 0,100 -86,50 -86,-50" fill="none" stroke="url(#neonMagenta)" stroke-width="4" stroke-linejoin="round" />
-                        <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.7" />
-                        <!-- Các tia kết nối -->
-                        <line x1="0" y1="-100" x2="0" y2="100" stroke="#f472b6" stroke-width="1" opacity="0.3" />
-                        <line x1="-86" y1="-50" x2="86" y2="50" stroke="#f472b6" stroke-width="1" opacity="0.3" />
-                        <line x1="-86" y1="50" x2="86" y2="-50" stroke="#f472b6" stroke-width="1" opacity="0.3" />
-                        <circle cx="0" cy="0" r="35" fill="url(#neonMagenta)" opacity="0.25" />
-                        <circle cx="0" cy="0" r="10" fill="#f472b6" />
-                    </g>
-                </svg>`,
-                alt: "Khối cầu pha lê phản chiếu ánh sáng neon"
-            },
-            {
-                // SVG 3: Tông màu Cam/Đỏ rực rỡ - Những làn sóng năng lượng 3D chuyển động cuộn trào
-                svg: `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#0f172a" />
-                            <stop offset="100%" stop-color="#2c0e0e" />
-                        </linearGradient>
-                        <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#f97316" />
-                            <stop offset="100%" stop-color="#e11d48" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="600" height="400" fill="url(#grad3)" />
-                    <!-- Làn sóng đổ bóng dưới -->
-                    <path d="M 0 300 Q 150 120, 300 260 T 600 160 L 600 400 L 0 400 Z" fill="url(#neonOrange)" opacity="0.15" />
-                    <!-- Sóng chính nét đậm -->
-                    <path d="M 0 300 Q 150 120, 300 260 T 600 160" fill="none" stroke="url(#neonOrange)" stroke-width="5" stroke-linecap="round" />
-                    <!-- Sóng mảnh phụ trợ -->
-                    <path d="M 0 330 Q 150 170, 300 290 T 600 210" fill="none" stroke="#fb923c" stroke-width="2" opacity="0.6" stroke-dasharray="10 5" />
-                    <path d="M 0 270 Q 150 70, 300 230 T 600 110" fill="none" stroke="#f43f5e" stroke-width="1.5" opacity="0.4" />
-                    <!-- Các chấm sáng lung linh hạt bụi phát sáng (particle effect) -->
-                    <circle cx="120" cy="180" r="3" fill="#fb923c" opacity="0.8"/>
-                    <circle cx="280" cy="150" r="4" fill="#f43f5e" opacity="0.6"/>
-                    <circle cx="450" cy="220" r="2" fill="#ffffff" opacity="0.9"/>
-                    <circle cx="520" cy="130" r="5" fill="#f97316" opacity="0.5"/>
-                </svg>`,
-                alt: "Thiết kế sóng 3D màu cam đỏ hiện đại"
-            }
-        ];
-
-        const container = document.getElementById('slider-container');
-        let isVertical = window.innerWidth >= 768; // Xác định hướng cuộn ban đầu theo kích thước màn hình
-
-        // Nhân bản bộ ảnh nhiều lần để tạo vòng lặp vô chậm hoàn hảo (Seamless Loop)
-        const repeatedImages = [...originalImages, ...originalImages, ...originalImages, ...originalImages];
-
-        // Hàm dựng các thẻ ảnh/SVG trực tiếp vào DOM
-        function buildSlider() {
-            container.innerHTML = '';
-            repeatedImages.forEach((imgData, index) => {
-                const itemDiv = document.createElement('div');
-                // Tỉ lệ ngang nguyên bản cho thiết bị di động (w-[210px] h-[140px]) và tăng lên md:h-[240px] trên PC để ảnh hiển thị to hơn
-                itemDiv.className = "slider-item flex-shrink-0 w-full h-full md:w-full md:h-[380px] rounded-2xl overflow-hidden relative group border border-slate-800 transition-all duration-300 shadow-lg";
-                
-                // Bao bọc phần tử đồ họa (giúp xử lý hiệu ứng zoom hover mượt mà)
-                const mediaWrapper = document.createElement('div');
-                mediaWrapper.className = "w-full h-full transition-transform duration-700 group-hover:scale-125 pointer-events-none select-none";
-                
-                // Nhúng trực tiếp chuỗi SVG vào DOM để hiển thị nguyên bản cực kỳ sắc nét
-                mediaWrapper.innerHTML = imgData.svg;
-                
-                // Lớp phủ màu khi hover
-                const overlay = document.createElement('div');
-                overlay.className = "absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent opacity-0 group-hover:opacity-0 transition-opacity duration-300 flex items-end p-3 pointer-events-none";
-                overlay.innerHTML = `<span class="text-xs font-semibold text-teal-400">Thiết kế SVG ${ (index % 3) + 1 }</span>`;
-
-                itemDiv.appendChild(mediaWrapper);
-                itemDiv.appendChild(overlay);
-                container.appendChild(itemDiv);
-            });
-        }
-
-        buildSlider();
-
-        // Biến kiểm soát trạng thái tương tác
-        let isDown = false;
-        let isHovered = false;
-        let startPos = 0;       // Vị trí chuột/tay chạm ban đầu
-        let scrollStart = 0;    // Vị trí cuộn của container ban đầu
-        let velocity = 0;       // Vận tốc dùng cho hiệu ứng lướt vật lý sau khi thả tay
-        let lastPos = 0;        // Vị trí kiểm tra vận tốc của khung hình trước
-        let lastTime = 0;       // Thời gian kiểm tra vận tốc của khung hình trước
-        let currentScroll = 0;  // Quản lý vị trí cuộn hiện tại bằng biến số để mượt mà hơn
-        let autoScrollSpeed = 1.0; // Tốc độ tự động chạy mặc định
-
-        // Hàm tự động cuộn đều đặn không dừng
-        function autoScroll() {
-            if (!isDown && !isHovered) {
-                currentScroll += autoScrollSpeed;
-                
-                // Kiểm tra điểm giới hạn để lặp vô hạn
-                const maxScroll = isVertical 
-                    ? container.scrollHeight - container.clientHeight
-                    : container.scrollWidth - container.clientWidth;
-                
-                // Nếu cuộn gần tới cuối, nhảy về lại vùng giữa một cách mượt mà không nhận ra
-                const resetPoint = maxScroll / 2;
-                if (currentScroll >= resetPoint) {
-                    currentScroll -= resetPoint;
-                }
-                
-                if (isVertical) {
-                    container.scrollTop = currentScroll;
-                } else {
-                    container.scrollLeft = currentScroll;
-                }
-            }
-            requestAnimationFrame(autoScroll);
-        }
-
-        // Đợi layout tải xong để định vị chính xác vị trí ban đầu
-        window.onload = () => {
-            const maxScroll = isVertical 
-                ? container.scrollHeight - container.clientHeight
-                : container.scrollWidth - container.clientWidth;
-            currentScroll = maxScroll / 4;
-            
-            if (isVertical) {
-                container.scrollTop = currentScroll;
-            } else {
-                container.scrollLeft = currentScroll;
-            }
-            
-            // Kích hoạt hoạt ảnh tự động cuộn
-            requestAnimationFrame(autoScroll);
-        };
-
-        // --- SỰ KIỆN TƯƠNG TÁC (DI CHUỘT / CHẠM) ---
-
-        // Khi di chuột vào / ra
-        container.addEventListener('mouseenter', () => {
-            isHovered = true;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            isHovered = false;
-            if (!isDown) {
-                currentScroll = isVertical ? container.scrollTop : container.scrollLeft;
-            }
-        });
-
-        // Bắt đầu click chuột hoặc chạm tay
-        function onDragStart(e) {
-            isDown = true;
-            container.classList.add('cursor-grabbing');
-            
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            
-            startPos = isVertical ? clientY : clientX;
-            scrollStart = isVertical ? container.scrollTop : container.scrollLeft;
-            currentScroll = scrollStart;
-            
-            lastPos = startPos;
-            lastTime = performance.now();
-            velocity = 0;
-        }
-
-        // Đang thực hiện kéo chuột / vuốt màn hình
-        function onDragMove(e) {
-            if (!isDown) return;
-            e.preventDefault(); // Ngăn cuộn trang web mặc định khi vuốt trên điện thoại
-
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            
-            const currentPos = isVertical ? clientY : clientX;
-            const distance = currentPos - startPos;
-            
-            let newScroll = scrollStart - distance;
-            
-            const maxScroll = isVertical 
-                ? container.scrollHeight - container.clientHeight
-                : container.scrollWidth - container.clientWidth;
-            const resetPoint = maxScroll / 2;
-
-            if (newScroll < 0) {
-                newScroll += resetPoint;
-                startPos = currentPos;
-                scrollStart = newScroll;
-            } else if (newScroll >= resetPoint * 1.5) {
-                newScroll -= resetPoint;
-                startPos = currentPos;
-                scrollStart = newScroll;
-            }
-
-            currentScroll = newScroll;
-            if (isVertical) {
-                container.scrollTop = currentScroll;
-            } else {
-                container.scrollLeft = currentScroll;
-            }
-
-            // Tính toán vận tốc lướt tức thời (physics velocity)
-            const now = performance.now();
-            const elapsed = now - lastTime;
-            if (elapsed > 0) {
-                velocity = (lastPos - currentPos) / elapsed * 15;
-                lastPos = currentPos;
-                lastTime = now;
-            }
-        }
-
-        // Thả chuột / kết thúc chạm
-        function onDragEnd() {
-            if (!isDown) return;
-            isDown = false;
-            container.classList.remove('cursor-grabbing');
-
-            // Tạo đà quán tính mượt mà sau khi thả tay
-            if (Math.abs(velocity) > 0.5) {
-                let momentumLoop = () => {
-                    if (isDown || isHovered) return;
-                    
-                    currentScroll += velocity;
-                    velocity *= 0.92; // Ma sát hãm phanh từ từ
-
-                    const maxScroll = isVertical 
-                        ? container.scrollHeight - container.clientHeight
-                        : container.scrollWidth - container.clientWidth;
-                    const resetPoint = maxScroll / 2;
-
-                    if (currentScroll < 0) currentScroll += resetPoint;
-                    if (currentScroll >= resetPoint) currentScroll -= resetPoint;
-
-                    if (isVertical) {
-                        container.scrollTop = currentScroll;
-                    } else {
-                        container.scrollLeft = currentScroll;
-                    }
-
-                    if (Math.abs(velocity) > 0.2) {
-                        requestAnimationFrame(momentumLoop);
-                    } else {
-                        currentScroll = isVertical ? container.scrollTop : container.scrollLeft;
-                    }
-                };
-                requestAnimationFrame(momentumLoop);
-            } else {
-                currentScroll = isVertical ? container.scrollTop : container.scrollLeft;
-            }
-        }
-
-        // Đăng ký sự kiện chuột
-        container.addEventListener('mousedown', onDragStart);
-        window.addEventListener('mousemove', onDragMove);
-        window.addEventListener('mouseup', onDragEnd);
-
-        // Đăng ký sự kiện cảm ứng di động (giải quyết triệt để lỗi dính trạng thái hover)
-        container.addEventListener('touchstart', (e) => {
-            isHovered = false; 
-            onDragStart(e);
-        }, { passive: false });
-
-        window.addEventListener('touchmove', onDragMove, { passive: false });
-        
-        window.addEventListener('touchend', (e) => {
-            isHovered = false; 
-            onDragEnd();
-        });
-        
-        window.addEventListener('touchcancel', () => {
-            isHovered = false;
-            isDown = false;
-        });
-
-        // Lắng nghe resize màn hình để thay đổi hướng thích ứng dọc/ngang linh hoạt
-        window.addEventListener('resize', () => {
-            const checkVertical = window.innerWidth >= 768;
-            if (checkVertical !== isVertical) {
-                isVertical = checkVertical;
-                buildSlider();
-                
-                const maxScroll = isVertical 
-                    ? container.scrollHeight - container.clientHeight
-                    : container.scrollWidth - container.clientWidth;
-                currentScroll = maxScroll / 3;
-                
-                if (isVertical) {
-                    container.scrollTop = currentScroll;
-                } else {
-                    container.scrollLeft = currentScroll;
-                }
-            }
-        });
     </script>
-
 </body>
 </html>
