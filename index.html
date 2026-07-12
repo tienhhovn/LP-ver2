@@ -734,15 +734,16 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 0px;
         }
 
         /* --- CẤU TRÚC SECTION --- */
         .content-section {
             display: flex;
             flex-direction: row; /* Desktop: Trái ảnh (65%), Phải chữ (35%) */
-            height: 70vh;
-            margin-bottom: 80px;
+            height: auto;
+            min-height: 75vh;
+            margin-bottom: 50px;
             background-color: rgba(2, 9, 32, 0.25);
             overflow: hidden;
             /* --- PHẦN CẤU HÌNH VIỀN GRADIENT --- */
@@ -761,14 +762,15 @@
             
             
             /* --- THÊM 2 DÒNG NÀY ĐỂ THU HẸP KHUNG SECTION --- */
-            max-width: 1300px;  /* Thay đổi chiều ngang khung theo ý bạn */
-            margin-left: auto;  /* Giúp khung luôn căn giữa */
+            width: 100%;           /* Tự động chiếm 92% chiều rộng của trang web */
+            max-width: 1300px;    /* Khi màn hình quá lớn, dừng lại ở 1300px để bảo toàn bố cục */
+            margin-left: auto;    /* Giữ căn giữa */
             margin-right: auto;
         }
 
         /* Khu vực hình ảnh chiếm diện tích lớn hơn (65%) */
         .image-zone {
-            flex: 0 0 60%;
+            flex: 1 1 60%; /* Số 1 thứ hai cho phép co lại khi thu nhỏ trình duyệt */
             position: relative;
             overflow: hidden;
             background-color: rgba(2, 9, 32, 0.1);
@@ -839,7 +841,7 @@
 
         /* Khu vực chữ (35%) */
         .text-zone {
-            flex: 0 0 40%;
+            flex: 1 1 40%; /* Số 1 thứ hai cho phép co lại */
             padding: 30px;
             padding-top: 130px;
             display: flex;
@@ -851,37 +853,18 @@
         }
 
         .text-zone h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #f0fdff;
-            font-weight: 800;
-        }
+    /* clamp(KÍCH_THƯỚC_NHỎ_NHẤT, KÍCH_THƯỚC_LINH_HOẠT, KÍCH_THƯỚC_LỚN_NHẤT) */
+    font-size: clamp(1.8rem, 4vw + 0.5rem, 3rem); 
+    margin-bottom: 20px;
+    color: #f0fdff;
+    font-weight: 800;
+}
 
-        .text-zone p { 
-            color: #f0fdff;
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-        }
-
-        /* Nút Get Access */
-        .btn-get-access {
-            display: inline-block;
-            padding: 14px 32px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #121212;
-            background-color: #4ffbdf;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-        }
-
-        .btn-get-access:hover {
-            background-color: #3ce0c4;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 251, 223, 0.3);
-        }
+.text-zone p { 
+    font-size: clamp(1.05rem, 1vw + 0.5rem, 1.5rem);
+    margin-bottom: 30px;
+    color: #f0fdff;
+}
 
         /* Trên máy tính: Đảo ngược chiều của riêng khung có class reverse-layout */
         .content-section.reverse-layout {
@@ -894,8 +877,9 @@
             border-right: 1px solid #02092080;
         }
 
+/* --- ĐÁP ỨNG DI ĐỘNG (MOBILE RESPONSIVE) --- */
         /* --- ĐÁP ỨNG DI ĐỘNG (MOBILE RESPONSIVE) --- */
-        @media (max-width: 1112px) {
+        @media (max-width: 768px) {
             .container {
                 padding: 20px 16px; /* Khung lớn bao ngoài không chạm sát mép viền */
             }
@@ -903,7 +887,7 @@
             .content-section {
                 flex-direction: column !important; /* Xếp dọc: Trên chữ, Dưới ảnh */
                 height: auto;
-                margin-bottom: 50px;
+                margin-bottom: 30px; /* khoảng cách đến dòng chữ bên dưới*/
             }
 
             .text-zone {
@@ -927,17 +911,11 @@
                 margin-bottom: 24px;
                 text-wrap: pretty;
             }
-
-            .btn-get-access {
-                width: 100%;
-                max-width: 280px;
-            }
-
             .image-zone {
                 order: 2;
                 flex: none;
                 width: 100%;
-                height: 280px; /* Định chiều cao vùng chứa ảnh vừa vặn trên mobile */
+                height: 410px; /* Định chiều cao vùng chứa ảnh vừa vặn trên mobile */
                 
                 /* Đổi vùng biên mờ 5px sang Trái và Phải cho Mobile */
                 -webkit-mask-image: linear-gradient(to right, transparent 0px, transparent 10px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) calc(100% - 10px), transparent calc(100% - 10px), transparent 100%);
@@ -993,7 +971,7 @@
 /* Khung bọc ngoài cùng - Định vị absolute không bị lỗi click */
 .w-button-wrapper {
     position: absolute;
-    left: 16px; /* tương đương left-4 */
+    left: 0px; /* tương đương left-4 */
     margin-top: 0px; /* tương đương mt-4 */
     z-index: 20;
     display: flex;
@@ -1360,9 +1338,9 @@
         <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-80">Nhanh nhạy trong một ánh nhìn, đi đến quyết định quan trọng.</p>
     </div>
 
-        <section class="content-section">
-            <div class="image-zone relative overflow-hidden">
-                <div class="image-track relative z-10">
+        <section class="content-section relative ">
+            <div class="image-zone">
+                <div class="image-track">
                     <div class="image-item"><img src="https://picsum.photos/900/600?random=11" alt="Ảnh 11"></div>
                     <div class="image-item"><img src="https://picsum.photos/900/600?random=12" alt="Ảnh 12"></div>
                     <div class="image-item"><img src="https://picsum.photos/900/600?random=13" alt="Ảnh 13"></div>
@@ -1372,7 +1350,7 @@
                 
             </div>
             <div class="text-zone relative pb-16 md:pb-6">
-                <div class="relative z-10">
+                <div class="relative z-10 text-pretty">
                 <h2>Chỉ báo SignalEye</h2>
                 <p>Công cụ phân tích đa tầng tổng hợp các tín hiệu của BigMoney & BigTrade, được thiết kế để phân tích chuyển động dòng tiền trên nhiều tài sản với 2 khung thời gian cùng lúc, giúp nhà đầu tư quan sát toàn cảnh mọi biến động trên thị trường.</p>
                 
@@ -1480,10 +1458,10 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">30 ngày sử dụng.<br>Nhanh chóng nắm bắt cơ hội và giảm thiểu rủi ro khi tham gia thị trường.</p>
                         
                         <div class="py-4 border-t border-b border-white/5 space-y-1">
-                            <div class="text-emerald-400 text-sm font-bold" id="PreM30-strike">Coupon 100,000VNĐ lần đầu tiên thanh toán.</div>
+                            <div class="text-slate-600 line-through text-xs" id="PreM30-strike">$39.99</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-white">$</span-->
-                                <span class="text-4xl font-extrabold tracking-normal text-white" id="PreM30-price">590,000</span>
+                                <span class="text-4xl font-extrabold tracking-normal text-white" id="PreM30-price">495,000</span>
                                 <span class="text-2xl font-extrabold tracking-normal text-white" id="PreM30-period">VNĐ</span>
                             </div>
                         </div>
@@ -1509,7 +1487,7 @@
                     </div>
                     
                     <div class="pt-8">
-                        <button type="button" data-plan="PreM30" data-price="590,000" class="js-plan-button w-full bg-gradient-to-r from-emerald-700 to-cyan-500  border border-emerald-700 hover:emerald-700 text-white text-center py-4 rounded-xl font-bold transition duration-200 hover:scale-[1.02] cursor-pointer">
+                        <button type="button" data-plan="PreM30" data-price="495,000" class="js-plan-button w-full bg-gradient-to-r from-emerald-700 to-cyan-500  border border-emerald-700 hover:emerald-700 text-white text-center py-4 rounded-xl font-bold transition duration-200 hover:scale-[1.02] cursor-pointer">
                             Đăng ký sử dụng
                         </button>
                     </div>
@@ -1533,7 +1511,7 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">90 ngày sử dụng.<br> Chủ động vượt qua những con sóng trên thị trường với nhiều lợi thế.</p>
                         
                         <div class="py-4 border-t border-white/10 border-b border-white/10 space-y-1">
-                            <div class="text-[#4bd8f9] text-sm font-bold" id="premium-strike">Tiết kiệm 680,000VNĐ so với gói M30.</div>
+                            <div class="text-cyan-400/60 line-through text-xs" id="premium-strike">$67.99</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-cyan-400">$</span-->
                                 <span class="text-4xl font-extrabold tracking-normal text-white" id="premium-price">1,090,000</span>
@@ -1591,7 +1569,7 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">365 ngày sử dụng.<br>Tâm thế luôn vững vàng trên suốt hành trình tìm kiếm tự do tài chính.</p>
                         
                         <div class="py-4 border-t border-b border-white/5 space-y-1">
-                            <div class="text-purple-400 text-sm font-bold" id="ultimate-strike">Tiết kiệm 3,090,000VNĐ so với gói M30.</div>
+                            <div class="text-slate-600 line-through text-xs" id="ultimate-strike">$119.99</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-cyan-400">$</span-->
                                 <span class="text-4xl font-extrabold tracking-normal text-white" id="ultimate-price">3,990,000</span>
@@ -2026,22 +2004,22 @@
         // ==========================================
         const PLAN_PRICES = {
             PreM30: {
-                monthly: '590,000',
+                monthly: '495,000',
                 yearly: '990,000',
-                monthlyStrike: 'Coupon 100,000VNĐ lần đầu tiên thanh toán.',
-                yearlyStrike: 'Coupon 100,000VNĐ lần đầu tiên thanh toán.',
+                monthlyStrike: '$39.99',
+                yearlyStrike: '$495,000',
             },
             Premium: {
                 monthly: '1,090,000',
                 yearly: '2,170,000',
-                monthlyStrike: 'Tiết kiệm 680,000VNĐ so với gói M30.',
-                yearlyStrike: 'Tiết kiệm 800,000VNĐ so với gói M30.',
+                monthlyStrike: '$67.99',
+                yearlyStrike: '$1,090,000',
             },
             Ultimate: {
                 monthly: '3,990,000',
                 yearly: '7,690,000',
-                monthlyStrike: 'Tiết kiệm 3,090,000VNĐ so với gói M30.',
-                yearlyStrike: 'Tiết kiệm 3,890,000VNĐ so với gói M30.',
+                monthlyStrike: '$119.99',
+                yearlyStrike: '$3,990,000',
             },
         };
 
@@ -2213,8 +2191,8 @@
             const finalPrice = isYearly ? prices.yearly : prices.monthly;
             lastFocusedElement = document.activeElement;
             modalPlanName.textContent = plan;
-            modalPlanPriceValue.textContent = `${finalPrice} VNĐ`;
-            modalPlanPricePeriod.textContent = isYearly ? '' : '';
+            modalPlanPriceValue.textContent = `$${finalPrice} VNĐ`;
+            modalPlanPricePeriod.textContent = isYearly ? '/tháng (trả hàng năm)' : '/tháng';
             modalOrderId.textContent = `TIENCK_${plan.toUpperCase()}_${generateOrderSuffix()}`;
             paymentModal.classList.remove('hidden');
             paymentModal.setAttribute('aria-hidden', 'false');
