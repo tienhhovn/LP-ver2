@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Logo hiển thị trên Tab trình duyệt máy tính -->
-    <link class="favicon-icon" rel="icon" href="WynAlgo32.png">
+    <link rel="icon" href="WynAlgo32.png">
     
     <!-- Logo hiển thị khi lưu trang ra màn hình điện thoại -->
-    <link class="apple-touch-icon" href="WynAlgo32.png">
+    <link href="WynAlgo32.png">
     
     <title>WynAlgo | Hệ Thống Chỉ Báo Theo Dấu Dòng Tiền Thông Minh</title>
     
@@ -61,6 +61,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* =========================================================================
            🎨 BIẾN ĐỔI MÀU NỀN TRANG DỄ DÀNG TẠI ĐÂY
@@ -729,8 +730,36 @@
 }
 
 
-/* CSS cho phần biên mờ mượt mà của danh sách ảnh carousel */
-/* Container cho toàn bộ trang - bảo vệ mép viền trên di động */
+/* Khi Hover vào thẻ Cha (.rotating-border-wrapper) 
+   -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) paper-plane  */
+.rotating-border-wrapper:hover .hover-blink-svg,
+.rotating-border-wrapper.is-touched .hover-blink-svg {
+    animation: svg-blink 1s infinite ease-in-out;
+}
+@keyframes svg-blink {
+    0%, 100% { 
+        opacity: 1; 
+        filter: drop-shadow(0 0 2px rgba(176,225,245,0.4)); 
+    }
+    50% { 
+        opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
+        filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
+    }
+}
+
+        /* =========================================================================
+           🎨 TOÀN BỘ CSS GỐC CỦA BẠN - ĐÃ ĐƯỢC KHÔI PHỤC VÀ ĐỒNG BỘ HOÀN TOÀN
+           ========================================================================= */
+        body {
+            background-color: #020920;
+            color: #f0fdff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container cho toàn bộ trang */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -740,19 +769,17 @@
         /* --- CẤU TRÚC SECTION --- */
         .content-section {
             display: flex;
-            flex-direction: row; /* Desktop: Trái ảnh (65%), Phải chữ (35%) */
+            flex-direction: row; /* Desktop: Trái ảnh (60%), Phải chữ (40%) */
             height: auto;
             min-height: 75vh;
             margin-bottom: 50px;
             background-color: rgba(2, 9, 32, 0.25);
             overflow: hidden;
-            /* --- PHẦN CẤU HÌNH VIỀN GRADIENT --- */
-            border: 2px solid transparent;    /* Tạo không gian viền 1px trong suốt */
-            border-radius: 16px;              /* Bo góc khung */
+            
+            /* --- PHẦN CẤU HÌNH VIỀN GRADIENT GỐC --- */
+            border: 2px solid transparent;
+            border-radius: 16px;
     
-            /* Mẹo dùng 2 lớp nền: 
-            Lớp 1 (Phía trên): Màu nền tối của bạn (padding-box)
-            Lớp 2 (Phía dưới): Dải màu gradient mà bạn muốn làm viền (border-box) */
             background-image: 
                 linear-gradient(rgba(2, 9, 32, 0.85), rgba(2, 9, 32, 0.85)), 
                 linear-gradient(135deg, #34d399, #2962ff, #d600f8); 
@@ -760,17 +787,16 @@
             background-origin: border-box;
             background-clip: padding-box, border-box;
             
-            
-            /* --- THÊM 2 DÒNG NÀY ĐỂ THU HẸP KHUNG SECTION --- */
-            width: 100%;           /* Tự động chiếm 92% chiều rộng của trang web */
-            max-width: 1300px;    /* Khi màn hình quá lớn, dừng lại ở 1300px để bảo toàn bố cục */
-            margin-left: auto;    /* Giữ căn giữa */
+            /* --- THU HẸP KHUNG SECTION --- */
+            width: 100%;
+            max-width: 1300px;
+            margin-left: auto;
             margin-right: auto;
         }
 
-        /* Khu vực hình ảnh chiếm diện tích lớn hơn (65%) */
+        /* Khu vực hình ảnh chiếm diện tích lớn hơn (60%) */
         .image-zone {
-            flex: 1 1 60%; /* Số 1 thứ hai cho phép co lại khi thu nhỏ trình duyệt */
+            flex: 1 1 60%;
             position: relative;
             overflow: hidden;
             background-color: rgba(2, 9, 32, 0.1);
@@ -778,22 +804,22 @@
             user-select: none;
             -webkit-user-select: none;
             
-            /* Ảnh cách cạnh trên/dưới 30px, vùng mờ biên rộng 5px */
-    -webkit-mask-image: linear-gradient(to bottom, 
-        transparent 0px, 
-        transparent 10px,        /* Khoảng cách trống từ đỉnh khung */
-        rgba(0,0,0,1) 10px,      /* Hiện rõ sau 5px mờ biên (30px + 5px) */
-        rgba(0,0,0,1) calc(100% - 10px), /* Bắt đầu mờ ở cuối */
-        transparent calc(100% - 10px),   /* Biến mất hoàn toàn cách đáy 30px */
-        transparent 100%);
+            /* Mask che biên mờ dọc trên Desktop */
+            -webkit-mask-image: linear-gradient(to bottom, 
+                transparent 0px, 
+                transparent 10px,
+                rgba(0,0,0,1) 10px,
+                rgba(0,0,0,1) calc(100% - 10px),
+                transparent calc(100% - 10px),
+                transparent 100%);
         
-    mask-image: linear-gradient(to bottom, 
-        transparent 0px, 
-        transparent 10px, 
-        rgba(0,0,0,1) 10px, 
-        rgba(0,0,0,1) calc(100% - 10px), 
-        transparent calc(100% - 10px), 
-        transparent 100%);
+            mask-image: linear-gradient(to bottom, 
+                transparent 0px, 
+                transparent 10px, 
+                rgba(0,0,0,1) 10px, 
+                rgba(0,0,0,1) calc(100% - 10px), 
+                transparent calc(100% - 10px), 
+                transparent 100%);
         }
         
         .image-zone:active {
@@ -807,17 +833,17 @@
             left: 0;
             width: 100%;
             display: flex;
-            flex-direction: column; /* Desktop: Chạy dọc từ dưới lên */
+            flex-direction: column; /* Chạy dọc */
             gap: 25px;
             padding: 20px 0;
             will-change: transform;
         }
 
-        /* Định dạng từng item ảnh đúng tỷ lệ 3:2 */
+        /* Định dạng từng item ảnh tỷ lệ 3:2 */
         .image-item {
             width: 90%;
             margin: 0 auto;
-            aspect-ratio: 3 / 2; /* Ép đúng tỷ lệ hình ảnh 3:2 */
+            aspect-ratio: 3 / 2;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -835,15 +861,14 @@
         /* Hiệu ứng Hover phóng to trên Desktop (khi không kéo) */
         .image-zone:not(.dragging) .image-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
-        /* Khu vực chữ (35%) */
+        /* Khu vực chữ (40%) */
         .text-zone {
-            flex: 1 1 40%; /* Số 1 thứ hai cho phép co lại */
-            padding: 30px;
-            padding-top: 130px;
+            flex: 1 1 40%;
+            padding: 130px 30px 80px 30px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -853,178 +878,197 @@
         }
 
         .text-zone h2 {
-    /* clamp(KÍCH_THƯỚC_NHỎ_NHẤT, KÍCH_THƯỚC_LINH_HOẠT, KÍCH_THƯỚC_LỚN_NHẤT) */
-    font-size: clamp(1.8rem, 4vw + 0.5rem, 3rem); 
-    margin-bottom: 20px;
-    color: #f0fdff;
-    font-weight: 800;
-}
+            font-size: clamp(1.8rem, 4vw + 0.5rem, 3rem); 
+            margin-bottom: 20px;
+            color: #f0fdff;
+            font-weight: 800;
+        }
 
-.text-zone p { 
-    font-size: clamp(1.05rem, 1vw + 0.5rem, 1.5rem);
-    margin-bottom: 30px;
-    color: #f0fdff;
-}
+        .text-zone p { 
+            font-size: clamp(1.05rem, 1vw + 0.5rem, 1.5rem);
+            margin-bottom: 30px;
+            color: #f0fdff;
+        }
 
-        /* Trên máy tính: Đảo ngược chiều của riêng khung có class reverse-layout */
+        /* Đảo chiều bố cục */
         .content-section.reverse-layout {
             flex-direction: row-reverse;
         }
 
-        /* Đổi hướng đường viền ngăn cách từ bên trái sang bên phải của phần chữ */
         .content-section.reverse-layout .text-zone {
             border-left: none;
             border-right: 1px solid #02092080;
         }
 
-/* --- ĐÁP ỨNG DI ĐỘNG (MOBILE RESPONSIVE) --- */
-        /* --- ĐÁP ỨNG DI ĐỘNG (MOBILE RESPONSIVE) --- */
-        @media (max-width: 768px) {
+/* =========================================================================
+   📱 ĐÁP ỨNG DI ĐỘNG CHUẨN (DƯỚI HOẶC BẰNG 768PX HOẶC KHI BẬT GIẢ LẬP)   ========================================================================= */
+        @media (max-width: 768px), .sim-mode-mobile {
             .container {
-                padding: 20px 16px; /* Khung lớn bao ngoài không chạm sát mép viền */
+                padding: 20px 16px ;
             }
 
             .content-section {
-                flex-direction: column !important; /* Xếp dọc: Trên chữ, Dưới ảnh */
-                height: auto;
-                margin-bottom: 30px; /* khoảng cách đến dòng chữ bên dưới*/
+                flex-direction: column ; /* Xếp dọc: Trên chữ, Dưới ảnh */
+                height: auto ;
+                margin-bottom: 30px ;
             }
 
             .text-zone {
-                order: 1;
-                flex: none;
-                width: 100%;
-                padding: 30px 24px;
-                border-left: none;
-                border-bottom: 1px solid #020920;
-                align-items: flex-start;
-                text-align: left;
+                order: 1 ; /* LẬT CHỮ LÊN TRÊN */
+                flex: none ;
+                width: 100% ;
+                padding: 30px 30px 70px 30px ;
+                border-left: none ;
+                border-right: none ;
+                border-bottom: 1px solid #020920 ;
+                align-items: flex-start ;
+                text-align: left ;
             }
 
             .text-zone h2 {
-                font-size: 1.8rem;
+                font-size: 1.8rem ;
             }
 
             .text-zone p {
-                font-size: 1.05rem; /* Hạ từ 1.5rem (24px) xuống ~17px cho vừa mắt trên điện thoại */
-                /*line-height: 1.5;   /* Giúp đoạn văn dài dễ đọc hơn */
-                margin-bottom: 24px;
-                text-wrap: pretty;
+                font-size: 1.05rem ;
+                margin-bottom: 24px ;
+                text-wrap: pretty ;
             }
+
             .image-zone {
-                order: 2;
-                flex: none;
-                width: 100%;
-                height: 410px; /* Định chiều cao vùng chứa ảnh vừa vặn trên mobile */
+                order: 2 ; /* LẬT ẢNH XUỐNG DƯỚI */
+                flex: none ;
+                width: 100% ;
+                height: 410px ; /* Chiều cao dải ảnh trên điện thoại */
                 
-                /* Đổi vùng biên mờ 5px sang Trái và Phải cho Mobile */
-                -webkit-mask-image: linear-gradient(to right, transparent 0px, transparent 10px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) calc(100% - 10px), transparent calc(100% - 10px), transparent 100%);
-                mask-image: linear-gradient(to right, transparent 0px, transparent 10px, rgba(0,0,0,1) 10px, rgba(0,0,0,1) calc(100% - 10px), transparent calc(100% - 10px),transparent 100%);
+                /* Đổi mask biên mờ sang Trái và Phải cho Mobile */
+                -webkit-mask-image: linear-gradient(to right, 
+                    transparent 0px, 
+                    transparent 10px, 
+                    rgba(0,0,0,1) 10px, 
+                    rgba(0,0,0,1) calc(100% - 10px), 
+                    transparent calc(100% - 10px), 
+                    transparent 100%) !important;
+                mask-image: linear-gradient(to right, 
+                    transparent 0px, 
+                    transparent 10px, 
+                    rgba(0,0,0,1) 10px, 
+                    rgba(0,0,0,1) calc(100% - 10px), 
+                    transparent calc(100% - 10px),
+                    transparent 100%) !important;
             }
 
             /* Đổi track thành hàng ngang chạy từ phải qua trái */
             .image-track {
-                flex-direction: row;
-                height: 100%;
-                width: max-content;
-                top: 0;
-                left: 0;
-                padding: 0 20px;
-                align-items: center;
+                flex-direction: row ;
+                height: 100% ;
+                width: max-content !;
+                top: 0 ;
+                left: 0 ;
+                padding: 0 20px ;
+                align-items: center ;
             }
 
             .image-item {
-                height: 75%; /* Định chiều cao tương đối trong vùng chứa */
-                width: auto;
-                aspect-ratio: 3 / 2; /* Giữ nguyên tỉ lệ hiển thị đúng như trên web */
-                flex-shrink: 0;
-                margin: 0;
+                height: 85% ;
+                width: auto ;
+                aspect-ratio: 3 / 2 ;
+                flex-shrink: 0 ;
+                margin: 0 ;
             }
 
-            /* Khi chạm giữ trên Mobile */
+            /* Hiệu ứng khi chạm ngón tay giữ ảnh trên điện thoại */
             .image-item.touch-active {
-                transform: scale(1.1) !important;
-                z-index: 10;
+                transform: scale(1.1) ;
+                z-index: 10 !important;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.8);
             }
         }
 
 
-/* Khi Hover vào thẻ Cha (.rotating-border-wrapper) 
-   -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) */
-.rotating-border-wrapper:hover .hover-blink-svg,
-.rotating-border-wrapper.is-touched .hover-blink-svg {
-    animation: svg-blink 1s infinite ease-in-out;
-}
-@keyframes svg-blink {
-    0%, 100% { 
-        opacity: 1; 
-        filter: drop-shadow(0 0 2px rgba(176,225,245,0.4)); 
-    }
-    50% { 
-        opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
-        filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
-    }
-}
-
 /* NÚT BẤM KHUNG INTRO */
 /* Khung bọc ngoài cùng - Định vị absolute không bị lỗi click */
-.w-button-wrapper {
-    position: absolute;
-    left: 0px; /* tương đương left-4 */
-    margin-top: 0px; /* tương đương mt-4 */
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none; /* Chuột xuyên qua lớp bọc */
-}
+        .w-button-wrapper {
+            position: absolute;
+            left: 0px; /* tương đương left-4 */
+            margin-top: 0px; /* tương đương mt-4 */
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none; /* Chuột xuyên qua lớp bọc */
 
-/* 1. NÚT BẤM CHÍNH: Ép trình duyệt đưa lên tầng cao nhất */
-.w-button-main {
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 2; /* Số lớn hơn để nằm trên bóng */
-    transform: translate3d(0, 0, 0); /* Kích hoạt GPU layer cho nút để không bị bóng đè */
-}
+        }
 
-/* 2. KHỐI CHỨA BÓNG ĐỔ: Hạ xuống tầng dưới nút */
-.w-button-glow-container {
-    position: absolute;
-    inset: 0;
-    overflow: visible;
-    pointer-events: none;
-    z-index: 1; /* Số nhỏ hơn nút */
-    transform: translate3d(0, 0, 0); /* Giữ nguyên để kích hoạt GPU layer cho bóng */
-    will-change: transform, opacity;
-}
+        /* 1. NÚT BẤM CHÍNH: Ép trình duyệt đưa lên tầng cao nhất */
+        .w-button-main {
+            pointer-events: auto !important;
+            position: relative;
+            width: max-content;
+            z-index: 2; /* Số lớn hơn để nằm trên bóng */
+            transform: translate3d(0, 0, 0); /* Kích hoạt GPU layer cho nút để không bị bóng đè */
+        }
 
-/* Bóng 1: Khít viền, sáng rực khi hover */
-.w-glow-active {
-    position: absolute;
-    inset: -2px; /* Đẩy nhẹ ra ngoài viền 2px để không bị ruột nút đè */
-    border-radius: 9999px;
-    background: linear-gradient(135deg, #34d399, #2962ff, #d600f8);
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
+        /* 2. KHỐI CHỨA BÓNG ĐỔ: Hạ xuống tầng dưới nút */
+        .w-button-glow-container {
+            position: absolute;
+            inset: 0;
+            overflow: visible;
+            pointer-events: none;
+            z-index: 1; /* Số nhỏ hơn nút */
+            transform: translate3d(0, 0, 0); /* Giữ nguyên để kích hoạt GPU layer cho bóng */
+            will-change: transform, opacity;
+        }
 
-/* Bóng 2: Hào quang mịn tỏa rộng cố định */
-.w-glow-dim {
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    background: linear-gradient(135deg, #34d399, #2962ff, #d600f8);
-    filter: blur(25px);
-    opacity: 0.15;
-}
+        /* Bóng 1: Khít viền, sáng rực khi hover */
+        .w-glow-active {
+            position: absolute;
+            inset: -2px; /* Đẩy nhẹ ra ngoài viền 2px để không bị ruột nút đè */
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #34d399, #2962ff, #d600f8);
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
 
-/* Hiệu ứng HOVER điều khiển từ thẻ cha */
-.w-button-wrapper:hover .w-glow-active {
-    opacity: 1;
-    transform: scale(1.04); /* Tỏa rộng ra */
-}
+        /* Bóng 2: Hào quang mịn tỏa rộng cố định */
+        .w-glow-dim {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #34d399, #2962ff, #d600f8);
+            filter: blur(25px);
+            opacity: 0.15;
+        }
+
+        /* Hiệu ứng HOVER điều khiển từ thẻ cha */
+        .w-button-wrapper:hover .w-glow-active {
+            opacity: 1;
+            transform: scale(1.04); /* Tỏa rộng ra */
+        }
+
+/* Áp dụng khi màn hình là Desktop hoặc Điện thoại xoay ngang (chiều rộng từ 768px trở lên) */
+        @media (min-width: 768px) {
+            .w-button-wrapper {
+                /* 1. Trả về position relative để nút chiếm diện tích thực, tự động đẩy chữ và hình ra, không sợ bị cấn */
+                position: relative; 
+                left: auto;
+                margin-top: 0;
+                
+                /* 2. Tạo khoảng đệm cực kỳ an toàn xung quanh nút 
+                padding: 24px;  Tăng khoảng cách xung quanh nút lên 24px */
+                width: max-content;
+                /* 3. Căn chỉnh nút (Tùy chọn: căn trái, giữa hoặc phải tùy giao diện của bạn) */
+                justify-content: flex-start; /* Căn nút sát bên trái của cột. Nếu muốn giữa thì đổi thành center */
+                
+                /* 4. Đảm bảo không bị các thành phần tuyệt đối khác đè lên */
+                z-index: 30; 
+            }
+        }
+
+
+
+    
 
     </style>
 </head>
@@ -1183,7 +1227,7 @@
         </div>          
 
         <!--DẢI MARQUEE CHẠY NGANG-->
-        <div class="section-wrapper mt-6">
+        <div id="intro" class="section-wrapper mt-6">
             <h2 class="title text-xs text-slate-100 font-normal"> CÁC THỊ TRƯỜNG HỖ TRỢ </h2>
             <div class="marquee-container">
                 <div class="marquee-track">
@@ -1206,20 +1250,19 @@
             </div>
         </div>
 
-        <!-- =========================================================================
-           🚀 SECTION: GIỚI THIỆU HỆ THỐNG CHỈ BÁO CAO CẤP WYN_ALGO
-           Sử dụng hiệu ứng ánh sáng nền rực rỡ chiếu rải rác dưới nền các card để tăng độ chiều sâu thẩm mỹ
-           ========================================================================= -->
-         <!--test caroul -->
+    <!-- KHUNG ĐIỀU PHỐI CHỨA 3 Khung INTRO -->
+        <div id="simulator-container" class="transition-all duration-300 mx-auto w-full">
+            <div class="container">
+                
+                <!-- SECTION GIỚI THIỆU CHÍNH (ẢNH TRÁI, CHỮ PHẢI) -->
 
-<div class="container">
-    <div id="intro" class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <h2 class="text-3xl sm:text-5xl font-extrabold leading-[1.6] pt-4">
-            <span class="textGradient-ttl text-transparent bg-clip-text inline-block py-2">Sẵn sàng <br class="md:hidden">Đón Đầu Xu Hướng
-            </span>
-        </h2>
-        <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-95">Song hành cùng WynAlgo, bạn đã nắm trong tay chiếc chìa khóa.</p>
-    </div>
+            <div  class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-[1.6] pt-4">
+                <span class="textGradient-ttl text-white bg-clip-text inline-block py-2">Sẵn sàng <br class="md:hidden">Đón Đầu Xu Hướng
+                </span>
+            </h2>
+            <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-95">Song hành cùng WynAlgo, bạn đã nắm trong tay chiếc chìa khóa.</p>
+        </div>
 
         <section class="content-section relative ">
             <div class="image-zone">
@@ -1273,9 +1316,9 @@
             
         </section>
 
-        <div class="text-center max-w-4xl mx-auto space-y-4 mb-16">
+            <div class="text-center max-w-4xl mx-auto space-y-4 mb-16">
         <h2 class="text-3xl sm:text-5xl font-extrabold leading-[1.3] pt-4">
-        <span class="textGradient-ttl text-transparent bg-clip-text block py-2 leading-[1]">
+        <span class="textGradient-ttl text-white bg-clip-text block py-2 leading-[1]">
         Dành cho những nỗ lực<br>
         <span class="mt-2 block">vươn đến các vì sao</span>
         </span>
@@ -1283,16 +1326,16 @@
         <p class="text-[#f0fdff] text-xl sm:text-[26px] leading-normal opacity-95">Thành công được tạo ra bởi hành trình kiên trì và bền bỉ mỗi ngày,<br>không phải một đoạn đường ngắn.</p>
         </div>
 
-        <section class="content-section reverse-layout">
-            <div class="image-zone">
-                <div class="image-track">
-                    <div class="image-item"><img src="https://www.tradingview.com/x/JsRIVKWk/" alt="Ảnh 6"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=7" alt="Ảnh 7"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=8" alt="Ảnh 8"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=9" alt="Ảnh 9"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=10" alt="Ảnh 10"></div>
+            <section class="content-section relative reverse-layout">
+                <div class="image-zone">
+                    <div class="image-track">
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=11" alt="Ảnh 11"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=12" alt="Ảnh 12"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=13" alt="Ảnh 13"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=14" alt="Ảnh 14"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=15" alt="Ảnh 15"></div>
+                    </div>
                 </div>
-            </div>
             <div class="text-zone relative pb-16 md:pb-6">
                 <div class="relative z-10 text-pretty">
                 <h2>Chỉ báo BigTrade</h2>
@@ -1328,67 +1371,65 @@
             </div>
         </section>
 
-        <div class="text-center max-w-5xl mx-auto space-y-4 mb-16">
-        <h2 class="text-3xl sm:text-5xl font-extrabold leading-[1.3] pt-4">
-        <span class="textGradient-ttl text-transparent bg-clip-text block py-2 leading-[1]">
-        Lợi thế của bạn <br>
-        <span class="mt-2 block">đã ở ngay trước mắt</span>
-        </span>
-        </h2>
-        <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-80">Nhanh nhạy trong một ánh nhìn, đi đến quyết định quan trọng.</p>
-    </div>
-
-        <section class="content-section relative ">
-            <div class="image-zone">
-                <div class="image-track">
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=11" alt="Ảnh 11"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=12" alt="Ảnh 12"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=13" alt="Ảnh 13"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=14" alt="Ảnh 14"></div>
-                    <div class="image-item"><img src="https://picsum.photos/900/600?random=15" alt="Ảnh 15"></div>
-                </div>
-                
+            <div class="text-center max-w-5xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl sm:text-5xl font-extrabold leading-[1.3] pt-4">
+                <span class="textGradient-ttl text-white bg-clip-text block py-2 leading-[1]">
+                Lợi thế của bạn <br>
+                <span class="mt-2 block">đã ở ngay trước mắt</span>
+                </span>
+                </h2>
+                <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-80">Nhanh nhạy trong một ánh nhìn, đi đến quyết định quan trọng.</p>
             </div>
-            <div class="text-zone relative pb-16 md:pb-6">
-                <div class="relative z-10 text-pretty">
-                <h2>Chỉ báo SignalEye</h2>
-                <p>Công cụ phân tích đa tầng tổng hợp các tín hiệu của BigMoney & BigTrade, được thiết kế để phân tích chuyển động dòng tiền trên nhiều tài sản với 2 khung thời gian cùng lúc, giúp nhà đầu tư quan sát toàn cảnh mọi biến động trên thị trường.</p>
-                
-                    <div class="w-button-wrapper">
-        
-                        <div class="w-button-glow-container">
-                            <div class="w-glow-active"></div>
-                            <div class="w-glow-dim"></div>
-                        </div>
 
-                        <a href="https://vn.tradingview.com/script/fBV4cYvS-WynAlgo-SignalEye/" target="_blank" rel="noopener" 
-                       class="w-button-main w-fit flex flex-col items-center justify-center p-[2px] rounded-full bg-gradient-to-br from-[#34d399] via-[#2962ff] to-[#d600f8] font-bold text-sm text-center group">
-                        
-                            <div class="flex items-center gap-2 py-3 px-6 rounded-full bg-[#020920]/90 text-[#f0fdff] transition-all duration-300">
-                                <svg width="20" height="20" viewBox="0 0 47 47" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <g transform="matrix(1,0,0,1,-5.5,-5.5)">
-                                        <g transform="matrix(1,0,0,1,-2.5,-1.5)">
-                                            <path d="M46,27L46,15.06C46,13.453 45.362,11.912 44.225,10.775C43.088,9.638 41.547,9 39.94,9C33.297,9 22.702,9 16.06,9C14.453,9 12.911,9.638 11.775,10.775C10.638,11.911 10,13.453 10,15.06C10,21.914 10,33.012 10,39.888C10,43.263 12.736,46 16.112,46C20.986,46 27,46 27,46"/>
-                                            <path d="M44,33L44,52"/>
-                                            <path d="M34,42.5L53,42.5"/>
-                                            <path d="M18,32C18.018,31.968 25,25 25,25L32,32L39,25"/>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>Sử dụng trên biểu đồ</span>
-                            </div>                            
-                        </a>
-
+            <section class="content-section relative">
+                <div class="image-zone">
+                    <div class="image-track">
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=11" alt="Ảnh 11"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=12" alt="Ảnh 12"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=13" alt="Ảnh 13"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=14" alt="Ảnh 14"></div>
+                        <div class="image-item"><img src="https://picsum.photos/900/600?random=15" alt="Ảnh 15"></div>
                     </div>
                 </div>
-            </div>
-        </section>
+                
+                <div class="text-zone relative pb-16 md:pb-6">
+                    <div class="relative z-10 text-pretty">
+                        <h2>Chỉ báo SignalEye</h2>
+                        <p>Công cụ phân tích đa tầng tổng hợp các tín hiệu của BigMoney & BigTrade, được thiết kế để phân tích chuyển động dòng tiền trên nhiều tài sản với 2 khung thời gian cùng lúc, giúp nhà đầu tư quan sát toàn cảnh mọi biến động trên thị trường.</p>
+                        
+                        <!-- 100% CẤU TRÚC HTML NÚT NGUYÊN BẢN CỦA BẠN -->
+                        <div class="w-button-wrapper rotating-border-wrapper">
+                            <div class="w-button-glow-container">
+                                <div class="w-glow-active"></div>
+                                <div class="w-glow-dim"></div>
+                            </div>
 
+                            <a href="https://vn.tradingview.com/script/fBV4cYvS-WynAlgo-SignalEye/" target="_blank" rel="noopener" 
+                               class="w-button-main w-fit flex flex-col items-center justify-center p-[2px] rounded-full bg-gradient-to-br from-[#34d399] via-[#2962ff] to-[#d600f8] font-bold text-sm text-center group">
+                                <div class="flex items-center gap-2 py-3 px-6 rounded-full bg-[#020920]/90 text-[#f0fdff] transition-all duration-300">
+                                    <svg width="20" height="20" viewBox="0 0 47 47" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                        <g transform="matrix(1,0,0,1,-5.5,-5.5)">
+                                            <g transform="matrix(1,0,0,1,-2.5,-1.5)">
+                                                <path d="M46,27L46,15.06C46,13.453 45.362,11.912 44.225,10.775C43.088,9.638 41.547,9 39.94,9C33.297,9 22.702,9 16.06,9C14.453,9 12.911,9.638 11.775,10.775C10.638,11.911 10,13.453 10,15.06C10,21.914 10,33.012 10,39.888C10,43.263 12.736,46 16.112,46C20.986,46 27,46 27,46"/>
+                                                <path d="M44,33L44,52"/>
+                                                <path d="M34,42.5L53,42.5"/>
+                                                <path d="M18,32C18.018,31.968 25,25 25,25L32,32L39,25"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span>Sử dụng trên biểu đồ</span>
+                                </div>                            
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
     </div>
 
 
-
-<!-- 
+    <!-- 
       ========================================================================
       KHUNG SECTION CHÍNH (BẠN CÓ THỂ ĐIỀU CHỈNH KÍCH THƯỚC VÀ ĐỘ MỜ NỀN TẠI ĐÂY)
       ========================================================================
@@ -1458,10 +1499,10 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">30 ngày sử dụng.<br>Nhanh chóng nắm bắt cơ hội và giảm thiểu rủi ro khi tham gia thị trường.</p>
                         
                         <div class="py-4 border-t border-b border-white/5 space-y-1">
-                            <div class="text-slate-600 line-through text-xs" id="PreM30-strike">$39.99</div>
+                            <div class="text-emerald-400 text-sm font-bold" id="PreM30-strike">Coupon 100,000VNĐ vào lần đầu thanh toán.</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-white">$</span-->
-                                <span class="text-4xl font-extrabold tracking-normal text-white" id="PreM30-price">495,000</span>
+                                <span class="text-4xl font-extrabold tracking-normal text-white" id="PreM30-price">590,000</span>
                                 <span class="text-2xl font-extrabold tracking-normal text-white" id="PreM30-period">VNĐ</span>
                             </div>
                         </div>
@@ -1487,7 +1528,7 @@
                     </div>
                     
                     <div class="pt-8">
-                        <button type="button" data-plan="PreM30" data-price="495,000" class="js-plan-button w-full bg-gradient-to-r from-emerald-700 to-cyan-500  border border-emerald-700 hover:emerald-700 text-white text-center py-4 rounded-xl font-bold transition duration-200 hover:scale-[1.02] cursor-pointer">
+                        <button type="button" data-plan="PreM30" data-price="590,000" class="js-plan-button w-full bg-gradient-to-r from-emerald-700 to-cyan-500  border border-emerald-700 hover:emerald-700 text-white text-center py-4 rounded-xl font-bold transition duration-200 hover:scale-[1.02] cursor-pointer">
                             Đăng ký sử dụng
                         </button>
                     </div>
@@ -1511,7 +1552,7 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">90 ngày sử dụng.<br> Chủ động vượt qua những con sóng trên thị trường với nhiều lợi thế.</p>
                         
                         <div class="py-4 border-t border-white/10 border-b border-white/10 space-y-1">
-                            <div class="text-cyan-400/60 line-through text-xs" id="premium-strike">$67.99</div>
+                            <div class="text-[#4bd8f9] text-sm font-bold" id="premium-strike">Tiết kiệm 680,000VNĐ so với gói M30.</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-cyan-400">$</span-->
                                 <span class="text-4xl font-extrabold tracking-normal text-white" id="premium-price">1,090,000</span>
@@ -1569,7 +1610,7 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">365 ngày sử dụng.<br>Tâm thế luôn vững vàng trên suốt hành trình tìm kiếm tự do tài chính.</p>
                         
                         <div class="py-4 border-t border-b border-white/5 space-y-1">
-                            <div class="text-slate-600 line-through text-xs" id="ultimate-strike">$119.99</div>
+                            <div class="text-purple-400 text-sm font-bold" id="ultimate-strike">Tiết kiệm 3,090,000VNĐ so với gói M30.</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-cyan-400">$</span-->
                                 <span class="text-4xl font-extrabold tracking-normal text-white" id="ultimate-price">3,990,000</span>
@@ -1997,29 +2038,32 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- =========================================================================
+       💻 SCRIPT TOÀN BỘ LOGIC: HOẠT CẢNH CUỘN LIÊN TỤC & KÉO THẢ CHẠM VUỐT
+       ========================================================================= -->
     <script>
+
         // ==========================================
         // CONFIG DỄ CHỈNH SỬA BẢNG GIÁ
         // ==========================================
         const PLAN_PRICES = {
             PreM30: {
-                monthly: '495,000',
+                monthly: '590,000',
                 yearly: '990,000',
-                monthlyStrike: '$39.99',
-                yearlyStrike: '$495,000',
+                monthlyStrike: 'Coupon 100,000VNĐ vào lần đầu thanh toán.',
+                yearlyStrike: 'Coupon 100,000VNĐ vào lần đầu thanh toán.',
             },
             Premium: {
                 monthly: '1,090,000',
                 yearly: '2,170,000',
-                monthlyStrike: '$67.99',
-                yearlyStrike: '$1,090,000',
+                monthlyStrike: 'Tiết kiệm 680,000VNĐ so với gói M30.',
+                yearlyStrike: 'Tiết kiệm 800,000VNĐ so với gói M30.',
             },
             Ultimate: {
                 monthly: '3,990,000',
                 yearly: '7,690,000',
-                monthlyStrike: '$119.99',
-                yearlyStrike: '$3,990,000',
+                monthlyStrike: 'Tiết kiệm 3,090,000VNĐ so với gói M30.',
+                yearlyStrike: 'Tiết kiệm 3,890,000VNĐ so với gói M30.',
             },
         };
 
@@ -2191,8 +2235,8 @@
             const finalPrice = isYearly ? prices.yearly : prices.monthly;
             lastFocusedElement = document.activeElement;
             modalPlanName.textContent = plan;
-            modalPlanPriceValue.textContent = `$${finalPrice} VNĐ`;
-            modalPlanPricePeriod.textContent = isYearly ? '/tháng (trả hàng năm)' : '/tháng';
+            modalPlanPriceValue.textContent = `${finalPrice} VNĐ`;
+            modalPlanPricePeriod.textContent = isYearly ? '' : '';
             modalOrderId.textContent = `TIENCK_${plan.toUpperCase()}_${generateOrderSuffix()}`;
             paymentModal.classList.remove('hidden');
             paymentModal.setAttribute('aria-hidden', 'false');
@@ -2231,247 +2275,256 @@
                 closeMobileMenu(true);
             }
         });
-        
-    // MARQUEE
-        document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.marquee-container');
-    const track = document.querySelector('.marquee-track');
-    if (!container || !track) return;
 
-    // Nhân bản nội dung để tạo vòng lặp cuộn vô tận mượt mà
-    const originalContent = track.innerHTML;
-    track.innerHTML = originalContent + originalContent + originalContent;
 
-    let speed = 1; // Tốc độ chạy tự động (tăng số này nếu muốn chạy nhanh hơn)
-    let isPaused = false;
-    let animationFrameId = null;
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Hàm thực hiện cuộn tự động đều đặn
-    function step() {
-        if (!isPaused) {
-            container.scrollLeft += speed;
-            
-            // Nếu cuộn gần hết phân đoạn nhân bản, reset về vị trí ban đầu để tạo vòng lặp vô tận
-            if (container.scrollLeft >= track.scrollWidth / 3) {
-                container.scrollLeft = 0;
+    /* =========================================================================
+       📊 ĐOẠN 1: THANH MARQUEE CHẠY NGANG (CRYPTO, CỔ PHIẾU, FOREX...)
+       ========================================================================= */
+    const marqueeContainer = document.querySelector('.marquee-container');
+    const marqueeTrack = document.querySelector('.marquee-track');
+
+    if (marqueeContainer && marqueeTrack) {
+        // Nhân bản nội dung để tạo vòng lặp cuộn vô tận mượt mà
+        const originalContent = marqueeTrack.innerHTML;
+        marqueeTrack.innerHTML = originalContent + originalContent + originalContent;
+
+        let marqueeSpeed = 1; 
+        let isMarqueePaused = false;
+
+        function stepMarquee() {
+            if (!isMarqueePaused) {
+                marqueeContainer.scrollLeft += marqueeSpeed;
+                
+                // Reset về vị trí ban đầu khi cuộn hết 1/3
+                if (marqueeContainer.scrollLeft >= marqueeTrack.scrollWidth / 3) {
+                    marqueeContainer.scrollLeft = 0;
+                }
             }
+            requestAnimationFrame(stepMarquee);
         }
-        animationFrameId = requestAnimationFrame(step);
+        // Kích hoạt chạy tự động
+        requestAnimationFrame(stepMarquee);
+
+        // PC: Hover chuột
+        marqueeTrack.addEventListener('mouseenter', () => { isMarqueePaused = true; });
+        marqueeTrack.addEventListener('mouseleave', () => { isMarqueePaused = false; });
+
+        // Mobile: Chạm dừng
+        marqueeContainer.addEventListener('touchstart', () => { isMarqueePaused = true; }, { passive: true });
+        marqueeContainer.addEventListener('touchend', () => {
+            setTimeout(() => { isMarqueePaused = false; }, 200);
+        }, { passive: true });
     }
 
-    // Kích hoạt chạy tự động
-    animationFrameId = requestAnimationFrame(step);
 
     /* =========================================================================
-       💻 XỬ LÝ TRÊN MÁY TÍNH (PC/LAPTOP): Di chuột vào thì dừng, bỏ ra chạy tiếp
+       📸 ĐOẠN 2: CAROUSEL ẢNH CHỈ BÁO (KÉO THẢ / SWIPE 3D)
        ========================================================================= */
-    track.addEventListener('mouseenter', () => {
-        isPaused = true;
-    });
-    track.addEventListener('mouseleave', () => {
-        isPaused = false;
-    });
+    class InfiniteMarquee {
+        constructor(sectionEl) {
+            this.section = sectionEl;
+            this.zone = sectionEl.querySelector('.image-zone');
+            this.track = sectionEl.querySelector('.image-track');
+            if (!this.zone || !this.track) return; // Bảo vệ nếu thiếu HTML
+            
+            this.items = Array.from(this.track.querySelectorAll('.image-item'));
+            this.speed = 0.8; 
+            this.isMobile = false; 
+            
+            this.currentPos = 0;
+            this.isDragging = false;
+            this.startX = 0;
+            this.startY = 0;
+            this.scrollStart = 0;
+            this.isHovered = false;
+            this.activeTouchItem = null;
 
-    /* =========================================================================
-       📱 XỬ LÝ TRÊN DI ĐỘNG (TOUCH EVENTS): Chạm dừng, vuốt kéo tự do, thả ra chạy tiếp
-       ========================================================================= */
-    container.addEventListener('touchstart', () => {
-        isPaused = true; // Dừng chạy tự động lập tức khi chạm tay
-    }, { passive: true });
+            this.init();
+        }
 
-    container.addEventListener('touchend', () => {
-        // Tạo một khoảng trễ nhỏ 200ms sau khi thả tay để trải nghiệm mượt mà hơn
-        setTimeout(() => {
-            isPaused = false;
-        }, 200);
-    }, { passive: true });
-});
-
-    /* touch trial button */
-  const btn = document.querySelector('.rotating-border-wrapper');
-
-// Kích hoạt khi bắt đầu chạm
-btn.addEventListener('touchstart', () => {
-    btn.classList.add('is-touched');
-}, { passive: true });
-
-// Tắt khi nhấc ngón tay
-btn.addEventListener('touchend', () => {
-    setTimeout(() => {
-        btn.classList.remove('is-touched');
-    }, 500); // Đợi 0.5s để người dùng nhìn thấy icon nháy trước khi tắt
-}, { passive: true });
-
-
-// Script xử lý Logic Cuộn Liên Tục & Kéo Thả (Drag/Swipe)/
-class InfiniteMarquee {
-            constructor(sectionEl) {
-                this.section = sectionEl;
-                this.zone = sectionEl.querySelector('.image-zone');
-                this.track = sectionEl.querySelector('.image-track');
-                this.items = Array.from(this.track.querySelectorAll('.image-item'));
-                
-                this.speed = 0.8; // Tốc độ trượt tự động mượt mà
-                this.isMobile = false;
-                
-                this.currentPos = 0;
-                this.isDragging = false;
-                this.startX = 0;
-                this.startY = 0;
-                this.scrollStart = 0;
-                this.isHovered = false;
-                this.activeTouchItem = null;
-
-                this.init();
+        init() {
+            this.checkBreakpoint();
+            this.cloneItems();
+            this.setupEvents();
+            
+            if (document.readyState === 'complete') {
+                this.animate();
+            } else {
+                window.addEventListener('load', () => this.animate());
             }
-
-            init() {
+            
+            window.addEventListener('resize', () => {
+                const wasMobile = this.isMobile;
                 this.checkBreakpoint();
-                this.cloneItems();
-                this.setupEvents();
-                
-                // Đảm bảo ảnh đã tải để tính toán kích thước loop chuẩn xác nhất
-                window.addEventListener('load', () => {
-                    this.animate();
-                });
-                // Chạy dự phòng nếu sự kiện load đã kích hoạt trước đó
-                if (document.readyState === 'complete') {
-                    this.animate();
+                if (wasMobile !== this.isMobile) {
+                    this.currentPos = 0; 
                 }
-                
-                window.addEventListener('resize', () => {
-                    const wasMobile = this.isMobile;
-                    this.checkBreakpoint();
-                    if (wasMobile !== this.isMobile) {
-                        this.currentPos = 0; // Reset vị trí khi chuyển breakpoint
-                    }
-                });
-            }
+            });
+        }
 
-            checkBreakpoint() {
-                this.isMobile = window.innerWidth <= 768;
-            }
+        checkBreakpoint() {
+            const simContainer = document.getElementById('simulator-container');
+            const isSimMobile = simContainer && simContainer.classList.contains('sim-mode-mobile');
+            this.isMobile = (window.innerWidth <= 768) || isSimMobile;
+        }
 
-            cloneItems() {
-                // Nhân bản mảng 5 ảnh để tạo hiệu ứng vòng lặp liền mạch
-                this.items.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    this.track.appendChild(clone);
-                });
-            }
+        cloneItems() {
+            const oldClones = this.track.querySelectorAll('.marquee-clone');
+            oldClones.forEach(c => c.remove());
 
-            getLoopSize() {
-                const gap = 25; // Khớp với khoảng cách gap trong CSS
-                if (this.items.length === 0) return 0;
-                
-                if (this.isMobile) {
-                    const itemWidth = this.items[0].offsetWidth;
-                    return this.items.length * (itemWidth + gap);
-                } else {
-                    const itemHeight = this.items[0].offsetHeight;
-                    return this.items.length * (itemHeight + gap);
-                }
-            }
+            this.items.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.classList.add('marquee-clone');
+                this.track.appendChild(clone);
+            });
+        }
 
-            setupEvents() {
-                // --- SỰ KIỆN HOVER (Desktop) ---
-                this.zone.addEventListener('mouseenter', () => {
-                    if (!this.isMobile) this.isHovered = true;
-                });
-                this.zone.addEventListener('mouseleave', () => {
-                    if (!this.isMobile) {
-                        this.isHovered = false;
-                        this.isDragging = false;
-                        this.zone.classList.remove('dragging');
-                    }
-                });
-
-                // --- SỰ KIỆN KÉO CHUỘT (Desktop) ---
-                this.zone.addEventListener('mousedown', (e) => {
-                    if (this.isMobile) return;
-                    this.isDragging = true;
-                    this.zone.classList.add('dragging');
-                    this.startY = e.clientY;
-                    this.scrollStart = this.currentPos;
-                });
-
-                window.addEventListener('mousemove', (e) => {
-                    if (!this.isDragging || this.isMobile) return;
-                    const deltaY = e.clientY - this.startY;
-                    this.currentPos = this.scrollStart + deltaY;
-                });
-
-                window.addEventListener('mouseup', () => {
-                    if (this.isMobile) return;
-                    this.isDragging = false;
-                    this.zone.classList.remove('dragging');
-                });
-
-                // --- SỰ KIỆN CHẠM VUỐT & PHÓNG TO (Mobile) ---
-                this.zone.addEventListener('touchstart', (e) => {
-                    if (!this.isMobile) return;
-                    this.isDragging = true;
-                    this.startX = e.touches[0].clientX;
-                    this.scrollStart = this.currentPos;
-
-                    const targetItem = e.target.closest('.image-item');
-                    if (targetItem) {
-                        this.activeTouchItem = targetItem;
-                        targetItem.classList.add('touch-active');
-                    }
-                }, { passive: true });
-
-                this.zone.addEventListener('touchmove', (e) => {
-                    if (!this.isDragging || !this.isMobile) return;
-                    const deltaX = e.touches[0].clientX - this.startX;
-                    this.currentPos = this.scrollStart + deltaX;
-                }, { passive: true });
-
-                window.addEventListener('touchend', () => {
-                    if (!this.isMobile) return;
-                    this.isDragging = false;
-                    if (this.activeTouchItem) {
-                        this.activeTouchItem.classList.remove('touch-active');
-                        this.activeTouchItem = null;
-                    }
-                });
-            }
-
-            animate() {
-                const loopSize = this.getLoopSize();
-
-                if (loopSize > 0) {
-                    // Tự động chạy khi không có tương tác người dùng
-                    if (!this.isDragging && !this.isHovered && !this.activeTouchItem) {
-                        this.currentPos -= this.speed;
-                    }
-
-                    // Tính toán trả tọa độ để lặp vô hạn
-                    if (this.currentPos <= -loopSize) {
-                        this.currentPos += loopSize;
-                        if(this.isDragging) this.scrollStart += loopSize;
-                    } else if (this.currentPos > 0) {
-                        this.currentPos -= loopSize;
-                        if(this.isDragging) this.scrollStart -= loopSize;
-                    }
-
-                    // Áp dụng mượt mà bằng Translate3d phần cứng tăng tốc
-                    if (this.isMobile) {
-                        this.track.style.transform = `translate3d(${this.currentPos}px, 0, 0)`;
-                    } else {
-                        this.track.style.transform = `translate3d(0, ${this.currentPos}px, 0)`;
-                    }
-                }
-
-                requestAnimationFrame(() => this.animate());
+        getLoopSize() {
+            const gap = 25; 
+            if (this.items.length === 0) return 0;
+            
+            if (this.isMobile) {
+                const itemWidth = this.items[0].offsetWidth;
+                return this.items.length * (itemWidth + gap);
+            } else {
+                const itemHeight = this.items[0].offsetHeight;
+                return this.items.length * (itemHeight + gap);
             }
         }
 
-        // Khởi chạy độc lập cho cả 3 Section
-        document.querySelectorAll('.content-section').forEach(section => {
-            new InfiniteMarquee(section);
-        });
-    
+        setupEvents() {
+            // PC Hover
+            this.zone.addEventListener('mouseenter', () => { this.isHovered = true; });
+            this.zone.addEventListener('mouseleave', () => {
+                this.isHovered = false;
+                this.isDragging = false;
+                this.zone.classList.remove('dragging');
+            });
+
+            // PC Click & Drag
+            this.zone.addEventListener('mousedown', (e) => {
+                this.isDragging = true;
+                this.zone.classList.add('dragging');
+                this.startY = e.clientY;
+                this.startX = e.clientX;
+                this.scrollStart = this.currentPos;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!this.isDragging) return;
+                if (this.isMobile) {
+                    const deltaX = e.clientX - this.startX;
+                    this.currentPos = this.scrollStart + deltaX;
+                } else {
+                    const deltaY = e.clientY - this.startY;
+                    this.currentPos = this.scrollStart + deltaY;
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                this.isDragging = false;
+                this.zone.classList.remove('dragging');
+            });
+
+            // Mobile/Tablet Touch Events
+            this.zone.addEventListener('touchstart', (e) => {
+                this.isDragging = true;
+                this.isHovered = true; 
+                
+                const touch = e.touches[0];
+                this.startX = touch.clientX;
+                this.startY = touch.clientY;
+                this.scrollStart = this.currentPos;
+
+                const targetItem = e.target.closest('.image-item');
+                if (targetItem) {
+                    this.activeTouchItem = targetItem;
+                    targetItem.classList.add('touch-active');
+                }
+            }, { passive: true });
+
+            this.zone.addEventListener('touchmove', (e) => {
+                if (!this.isDragging) return;
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - this.startX;
+                const deltaY = touch.clientY - this.startY;
+
+                if (this.isMobile) {
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                        if (e.cancelable) e.preventDefault();
+                        this.currentPos = this.scrollStart + deltaX;
+                    }
+                } else {
+                    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                        if (e.cancelable) e.preventDefault();
+                        this.currentPos = this.scrollStart + deltaY;
+                    }
+                }
+            }, { passive: false });
+
+            window.addEventListener('touchend', () => {
+                this.isDragging = false;
+                if (this.activeTouchItem) {
+                    this.activeTouchItem.classList.remove('touch-active');
+                    this.activeTouchItem = null;
+                }
+                setTimeout(() => {
+                    if (!this.isDragging) this.isHovered = false;
+                }, 200);
+            });
+        }
+
+        animate() {
+            const loopSize = this.getLoopSize();
+            if (loopSize > 0) {
+                if (!this.isDragging && !this.isHovered && !this.activeTouchItem) {
+                    this.currentPos -= this.speed;
+                }
+
+                if (this.currentPos <= -loopSize) {
+                    this.currentPos += loopSize;
+                    if (this.isDragging) this.scrollStart += loopSize;
+                } else if (this.currentPos > 0) {
+                    this.currentPos -= loopSize;
+                    if (this.isDragging) this.scrollStart -= loopSize;
+                }
+
+                if (this.isMobile) {
+                    this.track.style.transform = `translate3d(${this.currentPos}px, 0, 0)`;
+                } else {
+                    this.track.style.transform = `translate3d(0, ${this.currentPos}px, 0)`;
+                }
+            }
+            requestAnimationFrame(() => this.animate());
+        }
+    }
+
+    // Khởi tạo Carousel ảnh chỉ báo
+    document.querySelectorAll('.content-section').forEach(section => {
+        new InfiniteMarquee(section);
+    });
+
+
+    /* =========================================================================
+       🔘 ĐOẠN 3: HIỆU ỨNG CHẠM NÚT "SỬ DỤNG TRÊN BIỂU ĐỒ" (ĐÃ GỘP CHUNG)
+       ========================================================================= */
+    const actionBtn = document.querySelector('.rotating-border-wrapper');
+    if (actionBtn) {
+        actionBtn.addEventListener('touchstart', () => {
+            actionBtn.classList.add('is-touched');
+        }, { passive: true });
+
+        actionBtn.addEventListener('touchend', () => {
+            setTimeout(() => {
+                actionBtn.classList.remove('is-touched');
+            }, 500);
+        }, { passive: true });
+    }
+});
+
     </script>
 </body>
 </html>
