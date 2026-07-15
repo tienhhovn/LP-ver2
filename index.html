@@ -2484,6 +2484,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.zone.classList.remove('dragging');
             });
 
+            // 🎯 ĐOẠN THÊM MỚI: BẮT SỰ KIỆN LĂN CHUỘT (WHEEL) TRÊN DESKTOP
+        this.zone.addEventListener('wheel', (e) => {
+            // Ngăn chặn trình duyệt cuộn trang web lên xuống khi chuột đang nằm trong Carousel
+            e.preventDefault();
+
+            // e.deltaY > 0 nghĩa là người dùng đang lăn bánh xe chuột xuống
+            // Trên Desktop (PC), Carousel chạy dọc nên ta thay đổi tọa độ theo e.deltaY trực tiếp
+            // Hệ số 1.2 giúp tốc độ lướt theo chuột vừa phải, bạn tăng lên 1.5 hoặc 2 nếu muốn lướt nhanh nữa
+            if (!this.isMobile) {
+                this.currentPos -= e.deltaY * 1.2;
+            } else {
+                // Trường hợp nếu Desktop bật chế độ responsive nhỏ (Mobile) chạy ngang
+                this.currentPos -= e.deltaY * 1.2;
+            }
+
+            // Đồng bộ luôn biến scrollStart để nếu người dùng đang lăn chuột mà nhấn chuột trái kéo tiếp không bị giật
+            this.scrollStart = this.currentPos;
+            }, { passive: false }); // Bắt buộc passive: false để e.preventDefault() hoạt động thành công
+            // hết thêm mới
+
             this.zone.addEventListener('mousedown', (e) => {
                 this.isDragging = true;
                 this.zone.classList.add('dragging');
