@@ -2355,99 +2355,44 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
-/*test js marquee */
-    (function initMobileSwipeMarquee() {
-    const run = () => {
-        const viewport = document.querySelector('.ads-supported-markets__viewport');
-        if (!viewport) return;
-
-        let startX = 0;
-        let scrollStart = 0;
-
-        viewport.addEventListener('touchstart', (e) => {
-            viewport.classList.add('is-dragging');
-            // Khi vuốt kéo, tạm thời loại bỏ animation để ngón tay điều khiển trực tiếp
-            const track = viewport.querySelector('.ads-supported-markets__track');
-            if (track) track.style.animationPlayState = 'paused';
-            
-            startX = e.touches[0].clientX;
-            scrollStart = viewport.scrollLeft;
-        }, { passive: true });
-
-        viewport.addEventListener('touchmove', (e) => {
-            const currentX = e.touches[0].clientX;
-            const deltaX = startX - currentX;
-            viewport.scrollLeft = scrollStart + deltaX;
-        }, { passive: true });
-
-        viewport.addEventListener('touchend', () => {
-            viewport.classList.remove('is-dragging');
-            const track = viewport.querySelector('.ads-supported-markets__track');
-            if (track) track.style.animationPlayState = 'running';
-        }, { passive: true });
-    };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', run);
-    } else {
-        run();
-    }
-})();
-
-
     /* =========================================================================
        📊 ĐOẠN 1: THANH MARQUEE CHẠY NGANG (CRYPTO, CỔ PHIẾU, FOREX...)
        ========================================================================= */
-    (() => {
-        const container = document.querySelector('.marquee-container');
-        const track = document.querySelector('.marquee-track');
-        
-        // Kiểm tra nghiêm ngặt: Nếu thiếu một trong hai phần tử thì dừng ngay để tránh lỗi script
-        if (!container || !track) {
-            console.warn("Marquee Thị trường: Không tìm thấy .marquee-container hoặc .marquee-track trong HTML.");
-            return;
-        }
+    const marqueeContainer = document.querySelector('.marquee-container');
+    const marqueeTrack = document.querySelector('.marquee-track');
 
-        // Đảm bảo CSS tối thiểu để scrollLeft hoạt động (Fix trực tiếp bằng JS cho an toàn)
-        container.style.overflowX = 'auto';
-        container.style.display = 'block';
-        track.style.display = 'inline-flex';
-        track.style.whiteSpace = 'nowrap';
+    if (marqueeContainer && marqueeTrack) {
+        // Nhân bản nội dung để tạo vòng lặp cuộn vô tận mượt mà
+        const originalContent = marqueeTrack.innerHTML;
+        marqueeTrack.innerHTML = originalContent + originalContent + originalContent;
 
-        // Nhân bản nội dung
-        const originalContent = track.innerHTML;
-        track.innerHTML = originalContent + originalContent + originalContent;
+        let marqueeSpeed = 1; 
+        let isMarqueePaused = false;
 
-        let speed = 1; 
-        let isPaused = false;
-        let scrollPos = 0; 
-
-        function step() {
-            if (!isPaused) {
-                scrollPos += speed;
-                container.scrollLeft = Math.floor(scrollPos);
+        function stepMarquee() {
+            if (!isMarqueePaused) {
+                marqueeContainer.scrollLeft += marqueeSpeed;
                 
-                if (container.scrollLeft >= track.scrollWidth / 3) {
-                    scrollPos = 0;
-                    container.scrollLeft = 0;
+                // Reset về vị trí ban đầu khi cuộn hết 1/3
+                if (marqueeContainer.scrollLeft >= marqueeTrack.scrollWidth / 3) {
+                    marqueeContainer.scrollLeft = 0;
                 }
             }
-            requestAnimationFrame(step);
+            requestAnimationFrame(stepMarquee);
         }
+        // Kích hoạt chạy tự động
+        requestAnimationFrame(stepMarquee);
 
-        requestAnimationFrame(step);
+        // PC: Hover chuột
+        marqueeTrack.addEventListener('mouseenter', () => { isMarqueePaused = true; });
+        marqueeTrack.addEventListener('mouseleave', () => { isMarqueePaused = false; });
 
-        // Sự kiện PC
-        track.addEventListener('mouseenter', () => { isPaused = true; });
-        track.addEventListener('mouseleave', () => { isPaused = false; });
-
-        // Sự kiện Mobile
-        container.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
-        container.addEventListener('touchend', () => {
-            setTimeout(() => { isPaused = false; }, 200);
+        // Mobile: Chạm dừng
+        marqueeContainer.addEventListener('touchstart', () => { isMarqueePaused = true; }, { passive: true });
+        marqueeContainer.addEventListener('touchend', () => {
+            setTimeout(() => { isMarqueePaused = false; }, 200);
         }, { passive: true });
-    })();
+    }
 
 
     /* =========================================================================
