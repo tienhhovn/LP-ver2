@@ -553,7 +553,7 @@
     mask-composite: exclude;
 }
 
-/* Tạo dải màu chuyển động chạy tròn phía sau lớp mặt nạ */
+/* Tạo dải màu chuyển động chạy tròn phía sau lớp mặt nạ #34d399, #2962ff, #d600f8)*/
 .rotating-border-gradient {
     position: absolute;
     width: 135%;
@@ -563,10 +563,10 @@
     transform: translate(-50%, -50%);
     background: conic-gradient(
         from 0deg, 
-        #67e8f9, /* Xanh Cyan 06b6d4*/
-        #7c3aed, /* Tím huyền ảo a855f7*/
+        #2962ff, /* Xanh Cyan 06b6d4*/
+        #d600f8, /* Tím huyền ảo a855f7*/
         #34d399, /* Xanh Emerald 10b981*/
-        #67e8f9  
+        #2962ff  
     );
     /* 👇 TỐC ĐỘ XOAY VIỀN: 4.5s xoay mượt mà, càng nhỏ xoay càng nhanh */
     animation: rotate-border-gradient 4.5s linear infinite;
@@ -712,7 +712,7 @@
 
 /* 🌟 DÒNG THAY ĐỔI: Thêm `overflow-x: auto` trên di động để cho phép vuốt kéo tự do, ẩn thanh cuộn xấu xí đi */
 .marquee-container {
-    width: 92%;
+    width: 85%;
     overflow-x: auto; /* Cho phép cuộn ngang tự nhiên khi vuốt tay */
     overflow-y: hidden;
     /*background-color: #0209204d;
@@ -812,7 +812,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 0px;
+            padding: 20px 0px;
         }
 
         /* --- CẤU TRÚC SECTION --- */
@@ -1247,7 +1247,7 @@
                     Trải nghiệm 30 ngày không rủi ro 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199.9 123.09" class="hover-blink-svg transition-all duration-300 w-[55px] h-auto">
                       <defs>
-                        <!-- Gộp tất cả gradient trùng nhau bằng xlink:href, lược bỏ tọa độ thừa -->
+                        
                         <linearGradient id="g" x1="177.11" y1="57.86" x2="46.34" y2="-.05" gradientUnits="userSpaceOnUse">
                           <stop offset="0" stop-color="#fff"/>
                           <stop offset=".26" stop-color="#e0f3fb"/>
@@ -1256,7 +1256,7 @@
                         </linearGradient>
                       </defs>
                       
-                      <!-- Group chung quy định tất cả thuộc tính viền giống nhau (Stroke, Cap, Miter, Width) -->
+                      
                       <g fill="none" stroke="url(#g)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5">
                         <path d="M67.57,44.78l-30.2-11.11c-2.67-.98-2.3-4.87.51-5.34L194.17,2.54c2.67-.44,4.32,2.81,2.39,4.71l-65.89,64.72c-.82.8-2.04,1.02-3.08.55l-24.11-10.85c-.85-.38-1.82-.31-2.61.18l-22.71,14.24c-2.42,1.52-5.27-1.17-3.9-3.68l10.05-18.35c.29-.54.76-.96,1.31-1.21l73.4-32.32"/>
                         <path d="M62.2,85.75L2.5,120.59"/>
@@ -1264,6 +1264,7 @@
                         <path d="M62.2,68.99l-18.95,11.06"/>
                       </g>
                     </svg>
+                    
                     <!-- Icon SVG Arrow Right sắc nét >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
                         <path d="M4 12H20"/>
@@ -1332,7 +1333,7 @@
 
             <div  class="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 class="text-3xl sm:text-5xl  font-bold leading-[1.6] pt-4">
-                <span class="textGradient-ttl text-white bg-clip-text inline-block py-2">Sẵn sàng <br class="md:hidden">Đón Đầu Xu Hướng
+                <span class="textGradient-ttl text-white bg-clip-text inline-block py-2">Sẵn sàng <br class="md:hidden">đón đầu xu hướng
                 </span>
             </h2>
             <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-95">Song hành cùng WynAlgo, bạn đã nắm trong tay chiếc chìa khóa.</p>
@@ -1448,11 +1449,11 @@
             <div class="text-center max-w-5xl mx-auto space-y-4 mb-16">
                 <h2 class="text-3xl sm:text-5xl  font-bold leading-[1.3] pt-4">
                 <span class="textGradient-ttl text-white bg-clip-text block py-2 leading-[1]">
-                Lợi thế của bạn <br>
+                Lợi thế của bạn <br class="md:hidden">
                 <span class="mt-2 block">đã ở ngay trước mắt</span>
                 </span>
                 </h2>
-                <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-80">Nhanh nhạy trong một ánh nhìn, đi đến quyết định quan trọng.</p>
+                <p class="text-[#f0fdff] text-xl sm:text-[26px] opacity-80">Nhanh nhạy trong một ánh nhìn, thấu hiểu dòng tiền tạo lập.</p>
             </div>
 
             <section class="content-section relative">
@@ -1516,15 +1517,17 @@
     -->
 
 <!-- SECTION PRICING CARDS -->
-        <section id="pricing" class="relative max-w-7xl mx-auto px-6 lg:px-8 py-12 z-10 overflow-hidden">
+        <section id="pricing" class="relative max-w-7xl mx-auto px-6 lg:px-8 py-2 z-10 overflow-hidden">
             <div class="text-center space-y-4 mb-6">
                 <h2 class="text-3xl sm:text-5xl  font-bold text-white">
-                <span class=" text-white  font-bold">Chọn Ngay Kế Hoạch Của Bạn</span></h2>
+                <span class="textGradient-ttl text-white bg-clip-text block py-2 leading-[1]">
+                Lựa chọn kế hoạch  <br class="md:hidden">phù hợp với bạn</span>
+            </h2>
             </div>
 
             <div class="flex flex-col items-center justify-center gap-y-4 pt-4 px-4 max-w-md mx-auto relative z-20">
                 <div class="px-5 py-2 border border-white/10 bg-slate-950/40 rounded-xl text-slate-200 text-xs sm:text-sm font-semibold tracking-normal shadow-md">
-                    Thanh toán theo năm, tiết kiệm thêm đến <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400  font-bold animate-pulse">45% chi phí!</span>
+                    Thanh toán theo năm, tiết kiệm thêm đến hơn <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400  font-bold animate-pulse">40% chi phí!</span>
                 </div>
                 
                 <div class="inline-flex p-1 bg-slate-950/80 border border-white/10 rounded-full w-full max-w-[280px] shadow-2xl">
@@ -1584,19 +1587,19 @@
                         <ul class="space-y-3 pt-2">
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid text-emerald-400 fa-circle-check"></i>
-                                Bộ chỉ báo Xu hướng cơ bản
+                                Truy cập đầy đủ thư viện chỉ báo WynAlgo
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid text-emerald-400 fa-circle-check"></i>
-                                Tín hiệu Buy/Sell độ trễ thấp
+                                Bộ 3 chỉ báo Premium trên TradingView
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid text-emerald-400 fa-circle-check"></i>
-                                Cảnh báo qua Telegram/Discord cơ bản
+                                Tín hiệu dòng tiền & Xu hướng thị trường
                             </li>
-                            <li class="flex items-center gap-3 text-xs text-slate-500 line-through">
-                                <i class="fa-solid text-slate-700 fa-circle-xmark"></i>
-                                1,000 AI Credits hỗ trợ phân tích
+                            <li class="flex items-center gap-3 text-xs text-slate-200">
+                                <i class="fa-solid text-emerald-400 fa-circle-check"></i>
+                                Công cụ phân tích kỹ thuật & Bộ lọc quét thị trường 
                             </li>
                         </ul>
                     </div>
@@ -1726,209 +1729,104 @@
                 <span>Vuốt ngang để xem các gói</span>
                 <i class="fa-solid fa-angles-right animate-pulse"></i>
             </div-->
-
             <div class="text-center space-y-4 mb-6">
                 <h2 class="text-3xl sm:text-5xl  font-bold text-white">
-                <span class=" text-white  font-bold">Dấn bước tới, Bạn luôn được bảo vệ</span></h2>
+                <span class="textGradient-ttl text-white bg-clip-text block py-2 leading-[1]">
+                Khởi đầu an tâm hơn, <br class="md:hidden">Bạn luôn được bảo vệ </span>
+            </h2>
             </div>
+<!-- MAIN CARD CONTAINER -->
+            <div class="w-full max-w-5xl mx-auto">
+        
+        <!-- MAIN CARD CONTAINER -->
+        <div class=" border-none rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+            
+            <!-- Ambient Glow Background Decoration -->
+            <div class="absolute -top-24 -left-24 w-60 h-60 bg-white-500 rounded-full blur-3xl pointer-events-none"></div>
+            <!--div class="absolute -bottom-24 -right-24 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div-->
 
-            <!-- CHÍNH SÁCH BẢO HÀNH HOÀN TIỀN -->
-            <div class="mt-16 bg-gradient-to-r from-slate-950/85 to-slate-900/60 border border-emerald-500/30 rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto relative overflow-hidden shadow-2xl z-10">
-                <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 relative z-10">
-                    <div class="w-20 h-20 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-4xl flex-shrink-0 border border-emerald-500/25 shadow-lg shadow-emerald-500/5">
-                        <i class="fa-solid fa-shield-halved"></i>
+            <!-- GRID CONTAINER: 12 Columns total (4 cols left = 1/3, 8 cols right = 2/3) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
+                
+                <!-- LEFT COLUMN (1/3 width on MD screens = col-span-4) -->
+                <div class="md:col-span-4 flex flex-col items-center justify-center text-center p-4 h-full">
+                    
+                    <!-- Image Wrapper -->
+                    <div class="relative group w-full flex justify-center mb-4">
+                        <div class="absolute inset-0 rounded-2xl blur-lg"></div>
+                        <img 
+                            src="img/30day2.webp" 
+                            alt="Cam kết 30 ngày hoàn tiền" 
+                            class="relative w-36 sm:w-44 md:w-full max-w-[200px] h-auto object-contain transition-transform duration-300  filter drop-shadow-xl"
+                            onerror="this.onerror=null; this.src='https://placehold.co/300x300/022c22/10b981?text=30+Days+Guarantee';"
+                        />
                     </div>
-                    <div class="space-y-4 text-center lg:text-left">
-                        <div class="flex items-center gap-2.5 flex-wrap justify-center lg:justify-start">
-                            <span class="text-[10px] uppercase tracking-widest  font-bold text-emerald-400 bg-[#02092080] px-2.5 py-1 rounded-full border border-emerald-500/30">WynAlgo Trust Policy</span>
-                            <h4 class=" font-bold text-white text-xl sm:text-2xl">Chính Sách Cam Kết Vàng Hoàn Tiền 100%</h4>
-                        </div>
-                        <p class="text-sm text-slate-300 leading-relaxed font-medium">
-                            Chúng tôi tuyệt đối tin tưởng vào chất lượng và giá trị thực chiến của hệ thống chỉ báo WynAlgo. Nếu sau khi trải nghiệm bạn không hài lòng về bộ công cụ hoặc thấy không phù hợp với phương pháp giao dịch của mình trong <strong>30 ngày đầu tiên</strong>, hãy liên hệ với chúng tôi để được hoàn trả 100% phí thuê bao ngay lập tức.
+
+                    <!-- Caption Text under Image -->
+                    <div class="space-y-1">
+                        <span class="inline-flex items-center gap-1.5 text-6xl font-semibold text-[#f0fdff]">
+                            30 Ngày
+                        </span>
+                        <p class="text-3xl text-[#f0fdff] font-medium">
+                            cam kết hoàn tiền
                         </p>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN (2/3 width on MD screens = col-span-8) -->
+                <div class="md:col-span-8 space-y-5 text-center md:text-left flex flex-col justify-center">
+                    
+                    <!-- Header Section -->
+                    <div class="space-y-3">
+                       
                         
-                        <!-- 3 cột điều khoản minh bạch -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-white/5 text-left">
-                            <div class="flex items-center gap-2">
-                                <div class="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
-                                <span class="text-xs text-slate-200 font-bold">Không yêu cầu lý do phức tạp</span>
+                        <!--h3 class="font-bold text-white text-2xl sm:text-base tracking-tight">
+                            Trải nghiệm không rủi ro
+                        </h3-->
+                    </div>
+
+                    <!-- Main Description -->
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                        Trong <strong class="text-emerald-400 font-semibold">30 ngày đầu tiên sử dụng</strong> , chỉ cần gửi yêu cầu hoàn tiền đến bộ phận hỗ trợ để được hoàn trả <strong class="text-white">100% chi phí</strong> đã đăng ký.
+                    </p>
+                    
+                    <!-- 3 Feature Points Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 text-left">
+                        
+                        <!-- Feature 1 -->
+                        <div class="flex items-center gap-2.5 bg-slate-900/50 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-white/5 sm:border-none">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0 border border-emerald-500/30">
+                                <i class="fa-solid fa-check"></i>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
-                                <span class="text-xs text-slate-200 font-bold">Xử lý hoàn tiền trong 24 Giờ</span>
+                            <span class="text-xs text-slate-200 font-semibold">Không yêu cầu lý do</span>
+                        </div>
+                        
+                        <!-- Feature 2 -->
+                        <div class="flex items-center gap-2.5 bg-slate-900/50 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-white/5 sm:border-none">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0 border border-emerald-500/30">
+                                <i class="fa-solid fa-check"></i>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
-                                <span class="text-xs text-slate-200 font-bold">Bảo hành chính chủ nhà sáng lập</span>
+                            <span class="text-xs text-slate-200 font-semibold">Xử lý hoàn tiền 24/7</span>
+                        </div>
+                        
+                        <!-- Feature 3 -->
+                        <div class="flex items-center gap-2.5 bg-slate-900/50 sm:bg-transparent p-2.5 sm:p-0 rounded-xl border border-white/5 sm:border-none">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0 border border-emerald-500/30">
+                                <i class="fa-solid fa-check"></i>
                             </div>
+                            <span class="text-xs text-slate-200 font-semibold">Hỗ trợ tại Việt Nam</span>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
-        </section>
+        </div>
 
-        <!-- SECTION FEATURES DETAILED EXPLANATION -->
-        <section id="features" class="relative overflow-hidden max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 z-10">
-            <!-- 🔦 Đèn cực quang tĩnh chiếu hắt rực rỡ từ nền lên bên góc phải -->
-            <div class="ambient-glow-orb glow-purple w-[600px] h-[500px] top-12 -right-36"></div>
+    </div>
 
-            <div class="absolute inset-0 ambient-soft-spotlight pointer-events-none"></div>
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 relative z-10">
-                <h2 class="text-3xl sm:text-5xl  font-bold text-white">Tại Sao Nên Chọn <span class="text-cyan-400">WynAlgo Indicators</span>?</h2>
-                <p class="text-slate-400 text-lg">Môi trường phân tích giao dịch tự động hóa cao nhất, giảm thiểu tối đa yếu tố nhiễu của thị trường.</p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 relative z-10">
-                <!-- Feature 1 -->
-                <div class="glass-panel rounded-3xl p-8 hover:border-cyan-500/40 hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Tín Hiệu Giao Dịch Sắc Nét</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed font-medium">Bộ chỉ báo phát sinh tín hiệu Buy/Sell tức thời ngay trên đồ thị nến. Các thuật toán thế hệ mới lọc sạch nhiễu trong giai đoạn Sideway.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="glass-panel rounded-3xl p-8 hover:border-indigo-500/40 hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Xác Định Cung Cầu Tự Động</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed font-medium">Vẽ vùng Hỗ trợ (Demand) & Kháng cự (Supply) chính xác dựa trên cấu trúc khối lệnh (Order Block) giúp quản lý dừng lỗ tối ưu.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="glass-panel rounded-3xl p-8 hover:border-purple-500/40 hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67(6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Cảnh Báo Chớp Nhoáng</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed font-medium">Được thiết kế để không bỏ lỡ bất kỳ cơ hội nào nhờ liên kết cảnh báo tốc độ cao qua kênh Telegram và Discord cá nhân.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION FEATURE COMPARISON MATRIX -->
-        <section id="compare" class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 overflow-hidden z-10">
-            <div class="absolute inset-0 ambient-soft-spotlight pointer-events-none"></div>
-            <!-- 🔦 Đèn cực quang tĩnh hắt sáng rõ nét từ chân bảng so sánh lên -->
-            <div class="ambient-glow-orb glow-cyan w-[600px] h-[500px] -bottom-20 -left-20"></div>
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 relative z-10">
-                <h2 class="text-3xl  font-bold text-white">Bảng So Sánh Tính Năng Chi Tiết</h2>
-                <p class="text-slate-400 text-sm">Lựa chọn giải pháp phù hợp nhất cho mục tiêu tài chính của bạn.</p>
-            </div>
-
-            <div class="glass-panel rounded-3xl overflow-hidden shadow-2xl border border-white/5 relative z-10">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse min-w-[650px]">
-                        <thead>
-                            <tr class="bg-[#02092080] border-b border-white/5">
-                                <th class="p-5 text-sm font-bold text-slate-300">Tính năng cung cấp</th>
-                                <th class="p-5 text-sm font-bold text-slate-400 text-center">PreM30</th>
-                                <th class="p-5 text-sm font-bold text-cyan-400 text-center bg-cyan-500/5">Premium</th>
-                                <th class="p-5 text-sm font-bold text-indigo-400 text-center">Ultimate</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5 text-sm">
-                            <!-- Row 1 -->
-                            <tr>
-                                <td class="p-5 font-medium text-slate-200">Trọn bộ chỉ báo kỹ thuật cơ bản</td>
-                                <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
-                            </tr>
-                            <!-- Row 2 -->
-                            <tr>
-                                <td class="p-5 font-medium text-slate-200">Bộ lọc nhiễu sóng cao cấp (Sideway-Filter)</td>
-                                <td class="p-5 text-center text-slate-600"><i class="fa-solid fa-circle-minus"></i></td>
-                                <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
-                            </tr>
-                            <!-- Row 3 -->
-                            <tr>
-                                <td class="p-5 font-medium text-slate-200">Tự động vẽ vùng cung cầu cứng (OrderBlock)</td>
-                                <td class="p-5 text-center text-slate-600"><i class="fa-solid fa-circle-minus"></i></td>
-                                <td class="p-5 text-center text-emerald-400 bg-cyan-500/5"><i class="fa-solid fa-circle-check"></i></td>
-                                <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
-                            </tr>
-                            <!-- Row 4 -->
-                            <tr>
-                                <td class="p-5 font-medium text-slate-200">Cảnh báo thời gian thực qua Webhook</td>
-                                <td class="p-5 text-center text-slate-600"><i class="fa-solid fa-circle-minus"></i></td>
-                                <td class="p-5 text-center text-slate-600 bg-cyan-500/5"><i class="fa-solid fa-circle-minus"></i></td>
-                                <td class="p-5 text-center text-emerald-400"><i class="fa-solid fa-circle-check"></i></td>
-                            </tr>
-                            <!-- Row 5 -->
-                            <tr>
-                                <td class="p-5 font-medium text-slate-200">Kênh hỗ trợ VIP riêng tư</td>
-                                <td class="p-5 text-center text-slate-600"><i class="fa-solid fa-circle-minus"></i></td>
-                                <td class="p-5 text-center text-slate-400 bg-cyan-500/5">Cơ bản</td>
-                                <td class="p-5 text-center text-indigo-400 font-bold">Đặc quyền 24/7</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION TESTIMONIALS -->
-        <section class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5 overflow-hidden z-10">
-            <div class="absolute inset-x-0 top-0 h-40 ambient-soft-spotlight pointer-events-none"></div>
-            <!-- 🔦 Đèn cực quang tĩnh nền tím huyền bí chiếu sáng góc bên phải -->
-            <div class="ambient-glow-orb glow-purple w-[550px] h-[450px] top-1/4 -right-28"></div>
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 relative z-10">
-                <h2 class="text-3xl  font-bold text-white">Chia Sẻ Từ Các Nhà Giao Dịch</h2>
-                <p class="text-slate-400 text-sm">Xem cảm nhận từ cộng đồng của chúng tôi sau khi tích hợp WynAlgo vào chiến thuật trade.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                <!-- Testimonial 1 -->
-                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:border-cyan-500/30 transition-all duration-300">
-                    <div class="flex items-center gap-1.5 text-amber-400 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">"Bộ lọc nhiễu sideway của WynAlgo thực sự cứu tôi khỏi rất nhiều lệnh thua lỗ vô nghĩa. Các vùng OrderBlock vẽ tự động chuẩn xác không thua kém gì các trader kinh nghiệm vẽ tay."</p>
-                    <div class="border-t border-white/5 pt-4 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-[#02092080] flex items-center justify-center font-bold text-xs text-cyan-400">HA</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Hoàng Anh</h4>
-                            <p class="text-[10px] text-slate-500">Crypto Scalper</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:border-cyan-500/30 transition-all duration-300">
-                    <div class="flex items-center gap-1.5 text-amber-400 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">"Gói Ultimate Auto-trade kết hợp Webhook chạy bot đỉnh chóp! Tín hiệu bắn thẳng sang sàn không bị trễ nải một giây nào. Đây là giải pháp tiết kiệm thời gian tuyệt nhất."</p>
-                    <div class="border-t border-white/5 pt-4 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-[#02092080] flex items-center justify-center font-bold text-xs text-indigo-400">MT</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Minh Tuấn</h4>
-                            <p class="text-[10px] text-slate-500">Crypto Swinger</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:border-cyan-500/30 transition-all duration-300">
-                    <div class="flex items-center gap-1.5 text-amber-400 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">"Tôi đã dùng qua rất nhiều gói chỉ báo khác nhau, nhưng hệ thống của Tiến thực sự làm tôi ấn tượng ở khả năng bám xu hướng mượt mà, hạn chế tối đa tin tức ảo."</p>
-                    <div class="border-t border-white/5 pt-4 flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-[#02092080] flex items-center justify-center font-bold text-xs text-purple-400">KT</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Khánh Trình</h4>
-                            <p class="text-[10px] text-slate-500">Phái Sinh Việt Nam</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- FAQ SECTION -->
