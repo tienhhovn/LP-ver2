@@ -2037,12 +2037,44 @@
         </div>
     </div>
 
-<!-- PAYMENT MODAL >
-    
-<div id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 nav-blur transition-all duration-300">
+    <!-- PAYMENT MODAL >
+    <div id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 nav-blur transition-all duration-300">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative space-y-6 shadow-2xl">
+            <button type="button" data-close-payment aria-label="Đóng khung thanh toán" class="absolute right-4 top-4 text-slate-400 hover:text-white p-2 cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 text-xl mb-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <h3 id="payment-modal-title" class="text-xl font-bold text-white">Thanh toán & nhận License key</h3>
+                <p class="text-sm text-slate-400">Bạn đã chọn thuê gói <span id="modal-plan-name" class="text-[#34d399] font-bold">Premium</span></p>
+            </div-->
+
+            <!--div class="bg-slate-950 p-4 rounded-2xl border border-white/5 text-center space-y-4">
+                <div class="mx-auto w-40 h-40 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5">
+                    <img id="qr-image" src="img/qrpay.webp" alt="QR Thanh toán" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div class="space-y-1">
+                    <p class="text-xs text-slate-500">Số tiền thanh toán:</p>
+                    <p class="text-2xl  font-bold text-[#f0fdff]">
+                        <span id="modal-plan-price-value">1,090,000 VNĐ</span>
+                        <span id="modal-plan-price-period" class="text-xs text-slate-500 font-normal font-sans">/tháng</span>
+                    </p>
+                </div>
+                <div class="text-left space-y-1.5 text-base text-slate-300 border-t border-white/5 pt-3">
+                    <p>• <strong>Ngân hàng: Á Châu (ACB)</strong></p>
+                    <p>• <strong>Số tài khoản: 800058</strong></p>
+                    <p>• <strong>Chủ tài khoản: HO HUY TIEN</strong></p>
+                    <p>• <strong>Nội dung CK: <span class="font-sans tabular-nums text-amber-400 font-bold uppercase" id="modal-order-id">TenGoiDangKy_SĐT (vd: M30_09xx xxx xxx)</span></strong></p>
+                </div>
+            </div-->
+        
+    <div id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 nav-blur transition-all duration-300">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-xl w-full relative space-y-5 shadow-2xl">
         
-        < Nút đóng -->
+        <!-- Nút đóng Modal -->
         <button type="button" data-close-payment aria-label="Đóng khung thanh toán" class="absolute right-4 top-4 text-slate-400 hover:text-white p-2 cursor-pointer">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -2053,20 +2085,20 @@
                 <i class="fa-solid fa-credit-card"></i>
             </div>
             <h3 id="payment-modal-title" class="text-xl font-bold text-white">Thanh toán & nhận License key</h3>
-            <p class="text-sm text-slate-400">Bạn đã chọn thuê gói <span id="modal-plan-name" class="text-[#34d399] font-bold">Premium</span></p>
+            <p class="text-sm text-slate-400">Bạn đã chọn thuê gói <span id="modal-plan-name" class="text-[#34d399] font-bold">Q90</span></p>
         </div>
 
-        <!-- THÔNG TIN DÙNG CHUNG: Giá tiền & Nội dung CK (Giúp JS cũ không bị lỗi ID) -->
-        <div class="bg-slate-950/60 p-3.5 rounded-2xl border border-white/5 space-y-2 text-center">
+        <!-- THÔNG TIN DÙNG CHUNG: Giá tiền & Nội dung CK -->
+        <div class="bg-slate-950/80 p-3.5 rounded-2xl border border-white/5 space-y-1.5 text-center">
             <div>
-                <span class="text-xs text-slate-500">Số tiền thanh toán: </span>
+                <span class="text-xs text-slate-400">Số tiền thanh toán: </span>
                 <span class="text-xl font-bold text-[#f0fdff] ml-1">
                     <span id="modal-plan-price-value">1,090,000 VNĐ</span>
                     <span id="modal-plan-price-period" class="text-xs text-slate-500 font-normal font-sans">/tháng</span>
                 </span>
             </div>
-            <div class="text-xs text-slate-300 pt-2 border-t border-white/5">
-                Nội dung CK: <span class="font-sans tabular-nums text-amber-400 font-bold uppercase ml-1" id="modal-order-id">TenGoiDangKy_SĐT</span>
+            <div class="text-xs sm:text-sm text-slate-300 pt-2 border-t border-white/5">
+                Nội dung CK: <span class="font-sans tabular-nums text-amber-400 font-bold uppercase ml-1" id="modal-order-id">TenGoiDangKy_SĐT (vd: M30_09xx xxx xxx)</span>
             </div>
         </div>
 
@@ -2075,41 +2107,70 @@
             <button type="button" id="tab-acb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-cyan-500 text-slate-950 shadow-md">
                 Ngân hàng ACB
             </button>
-            <button type="button" id="tab-vcb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white">
-                Vietcombank
+            <button type="button" id="tab-scb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white">
+                Standard Chartered
             </button>
         </div>
 
-        <!-- KHỐI ACB -->
-        <div id="bank-content-acb" class="bg-slate-950 p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-            <div class="flex flex-col items-center justify-center">
-                <div class="w-36 h-36 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5 shrink-0">
-                    <img id="qr-image" src="img/qrpay.webp" alt="QR ACB" class="w-full h-full object-cover rounded-lg">
+        <!-- NỘI DUNG TAB 1: Ngân hàng ACB (Cột QR gọn, Cột chữ rộng) -->
+        <div id="content-acb" class="bg-slate-950 p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-center">
+            <!-- Cột ảnh: Co lại vừa vặn kích thước 128px (w-32) -->
+            <div class="flex flex-col items-center justify-center shrink-0">
+                <div class="w-32 h-32 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5">
+                    <img id="qr-image" src="img/qrpay.webp" alt="QR Thanh toán" class="w-full h-full object-cover rounded-lg">
                 </div>
             </div>
+            <!-- Cột chữ: Dùng 1fr (chiếm toàn bộ không gian còn lại), thêm whitespace-nowrap để tối ưu -->
             <div class="text-left space-y-1.5 text-xs sm:text-sm text-slate-300 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <p>• <strong>Ngân hàng: Á Châu (ACB)</strong></p>
-                <p>• <strong>Số tài khoản: 800058</strong></p>
-                <p>• <strong>Chủ TK: HO HUY TIEN</strong></p>
+                <p class="whitespace-nowrap">• <strong>Ngân hàng:</strong> Á Châu (ACB)</p>
+                <p class="whitespace-nowrap">• <strong>Số tài khoản:</strong> 800058</p>
+                <p class="whitespace-nowrap">• <strong>Chủ tài khoản:</strong> HO HUY TIEN</p>
             </div>
         </div>
 
-        <!-- KHỐI VCB (Mặc định ẩn) -->
-        <div id="bank-content-vcb" class="hidden bg-slate-950 p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-            <div class="flex flex-col items-center justify-center">
-                <div class="w-36 h-36 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5 shrink-0">
-                    <img id="qr-image-vcb" src="img/qrpay-vcb.webp" alt="QR VCB" class="w-full h-full object-cover rounded-lg">
+        <!-- NỘI DUNG TAB 2: Standard Chartered (Mặc định ẩn) -->
+        <div id="content-scb" class="hidden bg-slate-950 p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-center">
+            <!-- Cột icon/mô tả ngắn -->
+            <div class="flex flex-col items-center justify-center shrink-0">
+                <div class="w-32 h-32 bg-slate-900 rounded-xl p-3 flex flex-col items-center justify-center text-center border border-white/5">
+                    <i class="fa-solid fa-building-columns text-slate-400 text-3xl mb-1.5"></i>
+                    <p class="text-[10px] text-slate-400 font-medium leading-tight">Chuyển khoản Liên ngân hàng / Quốc tế</p>
                 </div>
             </div>
+            <!-- Cột chữ rộng rãi -->
             <div class="text-left space-y-1.5 text-xs sm:text-sm text-slate-300 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <p>• <strong>Ngân hàng: Vietcombank</strong></p>
-                <p>• <strong>Số tài khoản: 0123456789</strong></p>
-                <p>• <strong>Chủ TK: HO HUY TIEN</strong></p>
+                <p class="whitespace-nowrap">• <strong>Ngân hàng:</strong> Standard Chartered Bank</p>
+                <p class="whitespace-nowrap">• <strong>SWIFT Code:</strong> SCBLVNVX</p>
+                <p class="whitespace-nowrap">• <strong>Số tài khoản:</strong> 99275613799</p>
+                <p class="whitespace-nowrap">• <strong>Chủ tài khoản:</strong> HO HUY TIEN</p>
             </div>
         </div>
 
+        <!-- THÔNG TIN DÙNG CHUNG: Giá tiền & Nội dung CK -->
+        <div class="bg-slate-950/80 p-3.5 rounded-2xl border border-white/5 space-y-1.5 text-center">
+            <div>
+                <span class="text-xs text-slate-400">Số tiền thanh toán: </span>
+                <span class="text-xl font-bold text-[#f0fdff] ml-1">
+                    <span id="modal-plan-price-value">1,090,000 VNĐ</span>
+                    <span id="modal-plan-price-period" class="text-xs text-slate-500 font-normal font-sans">/tháng</span>
+                </span>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-300 pt-2 border-t border-white/5">
+                Nội dung CK: <span class="font-sans tabular-nums text-amber-400 font-bold uppercase ml-1" id="modal-order-id">TenGoiDangKy_SĐT (vd: M30_09xx xxx xxx)</span>
+            </div>
+        </div>
+
+        <!-- Hỗ trợ & Nút Đóng -->
+        <div class="text-xs text-center text-slate-500">
+            * Hỗ trợ trực tiếp: 0988 886 719 (Mr Tiến).
+        </div>
+
+        <button type="button" data-close-payment class="w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-xl font-bold transition cursor-pointer">
+            Tôi Đã Chuyển Khoản
+        </button>
     </div>
 </div>
+
             
        
 
@@ -2648,33 +2709,31 @@ const observerOptions = {
     observer.observe(section);
   });
 
-  //=======
-  //BANK
-  //=======
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabAcb = document.getElementById('tab-acb');
-    const tabVcb = document.getElementById('tab-vcb');
-    const contentAcb = document.getElementById('bank-content-acb');
-    const contentVcb = document.getElementById('bank-content-vcb');
 
-    // Chỉ chạy logic Tab nếu các phần tử tồn tại
-    if (tabAcb && tabVcb && contentAcb && contentVcb) {
+//bank
+document.addEventListener("DOMContentLoaded", () => {
+    const tabAcb = document.getElementById('tab-acb');
+    const tabScb = document.getElementById('tab-scb');
+    const contentAcb = document.getElementById('content-acb');
+    const contentScb = document.getElementById('content-scb');
+
+    if (tabAcb && tabScb && contentAcb && contentScb) {
         const activeClass = "flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-cyan-500 text-slate-950 shadow-md";
         const inactiveClass = "flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white";
 
         tabAcb.addEventListener('click', (e) => {
             e.preventDefault();
             tabAcb.className = activeClass;
-            tabVcb.className = inactiveClass;
+            tabScb.className = inactiveClass;
             contentAcb.classList.remove('hidden');
-            contentVcb.classList.add('hidden');
+            contentScb.classList.add('hidden');
         });
 
-        tabVcb.addEventListener('click', (e) => {
+        tabScb.addEventListener('click', (e) => {
             e.preventDefault();
-            tabVcb.className = activeClass;
+            tabScb.className = activeClass;
             tabAcb.className = inactiveClass;
-            contentVcb.classList.remove('hidden');
+            contentScb.classList.remove('hidden');
             contentAcb.classList.add('hidden');
         });
     }
