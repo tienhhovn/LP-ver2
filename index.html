@@ -1898,7 +1898,7 @@
                             • Quét mã QR:</p>
                         
                         <!-- Khung chứa 2 mã QR nằm cùng 1 hàng -->
-                        <div class="flex items-center justify-start gap-8 sm:gap-12 mt-3">
+                        <div class="flex items-center justify-start gap-12 sm:gap-20 mt-3">
                             
                             <!-- Cột 1: Zalo -->
                             <div class="flex flex-col items-center gap-2">
@@ -2110,7 +2110,7 @@
                 </span>
             </div>
             <div class="text-xs sm:text-sm text-slate-300 pt-2 border-t border-white/5">
-                Nội dung chuyển khoản: <span class="font-sans tabular-nums text-amber-400 font-bold uppercase ml-1" id="modal-order-id">SDT_GoiDangKy_XXXXXX</span><br>
+                Nội dung chuyển khoản: <span class="font-sans tabular-nums text-[#34d399] font-bold uppercase ml-1" id="modal-order-id">SDT_GoiDangKy_XXXXXX</span><br>
                 <div class="text-xs sm:text-sm text-slate-400">(Trong đó, SDT: Số điện thoại nhận code, tên gói và mã đăng ký.)</div>
 
             </div>
@@ -2121,8 +2121,8 @@
             * Hotline hỗ trợ: 0988 886 719.
         </div>
         <div class="text-xs sm:text-sm text-center text-slate-200 flex items-center justify-center gap-8 flex-wrap pt-1">
-    <!--span>* Hotine: 0988 886 719 (Mr Tiến)</span-->
-    <img src="img/zaloqr.webp" alt="QR 1" class="w-16 h-16 object-contain rounded border border-white/10 shrink-0">
+    <!span>Zalo QR:</span>
+    <img src="img/zaloqr.webp" alt="QR 1" class="w-16 h-16 object-contain rounded border border-white/10 shrink-0"><!span>Telegram QR:</span>
     <img src="img/teleqr.webp" alt="QR 2" class="w-16 h-16 object-contain rounded border border-white/10 shrink-0">
 </div>
 
@@ -2505,7 +2505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.zone.classList.remove('dragging');
             });
 
-            // 🎯 ĐOẠN THÊM MỚI: BẮT SỰ KIỆN LĂN CHUỘT (WHEEL) TRÊN DESKTOP
+            //  ĐOẠN THÊM MỚI: BẮT SỰ KIỆN LĂN CHUỘT (WHEEL) TRÊN DESKTOP
         this.zone.addEventListener('wheel', (e) => {
             // Ngăn chặn trình duyệt cuộn trang web lên xuống khi chuột đang nằm trong Carousel
             e.preventDefault();
@@ -2671,7 +2671,7 @@ const observerOptions = {
   });
 
 
-//bank
+//BANK PAYMENT
 document.addEventListener("DOMContentLoaded", () => {
     const tabAcb = document.getElementById('tab-acb');
     const tabScb = document.getElementById('tab-scb');
