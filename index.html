@@ -241,17 +241,17 @@
             mix-blend-mode: screen;
             animation: aurora-move 20s ease-in-out infinite;
         }
+        /*
         @media (max-width: 768px) {
             .aurora {
-                width: 30%;   /*120 Cho phép dải màu xòe rộng hẳn ra ngoài khung nhìn di động */
-                height: 30%;   /* Thu ngắn chiều cao lại một chút để không bị kéo giãn quá đà */
-                opacity: 0.6;    /* Giảm nhẹ độ mờ để các dải màu lớn đè lên nhau không bị cháy sáng */
+                width: 30%;   
+                opacity: 0.6;    
             }
     
-        }
+        }*/
 
         .aurora-1 {
-            background: radial-gradient(circle, rgba(0, 255, 200, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.5) 0%, transparent 70%);
             top: 15%;
             left: -20%;
             animation-delay: 0s;
@@ -264,14 +264,14 @@
             animation-delay: -5s;
         }
 
-        .aurora-3 {
+        .aurora-4 {
             background: radial-gradient(circle, rgba(0, 150, 255, 0.5) 0%, transparent 0%);
-            bottom: -20%;
+            bottom: 30%;
             left: 20%;
             animation-delay: -10s;
         }
 
-        .aurora-4 {
+        .aurora-3 {
             background: radial-gradient(circle, rgba(255, 0, 150, 0.4) 0%, transparent 0%);
             top: 30%;
             right: 20%;
@@ -2999,7 +2999,7 @@ document.getElementById('disclaimer-modal')?.addEventListener('click', function(
 // Tạo sao ngẫu nhiên, tránh vùng nội dung chính
 function createStars() {
     const starsContainer = document.getElementById('stars');
-    const numStars = 150;
+    const numStars = 200;
     const centerZone = { 
         top: 20, bottom: 85, 
         left: 15, right: 85 
@@ -3016,10 +3016,10 @@ function createStars() {
             y = Math.random() * 100;
             inCenter = (y > centerZone.top && y < centerZone.bottom && 
                        x > centerZone.left && x < centerZone.right);
-        } while (inCenter && Math.random() > 0.15); // 15% sao vẫn xuất hiện trong vùng trung tâm nhưng mờ nhạt
+        } while (inCenter && Math.random() > 0.3); // 15% sao vẫn xuất hiện trong vùng trung tâm nhưng mờ nhạt
         
         const size = Math.random() * 2.5 + 0.5;
-        const duration = Math.random() * 6 + 2;
+        const duration = Math.random() * 10 + 2;
         const delay = Math.random() * 5;
         const maxOpacity = inCenter ? Math.random() * 0.3 + 0.1 : Math.random() * 0.8 + 0.2;
         
