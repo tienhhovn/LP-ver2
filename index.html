@@ -91,10 +91,13 @@
 
         body {
             background-color: var(--bg-page-color);
-            color: #f1f5f9;
-            font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+            color: #f0fdff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             overflow-x: hidden;
             position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6, p, a, button, span, li, td, th {
@@ -508,6 +511,40 @@
             0%, 100% { opacity: 0; transform: scale(2.5); }
             50% { opacity: var(--max-opacity); transform: scale(1); }
         }
+
+/*Sao băng*/
+
+        .shooting-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(-45deg, #fff, rgba(0, 0, 255, 0));
+            filter: drop-shadow(0 0 6px #fff);
+            z-index: 5;
+            opacity: 0;
+        }
+
+        .shooting-star::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: rotate(var(--angle)) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(var(--angle)) translateX(-1200px);
+                opacity: 0;
+            }
+        }
+
       
 /* Tùy chỉnh kính mờ Menu */
         .nav-blur {
@@ -898,14 +935,6 @@
         /* =========================================================================
            🎨 TOÀN BỘ CSS GỐC CỦA BẠN - ĐÃ ĐƯỢC KHÔI PHỤC VÀ ĐỒNG BỘ HOÀN TOÀN
            ========================================================================= */
-        body {
-            background-color: #020920;
-            color: #f0fdff;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
 
         /* Container cho toàn bộ trang */
         .container {
@@ -1283,6 +1312,9 @@
             <div class="aurora aurora-3"></div>
             <div class="aurora aurora-4"></div>
         </div>
+    
+    <!--div class="starsky" id="ministarContainer"></div-->
+    <div id="shootingStarsContainer"></div>
 
     <!-- HEADER / NAVIGATION -->
     <header class="fixed top-0 left-0 w-full z-40 border-b border-white/5 nav-blur bg-slate-950/15 transition-all duration-200 gpu-layer will-change-transform">
@@ -3016,7 +3048,7 @@ function createStars() {
             y = Math.random() * 100;
             inCenter = (y > centerZone.top && y < centerZone.bottom && 
                        x > centerZone.left && x < centerZone.right);
-        } while (inCenter && Math.random() > 0.3); // 15% sao vẫn xuất hiện trong vùng trung tâm nhưng mờ nhạt
+        } while (inCenter && Math.random() > 0.3); // 30% sao vẫn xuất hiện trong vùng trung tâm nhưng mờ nhạt
         
         const size = Math.random() * 2.5 + 0.5;
         const duration = Math.random() * 10 + 2;
@@ -3040,6 +3072,64 @@ function createStars() {
     }
 }
 createStars();
+
+
+//Tạo sao băng
+        //const ministarContainer = document.getElementById('ministarContainer');
+        const shootingStarsContainer = document.getElementById('shootingStarsContainer');
+
+        // Tạo 150 ngôi sao tĩnh lấp lánh
+        //for (let i = 0; i < 150; i++) {
+            //const star = document.createElement('div');
+            //star.className = 'starr';
+            //const size = Math.random() * 2;
+            //star.style.width = `${size}px`;
+            //star.style.height = `${size}px`;
+            //star.style.left = `${Math.random() * 100}%`;
+            //star.style.top = `${Math.random() * 100}%`;
+            //star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            //star.style.animationDelay = `${Math.random() * 5}s`;
+            //ministarContainer.appendChild(star);
+        //}
+
+        function launchShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            
+            // Xuất hiện từ góc trên bên phải
+            const startX = Math.random() * 20 + 10; 
+            const startY = Math.random() * 40;
+            const duration = Math.random() * 1.5 + 1.5; 
+            const angle = '210deg'; // Bay chéo từ phải sang trái
+
+            star.style.left = `${startX}%`;
+            star.style.top = `${startY}%`;
+            star.style.animation = `shoot ${duration}s linear forwards`;
+            star.style.setProperty('--angle', angle);
+
+            shootingStarsContainer.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, duration * 1000);
+        }
+
+        // Hàm tạo ra 2-3 sao băng cùng một lúc
+        function triggerWave() {
+            const count = Math.floor(Math.random() * 2) + 1; // Sẽ ra 2 hoặc 3
+            for(let i = 0; i < count; i++) {
+                // Delay một chút giữa các ngôi sao để nhìn tự nhiên hơn
+                setTimeout(launchShootingStar, i * 600);
+            }
+        }
+
+        // Bắt đầu đợt đầu tiên ngay lập tức
+        triggerWave();
+
+        // Cứ mỗi 4-7 giây lại có một đợt 2-3 sao băng mới
+        setInterval(() => {
+            triggerWave();
+        }, 5000 + Math.random() * 2000);
 
     </script>
 </body>
