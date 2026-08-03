@@ -104,6 +104,8 @@
             font-family: 'Plus Jakarta Sans', Inter, sans-serif;
         }
 
+        canvas { display: block; width: 100%; height: 100%; }
+
         .font-sans,
         .font-display,
         .font-mono {
@@ -531,7 +533,7 @@
             transform: translateY(-50%);
             width: 100px;
             height: 1px;
-            background: linear-gradient(90deg, #fff, transparent);
+            background: linear-gradient(90deg, #67e8f9 , transparent);
         }
 
         @keyframes shoot {
@@ -645,10 +647,41 @@
             }
         }
         
+/*Nút GETACCESS */
+        .btn-getaccess {
+            background: linear-gradient(135deg, #10b981, #8a2be2);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .btn-getaccess::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+
+        .btn-getaccess:hover::before {
+            left: 100%;
+        }
+
         
-        /* =========================================================================
+/* =========================================================================
    ⚡ NÚT NHẬN 30 NGÀY MIỄN PHÍ - HIỆU ỨNG VIỀN XOAY CONIC GRADIENT
-   ========================================================================= */
+ ========================================================================= */
 
 /* 1. Khung bọc ngoài (Wrapper): Xử lý xoay màu và tạo viền */
 .rotating-border-wrapper {
@@ -699,10 +732,10 @@
     transform: translate(-50%, -50%);
     background: conic-gradient(
         from 0deg, 
-        #2962ff, /* Xanh Cyan 06b6d4*/
+        #34d399, /* Xanh Cyan 06b6d4*/
         #d600f8, /* Tím huyền ảo a855f7*/
-        #34d399, /* Xanh Emerald 10b981*/
-        #2962ff  
+        #06b6d4, /* Xanh Emerald 10b981*/
+        #34d399  
     );
     /* 👇 TỐC ĐỘ XOAY VIỀN: 4.5s xoay mượt mà, càng nhỏ xoay càng nhanh */
     animation: rotate-border-gradient 4.5s linear infinite;
@@ -933,7 +966,7 @@
 
 
         /* =========================================================================
-           🎨 TOÀN BỘ CSS GỐC CỦA BẠN - ĐÃ ĐƯỢC KHÔI PHỤC VÀ ĐỒNG BỘ HOÀN TOÀN
+           🎨 TOÀN BỘ CSS chỉ báo khung - ĐÃ ĐƯỢC KHÔI PHỤC VÀ ĐỒNG BỘ HOÀN TOÀN
            ========================================================================= */
 
         /* Container cho toàn bộ trang */
@@ -1266,6 +1299,7 @@
     </style>
 </head>
 <body id="top" class="antialiased">
+    <canvas id="c" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
 
     <!-- 🌌 BỘ LỌC ĐỘNG SVG ĐỂ XÉ NHỎ VÀ TẠO VÂN KHÓI SẮC NÉT (Chỉ áp dụng ở Hero Section) -->
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
@@ -1284,35 +1318,12 @@
 
     <!-- 🌌 ĐỒ HỌA NỀN CỰC QUANG VÀ KHÔNG GIAN ĐÊM (Cố định ở khu vực Hero 980px đầu tiên) -->
     <div class="cosmic-background">
-        <div class="aurora-container">
-            <div class="aurora-curtain curtain-1 opacity-90"></div>
-            <div class="aurora-curtain curtain-2"></div>
-            <div class="aurora-curtain curtain-2 opacity-10"></div>
-            <div class="aurora-curtain curtain-4 opacity-10"></div>
-        </div>
-        <!-- Aurora Effect -->
-        
-        <!--div class="nebula-wisps">
-            <div class="central-bloom-glow"></div>
-            <div class="wisp wisp-1"></div>
-            <div class="wisp wisp-2"></div>
-            <div class="wisp wisp-3"></div>
-        </div-->
-
         <div class="stars-background">
             <div class="stars-glow-layer"></div>
             <div class="stars-glow-layer-medium"></div>
             <div class="stars" id="stars"></div>
         </div>
     </div>
-
-    <div class="auroraglow-container">
-            <div class="aurora aurora-1"></div>
-            <div class="aurora aurora-2"></div>
-            <div class="aurora aurora-3"></div>
-            <div class="aurora aurora-4"></div>
-        </div>
-    
     <!--div class="starsky" id="ministarContainer"></div-->
     <div id="shootingStarsContainer"></div>
 
@@ -1358,7 +1369,8 @@
             </nav>
 
             <div class="hidden lg:flex items-center gap-3">
-                <a href="#pricing" class="px-5 py-2 rounded-full bg-white text-slate-950 font-bold text-sm hover:bg-slate-200 active:scale-95 transition-all duration-200 shadow-md">Nhận truy cập</a>
+                <a href="#pricing" class="btn-getaccess">Nhận truy cập ✧</a>
+
             </div>
 
             <!-- Hamburger menu di động -->
@@ -1966,8 +1978,9 @@
                         </div>
 
                         <!-- Main Description -->
+                        <p class="text-sm sm:text-xl text-[#f0fdff] leading-relaxed font-normal"><Strong>Chính sách hoàn tiền</Strong></p>
                         <p class="text-sm sm:text-xl text-[#f0fdff] leading-relaxed font-normal">
-                            Trong 30 ngày đầu tiên sử dụng, chỉ cần gửi yêu cầu hoàn tiền đến bộ phận hỗ trợ, bạn sẽ được hoàn trả 100% chi phí đã đăng ký.
+                           Trong 30 ngày đầu tiên sử dụng, chỉ cần gửi yêu cầu hoàn tiền đến bộ phận hỗ trợ, bạn sẽ được hoàn trả 100% chi phí đã đăng ký.
                         </p>
                         
                         <!-- 3 Feature Points Grid -->
@@ -1996,14 +2009,10 @@
                                 </div>
                                 <span class="text-xs text-slate-200 font-semibold">Hỗ trợ tại Việt Nam</span>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
     
 
@@ -2052,27 +2061,30 @@
                     </button>
                     
                     <div id="faq-answer-3" class="bg-[#020920]/55 faq-content hidden p-5 pt-0 text-sm sm:text-base text-slate-200 leading-relaxed border-t border-white/5">
-                        <p class="mb-4">Mọi vấn đề cần hỗ trợ, vui lòng liên hệ với chúng tôi qua:<br>
-                            • Hotline: <strong class="text-white">0988 886 719</strong><br>
-                            • Email: wynalgo@gmail.com<br>
-                            • QR Code:</p>
-                        
-                        <!-- Khung chứa 2 mã QR nằm cùng 1 hàng -->
-                        <div class="flex items-center justify-start gap-12 sm:gap-20 mt-3">
-                            
-                            <!-- Cột 1: Zalo -->
-                            <div class="flex flex-col items-center gap-2">
-                                <span class="font-semibold text-xs sm:text-sm text-slate-300">Zalo</span>
-                                <img src="img/zaloqr.webp" alt="Zalo QR Code" class="w-20 sm:w-24 max-w-[100px] h-auto rounded-lg border border-white/10">
-                            </div>
+                        <p class="mb-4">Mọi vấn đề cần hỗ trợ, vui lòng liên hệ với chúng tôi qua:
+                        </p>
 
-                            <!-- Cột 2: Telegram -->
-                            <div class="flex flex-col items-center gap-2">
-                                <span class="font-semibold text-xs sm:text-sm text-slate-300">Telegram</span>
-                                <img src="img/teleqr.webp" alt="Telegram QR Code" class="w-20 sm:w-24 max-w-[100px] h-auto rounded-lg border border-white/10">
-                            </div>
+<div class="text-xs sm:text-sm text-left text-slate-200 flex items-center justify-center gap-4 sm:gap-6 flex-wrap pt-1">
+            
+            <!-- Hotline -->
+            <span>Hotline: <strong class="text-white font-bold">0988 886 719<br><i class="fa-regular fa-envelope"></i>  wynalgo@gmail.com</strong></span>
 
-                        </div>
+            <span class="text-white/20 hidden sm:inline">|</span>
+
+            <!-- Cụm Zalo: Dùng gap-1.5 để ảnh sát chữ -->
+            <div class="inline-flex items-center gap-1.5">
+                <span>Zalo:</span>
+                <img src="img/zaloqr.webp" alt="Zalo QR Code" class="w-18 sm:w-20 max-w-[100px] h-auto rounded-lg border border-white/10">
+            </div>
+
+            <!-- Cụm Telegram: Dùng gap-1.5 để ảnh sát chữ -->
+            <div class="inline-flex items-center gap-1.5">
+                <span>Telegram:</span>
+                <img src="img/teleqr.webp" alt="Zalo QR Code" class="w-18 sm:w-20 max-w-[100px] h-auto rounded-lg border border-white/10">
+            </div>
+
+</div>
+
                     </div>
                 </div>
 
@@ -2207,7 +2219,8 @@
             <div class="flex items-center justify-center gap-3.5 w-full">
                 <!--a href="#about-indicators" class="mobile-nav-link flex-1 py-4 text-center border border-white/10 bg-slate-900/50 hover:bg-slate-800 text-white font-bold rounded-2xl transition text-sm">Bộ Chỉ Báo</a-->
                 <!--a href="#pricing" class="mobile-nav-link w-fit px-8 py-4 text-center bg-white hover:bg-slate-200 text-slate-950 font-bold rounded-full transition text-sm shadow-lg shadow-white/5">Nhận truy cập</a-->
-                <a href="#pricing" class="mobile-nav-link w-fit px-5 py-5 text-center bg-white hover:bg-slate-200 text-slate-950 font-bold rounded-full transition-all duration-200 text-[15px] active:scale-[0.98] shadow-lg shadow-white/5">Nhận truy cập</a>
+                <!--a href="#pricing" class="mobile-nav-link w-fit px-5 py-5 text-center bg-white hover:bg-slate-200 text-slate-950 font-bold rounded-full transition-all duration-200 text-[15px] active:scale-[0.98] shadow-lg shadow-white/5">Nhận truy cập</a-->
+                <a href="#pricing" class="btn-getaccess mobile-nav-link">Nhận truy cập ✧</a>
              </div>
             <!--p class="text-[9px] text-center text-slate-600 tracking-normal uppercase font-mono">Premium Indicators Ecosystem</p-->
         </div>
@@ -2233,10 +2246,10 @@
         <!-- TAB CHỌN NGÂN HÀNG -->
         <div class="flex p-1 bg-slate-950/80 border border-white/10 rounded-2xl">
             <button type="button" id="tab-acb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-[linear-gradient(180deg,rgba(59,171,246,0.8)_0%,rgba(59,171,246,1)_20%,rgba(103,232,249,1)_40%,rgba(255,255,255,1)_50%,rgba(103,232,249,1)_60%,rgba(59,130,246,1)_80%,rgba(25,83,255,0.8)_100%)] text-slate-950 shadow-md">
-                Ngân hàng ACB
+                Trong nước
             </button>
             <button type="button" id="tab-scb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white">
-                Standard Chartered Bank
+                Ngoài nước
             </button>
         </div>
 
@@ -2252,7 +2265,7 @@
             <div class="text-left space-y-1.5 text-xs sm:text-sm text-slate-300 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
                 <p class="whitespace-nowrap">• Ngân hàng:<strong> Á Châu (ACB)</strong></p>
                 <p class="whitespace-nowrap">• Số tài khoản:<strong> 800058</strong></p>
-                <p class="whitespace-nowrap">• Chủ tài khoản:<strong> HO HUY TIEN</strong></p>
+                <p class="whitespace-nowrap">• Tên tài khoản:<strong> HO HUY TIEN</strong></p>
             </div>
         </div>
 
@@ -2269,7 +2282,7 @@
                 <p class="whitespace-nowrap">• Ngân hàng:<strong> Standard Chartered Viet Nam</strong></p>
                 <p class="whitespace-nowrap">• SWIFT Code:<strong> SCBLVNVX</strong></p>
                 <p class="whitespace-nowrap">• Số tài khoản:<strong> 99275613799</strong></p>
-                <p class="whitespace-nowrap">• Chủ tài khoản:<strong> HO HUY TIEN</strong></p>
+                <p class="whitespace-nowrap">• Tên tài khoản:<strong> HO HUY TIEN</strong></p>
             </div>
         </div>
 
@@ -2293,7 +2306,7 @@
         <div class="text-xs sm:text-sm text-center text-slate-200 flex items-center justify-center gap-4 sm:gap-6 flex-wrap pt-1">
             
             <!-- Hotline -->
-            <span>Hotline: <strong class="text-white font-bold">0988 886 719</strong></span>
+            <span>Hotline: <strong class="text-white font-bold">0988 886 719<br><i class="fa-regular fa-envelope"></i>  wynalgo@gmail.com</strong></span>
 
             <span class="text-white/20 hidden sm:inline">|</span>
 
@@ -2309,11 +2322,15 @@
                 <img src="img/teleqr.webp" alt="Telegram QR" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded border border-white/10 shrink-0">
             </div>
 
-        </div>
-
-        <button type="button" data-close-payment class="w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-full font-bold transition cursor-pointer">
-            Hoàn tất/Liên hệ ngay
-        </button>
+        </div>      
+        <a href="https://vn.tradingview.com/script/lTeNB8SC-WynAlgo-BigMoney/" target="_blank" class="block text-center w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-full font-bold transition cursor-pointer">
+    Truy cập chỉ báo
+        </a>
+        <button type="button" 
+        onclick="window.open('https://vn.tradingview.com/script/lTeNB8SC-WynAlgo-BigMoney', '_blank'); window.open('https://vn.tradingview.com/script/lqlCTPHZ-WynAlgo-BigTrade/', '_blank'); window.open('https://vn.tradingview.com/script/fBV4cYvS-WynAlgo-SignalEye', '_blank');" 
+        class="w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-full font-bold transition cursor-pointer">
+    Truy cập chỉ báo
+</button>
     </div>
 </div>
 
@@ -3075,22 +3092,7 @@ createStars();
 
 
 //Tạo sao băng
-        //const ministarContainer = document.getElementById('ministarContainer');
         const shootingStarsContainer = document.getElementById('shootingStarsContainer');
-
-        // Tạo 150 ngôi sao tĩnh lấp lánh
-        //for (let i = 0; i < 150; i++) {
-            //const star = document.createElement('div');
-            //star.className = 'starr';
-            //const size = Math.random() * 2;
-            //star.style.width = `${size}px`;
-            //star.style.height = `${size}px`;
-            //star.style.left = `${Math.random() * 100}%`;
-            //star.style.top = `${Math.random() * 100}%`;
-            //star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
-            //star.style.animationDelay = `${Math.random() * 5}s`;
-            //ministarContainer.appendChild(star);
-        //}
 
         function launchShootingStar() {
             const star = document.createElement('div');
@@ -3099,7 +3101,7 @@ createStars();
             // Xuất hiện từ góc trên bên phải
             const startX = Math.random() * 20 + 10; 
             const startY = Math.random() * 40;
-            const duration = Math.random() * 1.5 + 1.5; 
+            const duration = Math.random() * 2 + 3; 
             const angle = '210deg'; // Bay chéo từ phải sang trái
 
             star.style.left = `${startX}%`;
@@ -3129,7 +3131,149 @@ createStars();
         // Cứ mỗi 4-7 giây lại có một đợt 2-3 sao băng mới
         setInterval(() => {
             triggerWave();
-        }, 5000 + Math.random() * 2000);
+        }, 9000 + Math.random() * 3000);
+
+
+//New Aurora
+var VERT = 'attribute vec2 a_pos; void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }';
+var FRAG = `
+precision highp float;
+uniform vec2  u_res;
+uniform float u_time;
+uniform float u_mouseX;
+
+const float c_intensity = 1.4000;
+const float c_brightness = 1.5500;
+const float c_waveAmp = 1.0500;
+const float c_thickness = 0.8000;
+const float c_posY = 0.2500;
+const float c_yRange = 0.6100;
+const float c_gap = -0.3000;
+const float c_gapPos = -0.2600;
+const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
+const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
+const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
+const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
+
+float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+float noise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(
+    mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+    mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
+    u.y
+  );
+}
+
+float drawRibbon(vec2 uv, float freq, float amp, float speed, float yOff, float t, float bThk, float sSeed, float tilt) {
+  float mainW = sin(uv.x * freq + t * speed) * amp * c_waveAmp * 1.8;
+  float subW  = cos(uv.x * (freq * 2.3) - t * (speed * 1.3)) * (amp * 0.4) * c_waveAmp * 1.8;
+  float lean  = tilt * uv.x;
+  float wavyY = uv.y - (yOff + mainW + subW + lean);
+  float sX    = uv.x * 30.0 + sin(uv.y * 2.2 + t) * 1.4 + sSeed;
+  float str   = noise(vec2(sX, t * 0.6)) * 0.4 + noise(vec2(sX * 1.6 - t, uv.y * 3.2)) * 0.6;
+  float fThk  = bThk * c_thickness * 1.7;
+  float rib   = smoothstep(fThk, 0.0, abs(wavyY));
+  float fE    = smoothstep(-1.5, -0.1, uv.x) * smoothstep(1.5, 0.1, uv.x);
+  float fV    = smoothstep(-1.05, -0.18, uv.y) * smoothstep(1.05, -0.05, uv.y);
+  float gW    = 0.07 * sin(uv.y * 2.8 + t * 0.25);
+  float gWid  = 0.42 + c_gap * 0.4;
+  float cG    = smoothstep(0.04, gWid, abs(uv.x - c_gapPos + gW));
+  return rib * (0.3 + 0.7 * str) * fE * fV * cG;
+}
+
+void main() {
+  vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y;
+  float t = u_time * 0.5;
+  
+  // Khởi tạo màu ban đầu là 0.0 (không màu nền)
+  vec3 col = vec3(0.0);
+
+  vec2 auv = vec2(uv.x, (uv.y - c_posY) / max(c_yRange, 0.001));
+  float r1 = drawRibbon(auv + vec2(u_mouseX * 0.05, 0.0), 2.6, 0.22, 0.35,  0.12, t,       0.45, 0.0,   c_tilts.x);
+  float r2 = drawRibbon(auv + vec2(u_mouseX * 0.10, 0.0), 3.6, 0.28, -0.55, -0.06, t+4.2,  0.50, 120.0, c_tilts.y);
+  float r3 = drawRibbon(auv + vec2(u_mouseX * 0.15, 0.0), 4.8, 0.16, 0.75,  -0.26, t+8.5,  0.38, 240.0, c_tilts.z);
+  float tot = (r1 * 0.6 + r2 * 0.95 + r3 * 0.5) * c_intensity * 1.7 * c_brightness;
+  tot = 1.0 - exp(-tot);
+  
+  float hR = clamp((auv.y + 0.45) / 1.15, 0.0, 1.0);
+  vec3 aC = mix(c_low, c_mid, smoothstep(0.0, 0.45, hR));
+  aC = mix(aC, c_high, smoothstep(0.4, 1.0, hR));
+  col += aC * tot;
+  col += aC * (1.0 - exp(-(r1 + r2 + r3) * c_brightness)) * 0.08 * c_intensity * c_brightness;
+  
+  float W = 1.6;
+  col = col * (1.0 + col / (W * W)) / (1.0 + col);
+  col = pow(max(col, 0.0), vec3(0.95));
+
+  // Kênh Alpha (độ đục) được tính theo độ sáng 'tot' của dải cực quang
+  float alpha = clamp(tot * 1.2, 0.0, 1.0);
+  gl_FragColor = vec4(col, alpha);
+}
+`;
+
+(function() {
+  var canvas = document.getElementById('c');
+  // Bật alpha: true để Canvas hỗ trợ độ trong suốt
+  var gl = canvas.getContext('webgl', { antialias: false, alpha: true });
+  if (!gl) { return; }
+
+  function compile(type, src) {
+    var sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(sh);
+    return sh;
+  }
+
+  var prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'a_pos');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  var uRes = gl.getUniformLocation(prog, 'u_res');
+  var uTime = gl.getUniformLocation(prog, 'u_time');
+  var uMouse = gl.getUniformLocation(prog, 'u_mouseX');
+
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    var w = Math.floor(canvas.clientWidth * dpr);
+    var h = Math.floor(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0,0,w,h); }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var mx = 0;
+  var targetMx = 0;
+  window.addEventListener('mousemove', function(e) { targetMx = (e.clientX / window.innerWidth - 0.5) * 2; });
+
+  var last = performance.now();
+  var t = 0;
+  var speed = 1.0000;
+  function loop(now) {
+    var dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    t += dt * speed;
+    mx += (targetMx - mx) * 0.04;
+    resize();
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, t);
+    gl.uniform1f(uMouse, mx);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
 
     </script>
 </body>
