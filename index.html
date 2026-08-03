@@ -2915,18 +2915,21 @@ uniform vec2  u_res;
 uniform float u_time;
 uniform float u_mouseX;
 
-const float c_intensity = 1.1000;
+const float c_intensity = 1.2000;
 const float c_brightness = 1.5500;
-const float c_waveAmp = 1.1000;
+const float c_waveAmp = 1.0500;
 const float c_thickness = 0.8000;
-const float c_posY = 0.2000;
-const float c_yRange = 0.6100;
-const float c_gap = -0.2000;
-const float c_gapPos = -0.2600;
+const float c_posY = 0.15000;
+const float c_yRange = 0.5500;
+const float c_gap = -0.6500;
+const float c_gapPos = -0.1800;
 const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
 const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
+const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
 const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
+//const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
+//const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
+//const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
 
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
 float noise(vec2 p) {
