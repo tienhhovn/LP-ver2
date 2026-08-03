@@ -141,234 +141,7 @@
             overflow: hidden;
         }
 
-        /* Hiệu ứng cực quang động mượt mà chỉ chạy ở phân vùng đầu trang */
-        .aurora-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.95;
-            mask-image: linear-gradient(to bottom, black 25%, black 60%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 88%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 25%, black 60%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 88%, transparent 100%);
-            filter: url(#aurora-turbulent-filter) blur(30px);
-            -webkit-filter: url(#aurora-turbulent-filter) blur(20px);
-        }
-
-        .aurora-curtain {
-            position: absolute;
-            top: -25%;
-            width: 42vw;
-            height: 140%;
-            transform-origin: top center;
-            mix-blend-mode: screen;
-        }
         
-        @media (max-width: 768px) {
-            .aurora-curtain {
-                width: 60vw;   /*120 Cho phép dải màu xòe rộng hẳn ra ngoài khung nhìn di động */
-                height: 140%;   /* Thu ngắn chiều cao lại một chút để không bị kéo giãn quá đà */
-                opacity: 0.6;    /* Giảm nhẹ độ mờ để các dải màu lớn đè lên nhau không bị cháy sáng */
-            }
-    
-        }
-
-        .curtain-1 {
-            left: 2%;
-            background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 200, 0.25) 30%, rgba(20, 221, 166, 0.5) 50%, rgba(6, 182, 200, 0.25) 70%, transparent 100%);
-            animation: wave-movement-1 19s infinite ease-in-out alternate;
-        }
-
-        .curtain-2 {
-            left: 35%;
-            background: 
-            linear-gradient(90deg, transparent 0%, rgba(59, 140, 246, 0.2) 25%, rgba(59, 140, 246, 0.4) 50%, rgba(99, 102, 241, 0.3) 70%, transparent 100%); /* rgba(99, 102, 241, 0.45) 25%, rgba(59, 130, 246, 0.5) 50%, rgba(99, 102, 241, 0.5) 75% rgba(6, 182, 212, 0.28)*/
-
-            animation: wave-movement-2 21s infinite ease-in-out alternate;
-            animation-delay: -3s;
-        }
-        
-        .curtain-3 {
-            left: 60%;
-            background: linear-gradient(90deg, transparent 0%, rgba(20, 184, 166, 0.2) 20%, rgba(6, 182, 212, 0.35) 45%, rgba(168, 85, 247, 0.5) 75%, transparent 100%);
-            animation: wave-movement-3 22s infinite ease-in-out alternate;
-            animation-delay: -6s;
-        }
-
-        .curtain-4 {
-            right: -2%;
-            background: linear-gradient(90deg, transparent 0%, rgba(155, 50, 248, 0.40) 30%, rgba(99, 102, 241, 0.3) 65%, transparent 100%);
-            animation: wave-movement-4 20s infinite ease-in-out alternate;
-            animation-delay: -9s;
-        }
-
-        @keyframes wave-movement-1 {
-            0% { transform: skewX(-15deg) scaleX(0.95) translateY(0); opacity: 0.65; }
-            50% { transform: skewX(-7deg) scaleX(1.25) translateY(-30px); opacity: 1; }
-            100% { transform: skewX(-25deg) scaleX(0.85) translateY(20px); opacity: 0.55; }
-        }
-        @keyframes wave-movement-2 {
-            0% { transform: skewX(10deg) scaleX(0.8) translateY(-40px); opacity: 0.5; } /* 0.6 0.95 0.7*/
-            50% { transform: skewX(22deg) scaleX(1.2) translateY(50px); opacity: 0.3; }
-            100% { transform: skewX(4deg) scaleX(0.9) translateY(-20px); opacity: 0.9; }
-        }
-        @keyframes wave-movement-3 {
-            0% { transform: skewX(-8deg) scaleX(1.2) translateY(15px); opacity: 0.85; }
-            50% { transform: skewX(-20deg) scaleX(0.8) translateY(-25px); opacity: 0.55; }
-            100% { transform: skewX(-4deg) scaleX(1.1) translateY(15px); opacity: 1; }
-        }
-        @keyframes wave-movement-4 {
-            0% { transform: skewX(16deg) scaleX(0.85) translateY(-25px); opacity: 0.5; }
-            50% { transform: skewX(-2deg) scaleX(1.3) translateY(15px); opacity: 0.95; }
-            100% { transform: skewX(12deg) scaleX(0.75) translateY(-20px); opacity: 0.6; }
-        }
-
-/* Aurora Glow */
-/* === AURORA EFFECT === */
-        .auroraglow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-            filter: blur(60px);
-            opacity: 0.7;
-        }
-
-        .aurora {
-            position: fixed;
-            width: 60%;
-            height: 60%;
-            border-radius: 50%;
-            mix-blend-mode: screen;
-            animation: aurora-move 20s ease-in-out infinite;
-        }
-        /*
-        @media (max-width: 768px) {
-            .aurora {
-                width: 30%;   
-                opacity: 0.6;    
-            }
-    
-        }*/
-
-        .aurora-1 {
-            background: radial-gradient(circle, rgba(0, 255, 200, 0.5) 0%, transparent 70%);
-            top: 15%;
-            left: -20%;
-            animation-delay: 0s;
-        }
-
-        .aurora-2 {
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.6) 0%, transparent 70%);
-            top: 20%;
-            right: -10%;
-            animation-delay: -5s;
-        }
-
-        .aurora-4 {
-            background: radial-gradient(circle, rgba(0, 150, 255, 0.5) 0%, transparent 0%);
-            bottom: 30%;
-            left: 20%;
-            animation-delay: -10s;
-        }
-
-        .aurora-3 {
-            background: radial-gradient(circle, rgba(255, 0, 150, 0.4) 0%, transparent 0%);
-            top: 30%;
-            right: 20%;
-            animation-delay: -15s;
-        }
-
-        @keyframes aurora-move {
-            0%, 100% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            25% {
-                transform: translate(10%, 15%) scale(1.2) rotate(90deg);
-            }
-            50% {
-                transform: translate(-10%, 20%) scale(0.9) rotate(180deg);
-            }
-            75% {
-                transform: translate(15%, -10%) scale(1.1) rotate(270deg);
-            }
-        }
-
-
-/* Tinh vân khói Nebula nhẹ ở phần trên */
-        .nebula-wisps {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            z-index: 2;
-            opacity: 0.85;
-            filter: url(#nebula-turbulent-filter) blur(12px);
-            -webkit-filter: url(#nebula-turbulent-filter) blur(12px);
-            mask-image: linear-gradient(to bottom, black 35%, rgba(0,0,0,0.7) 65%, transparent 95%);
-            -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
-        }
-
-        .central-bloom-glow {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translate(-50%, -10%) scale(1);
-            width: 75vw;
-            height: 420px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.24) 0%, rgba(6, 182, 212, 0.1) 30%, rgba(99, 102, 241, 0.04) 60%, transparent 85%);
-            filter: blur(40px);
-            mix-blend-mode: screen;
-            z-index: 1;
-            animation: core-pulse 12s infinite alternate ease-in-out;
-        }
-
-        @keyframes core-pulse {
-            0% { transform: translate(-50%, -10%) scale(0.95); opacity: 0.8; }
-            100% { transform: translate(-50%, -10%) scale(1.05); opacity: 1; }
-        }
-
-        .wisp {
-            position: absolute;
-            mix-blend-mode: screen;
-        }
-
-        .wisp-1 {
-            top: -5%;
-            left: 10%;
-            width: 80%;
-            height: 380px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.18) 0%, rgba(240, 246, 255, 0.08) 25%, rgba(6, 182, 212, 0.02) 50%, transparent 75%);
-            transform: rotate(-3deg) scaleY(0.5);
-            animation: wisp-vortex-left 32s infinite alternate ease-in-out;
-        }
-
-        .wisp-2 {
-            top: 28%;
-            left: 15%;
-            width: 70%;
-            height: 340px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.16) 0%, rgba(224, 242, 254, 0.07) 30%, rgba(99, 102, 241, 0.02) 55%, transparent 75%);
-            transform: rotate(4deg) scaleY(0.45);
-            animation: wisp-vortex-right 38s infinite alternate ease-in-out;
-        }
-
-        .wisp-3 {
-            top: 10%;
-            left: 5%;
-            width: 90%;
-            height: 480px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 80%);
-            transform: rotate(-1deg) scaleY(0.6);
-            animation: wisp-vortex-left 45s infinite alternate ease-in-out;
-            animation-delay: -6s;
-        }
-
 /* =========================================================================
    ✨ LỚP NỀN SAO TĨNH ĐƯỢC TỐI ƯU HÓA PHẦN CỨNG GPU BẰNG BOX-SHADOW (CÁCH 1)
    Tăng mật độ gấp 5 lần (X5 Density) bằng phương pháp liệt kê tọa độ lẻ ngẫu nhiên.
@@ -511,7 +284,7 @@
 
         @keyframes twinkle {
             0%, 100% { opacity: 0; transform: scale(2.5); }
-            50% { opacity: var(--max-opacity); transform: scale(1); }
+            10% { opacity: var(--max-opacity); transform: scale(1); }
         }
 
 /*Sao băng*/
@@ -1299,9 +1072,9 @@
     </style>
 </head>
 <body id="top" class="antialiased">
-    <canvas id="c" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+    <canvas id="c" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-100"></canvas>
 
-    <!-- 🌌 BỘ LỌC ĐỘNG SVG ĐỂ XÉ NHỎ VÀ TẠO VÂN KHÓI SẮC NÉT (Chỉ áp dụng ở Hero Section) -->
+    <!-- 🌌 BỘ LỌC ĐỘNG SVG ĐỂ XÉ NHỎ VÀ TẠO VÂN KHÓI SẮC NÉT (Chỉ áp dụng ở Hero Section) >
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <filter id="aurora-turbulent-filter">
@@ -1312,9 +1085,9 @@
             <filter id="nebula-turbulent-filter">
                 <feTurbulence type="fractalNoise" baseFrequency="0.008 0.018" numOctaves="4" result="noise" />
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="90" xChannelSelector="R" yChannelSelector="G" />
-            </filter>c
+            </filter>
         </defs>
-    </svg>
+    </svg-->
 
     <!-- 🌌 ĐỒ HỌA NỀN CỰC QUANG VÀ KHÔNG GIAN ĐÊM (Cố định ở khu vực Hero 980px đầu tiên) -->
     <div class="cosmic-background">
@@ -1333,7 +1106,7 @@
             
             <!-- Brand Logo chính thức mới -->
             <a href="#top" class="flex items-center group relative h-10 w-44" aria-label="Về đầu trang WynAlgo">
-                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-0 transition-opacity duration-300"></div>
                 <div class="relative w-full h-full flex items-center scale-100 group-hover:scale-100 transition-transform duration-200">
                     <svg class="w-full h-full" viewBox="0 0 1384 414" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                         <g>
@@ -1825,21 +1598,21 @@
                         </div>
 
                         <ul class="space-y-3 pt-2">
-                            <li class="flex items-center gap-3 text-xs text-slate-200 font-semibold">
-                                <i class="fa-solid fa-circle-check text-slate-200"></i>
-                                Đầy đủ chỉ báo chuyên sâu TienCK_SignalEye
+                            <li class="flex items-center gap-3 text-xs text-slate-200">
+                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
+                                Truy cập đầy đủ thư viện chỉ báo WynAlgo
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid fa-circle-check text-slate-200"></i>
-                                Cơ chế lọc nhiễu sóng Sideway vượt trội
+                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
+                                Bộ 3 chỉ báo Premium trên TradingView
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid fa-circle-check text-slate-200"></i>
-                                Tự động vẽ vùng Cung & Cầu cứng OrderBlock
+                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
+                                Tín hiệu dòng tiền & Xu hướng thị trường
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid fa-circle-check text-slate-200"></i>
-                                Quyền truy cập phòng tín hiệu VIP Discord
+                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
+                                Công cụ phân tích kỹ thuật & Bộ lọc quét thị trường 
                             </li>
                         </ul>
                     </div>
@@ -1885,19 +1658,19 @@
                         <ul class="space-y-3 pt-2">
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Đầy đủ quyền lợi của gói Premium
+                                Truy cập đầy đủ thư viện chỉ báo WynAlgo
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Quyền xuất tín hiệu Webhook để auto-trade
+                                Bộ 3 chỉ báo Premium trên TradingView
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Chiến lược backtest AI định kỳ hàng tuần
+                                Tín hiệu dòng tiền & Xu hướng thị trường
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Hỗ trợ cấu hình Bot VIP 1-1 trực tiếp
+                                Công cụ phân tích kỹ thuật & Bộ lọc quét thị trường
                             </li>
                         </ul>
                     </div>
@@ -3142,17 +2915,17 @@ uniform vec2  u_res;
 uniform float u_time;
 uniform float u_mouseX;
 
-const float c_intensity = 1.4000;
+const float c_intensity = 1.1000;
 const float c_brightness = 1.5500;
-const float c_waveAmp = 1.0500;
+const float c_waveAmp = 1.1000;
 const float c_thickness = 0.8000;
-const float c_posY = 0.2500;
+const float c_posY = 0.2000;
 const float c_yRange = 0.6100;
-const float c_gap = -0.3000;
+const float c_gap = -0.2000;
 const float c_gapPos = -0.2600;
 const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
 const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
+const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
 const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
 
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
