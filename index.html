@@ -97,7 +97,7 @@
             position: relative;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6, p, a, button, span, li, td, th {
@@ -1094,7 +1094,7 @@
         <div class="stars-background">
             <div class="stars-glow-layer"></div>
             <div class="stars-glow-layer-medium"></div>
-            <div class="stars" id="stars"></div>
+            <div class="stars hidden" id="stars"></div>
         </div>
     </div>
     <!--div class="starsky" id="ministarContainer"></div-->
@@ -1162,7 +1162,7 @@
 
     <!-- CONTENT WRAPPER -->
     <main class="relative z-10 pt-20">
-        <!-- HERO SECTION (Chỉ phần này có dải cực quang động) #436fff #1bd1d7 [linear-gradient(180deg,rgba(59,171,246,1)_0%,rgba(59,171,246,1)_35%,rgba(103,232,249,1)_45%,rgba(255,255,255,1)_50%,rgba(103,232,249,1)_55%,rgba(59,130,246,1)_65%,rgba(25,83,255,1)_100%)]-->
+        
         <section class="relative pt-24 pb-16 px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-7 sm:space-y-8">
             <h1 class="hero-fluid-title font-bold tracking-tight text-white max-w-5xl mx-auto hero-title font-sans">
                 Thấu hiểu thị trường như<br> 
@@ -1209,84 +1209,60 @@
                             </g>
                         </g>
                     </svg>
-                    <!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199.9 123.09" class="hover-blink-svg transition-all duration-300 w-[55px] h-auto">
-                      <defs>
-                        
-                        <linearGradient id="g" x1="177.11" y1="57.86" x2="46.34" y2="-.05" gradientUnits="userSpaceOnUse">
-                          <stop offset="0" stop-color="#fff"/>
-                          <stop offset=".26" stop-color="#e0f3fb"/>
-                          <stop offset=".59" stop-color="#bde6f6"/>
-                          <stop offset=".77" stop-color="#b0e1f5"/>
-                        </linearGradient>
-                      </defs>
-                      
-                      
-                      <g fill="none" stroke="url(#g)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5">
-                        <path d="M67.57,44.78l-30.2-11.11c-2.67-.98-2.3-4.87.51-5.34L194.17,2.54c2.67-.44,4.32,2.81,2.39,4.71l-65.89,64.72c-.82.8-2.04,1.02-3.08.55l-24.11-10.85c-.85-.38-1.82-.31-2.61.18l-22.71,14.24c-2.42,1.52-5.27-1.17-3.9-3.68l10.05-18.35c.29-.54.76-.96,1.31-1.21l73.4-32.32"/>
-                        <path d="M62.2,85.75L2.5,120.59"/>
-                        <path d="M27.63,89.26l-18.08,10.55"/>
-                        <path d="M62.2,68.99l-18.95,11.06"/>
-                      </g>
-                    </svg-->
                     
-                    <!-- Icon SVG Arrow Right sắc nét >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
-                        <path d="M4 12H20"/>
-                        <path d="M15 7L20 12L15 17"/>
-                    </svg-->
                 </span>
             </a>
         </div>          
 
         <!--DẢI MARQUEE CHẠY NGANG-->
-        <div  class="section-wrapper mt-6">
-    <h2 class="title text-xs text-slate-100 font-normal"> CÁC THỊ TRƯỜNG HỖ TRỢ </h2>
-    <div class="marquee-container">
-        <div class="marquee-track">
-            
-            <div id="intro" class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
-            </div>
+    <div  class="section-wrapper mt-6">
+        <h2 class="title text-xs text-slate-100 font-normal"> CÁC THỊ TRƯỜNG HỖ TRỢ </h2>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                
+                <div id="intro" class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
+                </div>
 
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
+                </div>
+                
+                <div class="ads-supported-markets__slide">
+                    <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
+                </div>
+                
             </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
-            </div>
-            
-            <div class="ads-supported-markets__slide">
-                <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
-            </div>
-            
         </div>
     </div>
-</div>
 
 
     <!-- KHUNG ĐIỀU PHỐI CHỨA 3 Khung INTRO -->
@@ -2917,9 +2893,9 @@ uniform float u_mouseX;
 
 const float c_intensity = 1.2000;
 const float c_brightness = 1.5500;
-const float c_waveAmp = 1.0500;
+const float c_waveAmp = 1.1500;
 const float c_thickness = 0.8000;
-const float c_posY = 0.15000;
+const float c_posY = 0.1000;
 const float c_yRange = 0.5500;
 const float c_gap = -0.8000;
 const float c_gapPos = -0.1800;
