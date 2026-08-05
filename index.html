@@ -97,7 +97,7 @@
             position: relative;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6, p, a, button, span, li, td, th {
@@ -141,7 +141,234 @@
             overflow: hidden;
         }
 
+        /* Hiệu ứng cực quang động mượt mà chỉ chạy ở phân vùng đầu trang */
+        .aurora-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.95;
+            mask-image: linear-gradient(to bottom, black 25%, black 60%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 25%, black 60%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 88%, transparent 100%);
+            filter: url(#aurora-turbulent-filter) blur(30px);
+            -webkit-filter: url(#aurora-turbulent-filter) blur(20px);
+        }
+
+        .aurora-curtain {
+            position: absolute;
+            top: -25%;
+            width: 42vw;
+            height: 140%;
+            transform-origin: top center;
+            mix-blend-mode: screen;
+        }
         
+        @media (max-width: 768px) {
+            .aurora-curtain {
+                width: 60vw;   /*120 Cho phép dải màu xòe rộng hẳn ra ngoài khung nhìn di động */
+                height: 140%;   /* Thu ngắn chiều cao lại một chút để không bị kéo giãn quá đà */
+                opacity: 0.6;    /* Giảm nhẹ độ mờ để các dải màu lớn đè lên nhau không bị cháy sáng */
+            }
+    
+        }
+
+        .curtain-1 {
+            left: 2%;
+            background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 200, 0.25) 30%, rgba(20, 221, 166, 0.5) 50%, rgba(6, 182, 200, 0.25) 70%, transparent 100%);
+            animation: wave-movement-1 19s infinite ease-in-out alternate;
+        }
+
+        .curtain-2 {
+            left: 35%;
+            background: 
+            linear-gradient(90deg, transparent 0%, rgba(59, 140, 246, 0.2) 25%, rgba(59, 140, 246, 0.4) 50%, rgba(99, 102, 241, 0.3) 70%, transparent 100%); /* rgba(99, 102, 241, 0.45) 25%, rgba(59, 130, 246, 0.5) 50%, rgba(99, 102, 241, 0.5) 75% rgba(6, 182, 212, 0.28)*/
+
+            animation: wave-movement-2 21s infinite ease-in-out alternate;
+            animation-delay: -3s;
+        }
+        
+        .curtain-3 {
+            left: 60%;
+            background: linear-gradient(90deg, transparent 0%, rgba(20, 184, 166, 0.2) 20%, rgba(6, 182, 212, 0.35) 45%, rgba(168, 85, 247, 0.5) 75%, transparent 100%);
+            animation: wave-movement-3 22s infinite ease-in-out alternate;
+            animation-delay: -6s;
+        }
+
+        .curtain-4 {
+            right: -2%;
+            background: linear-gradient(90deg, transparent 0%, rgba(155, 50, 248, 0.40) 30%, rgba(99, 102, 241, 0.3) 65%, transparent 100%);
+            animation: wave-movement-4 20s infinite ease-in-out alternate;
+            animation-delay: -9s;
+        }
+
+        @keyframes wave-movement-1 {
+            0% { transform: skewX(-15deg) scaleX(0.95) translateY(0); opacity: 0.65; }
+            50% { transform: skewX(-7deg) scaleX(1.25) translateY(-30px); opacity: 1; }
+            100% { transform: skewX(-25deg) scaleX(0.85) translateY(20px); opacity: 0.55; }
+        }
+        @keyframes wave-movement-2 {
+            0% { transform: skewX(10deg) scaleX(0.8) translateY(-40px); opacity: 0.5; } /* 0.6 0.95 0.7*/
+            50% { transform: skewX(22deg) scaleX(1.2) translateY(50px); opacity: 0.3; }
+            100% { transform: skewX(4deg) scaleX(0.9) translateY(-20px); opacity: 0.9; }
+        }
+        @keyframes wave-movement-3 {
+            0% { transform: skewX(-8deg) scaleX(1.2) translateY(15px); opacity: 0.85; }
+            50% { transform: skewX(-20deg) scaleX(0.8) translateY(-25px); opacity: 0.55; }
+            100% { transform: skewX(-4deg) scaleX(1.1) translateY(15px); opacity: 1; }
+        }
+        @keyframes wave-movement-4 {
+            0% { transform: skewX(16deg) scaleX(0.85) translateY(-25px); opacity: 0.5; }
+            50% { transform: skewX(-2deg) scaleX(1.3) translateY(15px); opacity: 0.95; }
+            100% { transform: skewX(12deg) scaleX(0.75) translateY(-20px); opacity: 0.6; }
+        }
+
+/* Aurora Glow */
+/* === AURORA EFFECT === */
+        .auroraglow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            filter: blur(60px);
+            opacity: 0.7;
+        }
+
+        .aurora {
+            position: fixed;
+            width: 60%;
+            height: 60%;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            animation: aurora-move 20s ease-in-out infinite;
+        }
+        /*
+        @media (max-width: 768px) {
+            .aurora {
+                width: 30%;   
+                opacity: 0.6;    
+            }
+    
+        }*/
+
+        .aurora-1 {
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.5) 0%, transparent 70%);
+            top: 15%;
+            left: -20%;
+            animation-delay: 0s;
+        }
+
+        .aurora-2 {
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.6) 0%, transparent 70%);
+            top: 20%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .aurora-4 {
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.5) 0%, transparent 0%);
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        .aurora-3 {
+            background: radial-gradient(circle, rgba(255, 0, 150, 0.4) 0%, transparent 0%);
+            top: 30%;
+            right: 20%;
+            animation-delay: -15s;
+        }
+
+        @keyframes aurora-move {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            25% {
+                transform: translate(10%, 15%) scale(1.2) rotate(90deg);
+            }
+            50% {
+                transform: translate(-10%, 20%) scale(0.9) rotate(180deg);
+            }
+            75% {
+                transform: translate(15%, -10%) scale(1.1) rotate(270deg);
+            }
+        }
+
+
+/* Tinh vân khói Nebula nhẹ ở phần trên */
+        .nebula-wisps {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            z-index: 2;
+            opacity: 0.85;
+            filter: url(#nebula-turbulent-filter) blur(12px);
+            -webkit-filter: url(#nebula-turbulent-filter) blur(12px);
+            mask-image: linear-gradient(to bottom, black 35%, rgba(0,0,0,0.7) 65%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.7) 60%, transparent 95%);
+        }
+
+        .central-bloom-glow {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -10%) scale(1);
+            width: 75vw;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.24) 0%, rgba(6, 182, 212, 0.1) 30%, rgba(99, 102, 241, 0.04) 60%, transparent 85%);
+            filter: blur(40px);
+            mix-blend-mode: screen;
+            z-index: 1;
+            animation: core-pulse 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes core-pulse {
+            0% { transform: translate(-50%, -10%) scale(0.95); opacity: 0.8; }
+            100% { transform: translate(-50%, -10%) scale(1.05); opacity: 1; }
+        }
+
+        .wisp {
+            position: absolute;
+            mix-blend-mode: screen;
+        }
+
+        .wisp-1 {
+            top: -5%;
+            left: 10%;
+            width: 80%;
+            height: 380px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.18) 0%, rgba(240, 246, 255, 0.08) 25%, rgba(6, 182, 212, 0.02) 50%, transparent 75%);
+            transform: rotate(-3deg) scaleY(0.5);
+            animation: wisp-vortex-left 32s infinite alternate ease-in-out;
+        }
+
+        .wisp-2 {
+            top: 28%;
+            left: 15%;
+            width: 70%;
+            height: 340px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.16) 0%, rgba(224, 242, 254, 0.07) 30%, rgba(99, 102, 241, 0.02) 55%, transparent 75%);
+            transform: rotate(4deg) scaleY(0.45);
+            animation: wisp-vortex-right 38s infinite alternate ease-in-out;
+        }
+
+        .wisp-3 {
+            top: 10%;
+            left: 5%;
+            width: 90%;
+            height: 480px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 80%);
+            transform: rotate(-1deg) scaleY(0.6);
+            animation: wisp-vortex-left 45s infinite alternate ease-in-out;
+            animation-delay: -6s;
+        }
+
 /* =========================================================================
    ✨ LỚP NỀN SAO TĨNH ĐƯỢC TỐI ƯU HÓA PHẦN CỨNG GPU BẰNG BOX-SHADOW (CÁCH 1)
    Tăng mật độ gấp 5 lần (X5 Density) bằng phương pháp liệt kê tọa độ lẻ ngẫu nhiên.
@@ -284,7 +511,7 @@
 
         @keyframes twinkle {
             0%, 100% { opacity: 0; transform: scale(2.5); }
-            10% { opacity: var(--max-opacity); transform: scale(1); }
+            50% { opacity: var(--max-opacity); transform: scale(1); }
         }
 
 /*Sao băng*/
@@ -1072,31 +1299,203 @@
     </style>
 </head>
 <body id="top" class="antialiased">
-    <canvas id="c" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-100"></canvas>
+<section class="aurora-hero" style="position:fixed;width:100%;height:100vh;min-height:520px;overflow:hidden;isolation:isolate">
+  <!-- Canvas để vẽ cực quang -->
+  <canvas class="aurora-canvas" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+  
+  <!-- Lớp phủ nội dung -->
+ 
 
-    <!-- 🌌 BỘ LỌC ĐỘNG SVG ĐỂ XÉ NHỎ VÀ TẠO VÂN KHÓI SẮC NÉT (Chỉ áp dụng ở Hero Section) >
-    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="aurora-turbulent-filter">
-                <feTurbulence type="fractalNoise" baseFrequency="0.006 0.015" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-            
-            <filter id="nebula-turbulent-filter">
-                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.018" numOctaves="4" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="90" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-        </defs>
-    </svg-->
+  <style>
+    .aurora-hero .aurora-canvas {
+      filter: saturate(1.1) brightness(1.1);
+    }
+  </style>
 
-    <!-- 🌌 ĐỒ HỌA NỀN CỰC QUANG VÀ KHÔNG GIAN ĐÊM (Cố định ở khu vực Hero 980px đầu tiên) -->
+  <script>
+  (() => {
+    const CFG = {
+      "gspeed": 0.35,
+      "strips": [
+        {"x":-0.68,"y":-0.62,"l":1.18,"w":0.1,"wl":0.9,"h":0.8,"p":1,"ws":1,"rs":1,"tlt":-8,"samp":0,"sfreq":0.18,"piv":1.8,"mp":-1.5,"i":1.5,"ca":"#0df2a1","cb":"#9d0df2"},
+        {"x":-0.88,"y":0.26,"l":0.78,"w":0.14,"wl":1,"h":0.5,"p":-0.8,"ws":2.3,"rs":0.8,"tlt":-8,"samp":0,"sfreq":0.13,"piv":1.8,"mp":-1.5,"i":0.9,"ca":"#0df2a1","cb":"#f20db1"},
+        {"x":0.55,"y":-0.4,"l":1.67,"w":0.18,"wl":0.9,"h":1,"p":0.25,"ws":-4,"rs":1.05,"tlt":-8,"samp":0,"sfreq":0.16,"piv":1.8,"mp":-1.5,"i":1,"ca":"#0df2a1","cb":"#9d0df2"},
+        {"x":0.7,"y":-0.46,"l":1.12,"w":0.21,"wl":1.2,"h":0.5,"p":-0.15,"ws":-4,"rs":0.7,"tlt":-8,"samp":0,"sfreq":0.15,"piv":1.8,"mp":-1.5,"i":0.9,"ca":"#0df2a1","cb":"#f20db1"}
+      ]
+    };
+
+    // Tìm canvas một cách chính xác hơn
+    const section = document.currentScript.closest('.aurora-hero');
+    const canvas = section.querySelector('.aurora-canvas');
+    if (!canvas) return;
+
+    const VERT = `attribute vec2 a; void main(){ gl_Position=vec4(a,0.0,1.0); }`;
+    
+    // Shader đã được sửa: Đã thêm uniform vec2 uMouse;
+    const FRAG = `
+precision highp float;
+uniform vec2 uRes; uniform float uTime; uniform float uFade; uniform vec2 uMouse;
+uniform float uX[4]; uniform float uY[4]; uniform float uW[4]; uniform float uWL[4]; uniform float uL[4]; uniform float uH[4]; uniform float uP[4]; uniform float uI[4]; uniform float uWS[4]; uniform float uRS[4]; uniform float uTlt[4]; uniform float uSAmp[4]; uniform float uSFreq[4]; uniform float uPiv[4]; uniform float uMP[4]; uniform vec3 uCA[4]; uniform vec3 uCB[4];
+
+float hash(vec2 p){p=fract(p*vec2(234.34,435.345));p+=dot(p,p+34.23);return fract(p.x*p.y);}
+float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
+const mat2 RM=mat2(.80,.60,-.60,.80);
+float fbm(vec2 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p=RM*p*2.02+vec2(3.1,1.7);a*=.55;}return s;}
+
+vec3 curtain(vec2 p,float tt,float tRaw,float xc,float yBase,float wavy,float wl,float xLength,float height,vec3 cBot,vec3 cTop,float seed,float asp,float waveSpeed,float raySpeed,float tilt,float swingAmp,float swingFreq,float pivot){
+  float hn=p.x/asp; float dx=hn-xc; float safeWL=max(wl,0.03);
+  float dynamicAngle=tilt+swingAmp*sin(tRaw*swingFreq+seed*1.5);
+  if(abs(dynamicAngle)>0.0001){
+    float pivotY=yBase+pivot*max(height,0.02);
+    float ca=cos(dynamicAngle),sa=sin(dynamicAngle);
+    float rx=dx*asp; float ry=p.y-pivotY;
+    float rotX=rx*ca-ry*sa; float rotY=rx*sa+ry*ca;
+    dx=rotX/asp; p.y=rotY+pivotY;
+  }
+  float scroll=tt*0.05; float lx=dx+scroll*(seed-2.0)*0.12;
+  float ws=waveSpeed; float tWave=tt*0.62*ws; float tFbm=tt*0.025*ws*0.6; float tBob=tt*0.20*ws;
+  float phase=(lx/safeWL)*6.2831853-tWave+seed*1.37;
+  float wave=sin(phase)*wavy; wave+=sin(phase*0.5+1.4)*wavy*0.16; wave+=(fbm(vec2(lx/safeWL*0.32-tFbm,seed*8.7))-0.5)*wavy*0.12; wave+=sin(tBob+seed*2.0)*0.025*wavy;
+  float center=yBase+wave; float dist=p.y-center; if(dist<-0.15) return vec3(0.0);
+  float rs=raySpeed; float rayScale=0.12+0.04*sin(tt*0.3*rs+seed); float tRay=tt*0.03*rs;
+  vec2 rc=vec2(lx*3.5/safeWL+fbm(vec2(lx*0.5/safeWL,tt*0.02*rs)),p.y*rayScale-tRay+seed);
+  float ray=fbm(rc*4.5); float rayS=mix(0.4,1.0,ray);
+  float fade=(dist>=0.0)?exp(-dist/max(height,0.02)):smoothstep(0.0,1.0,(dist+0.15)/0.15);
+  float I=fade*rayS*0.9; float depth=0.7+0.3*fbm(vec2(lx*0.8/safeWL-tt*0.05,seed*5.0+p.y*0.5));
+  I*=depth; float gf=clamp(dist*1.1,0.0,1.0); vec3 col=mix(cBot,cTop,gf)*I;
+  float xSpan=max(xLength,0.02)*0.5; float hmask=1.0-smoothstep(xSpan*0.55,xSpan,abs(dx));
+  col*=hmask; return col;
+}
+
+void main(){
+  float mn=min(uRes.x,uRes.y);
+  vec2 uv=(gl_FragCoord.xy*2.0-uRes)/mn;
+  float asp=uRes.x/mn;
+  float t=uTime;
+  vec2 mo=uMouse*0.15; // Tăng cường độ tương tác chuột
+  vec2 base=uv; base.y-=(base.x*base.x)*0.08;
+  vec3 aurora=vec3(0.0);
+  for(int i=0;i<4;i++){
+    vec2 sp=base-mo*uMP[i];
+    aurora+=curtain(sp,t*uP[i],t,uX[i],uY[i],uW[i],uWL[i],uL[i],uH[i],uCA[i],uCB[i],float(i)*13.7+1.7,asp,uWS[i],uRS[i],uTlt[i],uSAmp[i],uSFreq[i],uPiv[i])*uI[i];
+  }
+  vec3 col=1.0-exp(-aurora*1.5);
+  float vig=1.0-0.25*smoothstep(0.4,1.5,length(uv*vec2(0.7,1.0)));
+  col*=vig;
+  float rawP=max(aurora.r,max(aurora.g,aurora.b));
+  float a=(1.0-exp(-rawP*1.15))*vig*uFade;
+  gl_FragColor=vec4(clamp(col,0.0,1.0),clamp(a,0.0,1.0));
+}
+`;
+
+    let gl = canvas.getContext('webgl', {alpha:true, antialias:true});
+    if(!gl) return;
+
+    function createShader(gl, type, source) {
+      const s = gl.createShader(type); gl.shaderSource(s, source); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(s)); gl.deleteShader(s); return null;
+      }
+      return s;
+    }
+
+    const vs = createShader(gl, gl.VERTEX_SHADER, VERT);
+    const fs = createShader(gl, gl.FRAGMENT_SHADER, FRAG);
+    const pr = gl.createProgram(); gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr); gl.useProgram(pr);
+
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+    const a = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
+
+    const U = {};
+    ["uRes","uTime","uFade","uMouse","uX[0]","uY[0]","uW[0]","uWL[0]","uL[0]","uH[0]","uP[0]","uI[0]","uWS[0]","uRS[0]","uTlt[0]","uSAmp[0]","uSFreq[0]","uPiv[0]","uMP[0]","uCA[0]","uCB[0]"].forEach(n => U[n] = gl.getUniformLocation(pr, n));
+
+    const X=new Float32Array(4), Y=new Float32Array(4), W=new Float32Array(4), WL=new Float32Array(4), L=new Float32Array(4), H=new Float32Array(4), P=new Float32Array(4), I=new Float32Array(4), WS=new Float32Array(4), RS=new Float32Array(4), TLT=new Float32Array(4), SAMP=new Float32Array(4), SFREQ=new Float32Array(4), PIV=new Float32Array(4), MP=new Float32Array(4), CA=new Float32Array(12), CB=new Float32Array(12);
+    const h2r=h=>[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];
+    CFG.strips.forEach((st,i)=>{
+      X[i]=st.x; Y[i]=st.y; W[i]=st.w; WL[i]=st.wl; L[i]=st.l; H[i]=st.h; P[i]=st.p; I[i]=st.i;
+      WS[i]=st.ws; RS[i]=st.rs; TLT[i]=st.tlt*Math.PI/180; SAMP[i]=st.samp*Math.PI/180;
+      SFREQ[i]=st.sfreq; PIV[i]=st.piv; MP[i]=st.mp;
+      const c1=h2r(st.ca), c2=h2r(st.cb);
+      CA[i*3]=c1[0]; CA[i*3+1]=c1[1]; CA[i*3+2]=c1[2];
+      CB[i*3]=c2[0]; CB[i*3+1]=c2[1]; CB[i*3+2]=c2[2];
+    });
+
+    let mouse = [0, 0], tMouse = [0, 0];
+    window.addEventListener('mousemove', e => {
+      tMouse[0] = (e.clientX / window.innerWidth) * 2 - 1;
+      tMouse[1] = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let t0 = performance.now(), fade = 0;
+    function loop(now) {
+      const dt = (now - t0) / 1000; t0 = now;
+      fade = Math.min(1, fade + dt / 2);
+      mouse[0] += (tMouse[0] - mouse[0]) * 0.05;
+      mouse[1] += (tMouse[1] - mouse[1]) * 0.05;
+
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.uRes, canvas.width, canvas.height);
+      gl.uniform1f(U.uTime, now * 0.001 * CFG.gspeed);
+      gl.uniform1f(U.uFade, fade);
+      gl.uniform2f(U.uMouse, mouse[0], mouse[1]);
+
+      gl.uniform1fv(U["uX[0]"], X); gl.uniform1fv(U["uY[0]"], Y); gl.uniform1fv(U["uW[0]"], W);
+      gl.uniform1fv(U["uWL[0]"], WL); gl.uniform1fv(U["uL[0]"], L); gl.uniform1fv(U["uH[0]"], H);
+      gl.uniform1fv(U["uP[0]"], P); gl.uniform1fv(U["uI[0]"], I); gl.uniform1fv(U["uWS[0]"], WS);
+      gl.uniform1fv(U["uRS[0]"], RS); gl.uniform1fv(U["uTlt[0]"], TLT); gl.uniform1fv(U["uSAmp[0]"], SAMP);
+      gl.uniform1fv(U["uSFreq[0]"], SFREQ); gl.uniform1fv(U["uPiv[0]"], PIV); gl.uniform1fv(U["uMP[0]"], MP);
+      gl.uniform3fv(U["uCA[0]"], CA); gl.uniform3fv(U["uCB[0]"], CB);
+
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+  </script>
+</section>
+    <canvas id="c" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none opacity-0"></canvas>
+
+    <!--  ĐỒ HỌA NỀN CỰC QUANG VÀ KHÔNG GIAN ĐÊM (Cố định ở khu vực Hero 980px đầu tiên) -->
     <div class="cosmic-background">
+        <div class="aurora-container hidden">
+            <div class="aurora-curtain curtain-1 opacity-90"></div>
+            <div class="aurora-curtain curtain-2"></div>
+            <div class="aurora-curtain curtain-2 opacity-10"></div>
+            <div class="aurora-curtain curtain-4 opacity-10"></div>
+        </div>
+        <!-- Aurora Effect -->
+        
+        <!--div class="nebula-wisps">
+            <div class="central-bloom-glow"></div>
+            <div class="wisp wisp-1"></div>
+            <div class="wisp wisp-2"></div>
+            <div class="wisp wisp-3"></div>
+        </div-->
+
         <div class="stars-background">
             <div class="stars-glow-layer"></div>
             <div class="stars-glow-layer-medium"></div>
-            <div class="stars hidden" id="stars"></div>
+            <div class="stars" id="stars"></div>
         </div>
     </div>
+
+    <div class="auroraglow-container hidden">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+            <div class="aurora aurora-4"></div>
+        </div>
+    
     <!--div class="starsky" id="ministarContainer"></div-->
     <div id="shootingStarsContainer"></div>
 
@@ -1106,7 +1505,7 @@
             
             <!-- Brand Logo chính thức mới -->
             <a href="#top" class="flex items-center group relative h-10 w-44" aria-label="Về đầu trang WynAlgo">
-                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-0 transition-opacity duration-300"></div>
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="relative w-full h-full flex items-center scale-100 group-hover:scale-100 transition-transform duration-200">
                     <svg class="w-full h-full" viewBox="0 0 1384 414" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                         <g>
@@ -1162,7 +1561,7 @@
 
     <!-- CONTENT WRAPPER -->
     <main class="relative z-10 pt-20">
-        
+        <!-- HERO SECTION (Chỉ phần này có dải cực quang động) #436fff #1bd1d7 [linear-gradient(180deg,rgba(59,171,246,1)_0%,rgba(59,171,246,1)_35%,rgba(103,232,249,1)_45%,rgba(255,255,255,1)_50%,rgba(103,232,249,1)_55%,rgba(59,130,246,1)_65%,rgba(25,83,255,1)_100%)]-->
         <section class="relative pt-24 pb-16 px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-7 sm:space-y-8">
             <h1 class="hero-fluid-title font-bold tracking-tight text-white max-w-5xl mx-auto hero-title font-sans">
                 Thấu hiểu thị trường như<br> 
@@ -1209,60 +1608,84 @@
                             </g>
                         </g>
                     </svg>
+                    <!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199.9 123.09" class="hover-blink-svg transition-all duration-300 w-[55px] h-auto">
+                      <defs>
+                        
+                        <linearGradient id="g" x1="177.11" y1="57.86" x2="46.34" y2="-.05" gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#fff"/>
+                          <stop offset=".26" stop-color="#e0f3fb"/>
+                          <stop offset=".59" stop-color="#bde6f6"/>
+                          <stop offset=".77" stop-color="#b0e1f5"/>
+                        </linearGradient>
+                      </defs>
+                      
+                      
+                      <g fill="none" stroke="url(#g)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5">
+                        <path d="M67.57,44.78l-30.2-11.11c-2.67-.98-2.3-4.87.51-5.34L194.17,2.54c2.67-.44,4.32,2.81,2.39,4.71l-65.89,64.72c-.82.8-2.04,1.02-3.08.55l-24.11-10.85c-.85-.38-1.82-.31-2.61.18l-22.71,14.24c-2.42,1.52-5.27-1.17-3.9-3.68l10.05-18.35c.29-.54.76-.96,1.31-1.21l73.4-32.32"/>
+                        <path d="M62.2,85.75L2.5,120.59"/>
+                        <path d="M27.63,89.26l-18.08,10.55"/>
+                        <path d="M62.2,68.99l-18.95,11.06"/>
+                      </g>
+                    </svg-->
                     
+                    <!-- Icon SVG Arrow Right sắc nét >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <path d="M4 12H20"/>
+                        <path d="M15 7L20 12L15 17"/>
+                    </svg-->
                 </span>
             </a>
         </div>          
 
         <!--DẢI MARQUEE CHẠY NGANG-->
-    <div  class="section-wrapper mt-6">
-        <h2 class="title text-xs text-slate-100 font-normal"> CÁC THỊ TRƯỜNG HỖ TRỢ </h2>
-        <div class="marquee-container">
-            <div class="marquee-track">
-                
-                <div id="intro" class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
-                </div>
-
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
-                </div>
-                
-                <div class="ads-supported-markets__slide">
-                    <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
-                </div>
-                
+        <div  class="section-wrapper mt-6">
+    <h2 class="title text-xs text-slate-100 font-normal"> CÁC THỊ TRƯỜNG HỖ TRỢ </h2>
+    <div class="marquee-container">
+        <div class="marquee-track">
+            
+            <div id="intro" class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
             </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
+            </div>
+
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/b_icon.webp" alt="Crypto" class="ads-supported-markets__image" decoding="async">CRYPTO</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/c_icon.webp" alt="Forex" class="ads-supported-markets__image" decoding="async">FOREX</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/a_icon.webp" alt="Hàng hóa" class="ads-supported-markets__image" decoding="async">HÀNG HÓA</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/i_icon.webp" alt="Chỉ số" class="ads-supported-markets__image" decoding="async">CHỈ SỐ</span>
+            </div>
+            
+            <div class="ads-supported-markets__slide">
+                <span class="keywords"><img src="img/s_icon.webp" alt="Cổ phiếu" class="ads-supported-markets__image" decoding="async">CỔ PHIẾU</span>
+            </div>
+            
         </div>
     </div>
+</div>
 
 
     <!-- KHUNG ĐIỀU PHỐI CHỨA 3 Khung INTRO -->
@@ -1574,21 +1997,21 @@
                         </div>
 
                         <ul class="space-y-3 pt-2">
-                            <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
-                                Truy cập đầy đủ thư viện chỉ báo WynAlgo
+                            <li class="flex items-center gap-3 text-xs text-slate-200 font-semibold">
+                                <i class="fa-solid fa-circle-check text-slate-200"></i>
+                                Đầy đủ chỉ báo chuyên sâu TienCK_SignalEye
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
-                                Bộ 3 chỉ báo Premium trên TradingView
+                                <i class="fa-solid fa-circle-check text-slate-200"></i>
+                                Cơ chế lọc nhiễu sóng Sideway vượt trội
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
-                                Tín hiệu dòng tiền & Xu hướng thị trường
+                                <i class="fa-solid fa-circle-check text-slate-200"></i>
+                                Tự động vẽ vùng Cung & Cầu cứng OrderBlock
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
-                                <i class="fa-solid text-[#4bd8f9] fa-circle-check"></i>
-                                Công cụ phân tích kỹ thuật & Bộ lọc quét thị trường 
+                                <i class="fa-solid fa-circle-check text-slate-200"></i>
+                                Quyền truy cập phòng tín hiệu VIP Discord
                             </li>
                         </ul>
                     </div>
@@ -1634,19 +2057,19 @@
                         <ul class="space-y-3 pt-2">
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Truy cập đầy đủ thư viện chỉ báo WynAlgo
+                                Đầy đủ quyền lợi của gói Premium
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Bộ 3 chỉ báo Premium trên TradingView
+                                Quyền xuất tín hiệu Webhook để auto-trade
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Tín hiệu dòng tiền & Xu hướng thị trường
+                                Chiến lược backtest AI định kỳ hàng tuần
                             </li>
                             <li class="flex items-center gap-3 text-xs text-slate-200">
                                 <i class="fa-solid fa-circle-check text-violet-400"></i>
-                                Công cụ phân tích kỹ thuật & Bộ lọc quét thị trường
+                                Hỗ trợ cấu hình Bot VIP 1-1 trực tiếp
                             </li>
                         </ul>
                     </div>
@@ -2884,149 +3307,150 @@ createStars();
 
 
 //New Aurora
-var VERT = 'attribute vec2 a_pos; void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }';
-var FRAG = `
-precision highp float;
-uniform vec2  u_res;
-uniform float u_time;
-uniform float u_mouseX;
+        var VERT = 'attribute vec2 a_pos; void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }';
+        var FRAG = `
+        precision highp float;
+        uniform vec2  u_res;
+        uniform float u_time;
+        uniform float u_mouseX;
 
-const float c_intensity = 1.2000;
-const float c_brightness = 1.5500;
-const float c_waveAmp = 1.1500;
-const float c_thickness = 0.8000;
-const float c_posY = 0.1000;
-const float c_yRange = 0.5500;
-const float c_gap = -0.8000;
-const float c_gapPos = -0.1800;
-const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
-const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
-const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
-//const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-//const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
-//const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
+        const float c_intensity = 1.2000;
+        const float c_brightness = 1.5500;
+        const float c_waveAmp = 1.1500;
+        const float c_thickness = 0.8000;
+        const float c_posY = 0.1000;
+        const float c_yRange = 0.4500;
+        const float c_gap = -0.8000;
+        const float c_gapPos = -0.1800;
+        const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
+        const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
+        const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
+        const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
+        //const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
+        //const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
+        //const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
 
-float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
-float noise(vec2 p) {
-  vec2 i = floor(p), f = fract(p);
-  vec2 u = f * f * (3.0 - 2.0 * f);
-  return mix(
-    mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
-    mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
-    u.y
-  );
-}
+        float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+        float noise(vec2 p) {
+          vec2 i = floor(p), f = fract(p);
+          vec2 u = f * f * (3.0 - 2.0 * f);
+          return mix(
+            mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+            mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
+            u.y
+          );
+        }
 
-float drawRibbon(vec2 uv, float freq, float amp, float speed, float yOff, float t, float bThk, float sSeed, float tilt) {
-  float mainW = sin(uv.x * freq + t * speed) * amp * c_waveAmp * 1.8;
-  float subW  = cos(uv.x * (freq * 2.3) - t * (speed * 1.3)) * (amp * 0.4) * c_waveAmp * 1.8;
-  float lean  = tilt * uv.x;
-  float wavyY = uv.y - (yOff + mainW + subW + lean);
-  float sX    = uv.x * 30.0 + sin(uv.y * 2.2 + t) * 1.4 + sSeed;
-  float str   = noise(vec2(sX, t * 0.6)) * 0.4 + noise(vec2(sX * 1.6 - t, uv.y * 3.2)) * 0.6;
-  float fThk  = bThk * c_thickness * 1.7;
-  float rib   = smoothstep(fThk, 0.0, abs(wavyY));
-  float fE    = smoothstep(-1.5, -0.1, uv.x) * smoothstep(1.5, 0.1, uv.x);
-  float fV    = smoothstep(-1.05, -0.18, uv.y) * smoothstep(1.05, -0.05, uv.y);
-  float gW    = 0.07 * sin(uv.y * 2.8 + t * 0.25);
-  float gWid  = 0.42 + c_gap * 0.4;
-  float cG    = smoothstep(0.04, gWid, abs(uv.x - c_gapPos + gW));
-  return rib * (0.3 + 0.7 * str) * fE * fV * cG;
-}
+        float drawRibbon(vec2 uv, float freq, float amp, float speed, float yOff, float t, float bThk, float sSeed, float tilt) {
+          float mainW = sin(uv.x * freq + t * speed) * amp * c_waveAmp * 1.8;
+          float subW  = cos(uv.x * (freq * 2.3) - t * (speed * 1.3)) * (amp * 0.4) * c_waveAmp * 1.8;
+          float lean  = tilt * uv.x;
+          float wavyY = uv.y - (yOff + mainW + subW + lean);
+          float sX    = uv.x * 30.0 + sin(uv.y * 2.2 + t) * 1.4 + sSeed;
+          float str   = noise(vec2(sX, t * 0.6)) * 0.4 + noise(vec2(sX * 1.6 - t, uv.y * 3.2)) * 0.6;
+          float fThk  = bThk * c_thickness * 1.7;
+          float rib   = smoothstep(fThk, 0.0, abs(wavyY));
+          float fE    = smoothstep(-1.5, -0.1, uv.x) * smoothstep(1.5, 0.1, uv.x);
+          float fV    = smoothstep(-1.05, -0.18, uv.y) * smoothstep(1.05, -0.05, uv.y);
+          float gW    = 0.07 * sin(uv.y * 2.8 + t * 0.25);
+          float gWid  = 0.42 + c_gap * 0.4;
+          float cG    = smoothstep(0.04, gWid, abs(uv.x - c_gapPos + gW));
+          return rib * (0.3 + 0.7 * str) * fE * fV * cG;
+        }
 
 
-void main() {
-  vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y;
-  float t = u_time * 0.5;
-  
-  // Khởi tạo màu ban đầu là 0.0 (không màu nền)
-  vec3 col = vec3(0.0);
+        void main() {
+          vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y;
+          float t = u_time * 0.5;
+          
+          // Khởi tạo màu ban đầu là 0.0 (không màu nền)
+          vec3 col = vec3(0.0);
 
-  vec2 auv = vec2(uv.x, (uv.y - c_posY) / max(c_yRange, 0.001));
-  float r1 = drawRibbon(auv + vec2(u_mouseX * 0.05, 0.0), 2.6, 0.22, 0.35,  0.12, t,       0.45, 0.0,   c_tilts.x);
-  float r2 = drawRibbon(auv + vec2(u_mouseX * 0.10, 0.0), 3.6, 0.28, -0.55, -0.06, t+4.2,  0.50, 120.0, c_tilts.y);
-  float r3 = drawRibbon(auv + vec2(u_mouseX * 0.15, 0.0), 4.8, 0.16, 0.75,  -0.26, t+8.5,  0.38, 240.0, c_tilts.z);
-  float tot = (r1 * 0.6 + r2 * 0.95 + r3 * 0.5) * c_intensity * 1.7 * c_brightness;
-  tot = 1.0 - exp(-tot);
-  
-  float hR = clamp((auv.y + 0.45) / 1.15, 0.0, 1.0);
-  vec3 aC = mix(c_low, c_mid, smoothstep(0.0, 0.45, hR));
-  aC = mix(aC, c_high, smoothstep(0.4, 1.0, hR));
-  col += aC * tot;
-  col += aC * (1.0 - exp(-(r1 + r2 + r3) * c_brightness)) * 0.08 * c_intensity * c_brightness;
-  
-  float W = 1.6;
-  col = col * (1.0 + col / (W * W)) / (1.0 + col);
-  col = pow(max(col, 0.0), vec3(0.95));
+          vec2 auv = vec2(uv.x, (uv.y - c_posY) / max(c_yRange, 0.001));
+          float r1 = drawRibbon(auv + vec2(u_mouseX * 0.05, 0.0), 2.6, 0.22, 0.35,  0.12, t,       0.45, 0.0,   c_tilts.x);
+          float r2 = drawRibbon(auv + vec2(u_mouseX * 0.10, 0.0), 3.6, 0.28, -0.55, -0.06, t+4.2,  0.50, 120.0, c_tilts.y);
+          float r3 = drawRibbon(auv + vec2(u_mouseX * 0.15, 0.0), 4.8, 0.16, 0.75,  -0.26, t+8.5,  0.38, 240.0, c_tilts.z);
+          float tot = (r1 * 0.6 + r2 * 0.95 + r3 * 0.5) * c_intensity * 1.7 * c_brightness;
+          tot = 1.0 - exp(-tot);
+          
+          float hR = clamp((auv.y + 0.45) / 1.15, 0.0, 1.0);
+          vec3 aC = mix(c_low, c_mid, smoothstep(0.0, 0.45, hR));
+          aC = mix(aC, c_high, smoothstep(0.4, 1.0, hR));
+          col += aC * tot;
+          col += aC * (1.0 - exp(-(r1 + r2 + r3) * c_brightness)) * 0.08 * c_intensity * c_brightness;
+          
+          float W = 1.6;
+          col = col * (1.0 + col / (W * W)) / (1.0 + col);
+          col = pow(max(col, 0.0), vec3(0.95));
 
-  // Kênh Alpha (độ đục) được tính theo độ sáng 'tot' của dải cực quang
-  float alpha = clamp(tot * 1.2, 0.0, 1.0);
-  gl_FragColor = vec4(col, alpha);
-}
-`;
+          // Kênh Alpha (độ đục) được tính theo độ sáng 'tot' của dải cực quang
+          float alpha = clamp(tot * 1.2, 0.0, 1.0);
+          gl_FragColor = vec4(col, alpha);
+        }
+        `;
 
-(function() {
-  var canvas = document.getElementById('c');
-  // Bật alpha: true để Canvas hỗ trợ độ trong suốt
-  var gl = canvas.getContext('webgl', { antialias: false, alpha: true });
-  if (!gl) { return; }
+        (function() {
+          var canvas = document.getElementById('c');
+          // Bật alpha: true để Canvas hỗ trợ độ trong suốt
+          var gl = canvas.getContext('webgl', { antialias: false, alpha: true });
+          if (!gl) { return; }
 
-  function compile(type, src) {
-    var sh = gl.createShader(type);
-    gl.shaderSource(sh, src);
-    gl.compileShader(sh);
-    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(sh);
-    return sh;
-  }
+          function compile(type, src) {
+            var sh = gl.createShader(type);
+            gl.shaderSource(sh, src);
+            gl.compileShader(sh);
+            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(sh);
+            return sh;
+          }
 
-  var prog = gl.createProgram();
-  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
-  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
-  gl.linkProgram(prog);
-  gl.useProgram(prog);
+          var prog = gl.createProgram();
+          gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+          gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+          gl.linkProgram(prog);
+          gl.useProgram(prog);
 
-  var buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
-  var loc = gl.getAttribLocation(prog, 'a_pos');
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+          var buf = gl.createBuffer();
+          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+          var loc = gl.getAttribLocation(prog, 'a_pos');
+          gl.enableVertexAttribArray(loc);
+          gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
-  var uRes = gl.getUniformLocation(prog, 'u_res');
-  var uTime = gl.getUniformLocation(prog, 'u_time');
-  var uMouse = gl.getUniformLocation(prog, 'u_mouseX');
+          var uRes = gl.getUniformLocation(prog, 'u_res');
+          var uTime = gl.getUniformLocation(prog, 'u_time');
+          var uMouse = gl.getUniformLocation(prog, 'u_mouseX');
 
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
-  function resize() {
-    var w = Math.floor(canvas.clientWidth * dpr);
-    var h = Math.floor(canvas.clientHeight * dpr);
-    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0,0,w,h); }
-  }
-  resize();
-  window.addEventListener('resize', resize);
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          function resize() {
+            var w = Math.floor(canvas.clientWidth * dpr);
+            var h = Math.floor(canvas.clientHeight * dpr);
+            if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0,0,w,h); }
+          }
+          resize();
+          window.addEventListener('resize', resize);
 
-  var mx = 0;
-  var targetMx = 0;
-  window.addEventListener('mousemove', function(e) { targetMx = (e.clientX / window.innerWidth - 0.5) * 2; });
+          var mx = 0;
+          var targetMx = 0;
+          window.addEventListener('mousemove', function(e) { targetMx = (e.clientX / window.innerWidth - 0.5) * 2; });
 
-  var last = performance.now();
-  var t = 0;
-  var speed = 1.0000;
-  function loop(now) {
-    var dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
-    t += dt * speed;
-    mx += (targetMx - mx) * 0.04;
-    resize();
-    gl.uniform2f(uRes, canvas.width, canvas.height);
-    gl.uniform1f(uTime, t);
-    gl.uniform1f(uMouse, mx);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-    requestAnimationFrame(loop);
-  }
-  requestAnimationFrame(loop);
-})();
+          var last = performance.now();
+          var t = 0;
+          var speed = 1.0000;
+          function loop(now) {
+            var dt = Math.min((now - last) / 1000, 0.05);
+            last = now;
+            t += dt * speed;
+            mx += (targetMx - mx) * 0.04;
+            resize();
+            gl.uniform2f(uRes, canvas.width, canvas.height);
+            gl.uniform1f(uTime, t);
+            gl.uniform1f(uMouse, mx);
+            gl.drawArrays(gl.TRIANGLES, 0, 3);
+            requestAnimationFrame(loop);
+          }
+          requestAnimationFrame(loop);
+        })();
+
 
     </script>
 </body>
