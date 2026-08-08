@@ -1308,7 +1308,22 @@
         var ctx=canvas.getContext("2d");
         var W=0,H=0,stars=[],dpr=Math.min(window.devicePixelRatio||1,2);
         var cfg={density:120,size:0.6,distribution:0.1,glowColor:"#c8d8ff"};
-        function resize(){var rect=canvas.getBoundingClientRect();W=rect.width||innerWidth;H=rect.height||innerHeight;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);stars=makeStars();}
+        function resize(){
+          var rect=canvas.getBoundingClientRect();
+          var newW=rect.width||innerWidth;
+          var newH=rect.height||innerHeight;
+          var widthChanged = (newW !== W);
+          
+          W = newW;
+          H = newH;
+          canvas.width = Math.round(W*dpr);
+          canvas.height = Math.round(H*dpr);
+          ctx.setTransform(dpr,0,0,dpr,0,0);
+          
+          if(stars.length === 0 || widthChanged){
+            stars = makeStars();
+          }
+        }
         window.addEventListener("resize",resize);
         resize();
         var PALETTE=["255,255,255","220,240,255","255,248,220","200,230,255"];
