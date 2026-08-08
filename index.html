@@ -225,7 +225,7 @@
         }
 
 /* Aurora Glow */
-/* === AURORA EFFECT === */
+/* === AURORA EFFECT === 
         .auroraglow-container {
             position: fixed;
             top: 0;
@@ -245,7 +245,7 @@
             border-radius: 50%;
             mix-blend-mode: screen;
             animation: aurora-move 20s ease-in-out infinite;
-        }
+        }*/
         /*
         @media (max-width: 768px) {
             .aurora {
@@ -253,7 +253,7 @@
                 opacity: 0.6;    
             }
     
-        }*/
+        }
 
         .aurora-1 {
             background: radial-gradient(circle, rgba(0, 255, 200, 0.5) 0%, transparent 70%);
@@ -281,7 +281,7 @@
             top: 30%;
             right: 20%;
             animation-delay: -15s;
-        }
+        }*/
 
         @keyframes aurora-move {
             0%, 100% {
@@ -299,7 +299,7 @@
         }
 
 
-/* Tinh vân khói Nebula nhẹ ở phần trên */
+/* Tinh vân khói Nebula nhẹ ở phần trên 
         .nebula-wisps {
             position: absolute;
             top: 0;
@@ -367,7 +367,7 @@
             transform: rotate(-1deg) scaleY(0.6);
             animation: wisp-vortex-left 45s infinite alternate ease-in-out;
             animation-delay: -6s;
-        }
+        }*/
 
 /* =========================================================================
    ✨ LỚP NỀN SAO TĨNH ĐƯỢC TỐI ƯU HÓA PHẦN CỨNG GPU BẰNG BOX-SHADOW (CÁCH 1)
@@ -548,7 +548,7 @@
         }
 
       
-/* Tùy chỉnh kính mờ Menu */
+/* Tùy chỉnh kính mờ Menu header */
         .nav-blur {
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -605,7 +605,7 @@
             box-shadow: 0 0 35px -10px rgba(6, 182, 212, 0.2);
         }
 
-        .btn-ghost {
+        /*.btn-ghost {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #f1f5f9;
@@ -614,7 +614,7 @@
         .btn-ghost:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
-        }
+        }*/
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -683,179 +683,179 @@
    ⚡ NÚT NHẬN 30 NGÀY MIỄN PHÍ - HIỆU ỨNG VIỀN XOAY CONIC GRADIENT
  ========================================================================= */
 
-/* 1. Khung bọc ngoài (Wrapper): Xử lý xoay màu và tạo viền */
-.rotating-border-wrapper {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 9999px; 
-    background: transparent;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    text-decoration: none; /* Đảm bảo không bị gạch chân khi dùng thẻ <a> */
-    box-shadow: 0 0 5px -5px rgba(6, 182, 212, 1); /* viền sáng xung quanh */ 
-    user-select: none;
-}
+        /* 1. Khung bọc ngoài (Wrapper): Xử lý xoay màu và tạo viền */
+        .rotating-border-wrapper {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 9999px; 
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none; /* Đảm bảo không bị gạch chân khi dùng thẻ <a> */
+            box-shadow: 0 0 5px -5px rgba(6, 182, 212, 1); /* viền sáng xung quanh */ 
+            user-select: none;
+        }
 
-/* Hiệu ứng phóng to nhẹ & tăng độ sáng bóng khi hover/touch */
-.rotating-border-wrapper:hover {
-    transform: translateY(-2px) scale(1.02); /* Phóng to nhẹ khi tương tác */
-    box-shadow: 
-        0 0 15px rgba(6, 182, 212, 0.6); /* Vầng sáng phát quang tỏa đều 360 độ */
-}
+        /* Hiệu ứng phóng to nhẹ & tăng độ sáng bóng khi hover/touch */
+        .rotating-border-wrapper:hover {
+            transform: translateY(-2px) scale(1.02); /* Phóng to nhẹ khi tương tác */
+            box-shadow: 
+                0 0 15px rgba(6, 182, 212, 0.6); /* Vầng sáng phát quang tỏa đều 360 độ */
+        }
 
-/* Lớp mặt nạ đục rỗng ruột viền cực kỳ thanh lịch để lộ nền thật ở phía sau */
-.rotating-border-glow-layer {
-    position: absolute;
-    inset: -1.5px; /* Đẩy nhẹ ra ngoài mép nút chỉ 1.2px cực kỳ thanh lịch */
-    padding: 2px; /* Viền siêu mảnh mang tính thẩm mỹ cao */
-    border-radius: 9999px;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
+        /* Lớp mặt nạ đục rỗng ruột viền cực kỳ thanh lịch để lộ nền thật ở phía sau */
+        .rotating-border-glow-layer {
+            position: absolute;
+            inset: -1.5px; /* Đẩy nhẹ ra ngoài mép nút chỉ 1.2px cực kỳ thanh lịch */
+            padding: 2px; /* Viền siêu mảnh mang tính thẩm mỹ cao */
+            border-radius: 9999px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
 
-    /* Đục rỗng phần ruột bằng công nghệ mặt nạ loại trừ */
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-}
+            /* Đục rỗng phần ruột bằng công nghệ mặt nạ loại trừ */
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
 
-/* Tạo dải màu chuyển động chạy tròn phía sau lớp mặt nạ #34d399, #2962ff, #d600f8)*/
-.rotating-border-gradient {
-    position: absolute;
-    width: 135%;
-    height: 135%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: conic-gradient(
-        from 0deg, 
-        #34d399, /* Xanh Cyan 06b6d4*/
-        #d600f8, /* Tím huyền ảo a855f7*/
-        #06b6d4, /* Xanh Emerald 10b981*/
-        #34d399  
-    );
-    /* 👇 TỐC ĐỘ XOAY VIỀN: 4.5s xoay mượt mà, càng nhỏ xoay càng nhanh */
-    animation: rotate-border-gradient 4.5s linear infinite;
-}
+        /* Tạo dải màu chuyển động chạy tròn phía sau lớp mặt nạ #34d399, #2962ff, #d600f8)*/
+        .rotating-border-gradient {
+            position: absolute;
+            width: 135%;
+            height: 135%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: conic-gradient(
+                from 0deg, 
+                #34d399, /* Xanh Cyan 06b6d4*/
+                #d600f8, /* Tím huyền ảo a855f7*/
+                #06b6d4, /* Xanh Emerald 10b981*/
+                #34d399  
+            );
+            /* 👇 TỐC ĐỘ XOAY VIỀN: 4.5s xoay mượt mà, càng nhỏ xoay càng nhanh */
+            animation: rotate-border-gradient 4.5s linear infinite;
+        }
 
-@keyframes rotate-border-gradient {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+        @keyframes rotate-border-gradient {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
 
-/* 2. Phần nút nội dung phía bên trong che khuất lõi gradient tạo hiệu ứng viền phát sáng */
-.rotating-border-btn {
-    position: relative;
-    z-index: 2;
-    /* 👇 Nền tối mờ trong suốt (Glassmorphism) hòa quyện mây tinh vân phía sau */
-    background: rgba(255, 255, 255, 0.05) ; /* rgba(7, 15, 43, 0.3) đến rgba(28, 28, 30, 0.50) */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Sợi chỉ trắng siêu mỏng định hình khung */
-    color: #e5e7eb;
-    padding: 8px 22px; /* ĐỔI KHOẢNG CÁCH ĐỆM (Size nút): py-4 (trên dưới) và px-8 (trái phải) */
-    border-radius: 9999px; /* Đồng bộ độ bo tròn với wrapper */
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    box-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.1),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
+        /* 2. Phần nút nội dung phía bên trong che khuất lõi gradient tạo hiệu ứng viền phát sáng */
+        .rotating-border-btn {
+            position: relative;
+            z-index: 2;
+            /* 👇 Nền tối mờ trong suốt (Glassmorphism) hòa quyện mây tinh vân phía sau */
+            background: rgba(255, 255, 255, 0.05) ; /* rgba(7, 15, 43, 0.3) đến rgba(28, 28, 30, 0.50) */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Sợi chỉ trắng siêu mỏng định hình khung */
+            color: #e5e7eb;
+            padding: 8px 22px; /* ĐỔI KHOẢNG CÁCH ĐỆM (Size nút): py-4 (trên dưới) và px-8 (trái phải) */
+            border-radius: 9999px; /* Đồng bộ độ bo tròn với wrapper */
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.1),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
 
-/* Đổi màu nền nút tối sẫm hơn một chút khi hover */
-.rotating-border-btn:hover {
-    background-color: rgba(179, 170, 229, 0.2); /* Làm nền sáng hơn */
-    border-color: rgba(255, 255, 255, 0.7); /* Làm viền sắc nét hơn */
-    box-shadow: 
-                0 0 15px rgba(255, 255, 255, 0.4), /* Phát quang lan tỏa mạnh hơn */
-                0 0 35px rgba(79, 70, 229, 0.4), /* Thêm hiệu ứng màu xanh tím rực rỡ */
-                inset 0 1px 1px rgba(255, 255, 255, 0.6); /* Tăng độ sáng lõm */
-    
-}
-/* Ẩn dải màu */
-.rotating-border-wrapper:hover .rotating-border-gradient {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+        /* Đổi màu nền nút tối sẫm hơn một chút khi hover */
+        .rotating-border-btn:hover {
+            background-color: rgba(179, 170, 229, 0.2); /* Làm nền sáng hơn */
+            border-color: rgba(255, 255, 255, 0.7); /* Làm viền sắc nét hơn */
+            box-shadow: 
+                        0 0 15px rgba(255, 255, 255, 0.4), /* Phát quang lan tỏa mạnh hơn */
+                        0 0 35px rgba(79, 70, 229, 0.4), /* Thêm hiệu ứng màu xanh tím rực rỡ */
+                        inset 0 1px 1px rgba(255, 255, 255, 0.6); /* Tăng độ sáng lõm */
+            
+        }
+        /* Ẩn dải màu */
+        .rotating-border-wrapper:hover .rotating-border-gradient {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-/* Gạch chân MENU */
-.underline-from-center {
-    position: relative;
-    text-decoration: none;
-}
+        /* Gạch chân MENU */
+        .underline-from-center {
+            position: relative;
+            text-decoration: none;
+        }
 
-.underline-from-center::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -4px;
-    left: 50%; /* Bắt đầu từ giữa */
-    background-color: white;
-    transition: all 0.3s ease;
-}
+        .underline-from-center::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%; /* Bắt đầu từ giữa */
+            background-color: white;
+            transition: all 0.3s ease;
+        }
 
-.underline-from-center:hover::after {
-    width: 100%;
-    left: 0; /* Mở rộng sang hai bên */
-}
-.responsive-text {
-    /* Chữ sẽ tự co giãn từ 10px đến 14px tùy theo độ rộng màn hình */
-    font-size: clamp(12px, 3vw, 16px);
-}
-/* hiệu ứng chữ #00bce6, #2962ff 50.31%, #d500f9 d600f8*/
-.textGradient-ttl {
-    animation: text-animation-title-ttl 6s ease-in-out infinite;
-    background: linear-gradient(90deg, #34d399, #2962ff 50.29%, #d600f8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-repeat: no-repeat;
-    background-size: 200%;
-}
+        .underline-from-center:hover::after {
+            width: 100%;
+            left: 0; /* Mở rộng sang hai bên */
+        }
+        .responsive-text {
+            /* Chữ sẽ tự co giãn từ 10px đến 14px tùy theo độ rộng màn hình */
+            font-size: clamp(12px, 3vw, 16px);
+        }
+        /* hiệu ứng chữ #00bce6, #2962ff 50.31%, #d500f9 d600f8*/
+        .textGradient-ttl {
+            animation: text-animation-title-ttl 6s ease-in-out infinite;
+            background: linear-gradient(90deg, #34d399, #2962ff 50.29%, #d600f8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-repeat: no-repeat;
+            background-size: 200%;
+        }
 
-@keyframes text-animation-title-ttl {
-    0% {
-        background-position:0
-    }
+        @keyframes text-animation-title-ttl {
+            0% {
+                background-position:0
+            }
 
-    50% {
-        background-position:80%
-    }
+            50% {
+                background-position:80%
+            }
 
-    to {
-        background-position:0
-    }
-}
+            to {
+                background-position:0
+            }
+        }
 
 
-/* Khi Hover vào thẻ Cha (.rotating-border-wrapper) 
-   -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) paper-plane  */
-.rotating-border-wrapper:hover .hover-blink-svg,
-.rotating-border-wrapper.is-touched .hover-blink-svg {
-    animation: svg-blink 1s infinite ease-in-out;
-}
-@keyframes svg-blink {
-    0%, 100% { 
-        opacity: 1; 
-        filter: drop-shadow(0 0 2px rgba(176,225,245,0.4)); 
-    }
-    50% { 
-        opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
-        filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
-    }
-}
+        /* Hover nút dùng thủ 30days 
+           -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) paper-plane  */
+        .rotating-border-wrapper:hover .hover-blink-svg,
+        .rotating-border-wrapper.is-touched .hover-blink-svg {
+            animation: svg-blink 1s infinite ease-in-out;
+        }
+        @keyframes svg-blink {
+            0%, 100% { 
+                opacity: 1; 
+                filter: drop-shadow(0 0 2px rgba(176,225,245,0.4)); 
+            }
+            50% { 
+                opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
+                filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
+            }
+        }
 
 
 /* =========================================================================
@@ -1356,6 +1356,49 @@
   requestAnimationFrame(loop);
 })();
   </script>
+
+<!--New star sky-->
+        <canvas id="sky" style="display:block;width:100vw;height:100vh"></canvas>
+        <script>
+        (function(){
+        var canvas=document.getElementById("sky");
+        var ctx=canvas.getContext("2d");
+        var W=0,H=0,stars=[];
+        var cfg={density:120,size:0.6,distribution:0.2,glowColor:"#c8d8ff"};
+        function resize(){W=innerWidth;H=innerHeight;canvas.width=W;canvas.height=H;stars=makeStars();}
+        window.addEventListener("resize",resize);
+        resize();
+        var PALETTE=["255,255,255","220,240,255","255,248,220","200,230,255"];
+        function hexRgb(h){var m=h.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:[200,216,255];}
+        function hexA(h,a){var c=hexRgb(h);return "rgba("+c[0]+","+c[1]+","+c[2]+","+a+")";}
+        function hotspots(){var x1=W*.333,x2=W*.667,y1=H*.333,y2=H*.667;return [[x1,y1],[x2,y1],[x1,y2],[x2,y2]];}
+        function makeStars(){var arr=[],cx=W/2,cy=H/2,mr=Math.hypot(cx,cy),b=cfg.distribution;
+          for(var i=0;i<cfg.density;i++){var x,y;
+            if(b===0){var hs=hotspots(),p=hs[Math.floor(Math.random()*4)],sp=Math.min(W,H)*.18,a=Math.random()*Math.PI*2,d=-Math.log(1-Math.random())*.55*sp;x=p[0]+Math.cos(a)*d;y=p[1]+Math.sin(a)*d;}
+            else if(b>0){if(b<.5){x=Math.random()*W;y=Math.random()*H;}else{var a2=Math.random()*Math.PI*2,r2=Math.pow(Math.random(),2.5-b*1.5)*mr*.75;x=cx+Math.cos(a2)*r2;y=cy+Math.sin(a2)*r2;}}
+            else{var a3=Math.random()*Math.PI*2,r3=(.5+(.5-b)*.5*Math.pow(Math.random(),.6))*mr;x=cx+Math.cos(a3)*r3;y=cy+Math.sin(a3)*r3;}
+            var z=Math.random(),major=Math.random()<.22,bs=major?1.6+Math.random()*1.4:.9+Math.random()*.6;
+            arr.push({x:Math.max(8,Math.min(W-8,x)),y:Math.max(8,Math.min(H-8,y)),z:z,size:bs*cfg.size,gr:bs*cfg.size*(major?8:5),alpha:.45+Math.random()*.5,spd:.7+Math.random()*2.3,ph:Math.random()*Math.PI*2,spikes:major||Math.random()<.3});
+          }return arr;}
+        function draw(s,px,py,a){var r=s.gr*(.8+a*.4),g=ctx.createRadialGradient(px,py,0,px,py,r);
+          g.addColorStop(0,hexA(cfg.glowColor,a*.95));g.addColorStop(.3,hexA(cfg.glowColor,a*.35));g.addColorStop(.75,hexA(cfg.glowColor,a*.08));g.addColorStop(1,"rgba(0,0,0,0)");
+          ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,r,0,Math.PI*2);ctx.fill();
+          if(s.spikes){var sp=r*.8;ctx.lineWidth=.7;
+            var h=ctx.createLinearGradient(px-sp,py,px+sp,py);h.addColorStop(0,"rgba(0,0,0,0)");h.addColorStop(.5,hexA(cfg.glowColor,a*.65));h.addColorStop(1,"rgba(0,0,0,0)");
+            ctx.strokeStyle=h;ctx.beginPath();ctx.moveTo(px-sp,py);ctx.lineTo(px+sp,py);ctx.stroke();
+            var v=ctx.createLinearGradient(px,py-sp,px,py+sp);v.addColorStop(0,"rgba(0,0,0,0)");v.addColorStop(.5,hexA(cfg.glowColor,a*.65));v.addColorStop(1,"rgba(0,0,0,0)");
+            ctx.strokeStyle=v;ctx.beginPath();ctx.moveTo(px,py-sp);ctx.lineTo(px,py+sp);ctx.stroke();}
+          ctx.fillStyle="rgba(255,255,255,"+Math.min(1,a*1.2)+")";ctx.beginPath();ctx.arc(px,py,s.size,0,Math.PI*2);ctx.fill();}
+        var mx=0,my=0,ox=0,oy=0;
+        document.addEventListener("pointermove",function(e){mx=((e.clientX/W)-.5)*2;my=((e.clientY/H)-.5)*2;});
+        function loop(t){t=t||0;ctx.clearRect(0,0,W,H);
+          ox+=(mx-ox)*.05;oy+=(my-oy)*.05;
+          for(var i=0;i<stars.length;i++){var s=stars[i],tw=.5+.5*Math.sin(t*.0008*s.spd+s.ph),a=s.alpha*(.35+.65*tw);draw(s,s.x+ox*s.z,s.y+oy*s.z,a);}
+          requestAnimationFrame(loop);}
+        loop();
+        })();
+        </script>
+
 </section>
     <canvas id="c" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none opacity-0"></canvas>
 
@@ -1377,9 +1420,9 @@
         </div-->
 
         <div class="stars-background">
-            <div class="stars-glow-layer"></div>
-            <div class="stars-glow-layer-medium"></div>
-            <div class="stars" id="stars"></div>
+            <div class="stars-glow-layer hidden"></div>
+            <div class="stars-glow-layer-medium hidden"></div>
+            <div class="stars hidden" id="stars"></div>
         </div>
     </div>
 
@@ -1399,7 +1442,7 @@
             
             <!-- Brand Logo chính thức mới -->
             <a href="#top" class="flex items-center group relative h-10 w-44" aria-label="Về đầu trang WynAlgo">
-                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-0 transition-opacity duration-300"></div>
                 <div class="relative w-full h-full flex items-center scale-100 group-hover:scale-100 transition-transform duration-200">
                     <svg class="w-full h-full" viewBox="0 0 1384 414" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                         <g>
@@ -1831,7 +1874,7 @@
                         <p class="text-sm text-slate-200 leading-relaxed font-medium">30 ngày sử dụng.<br>Nhanh chóng nắm bắt cơ hội và giảm thiểu rủi ro khi tham gia thị trường.</p>
                         
                         <div class="py-4 border-t border-b border-white/5 space-y-1">
-                            <div class="text-emerald-400 text-sm font-bold" id="M30-strike">Coupon 100,000VNĐ vào lần đầu thanh toán.</div>
+                            <div class="text-emerald-400 text-sm font-bold" id="M30-strike">Coupon 100,000VNĐ và tặng thêm 10 ngày sử dụng vào lần đầu thanh toán.</div>
                             <div class="flex items-baseline gap-2">
                                 <!--span class="text-xl font-bold text-white">$</span-->
                                 <span class="text-4xl  font-bold tracking-normal text-white" id="M30-price">590,000</span>
@@ -3038,7 +3081,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const observerOptions = {
     root: null, 
     // threshold: 0.2, // Có thể bỏ bớt threshold để nhạy hơn
-    rootMargin: "0px 0px -80px 0px" // Chỉ kích hoạt khi cách đáy màn hình 80px
+    rootMargin: "0px 0px -70px 0px" // Chỉ kích hoạt khi cách đáy màn hình 80px
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -3200,152 +3243,6 @@ createStars();
         setInterval(() => {
             triggerWave();
         }, 9000 + Math.random() * 3000);
-
-
-//New Aurora
-        var VERT = 'attribute vec2 a_pos; void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }';
-        var FRAG = `
-        precision highp float;
-        uniform vec2  u_res;
-        uniform float u_time;
-        uniform float u_mouseX;
-
-        const float c_intensity = 1.2000;
-        const float c_brightness = 1.5500;
-        const float c_waveAmp = 1.1500;
-        const float c_thickness = 0.8000;
-        const float c_posY = 0.1000;
-        const float c_yRange = 0.4500;
-        const float c_gap = -0.8000;
-        const float c_gapPos = -0.1800;
-        const vec3  c_tilts = vec3(0.0000, 0.0000, 0.0000);
-        const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-        const vec3  c_mid  = vec3(0.4, 0.2, 1.0); // Xanh dương thuần (Blue)
-        const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
-        //const vec3  c_low  = vec3(0.0, 1.0, 0.8); // Xanh ngọc (Cyan)
-        //const vec3  c_mid  = vec3(0.4, 0.0, 1.0); // Xanh dương thuần (Blue)
-        //const vec3  c_high = vec3(0.6, 0.0, 1.0); // Tím đậm (Purple)
-
-        float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
-        float noise(vec2 p) {
-          vec2 i = floor(p), f = fract(p);
-          vec2 u = f * f * (3.0 - 2.0 * f);
-          return mix(
-            mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
-            mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
-            u.y
-          );
-        }
-
-        float drawRibbon(vec2 uv, float freq, float amp, float speed, float yOff, float t, float bThk, float sSeed, float tilt) {
-          float mainW = sin(uv.x * freq + t * speed) * amp * c_waveAmp * 1.8;
-          float subW  = cos(uv.x * (freq * 2.3) - t * (speed * 1.3)) * (amp * 0.4) * c_waveAmp * 1.8;
-          float lean  = tilt * uv.x;
-          float wavyY = uv.y - (yOff + mainW + subW + lean);
-          float sX    = uv.x * 30.0 + sin(uv.y * 2.2 + t) * 1.4 + sSeed;
-          float str   = noise(vec2(sX, t * 0.6)) * 0.4 + noise(vec2(sX * 1.6 - t, uv.y * 3.2)) * 0.6;
-          float fThk  = bThk * c_thickness * 1.7;
-          float rib   = smoothstep(fThk, 0.0, abs(wavyY));
-          float fE    = smoothstep(-1.5, -0.1, uv.x) * smoothstep(1.5, 0.1, uv.x);
-          float fV    = smoothstep(-1.05, -0.18, uv.y) * smoothstep(1.05, -0.05, uv.y);
-          float gW    = 0.07 * sin(uv.y * 2.8 + t * 0.25);
-          float gWid  = 0.42 + c_gap * 0.4;
-          float cG    = smoothstep(0.04, gWid, abs(uv.x - c_gapPos + gW));
-          return rib * (0.3 + 0.7 * str) * fE * fV * cG;
-        }
-
-
-        void main() {
-          vec2 uv = (gl_FragCoord.xy - 0.5 * u_res) / u_res.y;
-          float t = u_time * 0.5;
-          
-          // Khởi tạo màu ban đầu là 0.0 (không màu nền)
-          vec3 col = vec3(0.0);
-
-          vec2 auv = vec2(uv.x, (uv.y - c_posY) / max(c_yRange, 0.001));
-          float r1 = drawRibbon(auv + vec2(u_mouseX * 0.05, 0.0), 2.6, 0.22, 0.35,  0.12, t,       0.45, 0.0,   c_tilts.x);
-          float r2 = drawRibbon(auv + vec2(u_mouseX * 0.10, 0.0), 3.6, 0.28, -0.55, -0.06, t+4.2,  0.50, 120.0, c_tilts.y);
-          float r3 = drawRibbon(auv + vec2(u_mouseX * 0.15, 0.0), 4.8, 0.16, 0.75,  -0.26, t+8.5,  0.38, 240.0, c_tilts.z);
-          float tot = (r1 * 0.6 + r2 * 0.95 + r3 * 0.5) * c_intensity * 1.7 * c_brightness;
-          tot = 1.0 - exp(-tot);
-          
-          float hR = clamp((auv.y + 0.45) / 1.15, 0.0, 1.0);
-          vec3 aC = mix(c_low, c_mid, smoothstep(0.0, 0.45, hR));
-          aC = mix(aC, c_high, smoothstep(0.4, 1.0, hR));
-          col += aC * tot;
-          col += aC * (1.0 - exp(-(r1 + r2 + r3) * c_brightness)) * 0.08 * c_intensity * c_brightness;
-          
-          float W = 1.6;
-          col = col * (1.0 + col / (W * W)) / (1.0 + col);
-          col = pow(max(col, 0.0), vec3(0.95));
-
-          // Kênh Alpha (độ đục) được tính theo độ sáng 'tot' của dải cực quang
-          float alpha = clamp(tot * 1.2, 0.0, 1.0);
-          gl_FragColor = vec4(col, alpha);
-        }
-        `;
-
-        (function() {
-          var canvas = document.getElementById('c');
-          // Bật alpha: true để Canvas hỗ trợ độ trong suốt
-          var gl = canvas.getContext('webgl', { antialias: false, alpha: true });
-          if (!gl) { return; }
-
-          function compile(type, src) {
-            var sh = gl.createShader(type);
-            gl.shaderSource(sh, src);
-            gl.compileShader(sh);
-            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(sh);
-            return sh;
-          }
-
-          var prog = gl.createProgram();
-          gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
-          gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
-          gl.linkProgram(prog);
-          gl.useProgram(prog);
-
-          var buf = gl.createBuffer();
-          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-          gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
-          var loc = gl.getAttribLocation(prog, 'a_pos');
-          gl.enableVertexAttribArray(loc);
-          gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-          var uRes = gl.getUniformLocation(prog, 'u_res');
-          var uTime = gl.getUniformLocation(prog, 'u_time');
-          var uMouse = gl.getUniformLocation(prog, 'u_mouseX');
-
-          var dpr = Math.min(window.devicePixelRatio || 1, 2);
-          function resize() {
-            var w = Math.floor(canvas.clientWidth * dpr);
-            var h = Math.floor(canvas.clientHeight * dpr);
-            if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0,0,w,h); }
-          }
-          resize();
-          window.addEventListener('resize', resize);
-
-          var mx = 0;
-          var targetMx = 0;
-          window.addEventListener('mousemove', function(e) { targetMx = (e.clientX / window.innerWidth - 0.5) * 2; });
-
-          var last = performance.now();
-          var t = 0;
-          var speed = 1.0000;
-          function loop(now) {
-            var dt = Math.min((now - last) / 1000, 0.05);
-            last = now;
-            t += dt * speed;
-            mx += (targetMx - mx) * 0.04;
-            resize();
-            gl.uniform2f(uRes, canvas.width, canvas.height);
-            gl.uniform1f(uTime, t);
-            gl.uniform1f(uMouse, mx);
-            gl.drawArrays(gl.TRIANGLES, 0, 3);
-            requestAnimationFrame(loop);
-          }
-          requestAnimationFrame(loop);
-        })();
 
 
     </script>
