@@ -1555,6 +1555,8 @@
         </div>
     </div>
 
+<!--Test Caroulse -->
+
 
     <!-- 
       ========================================================================
@@ -2066,105 +2068,74 @@
 
     <!-- PAYMENT MODAL -->
     
+<!-- PAYMENT MODAL -->
+<div id="payment-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
+    <div class="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl text-white">
         
-    <div id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" aria-hidden="true" class="hidden fixed inset-0 min-h-screen h-[100dvh] w-screen z-50 flex items-center justify-center p-3 sm:p-4 bg-[#0209203e] backdrop-blur-md transition-all duration-300">
-    <div class="bg-[#02092080] border border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 max-w-lg sm:max-w-[540px] w-full relative space-y-2 shadow-2xl max-h-[92vh] overflow-y-auto custom-scrollbar">
-        
-        <!-- Nút đóng Modal -->
-        <button type="button" data-close-payment aria-label="Đóng khung thanh toán" class="absolute right-3 top-3 text-slate-400 hover:text-white p-2 cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <!-- Nút đóng -->
+        <button data-close-payment class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
         </button>
-        
-        <!-- Tiêu đề -->
-        <div class="text-center space-y-1.5">
-            <h3 id="payment-modal-title" class="text-lg sm:text-2xl font-bold text-white leading-tight">Thanh toán & nhận License key</h3>
-            <p class="text-xs sm:text-sm text-slate-200">Gói đăng ký: <span id="modal-plan-name" class="text-[#34d399] font-bold">Q90</span>, chính sách hoàn tiền được áp dụng.</p>
-        </div>
 
-        <!-- TAB CHỌN NGÂN HÀNG -->
-        <div class="flex p-1 bg-slate-950/80 border border-white/10 rounded-2xl">
-            <button type="button" id="tab-acb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-[linear-gradient(180deg,rgba(59,171,246,0.8)_0%,rgba(59,171,246,1)_20%,rgba(103,232,249,1)_40%,rgba(255,255,255,1)_50%,rgba(103,232,249,1)_60%,rgba(59,130,246,1)_80%,rgba(25,83,255,0.8)_100%)] text-slate-950 shadow-md">
-                Trong nước
+        <!-- Tiêu đề & Tên gói cước -->
+        <h3 class="text-xl font-bold text-center text-cyan-400 mb-1">Thanh Toán & Nhận License Key</h3>
+        <p class="text-center text-sm text-slate-400 mb-5">Đăng ký gói: <span id="modal-plan-name" class="font-bold text-white uppercase">---</span></p>
+
+        <!-- ================= BƯỚC 1: NHẬP EMAIL ================= -->
+        <div id="step-email-input">
+            <div class="mb-5">
+                <label for="customer-email" class="block text-xs font-medium text-slate-300 mb-1.5">
+                    Email nhận License Key : <span class="text-red-400">*</span>
+                </label>
+                <input type="email" id="customer-email" placeholder="email@example.com" required
+                    class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors shadow-inner">
+                <p id="email-error" class="text-xs text-red-400 mt-1.5 hidden">Vui lòng nhập email hợp lệ!</p>
+            </div>
+
+            <!-- Nút Tạo Mã QR -->
+            <button id="btn-generate-qr" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold rounded-xl transition-all duration-200 shadow-lg shadow-cyan-500/20">
+                Tạo Mã QR Thanh Toán
             </button>
-            <button type="button" id="tab-scb" class="flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white">
-                Ngoài nước
-            </button>
         </div>
 
-        <!-- NỘI DUNG TAB 1: Ngân hàng ACB (Cột QR gọn, Cột chữ rộng) -->
-        <div id="content-acb" class="bg-slate-950/80 p-3 sm:p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3 sm:gap-4 items-center">
-            <!-- Cột ảnh: Co lại vừa vặn kích thước 128px (w-32) -->
-            <div class="flex flex-col items-center justify-center shrink-0">
-                <div class="w-28 h-28 sm:w-36 sm:h-36 bg-slate-900 rounded-xl p-2 flex items-center justify-center border border-white/5">
-                    <img id="qr-image" src="img/qrpay.webp" alt="QR Thanh toán" class="w-full h-full object-cover rounded-lg">
-                </div>
-            </div>
-            <!-- Cột chữ: Dùng 1fr (chiếm toàn bộ không gian còn lại), thêm whitespace-nowrap để tối ưu -->
-            <div class="text-left space-y-1.5 text-xs sm:text-sm text-slate-300 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <p class="whitespace-nowrap">• Ngân hàng:<strong> Á Châu (ACB)</strong></p>
-                <p class="whitespace-nowrap">• Số tài khoản:<strong> 800058</strong></p>
-                <p class="whitespace-nowrap">• Tên tài khoản:<strong> HO HUY TIEN</strong></p>
-            </div>
-        </div>
-
-        <!-- NỘI DUNG TAB 2: Standard Chartered (Mặc định ẩn) -->
-        <div id="content-scb" class="hidden bg-slate-950/80 p-4 rounded-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-center">
-            <!-- Cột icon/mô tả ngắn -->
-            <div class="flex flex-col items-center justify-center shrink-0">
-                <div class="w-36 h-36 bg-slate-900 rounded-xl p-2 flex flex-col items-center justify-center text-center border border-white/5">
-                    <img id="SCB Logo" src="img/scblogo.webp" alt="QR Thanh toán" class="w-full h-full object-cover rounded-lg">
-                </div>
-            </div>
-            <!-- Cột chữ rộng rãi -->
-            <div class="text-left space-y-1.5 text-xs sm:text-sm text-slate-300 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <p class="whitespace-nowrap">• Ngân hàng:<strong> Standard Chartered Viet Nam</strong></p>
-                <p class="whitespace-nowrap">• SWIFT Code:<strong> SCBLVNVX</strong></p>
-                <p class="whitespace-nowrap">• Số tài khoản:<strong> 99275613799</strong></p>
-                <p class="whitespace-nowrap">• Tên tài khoản:<strong> HO HUY TIEN</strong></p>
-            </div>
-        </div>
-
-        <!-- THÔNG TIN DÙNG CHUNG: Giá tiền & Nội dung CK -->
-        <div class="bg-slate-950/80 p-3.5 rounded-2xl border border-white/5 space-y-1.5 text-center">
-            <div>
-                <span class="text-xs sm:text-sm text-slate-200">Số tiền thanh toán: </span>
-                <span class="text-xl font-bold text-[#f0fdff] ml-1">
-                    <span id="modal-plan-price-value">1,090,000 VNĐ</span>
-                    <span id="modal-plan-price-period" class="text-xs text-slate-500 font-normal font-sans">/tháng</span>
-                </span>
-            </div>
-            <div class="text-xs sm:text-sm text-slate-200 pt-2 border-t border-white/5">
-                Nội dung chuyển khoản: <span class="font-sans tabular-nums text-[#34d399] font-bold uppercase ml-1" id="modal-order-id">SDT_GoiDangKy_XXXXXX</span><br>
-                <div class="text-xs sm:text-sm text-slate-400 text-pretty">(SDT: Số điện thoại nhận key, tên gói và mã đăng ký. License key được gửi đến qua SMS. Nếu bạn muốn nhận key qua kênh khác, vui lòng liên hệ hỗ trợ.)</div>
-
-            </div>
-        </div>
-
-        <!-- Hỗ trợ & Nút Đóng -->
-        <div class="text-xs sm:text-sm text-center text-slate-200 flex items-center justify-center gap-4 sm:gap-6 flex-wrap pt-1">
+        <!-- ================= BƯỚC 2: HIỂN THỊ MÃ QR & THÔNG TIN (MẶC ĐỊNH ẨN) ================= -->
+        <div id="step-qr-display" class="hidden space-y-4">
             
-            <!-- Hotline -->
-            <span>Hotline: <strong class="text-white font-bold">0988 886 719<br><i class="fa-regular fa-envelope"></i>  wynalgo@gmail.com</strong></span>
-
-            <span class="text-white/20 hidden sm:inline">|</span>
-
-            <!-- Cụm Zalo: Dùng gap-1.5 để ảnh sát chữ -->
-            <div class="inline-flex items-center gap-1.5">
-                <span>Zalo:</span>
-                <img src="img/zaloqr.webp" alt="Zalo QR" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded border border-white/10 shrink-0">
+            <!-- Alert xác nhận Email -->
+            <div class="p-3 bg-cyan-950/40 border border-cyan-500/30 rounded-xl text-xs text-cyan-200">
+                <div class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        License Key sẽ được gửi tự động đến: <strong id="confirmed-email-display" class="text-white  underline-offset-2">---</strong>
+                        <button id="btn-edit-email" class="text-cyan-400 hover:text-white font-medium ml-1.5 cursor-pointer">(Thay đổi email)</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Cụm Telegram: Dùng gap-1.5 để ảnh sát chữ -->
-            <div class="inline-flex items-center gap-1.5">
-                <span>Telegram:</span>
-                <img src="img/teleqr.webp" alt="Telegram QR" class="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded border border-white/10 shrink-0">
+            <!-- Khung thông tin Đơn hàng (Số tiền & Nội dung CK) -->
+            <div class="bg-slate-800/60 rounded-xl p-3.5 space-y-2 border border-slate-700/50 text-sm">
+                <div class="flex justify-between items-center">
+                    <span class="text-slate-400 text-xs">Số tiền thanh toán:</span>
+                    <span id="modal-plan-price-value" class="font-bold text-emerald-400 text-base">0 VNĐ</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-slate-400 text-xs">Nội dung chuyển khoản:</span>
+                    <span id="modal-order-id" class="font-mono font-bold text-amber-400 bg-slate-950 px-2.5 py-0.5 rounded border border-amber-500/30 text-xs sm:text-sm">VNM30XXXXXX</span>
+                </div>
             </div>
 
-        </div>      
-        <a href="https://vn.tradingview.com/script/lTeNB8SC-WynAlgo-BigMoney/" target="_blank" class="block text-center w-full bg-slate-800 hover:bg-slate-700 border border-white/5 text-white py-3.5 rounded-full font-bold transition cursor-pointer">
-    Truy cập chỉ báo
-        </a>
-        
+            <!-- Khung chứa ảnh VietQR -->
+            <div class="flex flex-col items-center justify-center p-4 bg-white rounded-xl border border-slate-200 shadow-inner">
+                <img id="vietqr-image" src="" alt="Mã QR Thanh Toán" class="w-60 h-auto rounded-lg">
+                <p class="text-[11px] text-slate-500 mt-2 text-center font-medium">Quét mã bằng App Ngân Hàng để tự động điền số tiền & nội dung</p>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
@@ -2825,33 +2796,213 @@ const observerOptions = {
   });
 
 
-//BANK PAYMENT
+// ==========================================
+// TẠO MÃ VIETQR ĐỘNG & QUẢN LÝ BƯỚC THANH TOÁN
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-    const tabAcb = document.getElementById('tab-acb');
-    const tabScb = document.getElementById('tab-scb');
-    const contentAcb = document.getElementById('content-acb');
-    const contentScb = document.getElementById('content-scb');
+    // 1. CẤU HÌNH NGÂN HÀNG
+    const BANK_CONFIG = {
+        bankId: 'ACB',
+        accountNo: '800058',
+        accountName: 'HO HUY TIEN',
+        template: 'compact2'
+    };
 
-    if (tabAcb && tabScb && contentAcb && contentScb) {
-        const activeClass = "flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-[linear-gradient(180deg,rgba(59,171,246,0.8)_0%,rgba(59,171,246,1)_20%,rgba(103,232,249,1)_40%,rgba(255,255,255,1)_50%,rgba(103,232,249,1)_60%,rgba(59,130,246,1)_80%,rgba(25,83,255,0.8)_100%)] text-slate-950 shadow-md";
-        const inactiveClass = "flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white";
+    // 2. TÌM CÁC PHẦN TỬ DOM
+    const paymentModal = document.getElementById('payment-modal');
+    const modalPlanName = document.getElementById('modal-plan-name');
+    const modalPlanPriceValue = document.getElementById('modal-plan-price-value');
+    const modalOrderId = document.getElementById('modal-order-id');
 
-        tabAcb.addEventListener('click', (e) => {
-            e.preventDefault();
-            tabAcb.className = activeClass;
-            tabScb.className = inactiveClass;
-            contentAcb.classList.remove('hidden');
-            contentScb.classList.add('hidden');
+    // Các bước giao diện
+    const stepEmailInput = document.getElementById('step-email-input');
+    const stepQrDisplay = document.getElementById('step-qr-display');
+
+    const customerEmailInput = document.getElementById('customer-email');
+    const emailError = document.getElementById('email-error');
+    const confirmedEmailDisplay = document.getElementById('confirmed-email-display');
+    const btnEditEmail = document.getElementById('btn-edit-email');
+
+    const btnGenerateQr = document.getElementById('btn-generate-qr');
+    const qrImage = document.getElementById('vietqr-image');
+
+    const planButtons = document.querySelectorAll('.js-plan-button');
+    const paymentCloseButtons = document.querySelectorAll('[data-close-payment]');
+    const toggleYearlyBtn = document.getElementById('toggle-yearly');
+
+    let lastFocusedElement = null;
+
+    // Nếu không có modal thanh toán trên trang thì ngưng thực thi
+    if (!paymentModal) return;
+
+    // 3. HÀM TẠO MÃ SẢN PHẨM / ĐƠN HÀNG NGẪU NHIÊN (6 ký tự Hex)
+    function generateOrderSuffix() {
+        if (window.crypto && window.crypto.getRandomValues) {
+            const bytes = new Uint8Array(3);
+            window.crypto.getRandomValues(bytes);
+            return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+        }
+        return Date.now().toString(36).slice(-6).toUpperCase();
+    }
+
+    // 4. MỞ MODAL THANH TOÁN
+    function openPaymentModal(plan) {
+        if (!plan) return;
+
+        const prices = typeof PLAN_PRICES !== 'undefined' ? PLAN_PRICES[plan] : null;
+        if (!prices) {
+            console.warn(`[Payment] Không tìm thấy cấu hình giá cho gói: ${plan}`);
+            return;
+        }
+
+        // Kiểm tra trạng thái Thị trường/Gói từ Toggle
+        const isGlobal = toggleYearlyBtn 
+            ? (toggleYearlyBtn.getAttribute('aria-pressed') === 'true') 
+            : (typeof isYearly !== 'undefined' && isYearly);
+
+        // Tính giá final
+        const finalPrice = isGlobal ? prices.yearly : prices.monthly;
+
+        // Tạo mã đơn hàng (Ví dụ: VN30XXXXXX hoặc GL30XXXXXX)
+        const marketPrefix = isGlobal ? 'GL' : 'VN';
+        const cleanPlanCode = plan.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        const orderCode = `${marketPrefix}${cleanPlanCode}${generateOrderSuffix()}`;
+
+        lastFocusedElement = document.activeElement;
+
+        if (modalPlanName) modalPlanName.textContent = plan;
+        if (modalPlanPriceValue) {
+            modalPlanPriceValue.textContent = typeof finalPrice === 'number' 
+                ? `${finalPrice.toLocaleString('vi-VN')} VNĐ` 
+                : `${finalPrice} VNĐ`;
+        }
+        if (modalOrderId) modalOrderId.textContent = orderCode;
+
+        // Reset về Bước 1 (Chỉ hiện ô nhập Email)
+        resetModalToStep1();
+
+        paymentModal.classList.remove('hidden');
+        paymentModal.setAttribute('aria-hidden', 'false');
+
+        if (typeof lockPageScroll === 'function') lockPageScroll();
+
+        // Focus vào ô email để trải nghiệm mượt mà
+        if (customerEmailInput) setTimeout(() => customerEmailInput.focus(), 100);
+    }
+
+    // 5. RESET GIAO DIỆN VỀ BƯỚC 1
+    function resetModalToStep1() {
+        if (customerEmailInput) customerEmailInput.value = '';
+        if (emailError) emailError.classList.add('hidden');
+        if (stepEmailInput) stepEmailInput.classList.remove('hidden');
+        if (stepQrDisplay) stepQrDisplay.classList.add('hidden');
+    }
+
+    // 6. ĐÓNG MODAL
+    function closePaymentModal() {
+        paymentModal.classList.add('hidden');
+        paymentModal.setAttribute('aria-hidden', 'true');
+
+        if (typeof unlockPageScroll === 'function') unlockPageScroll();
+
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+    }
+
+    // 7. CHUYỂN SANG BƯỚC 2: TẠO VIETQR & HIỂN THỊ
+    function generateVietQR() {
+        if (!customerEmailInput) return;
+
+        const email = customerEmailInput.value.trim().toLowerCase();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!email || !emailRegex.test(email)) {
+            if (emailError) emailError.classList.remove('hidden');
+            customerEmailInput.focus();
+            return;
+        }
+
+        if (emailError) emailError.classList.add('hidden');
+
+        const rawPrice = modalPlanPriceValue ? modalPlanPriceValue.textContent.replace(/[^0-9]/g, '') : '';
+        const addInfo = modalOrderId ? modalOrderId.textContent.trim() : '';
+
+        if (rawPrice && qrImage) {
+            const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.bankId}-${BANK_CONFIG.accountNo}-${BANK_CONFIG.template}.png?amount=${rawPrice}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
+
+            qrImage.src = qrUrl;
+
+            // Cập nhật thông tin email hiển thị ở Bước 2
+            if (confirmedEmailDisplay) confirmedEmailDisplay.textContent = email;
+            if (stepEmailInput) stepEmailInput.classList.add('hidden');
+            if (stepQrDisplay) stepQrDisplay.classList.remove('hidden');
+        }
+    }
+
+    // ==========================================
+    // CÁC SỰ KIỆN TƯƠNG TÁC (EVENT LISTENERS)
+    // ==========================================
+
+    // Dynamic clear thông báo lỗi khi gõ Email
+    if (customerEmailInput) {
+        customerEmailInput.addEventListener('input', () => {
+            if (emailError && !emailError.classList.contains('hidden')) {
+                emailError.classList.add('hidden');
+            }
         });
 
-        tabScb.addEventListener('click', (e) => {
-            e.preventDefault();
-            tabScb.className = activeClass;
-            tabAcb.className = inactiveClass;
-            contentScb.classList.remove('hidden');
-            contentAcb.classList.add('hidden');
+        // Bấm Enter để tự động tạo QR
+        customerEmailInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                generateVietQR();
+            }
         });
     }
+
+    // Nút quay lại sửa Email ở Bước 2
+    if (btnEditEmail) {
+        btnEditEmail.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (stepQrDisplay) stepQrDisplay.classList.add('hidden');
+            if (stepEmailInput) stepEmailInput.classList.remove('hidden');
+            if (customerEmailInput) customerEmailInput.focus();
+        });
+    }
+
+    // Nút Tạo QR
+    if (btnGenerateQr) {
+        btnGenerateQr.addEventListener('click', (e) => {
+            e.preventDefault();
+            generateVietQR();
+        });
+    }
+
+    // Gán sự kiện cho các nút chọn gói (.js-plan-button)
+    planButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const plan = button.dataset.plan;
+            openPaymentModal(plan);
+        });
+    });
+
+    // Nút đóng modal
+    paymentCloseButtons.forEach(button => {
+        button.addEventListener('click', closePaymentModal);
+    });
+
+    // Click ra ngoài backdrop để đóng modal
+    paymentModal.addEventListener('click', (event) => {
+        if (event.target === paymentModal) closePaymentModal();
+    });
+
+    // Nhấn Escape để đóng modal
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !paymentModal.classList.contains('hidden')) {
+            closePaymentModal();
+        }
+    });
 });
 
 //DISCLAIMER
