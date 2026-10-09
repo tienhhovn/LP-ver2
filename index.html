@@ -2800,13 +2800,8 @@ const observerOptions = {
 // TẠO MÃ VIETQR ĐỘNG & QUẢN LÝ BƯỚC THANH TOÁN
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. CẤU HÌNH NGÂN HÀNG
-    const BANK_CONFIG = {
-        bankId: 'ACB',
-        accountNo: '800058',
-        accountName: 'HO HUY TIEN',
-        template: 'compact2'
-    };
+    // 1. CẤU HÌNH BACKEND URL & BAN K
+    const BACKEND_URL = 'https://wynalgo-backend.onrender.com'; // Đường dẫn Backend Render của bạn
 
     // 2. TÌM CÁC PHẦN TỬ DOM
     const paymentModal = document.getElementById('payment-modal');
@@ -2830,22 +2825,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const paymentCloseButtons = document.querySelectorAll('[data-close-payment]');
     const toggleYearlyBtn = document.getElementById('toggle-yearly');
 
+    let currentPackageKey = ''; // Lưu packageKey hiện tại (VD: 'GL_M30')
     let lastFocusedElement = null;
 
-    // Nếu không có modal thanh toán trên trang thì ngưng thực thi
     if (!paymentModal) return;
 
-    // 3. HÀM TẠO MÃ SẢN PHẨM / ĐƠN HÀNG NGẪU NHIÊN (6 ký tự Hex)
+    // 3. HÀM TẠO SỐ HẬU TỐ NGẪU NHIÊN 5 KÝ TỰ
     function generateOrderSuffix() {
         if (window.crypto && window.crypto.getRandomValues) {
             const bytes = new Uint8Array(3);
             window.crypto.getRandomValues(bytes);
-            return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase();
+            return Array.from(bytes, byte => byte.toString(36).padStart(2, '0')).join('').toUpperCase().slice(0, 5);
         }
-        return Date.now().toString(36).slice(-6).toUpperCase();
+        return Math.random().toString(36).substring(2, 7).toUpperCase();
     }
 
-    // 4. MỞ MODAL THANH TOÁN
+    // 4. MỞ MODAL THANH TOÁN & XÁC ĐỊNH CHÍNH XÁC PACKAGE KEY
     function openPaymentModal(plan) {
         if (!plan) return;
 
@@ -2855,18 +2850,23 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Kiểm tra trạng thái Thị trường/Gói từ Toggle
         const isGlobal = toggleYearlyBtn 
             ? (toggleYearlyBtn.getAttribute('aria-pressed') === 'true') 
             : (typeof isYearly !== 'undefined' && isYearly);
 
-        // Tính giá final
         const finalPrice = isGlobal ? prices.yearly : prices.monthly;
 
-        // Tạo mã đơn hàng (Ví dụ: VN30XXXXXX hoặc GL30XXXXXX)
+        // XÁC ĐỊNH CHUẨN PACKAGE KEY KHỚP VỚI SERVER.JS (VD: GL_M30, VN_Q90)
         const marketPrefix = isGlobal ? 'GL' : 'VN';
-        const cleanPlanCode = plan.toUpperCase().replace(/[^A-Z0-9]/g, '');
-        const orderCode = `${marketPrefix}${cleanPlanCode}${generateOrderSuffix()}`;
+        let durationCode = 'M30';
+        
+        const cleanPlan = plan.toUpperCase();
+        if (cleanPlan.includes('90') || cleanPlan.includes('QUARTER')) durationCode = 'Q90';
+        else if (cleanPlan.includes('365') || cleanPlan.includes('YEAR')) durationCode = 'Y365';
+
+        currentPackageKey = `${marketPrefix}_${durationCode}`; // VD: GL_M30 hoặc VN_M30
+        const orderPrefix = `${marketPrefix}${durationCode}`; // VD: GLM30 (Prefix 5 ký tự)
+        const orderCode = `${orderPrefix}${generateOrderSuffix()}`; // VD: GLM30A8K9P
 
         lastFocusedElement = document.activeElement;
 
@@ -2878,19 +2878,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (modalOrderId) modalOrderId.textContent = orderCode;
 
-        // Reset về Bước 1 (Chỉ hiện ô nhập Email)
         resetModalToStep1();
 
         paymentModal.classList.remove('hidden');
         paymentModal.setAttribute('aria-hidden', 'false');
 
         if (typeof lockPageScroll === 'function') lockPageScroll();
-
-        // Focus vào ô email để trải nghiệm mượt mà
         if (customerEmailInput) setTimeout(() => customerEmailInput.focus(), 100);
     }
 
-    // 5. RESET GIAO DIỆN VỀ BƯỚC 1
     function resetModalToStep1() {
         if (customerEmailInput) customerEmailInput.value = '';
         if (emailError) emailError.classList.add('hidden');
@@ -2898,20 +2894,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (stepQrDisplay) stepQrDisplay.classList.add('hidden');
     }
 
-    // 6. ĐÓNG MODAL
     function closePaymentModal() {
         paymentModal.classList.add('hidden');
         paymentModal.setAttribute('aria-hidden', 'true');
-
         if (typeof unlockPageScroll === 'function') unlockPageScroll();
-
         if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
         }
     }
 
-    // 7. CHUYỂN SANG BƯỚC 2: TẠO VIETQR & HIỂN THỊ
-    function generateVietQR() {
+    // 5. CHUYỂN BƯỚC 2: GỬI THÔNG TIN VỀ BACKEND RỒI MỚI HIỆN VIETQR
+    async function generateVietQR() {
         if (!customerEmailInput) return;
 
         const email = customerEmailInput.value.trim().toLowerCase();
@@ -2925,26 +2918,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (emailError) emailError.classList.add('hidden');
 
-        const rawPrice = modalPlanPriceValue ? modalPlanPriceValue.textContent.replace(/[^0-9]/g, '') : '';
-        const addInfo = modalOrderId ? modalOrderId.textContent.trim() : '';
+        const orderCode = modalOrderId ? modalOrderId.textContent.trim() : '';
 
-        if (rawPrice && qrImage) {
-            const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.bankId}-${BANK_CONFIG.accountNo}-${BANK_CONFIG.template}.png?amount=${rawPrice}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
+        // Hiển thị trạng thái đang xử lý trên nút
+        const originalBtnText = btnGenerateQr ? btnGenerateQr.textContent : 'Tạo mã QR';
+        if (btnGenerateQr) {
+            btnGenerateQr.disabled = true;
+            btnGenerateQr.textContent = 'Đang khởi tạo đơn hàng...';
+        }
 
-            qrImage.src = qrUrl;
+        try {
+            // GỬI REQUEST LƯU ĐƠN HÀNG VÀO SUPABASE THÔNG QUA RENDER BACKEND
+            const response = await fetch(`${BACKEND_URL}/api/create-order`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    orderCode: orderCode,
+                    email: email,
+                    packageKey: currentPackageKey
+                })
+            });
 
-            // Cập nhật thông tin email hiển thị ở Bước 2
-            if (confirmedEmailDisplay) confirmedEmailDisplay.textContent = email;
-            if (stepEmailInput) stepEmailInput.classList.add('hidden');
-            if (stepQrDisplay) stepQrDisplay.classList.remove('hidden');
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                alert(result.error || 'Có lỗi xảy ra khi tạo đơn hàng. Vui lòng thử lại!');
+                return;
+            }
+
+            // Lấy link QR chuẩn do Server trả về (hoặc tự tạo bằng thông tin chuẩn từ server)
+            if (qrImage && result.orderCode) {
+                const qrUrl = `https://img.vietqr.io/image/ACB-800058-compact2.png?amount=${result.amount}&addInfo=${encodeURIComponent(result.orderCode)}&accountName=${encodeURIComponent('HO HUY TIEN')}`;
+                qrImage.src = qrUrl;
+
+                if (confirmedEmailDisplay) confirmedEmailDisplay.textContent = email;
+                if (stepEmailInput) stepEmailInput.classList.add('hidden');
+                if (stepQrDisplay) stepQrDisplay.classList.remove('hidden');
+            }
+
+        } catch (err) {
+            console.error('[Create Order Error]:', err);
+            alert('Không thể kết nối đến máy chủ thanh toán. Vui lòng kiểm tra lại kết nối mạng!');
+        } finally {
+            if (btnGenerateQr) {
+                btnGenerateQr.disabled = false;
+                btnGenerateQr.textContent = originalBtnText;
+            }
         }
     }
 
     // ==========================================
-    // CÁC SỰ KIỆN TƯƠNG TÁC (EVENT LISTENERS)
+    // CÁC SỰ KIỆN TƯƠNG TÁC
     // ==========================================
-
-    // Dynamic clear thông báo lỗi khi gõ Email
     if (customerEmailInput) {
         customerEmailInput.addEventListener('input', () => {
             if (emailError && !emailError.classList.contains('hidden')) {
@@ -2952,7 +2977,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Bấm Enter để tự động tạo QR
         customerEmailInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -2961,7 +2985,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Nút quay lại sửa Email ở Bước 2
     if (btnEditEmail) {
         btnEditEmail.addEventListener('click', (e) => {
             e.preventDefault();
@@ -2971,7 +2994,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Nút Tạo QR
     if (btnGenerateQr) {
         btnGenerateQr.addEventListener('click', (e) => {
             e.preventDefault();
@@ -2979,7 +3001,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Gán sự kiện cho các nút chọn gói (.js-plan-button)
     planButtons.forEach(button => {
         button.addEventListener('click', () => {
             const plan = button.dataset.plan;
@@ -2987,17 +3008,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Nút đóng modal
     paymentCloseButtons.forEach(button => {
         button.addEventListener('click', closePaymentModal);
     });
 
-    // Click ra ngoài backdrop để đóng modal
     paymentModal.addEventListener('click', (event) => {
         if (event.target === paymentModal) closePaymentModal();
     });
 
-    // Nhấn Escape để đóng modal
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && !paymentModal.classList.contains('hidden')) {
             closePaymentModal();
