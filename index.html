@@ -2804,15 +2804,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!paymentModal) return;
 
     // 3. HÀM TẠO SỐ HẬU TỐ NGẪU NHIÊN (5 ký tự)
-    function generateOrderSuffix() {
-        if (window.crypto && window.crypto.getRandomValues) {
-            const bytes = new Uint8Array(4);
-            window.crypto.getRandomValues(bytes);
-            return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase().substring(0, 6);
-        }
-        return Math.random().toString(36).substring(2, 8).toUpperCase();
-    }
-
+    
     // 4. MỞ MODAL THANH TOÁN
     function openPaymentModal(plan) {
         if (!plan) return;
@@ -2878,7 +2870,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 7. CHUYỂN SANG BƯỚC 2: TẠO MÃ MỚI, GỬI ĐƠN VỀ BACKEND & HIỂN THỊ VIETQR
+    // 7. CHUYỂN SANG BƯỚC 2: GỬI ĐƠN VỀ BACKEND XIN MÃ & HIỂN THỊ VIETQR
     async function generateVietQR() {
         if (!customerEmailInput) return;
 
@@ -2893,22 +2885,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (emailError) emailError.classList.add('hidden');
 
-        // A. XÁC ĐỊNH CHÍNH XÁC PREFIX & PACKAGE KEY CHO BACKEND
+        // A. XÁC ĐỊNH PACKAGE KEY ĐỂ GỬI LÊN BACKEND
         const marketPrefix = isCurrentGlobal ? 'GL' : 'VN';
         const planCode = currentSelectedPlan.toUpperCase().replace(/[^A-Z0-9]/g, ''); // 'M30', 'Q90', 'Y365'
-        
-        const prefix = `${marketPrefix}${planCode}`; // Kết quả: 'VNM30', 'GLM30',...
         const packageKey = `${marketPrefix}_${planCode}`; // Kết quả: 'VN_M30', 'GL_M30',...
 
-        // B. SINH MÃ ĐƠN HÀNG MỚI ĐỘC NHẤT (Ví dụ: VNM30A8K9P)
-        const orderCode = `${prefix}${generateOrderSuffix()}`;
-
-        // Hiển thị mã đơn lên UI Modal
-        if (modalOrderId) modalOrderId.textContent = orderCode;
-
-        const rawPrice = modalPlanPriceValue ? modalPlanPriceValue.textContent.replace(/[^0-9]/g, '') : '';
-
-        // C. GỬI REQUEST ĐĂNG KÝ ĐƠN HÀNG LÊN BACKEND RENDER
+        // B. GỬI REQUEST ĐĂNG KÝ ĐƠN HÀNG LÊN BACKEND RENDER (ĐỂ SERVER TỰ SINH MÃ & BẢO VỆ RATE-LIMIT)
         try {
             if (btnGenerateQr) {
                 btnGenerateQr.disabled = true;
@@ -2919,17 +2901,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    orderCode: orderCode,
                     email: email,
                     packageKey: packageKey
+                    // Lưu ý: Không gửi orderCode từ đây nữa, Server sẽ tự lo phần đó!
                 })
             });
 
-            if (!response.ok) {
-                throw new Error("Không thể lưu đơn hàng chờ trên máy chủ.");
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                // Xử lý trường hợp bị chặn do Rate-Limit hoặc lỗi server
+                throw new Error(data.error || "Không thể khởi tạo đơn hàng trên máy chủ.");
             }
 
-            // D. TẠO ẢNH VIETQR VÀ CHUYỂN SANG BƯỚC 2
+            // LẤY CHÍNH XÁC MÃ ĐƠN HÀNG DO SERVER TRẢ VỀ
+            const orderCode = data.orderCode; 
+            const rawPrice = data.amount; // Lấy luôn giá tiền chính xác từ server trả về
+
+            // Hiển thị mã đơn lên UI Modal
+            if (modalOrderId) modalOrderId.textContent = orderCode;
+
+            // C. TẠO ẢNH VIETQR VÀ CHUYỂN SANG BƯỚC 2
             if (rawPrice && qrImage) {
                 const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.bankId}-${BANK_CONFIG.accountNo}-${BANK_CONFIG.template}.png?amount=${rawPrice}&addInfo=${encodeURIComponent(orderCode)}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
 
@@ -2942,7 +2934,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (err) {
             console.error("[Create Order Error]:", err);
-            alert("Có lỗi kết nối đến máy chủ thanh toán. Vui lòng thử lại!");
+            alert(err.message || "Bạn đã thao tác tạo đơn quá nhiều lần hoặc có lỗi kết nối. Vui lòng thử lại sau ít phút!");
         } finally {
             if (btnGenerateQr) {
                 btnGenerateQr.disabled = false;
