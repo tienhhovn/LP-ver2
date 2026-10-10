@@ -2806,11 +2806,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. HÀM TẠO SỐ HẬU TỐ NGẪU NHIÊN (5 ký tự)
     function generateOrderSuffix() {
         if (window.crypto && window.crypto.getRandomValues) {
-            const bytes = new Uint8Array(3);
+            const bytes = new Uint8Array(4);
             window.crypto.getRandomValues(bytes);
-            return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase().substring(0, 5);
+            return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('').toUpperCase().substring(0, 6);
         }
-        return Math.random().toString(36).substring(2, 7).toUpperCase();
+        return Math.random().toString(36).substring(2, 8).toUpperCase();
     }
 
     // 4. MỞ MODAL THANH TOÁN
