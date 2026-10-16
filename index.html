@@ -2084,8 +2084,7 @@
     <!-- PAYMENT MODAL -->
     
 <!-- PAYMENT MODAL -->
-<!-- [SỬA 1]: Nền tối đục hơn (bg-slate-950/95), tăng độ mờ hậu cảnh (backdrop-blur-md) giúp che 100% nội dung trang dưới. -->
-<!-- [SỬA 2]: Đưa cơ chế cuộn mượt về đúng khung nền ngoài (overflow-y-auto overscroll-contain) để trên iOS/Android cuộn trơn tru không bị kẹt. -->
+
 <div id="payment-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-9500/60 backdrop-blur-[6px] p-3 sm:p-4 overflow-y-auto overscroll-contain pt-10 pb-10 sm:py-6">
     
     <!-- [SỬA 3]: Bỏ overflow-y-auto ở thẻ con, dùng max-h-none/fit-content để Modal mở rộng tự nhiên theo nội dung. -->
@@ -2126,13 +2125,19 @@
         <!-- ================= BƯỚC 2: HIỂN THỊ MÃ QR & THÔNG TIN ================= -->
         <div id="step-qr-display" class="hidden space-y-3 sm:space-y-4">
             
-            <!-- Alert xác nhận Email -->
+            <!-- Alert xác nhận Email & Thông báo ưu đãi -->
             <div class="p-2.5 sm:p-3 bg-cyan-950/40 border border-cyan-500/30 rounded-xl text-xs text-cyan-200">
                 <div class="flex items-start gap-2">
-                    <svg class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!--svg class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <div class="flex flex-col gap-1 text-xs">
+                    </svg-->
+                    <div class="flex flex-col gap-1 text-xs w-full">
+                        
+                        <!-- DÒNG THÔNG BÁO ƯU ĐÃI (Sẽ ẩn/hiện tự động bằng JavaScript) -->
+                        <div id="discount-alert-box" class="hidden font-bold text-emerald-400 pb-1 mb-1 border-b border-cyan-500/20">
+                            🎉 Chúc mừng! Tận hưởng Coupon 100.000đ của bạn nhé!
+                        </div>
+
                         <span class="text-cyan-200/90 text-sm">Thông tin đăng ký sử dụng sẽ được gửi đến email:</span>
                         <strong id="confirmed-email-display" class="text-slate-200 text-sm font-semibold break-all tracking-wide">---</strong>
                         <div>
@@ -2929,12 +2934,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(data.error || "Không thể khởi tạo đơn hàng trên máy chủ.");
             }
 
-            // LẤY CHÍNH XÁC MÃ ĐƠN HÀNG DO SERVER TRẢ VỀ
+            // LẤY CHÍNH XÁC MÃ ĐƠN HÀNG VÀ GIÁ TIỀN DO SERVER TRẢ VỀ
             const orderCode = data.orderCode; 
-            const rawPrice = data.amount; // Lấy luôn giá tiền chính xác từ server trả về
+            const rawPrice = data.amount; 
 
             // Hiển thị mã đơn lên UI Modal
             if (modalOrderId) modalOrderId.textContent = orderCode;
+
+            // 1. Cập nhật lại giá tiền thanh toán trên Modal (Đã trừ coupon nếu có)
+            if (modalPlanPriceValue && rawPrice) {
+                modalPlanPriceValue.textContent = `${Number(rawPrice).toLocaleString('vi-VN')} VNĐ`;
+            }
+
+            // 2. Hiển thị hoặc ẩn dòng thông báo ưu đãi trong khung phía trên
+            const discountAlertBox = document.getElementById('discount-alert-box');
+            if (discountAlertBox) {
+                if (data.isDiscountApplied) {
+                    discountAlertBox.classList.remove('hidden'); // Hiện thông báo nếu là khách mới
+                } else {
+                    discountAlertBox.classList.add('hidden');    // Ẩn đi nếu là khách cũ
+                }
+            }
 
             // C. TẠO ẢNH VIETQR VÀ CHUYỂN SANG BƯỚC 2
             if (rawPrice && qrImage) {
