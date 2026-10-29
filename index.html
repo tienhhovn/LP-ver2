@@ -78,7 +78,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Anchor offset: header đang fixed nên cần khoảng trống phía trên khi cuộn tới */
+        
         section[id] {
             scroll-margin-top: 112px;
         }
@@ -132,9 +132,7 @@
             line-height: 1.75;
         }
 
-        /* =========================================================================
-           🌌 CONTAINER CHỨA HIỆU ỨNG NỀN VŨ TRỤ - CHỈ DÀNH CHO PHẦN HERO TRÁNH NẶNG TRANG
-           ========================================================================= */
+        
         .cosmic-background {
             position: fixed;
             top: 0;
@@ -150,10 +148,7 @@
 
 
 
-/* =========================================================================
-   ✨ LỚP NỀN SAO TĨNH ĐƯỢC TỐI ƯU HÓA PHẦN CỨNG GPU BẰNG BOX-SHADOW (CÁCH 1)
-   Tăng mật độ gấp 5 lần (X5 Density) bằng phương pháp liệt kê tọa độ lẻ ngẫu nhiên.
-   ========================================================================= */
+
         .stars-background {
             position: fix;
             top: 0;
@@ -162,7 +157,7 @@
             height: 980px; 
             z-index: 2; 
             pointer-events: none;
-            /* Tăng tốc đồ họa phần cứng bằng GPU */
+            
             transform: translate3d(0, 0, 0);
             -webkit-transform: translate3d(0, 0, 0);
             will-change: transform;
@@ -172,7 +167,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0,0,0,0.5) 65%, transparent 90%);
         }
 
-        /* Lớp sao mịn nhỏ (1px) - Mật độ cực cao, ngẫu nhiên hoàn toàn */
+        
         .stars-glow-layer {
             position: absolute;
             top: 0;
@@ -181,7 +176,7 @@
             height: 1px;
             background: transparent;
             box-shadow: 
-                /* --- DANH SÁCH SAO GỐC --- */
+                
                 43px 83px rgba(255,255,255,0.95), 183px 212px rgba(255,255,255,0.85), 297px 115px #fff,
                 341px 290px rgba(255,255,255,0.95), 580px 175px #fff, 715px 95px rgba(255,255,255,0.9),
                 845px 320px #fff, 912px 145px rgba(255,255,255,0.85), 1120px 240px #fff,
@@ -190,7 +185,7 @@
                 210px 730px rgba(255,255,255,0.6), 650px 780px #fff, 1150px 690px rgba(255,255,255,0.7),
                 380px 890px rgba(255,255,255,0.5), 940px 920px rgba(255,255,255,0.45),
               
-                /* --- [GHI CHÚ]: SAO NHỎ BỔ SUNG GẤP 5 LẦN (Y < 350) --- */
+                
                 12px 141px rgba(255,255,255,0.8), 34px 82px rgba(255,255,255,0.9), 51px 123px rgba(255,255,255,0.65),
                 79px 252px rgba(255,255,255,0.7), 123px 94px #fff, 153px 321px rgba(255,255,255,0.85),
                 174px 192px rgba(255,255,255,0.5), 181px 112px rgba(255,255,255,0.9), 213px 267px rgba(255,255,255,0.7),
@@ -210,19 +205,19 @@
                 1278px 90px rgba(255,255,255,0.75), 1312px 185px rgba(255,255,255,0.9), 1350px 312px rgba(255,255,255,0.8),
                 1385px 240px #fff, 1420px 150px rgba(255,255,255,0.7),
                 
-                /* --- [GHI CHÚ]: SAO NHỎ BỔ SUNG GIỮA TRANG (Y: 350 - 650) - THƯA HƠN --- */
+                
                 56px 456px rgba(255,255,255,0.6), 142px 567px rgba(255,255,255,0.5), 234px 434px rgba(255,255,255,0.55),
                 356px 610px rgba(255,255,255,0.45), 450px 480px rgba(255,255,255,0.6), 512px 623px rgba(255,255,255,0.5),
                 618px 432px rgba(255,255,255,0.6), 724px 580px rgba(255,255,255,0.4), 834px 412px rgba(255,255,255,0.55),
                 942px 615px rgba(255,255,255,0.45), 1056px 450px rgba(255,255,255,0.6), 1150px 590px rgba(255,255,255,0.35),
                 1256px 410px rgba(255,255,255,0.5), 1342px 620px rgba(255,255,255,0.4),
                 
-                /* --- [GHI CHÚ]: SAO NHỎ BỔ SUNG ĐÁY TRANG (Y > 650) - RẤT THƯA THỚT --- */
+                
                 120px 810px rgba(255,255,255,0.3), 340px 790px rgba(255,255,255,0.25), 580px 880px rgba(255,255,255,0.35),
                 820px 760px rgba(255,255,255,0.25), 1050px 890px rgba(255,255,255,0.2), 1290px 790px rgba(255,255,255,0.3);
         }
 
-        /* Lớp sao vừa (2px) - Ánh sáng cao rõ rệt tạo chiều sâu */
+        
         .stars-glow-layer-medium {
             position: absolute;
             top: 0;
@@ -231,13 +226,13 @@
             height: 2px;
             background: transparent;
             box-shadow: 
-                /* --- DANH SÁCH SAO GỐC --- */
+                
                 95px 120px rgba(255,255,255,0.95), 250px 75px #fff, 530px 210px rgba(255,255,255,0.95),
                 780px 310px #fff, 1150px 150px rgba(255,255,255,0.95), 1380px 280px #fff,
                 310px 490px rgba(255,255,255,0.85), 810px 540px rgba(255,255,255,0.8), 1210px 440px #fff,
                 140px 650px rgba(255,255,255,0.7), 620px 690px #fff, 1050px 610px rgba(255,255,255,0.6),
                 
-                /* --- [GHI CHÚ]: SAO TRUNG BỔ SUNG GẤP 5 LẦN (Y < 350) --- */
+                
                 45px 112px #fff, 112px 189px rgba(255,255,255,0.9), 180px 56px #fff,
                 212px 290px rgba(255,255,255,0.85), 290px 145px #fff, 389px 212px rgba(255,255,255,0.9),
                 423px 78px rgba(255,255,255,0.95), 498px 167px #fff, 567px 90px rgba(255,255,255,0.85),
@@ -247,22 +242,22 @@
                 1212px 78px rgba(255,255,255,0.95), 1290px 189px #fff, 1345px 120px rgba(255,255,255,0.85),
                 1390px 290px rgba(255,255,255,0.9),
                 
-                /* --- [GHI CHÚ]: SAO TRUNG BỔ SUNG GIỮA VÀ ĐÁY TRANG (Y > 350) --- */
+                
                 215px 420px rgba(255,255,255,0.7), 490px 512px rgba(255,255,255,0.65), 720px 380px #fff,
                 980px 530px rgba(255,255,255,0.6), 1140px 490px rgba(255,255,255,0.7), 1310px 420px #fff,
                 380px 720px rgba(255,255,255,0.4), 850px 810px rgba(255,255,255,0.35), 1220px 760px rgba(255,255,255,0.4),
-                /* ===== CỤM SAO PHẢI - THIẾT KẾ LẠI ===== */
+                
 
-                /* Cụm 1 */
+                
                 1478px 78px rgba(255,255,255,0.95),1486px 92px rgba(255,255,255,0.75),1498px 84px rgba(255,255,255,0.85),1510px 102px rgba(255,255,255,0.65),
 
-                /* Cụm 2 */
+                
                 1422px 386px rgba(255,255,255,0.95),1434px 472px rgba(255,255,255,0.8),1448px 495px rgba(255,255,255,0.7),1460px 378px rgba(255,255,255,0.9),
 
-                /* Sao sáng nổi bật */
+                
                 1628px 58px #fff,1605px 148px #fff,1632px 245px rgba(255,255,255,0.95),1688px 308px #fff,1615px 392px rgba(255,255,255,0.9),1668px 468px rgba(255,255,255,0.85),1622px 575px rgba(255,255,255,0.8),1695px 738px rgba(255,255,255,0.75),
 
-                /* Sao ngẫu nhiên */
+                
                 1688px 46px rgba(255,255,255,0.55),1715px 112px rgba(255,255,255,0.7),1742px 63px rgba(255,255,255,0.45),1664px 142px rgba(255,255,255,0.8),1586px 92px rgba(255,255,255,0.6),
 
                 1508px 282px rgba(255,255,255,0.55),1648px 338px rgba(255,255,255,0.7),1696px 412px rgba(255,255,255,0.45),1675px 448px rgba(255,255,255,0.65),1638px 528px rgba(255,255,255,0.55),
@@ -272,7 +267,7 @@
                 1602px 805px rgba(255,255,255,0.3),1665px 842px rgba(255,255,255,0.25),1642px 878px rgba(255,255,255,0.3),1618px 826px rgba(255,255,255,0.28);
         }
 
-/* Sao động */
+
         .stars {
             position: fixed;
             top: 0;
@@ -295,7 +290,7 @@
             50% { opacity: var(--max-opacity); transform: scale(1); }
         }
 
-/*Sao băng*/
+
 
         .shooting-star {
             position: fixed;
@@ -329,7 +324,7 @@
         }
 
       
-/* Tùy chỉnh kính mờ Menu header */
+
         .nav-blur {
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -338,9 +333,7 @@
             transform: translateZ(0);
         }
 
-/* =========================================================================
-    🎨 QUẦNG SÁNG CỰC QUANG TĨNH NGHỆ THUẬT SIÊU NỔI BẬT DƯỚI NỀN (HIỂN THỊ RÕ RỆT)
-========================================================================= */
+
         .ambient-glow-orb {
             position: absolute;
             pointer-events: none;
@@ -350,21 +343,21 @@
             will-change: filter;
         }
 
-        /* Quầng sáng xanh Cyan thương hiệu rộng */
+        
         .glow-cyan {
             background: radial-gradient(circle, rgba(6, 182, 212, 0.28) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 75%);
             filter: blur(100px);
             -webkit-filter: blur(100px);
         }
 
-        /* Quầng sáng tím Indigo huyền ảo sâu */
+        
         .glow-purple {
             background: radial-gradient(circle, rgba(168, 85, 247, 0.24) 0%, rgba(99, 102, 241, 0.06) 55%, transparent 75%);
             filter: blur(110px);
             -webkit-filter: blur(110px);
         }
 
-        /* Quầng sáng xanh ngọc lục bảo rực rỡ (Đặt biệt tôn dáng cho Bảng Giá) */
+        
         .glow-emerald {
             background: radial-gradient(circle, rgba(16, 185, 129, 0.26) 0%, rgba(20, 184, 166, 0.08) 50%, transparent 75%);
             filter: blur(95px);
@@ -380,7 +373,7 @@
             scrollbar-width: none;
         }
         
-        /* Custom scrollbar */
+        
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -404,7 +397,7 @@
             }
         }
         
-/*Nút GETACCESS */
+
         .btn-getaccess {
             background: linear-gradient(135deg, #10b981, #8a2be2);
             color: #fff;
@@ -436,11 +429,9 @@
         }
 
         
-/* =========================================================================
-   ⚡ NÚT NHẬN 30 NGÀY MIỄN PHÍ - HIỆU ỨNG VIỀN XOAY CONIC GRADIENT
- ========================================================================= */
 
-        /* 1. Khung bọc ngoài (Wrapper): Xử lý xoay màu và tạo viền */
+
+        
         .rotating-border-wrapper {
             position: relative;
             display: inline-flex;
@@ -449,29 +440,29 @@
             border-radius: 9999px; 
             background: transparent;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none; /* Đảm bảo không bị gạch chân khi dùng thẻ <a> */
-            box-shadow: 0 0 5px -5px rgba(6, 182, 212, 1); /* viền sáng xung quanh */ 
+            text-decoration: none; 
+            box-shadow: 0 0 5px -5px rgba(6, 182, 212, 1);  
             user-select: none;
         }
 
-        /* Hiệu ứng phóng to nhẹ & tăng độ sáng bóng khi hover/touch */
+        
         .rotating-border-wrapper:hover {
-            transform: translateY(-2px) scale(1.02); /* Phóng to nhẹ khi tương tác */
+            transform: translateY(-2px) scale(1.02); 
             box-shadow: 
-                0 0 15px rgba(6, 182, 212, 0.6); /* Vầng sáng phát quang tỏa đều 360 độ */
+                0 0 15px rgba(6, 182, 212, 0.6); 
         }
 
-        /* Lớp mặt nạ đục rỗng ruột viền cực kỳ thanh lịch để lộ nền thật ở phía sau */
+        
         .rotating-border-glow-layer {
             position: absolute;
-            inset: -1.5px; /* Đẩy nhẹ ra ngoài mép nút chỉ 1.2px cực kỳ thanh lịch */
-            padding: 2px; /* Viền siêu mảnh mang tính thẩm mỹ cao */
+            inset: -1.5px; 
+            padding: 2px; 
             border-radius: 9999px;
             overflow: hidden;
             pointer-events: none;
             z-index: 1;
 
-            /* Đục rỗng phần ruột bằng công nghệ mặt nạ loại trừ */
+            
             -webkit-mask: 
                 linear-gradient(#fff 0 0) content-box, 
                 linear-gradient(#fff 0 0);
@@ -479,7 +470,7 @@
             mask-composite: exclude;
         }
 
-        /* Tạo dải màu chuyển động chạy tròn phía sau lớp mặt nạ #34d399, #2962ff, #d600f8)*/
+        
         .rotating-border-gradient {
             position: absolute;
             width: 135%;
@@ -489,12 +480,12 @@
             transform: translate(-50%, -50%);
             background: conic-gradient(
                 from 0deg, 
-                #34d399, /* Xanh Cyan 06b6d4*/
-                #d600f8, /* Tím huyền ảo a855f7*/
-                #06b6d4, /* Xanh Emerald 10b981*/
+                #34d399, 
+                #d600f8, 
+                #06b6d4, 
                 #34d399  
             );
-            /* 👇 TỐC ĐỘ XOAY VIỀN: 4.5s xoay mượt mà, càng nhỏ xoay càng nhanh */
+            
             animation: rotate-border-gradient 4.5s linear infinite;
         }
 
@@ -503,18 +494,18 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* 2. Phần nút nội dung phía bên trong che khuất lõi gradient tạo hiệu ứng viền phát sáng */
+        
         .rotating-border-btn {
             position: relative;
             z-index: 2;
-            /* 👇 Nền tối mờ trong suốt (Glassmorphism) hòa quyện mây tinh vân phía sau */
-            background: rgba(255, 255, 255, 0.05) ; /* rgba(7, 15, 43, 0.3) đến rgba(28, 28, 30, 0.50) */
+            
+            background: rgba(255, 255, 255, 0.05) ; 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3); /* Sợi chỉ trắng siêu mỏng định hình khung */
+            border: 1px solid rgba(255, 255, 255, 0.3); 
             color: #e5e7eb;
-            padding: 8px 22px; /* ĐỔI KHOẢNG CÁCH ĐỆM (Size nút): py-4 (trên dưới) và px-8 (trái phải) */
-            border-radius: 9999px; /* Đồng bộ độ bo tròn với wrapper */
+            padding: 8px 22px; 
+            border-radius: 9999px; 
             font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
@@ -531,23 +522,23 @@
                 inset 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
-        /* Đổi màu nền nút tối sẫm hơn một chút khi hover */
+        
         .rotating-border-btn:hover {
-            background-color: rgba(179, 170, 229, 0.2); /* Làm nền sáng hơn */
-            border-color: rgba(255, 255, 255, 0.7); /* Làm viền sắc nét hơn */
+            background-color: rgba(179, 170, 229, 0.2); 
+            border-color: rgba(255, 255, 255, 0.7); 
             box-shadow: 
-                        0 0 15px rgba(255, 255, 255, 0.4), /* Phát quang lan tỏa mạnh hơn */
-                        0 0 35px rgba(79, 70, 229, 0.4), /* Thêm hiệu ứng màu xanh tím rực rỡ */
-                        inset 0 1px 1px rgba(255, 255, 255, 0.6); /* Tăng độ sáng lõm */
+                        0 0 15px rgba(255, 255, 255, 0.4), 
+                        0 0 35px rgba(79, 70, 229, 0.4), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.6); 
             
         }
-        /* Ẩn dải màu */
+        
         .rotating-border-wrapper:hover .rotating-border-gradient {
             opacity: 0;
             transition: opacity 0.5s ease;
         }
 
-        /* Gạch chân MENU */
+        
         .underline-from-center {
             position: relative;
             text-decoration: none;
@@ -559,20 +550,20 @@
             width: 0;
             height: 1px;
             bottom: -4px;
-            left: 50%; /* Bắt đầu từ giữa */
+            left: 50%; 
             background-color: white;
             transition: all 0.3s ease;
         }
 
         .underline-from-center:hover::after {
             width: 100%;
-            left: 0; /* Mở rộng sang hai bên */
+            left: 0; 
         }
         .responsive-text {
-            /* Chữ sẽ tự co giãn từ 10px đến 14px tùy theo độ rộng màn hình */
+            
             font-size: clamp(12px, 3vw, 16px);
         }
-        /* hiệu ứng chữ #00bce6, #2962ff 50.31%, #d500f9 d600f8*/
+        
         .textGradient-ttl {
             animation: text-animation-title-ttl 6s ease-in-out infinite;
             background: linear-gradient(90deg, #34d399, #2962ff 50.29%, #d600f8);
@@ -597,8 +588,7 @@
         }
 
 
-        /* Hover nút dùng thủ 30days 
-           -> Hãy kích hoạt Animation lên thẻ Con có class (.hover-blink-svg) paper-plane  */
+        
         .rotating-border-wrapper:hover .hover-blink-svg,
         .rotating-border-wrapper.is-touched .hover-blink-svg {
             animation: svg-blink 1s infinite ease-in-out;
@@ -609,15 +599,13 @@
                 filter: drop-shadow(0 0 2px rgba(176,225,245,0.4)); 
             }
             50% { 
-                opacity: 0.5; /* Giảm nhẹ độ mờ của nét vẽ */
-                filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); /* Tạo quầng phát sáng neon tỏa rộng cực đẹp */
+                opacity: 0.5; 
+                filter: drop-shadow(0 0 10px rgba(34,211,238,0.9)); 
             }
         }
 
 
-/* =========================================================================
-   📺 HỆ THỐNG MARQUEE CẢI TIẾN: HỖ TRỢ VUỐT KÉO TRÊN DI ĐỘNG
-========================================================================= */
+
 
 .section-wrapper {
     width: 100%;
@@ -636,55 +624,53 @@
     text-align: center;
 }
 
-/* 🌟 DÒNG THAY ĐỔI: Thêm `overflow-x: auto` trên di động để cho phép vuốt kéo tự do, ẩn thanh cuộn xấu xí đi */
+
 .marquee-container {
     width: 85%;
-    overflow-x: auto; /* Cho phép cuộn ngang tự nhiên khi vuốt tay */
+    overflow-x: auto; 
     overflow-y: hidden;
-    /*background-color: #0209204d;
-    border-top: 1px solid #334a66;
-    border-bottom: 1px solid #334a66;*/
+    
     padding: 10px 0;
     cursor: default;
     -webkit-user-select: none;
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     
-    /* Ẩn thanh cuộn (scrollbar) trên các trình duyệt để giữ giao diện sạch đẹp */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 .marquee-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none; 
 }
 
-/* 🌟 DÒNG THAY ĐỔI: Loại bỏ thuộc tính animation CSS cũ, chúng ta sẽ chuyển sang điều khiển bằng JS để hỗ trợ cả vuốt kéo */
+
 .marquee-track {
     display: flex;
     white-space: nowrap;
     width: max-content;
-    will-change: transform; /* Tối ưu hóa card đồ họa phần cứng */
+    will-change: transform; 
     align-items: center;
 
 }
 
-/* 🎯 LỚP ÉP SÁT HÌNH VÀO CHỮ */
+
 .ads-supported-markets__slide {
     display: flex;
-    align-items: center;    /* Canh giữa hoàn hảo theo chiều dọc */
-    gap: 8px;               /* 💡 Khoảng cách thực tế giữa icon và chữ. Bạn có thể tăng/giảm số này theo ý muốn */
+    align-items: center;    
+    gap: 8px;               
     flex-shrink: 0;
     justify-content: flex-start;
     
 }
 
-/* 🎯 ĐIỀU CHỈNH ICON KHÍT VÀO KHUNG */
+
 .ads-supported-markets__image {
     display: block;
-    width: 50px;            /* Chỉnh size icon tại đây (Ví dụ: 40px) */
+    width: 50px;            
     height: 50px;
     
-    /* Đổi từ 'contain' sang 'cover' để loại bỏ 2 phần rìa trong suốt của file ảnh WebP gốc */
+    
     object-fit: cover; 
     
     flex-shrink: 0;
@@ -694,7 +680,7 @@
     filter: brightness(0) invert(1) opacity(0.6);
 }
 
-/* 📱 Responsive tối ưu cho Di động */
+
 @media (max-width: 768px) {
     .ads-supported-markets__image {
         width: 40px; 
@@ -706,11 +692,11 @@
 }
 
 .keywords {
-    /* Ép cả hình lẫn chữ bên trong thẻ span này phải nằm trên 1 hàng ngang */
-    display: inline-flex; 
-    align-items: center;     /* Căn giữa hình và chữ theo chiều dọc */
     
-    /* 🎯 KHOẢNG CÁCH: Ép hít sát sàn sạt, bạn có thể chỉnh 2px hoặc 4px */
+    display: inline-flex; 
+    align-items: center;     
+    
+    
     gap: 20px;
     color: #A5B4BB ;
     font-size: 1rem;
@@ -722,28 +708,26 @@
 
 
 
-        /* =========================================================================
-           🎨 TOÀN BỘ CSS chỉ báo khung - ĐÃ ĐƯỢC KHÔI PHỤC VÀ ĐỒNG BỘ HOÀN TOÀN
-           ========================================================================= */
+        
 
-        /* Container cho toàn bộ trang */
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 40px 0px;
         }
 
-        /* --- CẤU TRÚC SECTION --- */
+        
         .content-section {
             display: flex;
-            flex-direction: row; /* Desktop: Trái ảnh (60%), Phải chữ (40%) */
+            flex-direction: row; 
             height: auto;
             min-height: 75vh;
             margin-bottom: 50px;
             background-color: rgba(2, 9, 32, 0.25);
             overflow: hidden;
             
-            /* --- PHẦN CẤU HÌNH VIỀN GRADIENT GỐC --- */
+            
             border: 2px solid transparent;
             border-radius: 16px;
     
@@ -754,14 +738,14 @@
             background-origin: border-box;
             background-clip: padding-box, border-box;
             
-            /* --- THU HẸP KHUNG SECTION --- */
+            
             width: 100%;
             max-width: 1300px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Khu vực hình ảnh chiếm diện tích lớn hơn (60%) */
+        
         .image-zone {
             flex: 1 1 60%;
             position: relative;
@@ -771,7 +755,7 @@
             user-select: none;
             -webkit-user-select: none;
             
-            /* Mask che biên mờ dọc trên Desktop */
+            
             -webkit-mask-image: linear-gradient(to bottom, 
                 transparent 0px, 
                 transparent 10px,
@@ -793,20 +777,20 @@
             cursor: grabbing;
         }
 
-        /* Track chứa các hình ảnh */
+        
         .image-track {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             display: flex;
-            flex-direction: column; /* Chạy dọc */
+            flex-direction: column; 
             gap: 25px;
             padding: 20px 0;
             will-change: transform;
         }
 
-        /* Định dạng từng item ảnh tỷ lệ 3:2 */
+        
         .image-item {
             width: 90%;
             margin: 0 auto;
@@ -825,14 +809,14 @@
             pointer-events: none;
         }
 
-        /* Hiệu ứng Hover phóng to trên Desktop (khi không kéo) */
+        
         .image-zone:not(.dragging) .image-item:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 10px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
-        /* Khu vực chữ (40%) */
+        
         .text-zone {
             flex: 1 1 40%;
             padding: 130px 30px 80px 30px;
@@ -857,7 +841,7 @@
             color: #f0fdff;
         }
 
-        /* Đảo chiều bố cục */
+        
         .content-section.reverse-layout {
             flex-direction: row-reverse;
         }
@@ -867,8 +851,7 @@
             border-right: 1px solid #02092080;
         }
 
-/* =========================================================================
-   📱 ĐÁP ỨNG DI ĐỘNG CHUẨN (DƯỚI HOẶC BẰNG 768PX HOẶC KHI BẬT GIẢ LẬP)   ========================================================================= */
+
         @media (max-width: 768px), .sim-mode-mobile {
             .container {
                 padding: 20px 16px ;
@@ -876,13 +859,13 @@
 
             .content-section,
             .content-section.reverse-layout {
-                flex-direction: column ; /* Xếp dọc: Trên chữ, Dưới ảnh */
+                flex-direction: column ; 
                 height: auto ;
                 margin-bottom: 30px ;
             }
 
             .text-zone {
-                order: 1 ; /* LẬT CHỮ LÊN TRÊN */
+                order: 1 ; 
                 flex: none ;
                 width: 100% ;
                 padding: 30px 30px 70px 30px ;
@@ -904,12 +887,12 @@
             }
 
             .image-zone {
-                order: 2 ; /* LẬT ẢNH XUỐNG DƯỚI */
+                order: 2 ; 
                 flex: none ;
                 width: 100% ;
-                height: 410px ; /* Chiều cao dải ảnh trên điện thoại */
+                height: 410px ; 
                 
-                /* Đổi mask biên mờ sang Trái và Phải cho Mobile */
+                
                 -webkit-mask-image: linear-gradient(to right, 
                     transparent 0px, 
                     transparent 10px, 
@@ -926,7 +909,7 @@
                     transparent 100%) !important;
             }
 
-            /* Đổi track thành hàng ngang chạy từ phải qua trái */
+            
             .image-track {
                 flex-direction: row ;
                 height: 100% ;
@@ -945,7 +928,7 @@
                 margin: 0 ;
             }
 
-            /* Hiệu ứng khi chạm ngón tay giữ ảnh trên điện thoại */
+            
             .image-item.touch-active {
                 transform: scale(1.1) ;
                 z-index: 10 !important;
@@ -954,44 +937,44 @@
         }
 
 
-/* NÚT BẤM KHUNG INTRO */
-/* Khung bọc ngoài cùng - Định vị absolute không bị lỗi click */
+
+
         .w-button-wrapper {
             position: absolute;
-            left: 0px; /* tương đương left-4 */
-            margin-top: 0px; /* tương đương mt-4 */
+            left: 0px; 
+            margin-top: 0px; 
             z-index: 20;
             display: flex;
             align-items: center;
             justify-content: center;
-            pointer-events: none; /* Chuột xuyên qua lớp bọc */
+            pointer-events: none; 
 
         }
 
-        /* 1. NÚT BẤM CHÍNH: Ép trình duyệt đưa lên tầng cao nhất */
+        
         .w-button-main {
             pointer-events: auto !important;
             position: relative;
             width: max-content;
-            z-index: 2; /* Số lớn hơn để nằm trên bóng */
-            transform: translate3d(0, 0, 0); /* Kích hoạt GPU layer cho nút để không bị bóng đè */
+            z-index: 2; 
+            transform: translate3d(0, 0, 0); 
         }
 
-        /* 2. KHỐI CHỨA BÓNG ĐỔ: Hạ xuống tầng dưới nút */
+        
         .w-button-glow-container {
             position: absolute;
             inset: 0;
             overflow: visible;
             pointer-events: none;
-            z-index: 1; /* Số nhỏ hơn nút */
-            transform: translate3d(0, 0, 0); /* Giữ nguyên để kích hoạt GPU layer cho bóng */
+            z-index: 1; 
+            transform: translate3d(0, 0, 0); 
             will-change: transform, opacity;
         }
 
-        /* Bóng 1: Khít viền, sáng rực khi hover */
+        
         .w-glow-active {
             position: absolute;
-            inset: -2px; /* Đẩy nhẹ ra ngoài viền 2px để không bị ruột nút đè */
+            inset: -2px; 
             border-radius: 9999px;
             background: linear-gradient(135deg, #34d399, #2962ff, #d600f8);
             filter: blur(10px);
@@ -999,7 +982,7 @@
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        /* Bóng 2: Hào quang mịn tỏa rộng cố định */
+        
         .w-glow-dim {
             position: absolute;
             inset: 0;
@@ -1009,52 +992,50 @@
             opacity: 0.15;
         }
 
-        /* Hiệu ứng HOVER điều khiển từ thẻ cha */
+        
         .w-button-wrapper:hover .w-glow-active {
             opacity: 1;
-            transform: scale(1.04); /* Tỏa rộng ra */
+            transform: scale(1.04); 
         }
 
-/* Áp dụng khi màn hình là Desktop hoặc Điện thoại xoay ngang (chiều rộng từ 768px trở lên) */
+
         @media (min-width: 768px) {
             .w-button-wrapper {
-                /* 1. Trả về position relative để nút chiếm diện tích thực, tự động đẩy chữ và hình ra, không sợ bị cấn */
+                
                 position: relative; 
                 left: auto;
                 margin-top: 0;
                 
-                /* 2. Tạo khoảng đệm cực kỳ an toàn xung quanh nút 
-                padding: 24px;  Tăng khoảng cách xung quanh nút lên 24px */
-                width: max-content;
-                /* 3. Căn chỉnh nút (Tùy chọn: căn trái, giữa hoặc phải tùy giao diện của bạn) */
-                justify-content: flex-start; /* Căn nút sát bên trái của cột. Nếu muốn giữa thì đổi thành center */
                 
-                /* 4. Đảm bảo không bị các thành phần tuyệt đối khác đè lên */
+                width: max-content;
+                
+                justify-content: flex-start; 
+                
+                
                 z-index: 30; 
             }
         }
 
-/* Fade in SECTION */
+
         .fade-in-section {
           opacity: 0;
-          transform: translateY(50px); /* Tăng độ dịch chuyển */
+          transform: translateY(50px); 
           
-          /* Thời gian nhanh hơn (0.6s) và gia tốc mượt hơn */
+          
           transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                       transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           
-          /* Giúp trình duyệt tối ưu hóa animation */
+          
           will-change: opacity, transform; 
         }
 
-        /* Trạng thái khi cuộn tới: Hiện rõ và trở về vị trí cũ */
+        
         .fade-in-section.is-visible {
           opacity: 1;
           transform: translateY(0);
         }
 
-/* aurora
-    /* Lớp 0: sao | Lớp 1: cực quang | Lớp 2: nội dung */
+
   .aurora-hero .stars-canvas,
   .aurora-hero .aurora-canvas {
     position: absolute; inset: 0;
@@ -1063,7 +1044,7 @@
     pointer-events: none;
   }
   .aurora-hero .stars-canvas  { z-index: 0; }
-  .aurora-hero .aurora-canvas { z-index: 1; }   /* KHÔNG dùng CSS filter: đã chuyển vào shader */
+  .aurora-hero .aurora-canvas { z-index: 1; }   
 
   .aurora-hero .content {
     position: relative; z-index: 2;
@@ -1177,7 +1158,7 @@ uniform vec3  uCB[5];  // Màu đỉnh gốc 1
 uniform vec3  uCA2[5]; // Màu đáy đích 2
 uniform vec3  uCB2[5]; // Màu đỉnh đích 2
 
-/* ---- hash / noise / fbm ---- */
+
 float hash(vec2 p){
   p = fract(p * vec2(234.34, 435.345));
   p += dot(p, p + 34.23);
@@ -1343,7 +1324,7 @@ void main(){
   var canvas = host.querySelector('.aurora-canvas');
   var starsC = host.querySelector('.stars-canvas');
 
-  /* ---------- Sao (2D, vẽ một lần) ---------- */
+  
   function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
   var starData=(function(){
     var rnd=mulberry32(20240607), arr=[], count=80; 
@@ -1371,7 +1352,7 @@ void main(){
     }
   }
 
-  /* ---------- WebGL ---------- */
+  
   var VERT="attribute vec2 a;\nvoid main(){ gl_Position = vec4(a, 0.0, 1.0); }\n";
   var FRAG=document.getElementById('aurora-frag').textContent;
 
@@ -1407,7 +1388,7 @@ void main(){
     return true;
   }
 
-  /* ---------- Chuẩn bị dữ liệu mảng dải màu ---------- */
+  
   var X=new Float32Array(N),Y=new Float32Array(N),W=new Float32Array(N),WL=new Float32Array(N),L=new Float32Array(N),H=new Float32Array(N),P=new Float32Array(N),I=new Float32Array(N),WS=new Float32Array(N),RS=new Float32Array(N),TLT=new Float32Array(N),SAMP=new Float32Array(N),SFREQ=new Float32Array(N),PIV=new Float32Array(N),MDIR=new Float32Array(N),EA=new Float32Array(N),WG=new Float32Array(N);
   var CA=new Float32Array(N*3),CB=new Float32Array(N*3),CA2=new Float32Array(N*3),CB2=new Float32Array(N*3);
 
@@ -1426,7 +1407,7 @@ void main(){
     CB2[i*3]=b2[0];CB2[i*3+1]=b2[1];CB2[i*3+2]=b2[2];
   });
 
-  /* ---------- Chuột & cuộn ---------- */
+  
   var mxT=0,myT=0,mx=0,my=0;
   window.addEventListener('pointermove',function(e){
     var r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;
@@ -2800,9 +2781,7 @@ void main(){
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* =========================================================================
-        MARQUEE 
-       ========================================================================= */
+    
     const marqueeContainer = document.querySelector('.marquee-container');
     const marqueeTrack = document.querySelector('.marquee-track');
 
@@ -2840,9 +2819,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =========================================================================
-       CAROUSEL 
-       ========================================================================= */
+    
     class InfiniteMarquee {
         constructor(sectionEl) {
             this.section = sectionEl;
@@ -3050,9 +3027,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* =========================================================================
-       🔘 ĐOẠN 3: HIỆU ỨNG CHẠM NÚT "SỬ DỤNG TRÊN BIỂU ĐỒ"
-       ========================================================================= */
+    
     const actionBtn = document.querySelector('.rotating-border-wrapper');
     if (actionBtn) {
         actionBtn.addEventListener('touchstart', () => {
@@ -3068,7 +3043,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* Lắng nghe Fade in */
+
 const observerOptions = {
     root: null, 
     // threshold: 0.2, // Có thể bỏ bớt threshold để nhạy hơn
@@ -3574,10 +3549,10 @@ createStars();
 .boo-lantern__ghost {
   pointer-events: auto !important;
   cursor: grab;
-  touch-action: none; /* Bắt buộc để trình duyệt không tranh chấp thao tác kéo với cuộn trang */
+  touch-action: none; 
   -webkit-user-select: none;
   user-select: none;
-  will-change: transform; /* Tối ưu hóa phần cứng GPU để không bị giật */
+  will-change: transform; 
 }
 .boo-lantern__ghost:active {
   cursor: grabbing;
@@ -3632,7 +3607,7 @@ createStars();
 }
 #boo-lantern-overlay, #boo-lantern-overlay * { box-sizing: border-box; }
 
-/* NÚT TẮT HIỆU ỨNG (Cho phép click riêng nút này) */
+
 #boo-close-btn {
   position: fixed;
   top: 25px;
@@ -3646,7 +3621,7 @@ createStars();
   font-family: sans-serif;
   border-radius: 20px;
   cursor: pointer;
-  pointer-events: auto; /* Cho phép bấm vào nút */
+  pointer-events: auto; 
   transition: all 0.2s ease;
   backdrop-filter: blur(4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
